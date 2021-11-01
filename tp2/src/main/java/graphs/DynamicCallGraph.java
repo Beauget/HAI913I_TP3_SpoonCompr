@@ -16,11 +16,13 @@ import visitors.ClassDeclarationsCollector;
 import visitors.MethodDeclarationsCollector;
 import visitors.MethodInvocationsCollector;
 import models.ClassAndContent;
+import models.ClassCouple;
 
 public class DynamicCallGraph extends CallGraph  {
-	ArrayList<ClassAndContent> classes;
+	static ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
+	static ArrayList<ClassCouple> couples = new ArrayList<ClassCouple>();
 	/*
-	 * /home/hayaat/Desktop/Master/M1/Java/TP4/src
+	 * /home/hayaat/Desktop/Master/M1/Java/TP4/src/
 	 */
 
 	/* CONSTRUCTOR */
@@ -28,35 +30,11 @@ public class DynamicCallGraph extends CallGraph  {
 		super(projectPath);
 	}
 	
-	/* METHODS */
-	public static DynamicCallGraph createCallGraph(String projectPath, CompilationUnit cUnit) {
-		DynamicCallGraph graph = new DynamicCallGraph(projectPath);
-		ClassDeclarationsCollector classCollector = new ClassDeclarationsCollector();
-		cUnit.accept(classCollector);
-		
-		for(TypeDeclaration cls: classCollector.getClasses()){
-			MethodDeclarationsCollector methodCollector = new MethodDeclarationsCollector();
-			cls.accept(methodCollector);
-			
-			for(MethodDeclaration method: methodCollector.getMethods())
-				graph.addMethodAndInvocations(cls, method);
-		}
-		
-		return graph;
-	}
-	
-	public static DynamicCallGraph createCallGraph(String projectPath) 
-			throws IOException {
-		DynamicCallGraph graph = new DynamicCallGraph(projectPath);
-		
-		for(CompilationUnit cUnit: graph.parser.parseProject()) {
-			DynamicCallGraph partial = DynamicCallGraph.createCallGraph(projectPath, cUnit);
-			graph.addMethods(partial.getMethods());
-			graph.addInvocations(partial.getInvocations());
-		}
-		return graph;
-	}
-	
+	/* * * * * * * * * * * *
+	 * 
+	 *  METHODS PRIVATE
+	 *  
+	 *  * * * * * * * * * */
 	private boolean addMethodAndInvocations(TypeDeclaration cls, MethodDeclaration method) {
 		if(method.getBody() != null) {
 			String methodName = Utility.getMethodFullyQualifiedName(cls, method);
@@ -108,4 +86,64 @@ public class DynamicCallGraph extends CallGraph  {
 			this.addInvocation(methodName, superInvocationName);
 		}
 	}
+	/* * * * * * * * * * * *
+	 * 
+	 *  METHODS PRIVATE ADDED
+	 *  
+	 *  * * * * * * * * * */
+	
+	private static void getCouples() {
+		for(int i=0 ; i<classes.size(); i++) {
+			for(int j = i+1; j<classes.size(); j++) {
+				couples.add(new ClassCouple(classes.get(i),classes.get(j)));
+			}
+		}
+	}
+	
+	/* * * * * * * * * * * *
+	 * 
+	 *  METHODS PUBLIC
+	 *  
+	 *  * * * * * * * * * */
+	public static DynamicCallGraph createCallGraph(String projectPath, CompilationUnit cUnit) {
+		DynamicCallGraph graph = new DynamicCallGraph(projectPath);
+		ClassDeclarationsCollector classCollector = new ClassDeclarationsCollector();
+		cUnit.accept(classCollector);
+		
+		for(TypeDeclaration cls: classCollector.getClasses()){
+			MethodDeclarationsCollector methodCollector = new MethodDeclarationsCollector();
+			cls.accept(methodCollector);
+			
+			for(MethodDeclaration method: methodCollector.getMethods())
+				graph.addMethodAndInvocations(cls, method);
+		}
+		
+		return graph;
+	}
+	
+	/*
+	 * AJOUT DE LA STRUCTURE ArrayList<ClassAndContent> PENDANT L'APPEL
+	 * */
+	public static DynamicCallGraph createCallGraph(String projectPath) 
+			throws IOException {
+		DynamicCallGraph graph = new DynamicCallGraph(projectPath);
+		
+		for(CompilationUnit cUnit: graph.parser.parseProject()) {
+			DynamicCallGraph partial = DynamicCallGraph.createCallGraph(projectPath, cUnit);
+			graph.addMethods(partial.getMethods());
+			graph.addInvocations(partial.getInvocations());
+		}
+		classes = graph.getModel();
+		System.out.println(classes.toString());
+		getCouples();
+		return graph;
+	}
+	// /home/hayaat/Desktop/Master/M2/Java2021/HAI913I_badSmell/src/
+	// /home/hayaat/Desktop/Master/M1/Java/TP4/src/
+	/* * * * * * * * * * * *
+	 * 
+	 *  METHODS PUBLIC ADDED
+	 *  
+	 *  * * * * * * * * * */
+
 }

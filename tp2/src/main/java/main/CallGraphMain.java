@@ -60,9 +60,8 @@ public class CallGraphMain extends AbstractMain {
 					break;
 				
 				case "2":
+					/* /home/hayaat/Desktop/Master/M1/Java/TP4/src/ */
 					callGraph = DynamicCallGraph.createCallGraph(TEST_PROJECT_PATH);
-					System.out.println(callGraph.GetModel());
-					callGraph.log();
 					break;
 				
 				case "3":

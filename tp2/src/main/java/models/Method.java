@@ -14,6 +14,13 @@ public class Method {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Integer numberOfInvocations() {
+		Integer rslt = 0;
+		for(MethodInvocated methodInvocated :methodsInvocated) {
+			rslt+=methodInvocated.numberOfTime;
+		}
+		return rslt;
+	}
 	public String getName() {
 		return name;
 	}

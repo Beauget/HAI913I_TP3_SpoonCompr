@@ -121,11 +121,49 @@ public abstract class CallGraph extends ASTProcessor {
 						" (" + invocations.get(source).get(destination) + " time(s))\n");
 			builder.append("\n");
 		}
-		System.out.println(this.GetModel());
 		return builder.toString();
 	}
 	
-	public String GetModel() {
+	public void print() {
+		loggerChain.log(new LogRequest(this.toString(), 
+				StandardLogRequestLevel.INFO));
+	}
+	
+	public void log() {
+		loggerChain.setFilePath(parser.getProjectPath()+"static-callgraph.info");
+		loggerChain.log(new LogRequest(this.toString(), 
+				StandardLogRequestLevel.DEBUG));
+	}
+	
+	/* * * * * * * * * * * *
+	 * 
+	 *  METHODS PUBLIC ADDED
+	 *  
+	 *  * * * * * * * * * */
+	//verifie si la class est dans la liste, si c'est le cas renvois sont index
+	private Integer classIsAlreadyIn(ArrayList<ClassAndContent> classes, String className) {
+		Integer rslt = 0;
+		Integer i = 0;
+		for(ClassAndContent classAndContent : classes) {
+			if(classAndContent.getName().equals(className)) {
+				rslt = i;
+			}
+			i++;
+		}
+		return rslt;
+	}
+	
+	//verifie si la class est dans la liste, si c'est le cas renvois sont index
+	private boolean MethodIsAlreadyIn(ClassAndContent classe, String methodName) {
+		boolean rslt = false;
+		for(Method method: classe.getMethods()) {
+			if(method.getName().equals(methodName))
+				rslt=true;
+			}		
+		return rslt;
+	}
+	
+	public ArrayList<ClassAndContent> getModel() {
 		ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
 		/*
 		 * /home/hayaat/Desktop/Master/M1/Java/TP4/src/
@@ -138,35 +176,32 @@ public abstract class CallGraph extends ASTProcessor {
 			ClassAndContent classToAdd = new ClassAndContent();
 			Method method = new Method() ;
 			if(words.length==2) {
-			classToAdd = new ClassAndContent(words[0]);
-			method = new Method(words[1]);
-			//classToAdd.addMethod(words[1]);
-			}			
-			for (String destination: invocations.get(source).keySet()) {
-				MethodInvocated  methodInvocated = new MethodInvocated();
-				//ajout de la method invoque. Format initial de la source elemStockage.AElemStock2::size
-				String[] words2 = destination.split("::");
-				if(words2.length==2) {
-					methodInvocated = new MethodInvocated(words2[1],words2[0]);
-					//recuperation du nombre d'invocation
-					methodInvocated.setNumberOfTime(invocations.get(source).get(destination));
+				//verifie si la classe n'existe pas deja, sinon la crée
+				if(classIsAlreadyIn(classes,words[0])>0){
+					classToAdd = classes.get(classIsAlreadyIn(classes,words[0]));
+					//on supprime sont ancienne version
+					classes.remove(classes.get(classIsAlreadyIn(classes,words[0])));
+				}
+				else
+					classToAdd = new ClassAndContent(words[0]);
+				method = new Method(words[1]);					
+				for (String destination: invocations.get(source).keySet()) {
+					MethodInvocated  methodInvocated = new MethodInvocated();
+					//ajout de la method invoque. Format initial de la source elemStockage.AElemStock2::size
+					String[] words2 = destination.split("::");
+					if(words2.length==2) {
+						methodInvocated = new MethodInvocated(words2[1],words2[0]);
+						//recuperation du nombre d'invocation
+						methodInvocated.setNumberOfTime(invocations.get(source).get(destination));
+						}
+					method.addMethodInvocation(methodInvocated);
 					}
-				method.addMethodInvocation(methodInvocated);
 				classToAdd.addMethod(method);
+					
+				}
+			if(classToAdd!=null)
+				classes.add(classToAdd);
 			}
-			classes.add(classToAdd);
-		}
-		return classes.toString();
-	}
-	
-	public void print() {
-		loggerChain.log(new LogRequest(this.toString(), 
-				StandardLogRequestLevel.INFO));
-	}
-	
-	public void log() {
-		loggerChain.setFilePath(parser.getProjectPath()+"static-callgraph.info");
-		loggerChain.log(new LogRequest(this.toString(), 
-				StandardLogRequestLevel.DEBUG));
+		return classes;
 	}
 }

@@ -12,6 +12,15 @@ public class ClassAndContent {
 	public ClassAndContent() {
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	public Integer numberOfInvocations() {
+		Integer rslt = 0;
+		for(Method method : methods) {
+			rslt+=method.numberOfInvocations();
+		}
+		return rslt;
+	}
 	/*On part du postulat qu'il est impossible d'avoir 2 methodes avec le meme nom dans une classe*/
 	public void addMethod(String name) {
 		methods.add(new Method(name));
