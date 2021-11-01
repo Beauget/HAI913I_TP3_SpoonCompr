@@ -1,6 +1,8 @@
 package graphs;
 
+import java.util.ArrayList;
 import java.util.Collection;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -12,6 +14,9 @@ import loggers.FileLogger;
 import loggers.LogRequest;
 import loggers.StandardLogRequestLevel;
 import processors.ASTProcessor;
+import models.ClassAndContent;
+import models.Method;
+import models.MethodInvocated;
 
 public abstract class CallGraph extends ASTProcessor {
 	/* ATTRIBUTES */
@@ -116,8 +121,42 @@ public abstract class CallGraph extends ASTProcessor {
 						" (" + invocations.get(source).get(destination) + " time(s))\n");
 			builder.append("\n");
 		}
-		
+		System.out.println(this.GetModel());
 		return builder.toString();
+	}
+	
+	public String GetModel() {
+		ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
+		/*
+		 * /home/hayaat/Desktop/Master/M1/Java/TP4/src/
+		 */
+		StringBuilder builder = new StringBuilder();
+		
+		for (String source: invocations.keySet()) {
+			//ajout de la class. Format initial de source : elemStockage.AElemStock2::absoluteAddess
+			String[] words = source.split("::");
+			ClassAndContent classToAdd = new ClassAndContent();
+			Method method = new Method() ;
+			if(words.length==2) {
+			classToAdd = new ClassAndContent(words[0]);
+			method = new Method(words[1]);
+			//classToAdd.addMethod(words[1]);
+			}			
+			for (String destination: invocations.get(source).keySet()) {
+				MethodInvocated  methodInvocated = new MethodInvocated();
+				//ajout de la method invoque. Format initial de la source elemStockage.AElemStock2::size
+				String[] words2 = destination.split("::");
+				if(words2.length==2) {
+					methodInvocated = new MethodInvocated(words2[1],words2[0]);
+					//recuperation du nombre d'invocation
+					methodInvocated.setNumberOfTime(invocations.get(source).get(destination));
+					}
+				method.addMethodInvocation(methodInvocated);
+				classToAdd.addMethod(method);
+			}
+			classes.add(classToAdd);
+		}
+		return classes.toString();
 	}
 	
 	public void print() {

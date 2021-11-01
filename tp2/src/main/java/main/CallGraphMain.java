@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import graphs.CallGraph;
+import graphs.DynamicCallGraph;
 import graphs.StaticCallGraph;
 import processors.ASTProcessor;
 
@@ -59,7 +60,9 @@ public class CallGraphMain extends AbstractMain {
 					break;
 				
 				case "2":
-					System.err.println("Not implemented yet");
+					callGraph = DynamicCallGraph.createCallGraph(TEST_PROJECT_PATH);
+					System.out.println(callGraph.GetModel());
+					callGraph.log();
 					break;
 				
 				case "3":
