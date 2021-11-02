@@ -17,10 +17,10 @@ import visitors.MethodDeclarationsCollector;
 import visitors.MethodInvocationsCollector;
 import models.ClassAndContent;
 import models.ClassCouple;
+import processors.ProcessorClustering;
 
 public class DynamicCallGraph extends CallGraph  {
-	static ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
-	static ArrayList<ClassCouple> couples = new ArrayList<ClassCouple>();
+	static ProcessorClustering processorClustering;
 	/*
 	 * /home/hayaat/Desktop/Master/M1/Java/TP4/src/
 	 */
@@ -92,13 +92,7 @@ public class DynamicCallGraph extends CallGraph  {
 	 *  
 	 *  * * * * * * * * * */
 	
-	private static void getCouples() {
-		for(int i=0 ; i<classes.size(); i++) {
-			for(int j = i+1; j<classes.size(); j++) {
-				couples.add(new ClassCouple(classes.get(i),classes.get(j)));
-			}
-		}
-	}
+
 	
 	/* * * * * * * * * * * *
 	 * 
@@ -133,9 +127,7 @@ public class DynamicCallGraph extends CallGraph  {
 			graph.addMethods(partial.getMethods());
 			graph.addInvocations(partial.getInvocations());
 		}
-		classes = graph.getModel();
-		System.out.println(classes.toString());
-		getCouples();
+		processorClustering = new ProcessorClustering(graph.getModel());
 		return graph;
 	}
 	// /home/hayaat/Desktop/Master/M2/Java2021/HAI913I_badSmell/src/

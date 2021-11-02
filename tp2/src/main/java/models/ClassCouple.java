@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+
 public class ClassCouple {
 	ClassAndContent class1;
 	ClassAndContent class2;
@@ -34,7 +36,7 @@ public class ClassCouple {
 		return rslt;
 	}
 	
-	private double getAvgOfCalls() {
+	public double getAvgOfCalls() {
 		double rslt = 0;
 		//recuperation des appels d'une classe ou l'autre
 		double numberOfCalls = this.getNumberOfCalls();
@@ -49,11 +51,31 @@ public class ClassCouple {
 		return rslt;
 	}
 	
+	public boolean isSameCouple(String s1, String s2) {
+		boolean case1 = s1.equals(class1.getName()) && s2.equals(class2.getName());
+		boolean case2 = s1.equals(class2.getName()) && s2.equals(class1.getName());
+		
+		return (case1||case2);
+	}
+	
+	public boolean isPartOfCouple(String s) {
+		boolean case1 = s.equals(class1.getName());
+		boolean case2 = s.equals(class2.getName());	
+		return (case1||case2);
+	}
+	
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ClassCouple.java : "+"Classes : "+this.class1.getName()+" "+ this.class2.getName()+ "\n");
 
 		
 		return builder.toString();
+	}
+
+	public ArrayList<String> getCoupleNames() {
+		ArrayList<String> output = new ArrayList<String>();
+		output.add(class1.getName());
+		output.add(class2.getName());
+		return (output);
 	}
 }
