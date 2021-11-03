@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 import graphs.CallGraph;
 import graphs.DynamicCallGraph;
 import graphs.StaticCallGraph;
+import metric.GenerateClassesAndContent;
 import processors.ASTProcessor;
+import processors.ProcessorClustering;
 
 public class CallGraphMain extends AbstractMain {
 
@@ -61,7 +63,10 @@ public class CallGraphMain extends AbstractMain {
 				
 				case "2":
 					/* /home/hayaat/Desktop/Master/M1/Java/TP4/src/ */
-					callGraph = DynamicCallGraph.createCallGraph(TEST_PROJECT_PATH);
+					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);
+					GenerateClassesAndContent gcac = new GenerateClassesAndContent(callGraph);
+					ProcessorClustering processorClustering = new ProcessorClustering(gcac.getModel());
+					System.out.println(processorClustering.toString());
 					break;
 				
 				case "3":

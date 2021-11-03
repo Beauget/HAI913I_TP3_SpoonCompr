@@ -20,7 +20,6 @@ import models.ClassCouple;
 import processors.ProcessorClustering;
 
 public class DynamicCallGraph extends CallGraph  {
-	static ProcessorClustering processorClustering;
 	/*
 	 * /home/hayaat/Desktop/Master/M1/Java/TP4/src/
 	 */
@@ -127,11 +126,15 @@ public class DynamicCallGraph extends CallGraph  {
 			graph.addMethods(partial.getMethods());
 			graph.addInvocations(partial.getInvocations());
 		}
-		processorClustering = new ProcessorClustering(graph.getModel());
+		
+		//System.out.println(graph.getModel().toString());	
+
 		return graph;
 	}
 	// /home/hayaat/Desktop/Master/M2/Java2021/HAI913I_badSmell/src/
 	// /home/hayaat/Desktop/Master/M1/Java/TP4/src/
+	// /home/hayaat/Desktop/Master/M1/Java/HMIN210/TP1RMI/src/
+	// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
 	/* * * * * * * * * * * *
 	 * 
 	 *  METHODS PUBLIC ADDED

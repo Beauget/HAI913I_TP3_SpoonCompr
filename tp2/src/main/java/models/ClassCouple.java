@@ -32,25 +32,34 @@ public class ClassCouple {
 				}	
 			}
 		}
+		if(rslt>0) {
 		System.out.println("ClassCouple.java : "+class1.getName()+ " et "+ class2.getName() +" se sont appelee l'une l'autre "+ rslt +" fois. \n");
+		}
 		return rslt;
 	}
 	
-	public double getAvgOfCalls() {
+	private double getAvgOfCalls() {
 		double rslt = 0;
 		//recuperation des appels d'une classe ou l'autre
 		double numberOfCalls = this.getNumberOfCalls();
 		double totalNumberOfInvocation = class1.numberOfInvocations()+class2.numberOfInvocations();
 
 		if(totalNumberOfInvocation >0) {
-			rslt = numberOfCalls/ (class1.numberOfInvocations()+class2.numberOfInvocations());
+			rslt = numberOfCalls/ totalNumberOfInvocation;
 		}
 		//si les classes ne font jamais d'invocations on renvoie 0
-		System.out.println("ClassCouple.java : "+"Les classes invoque au total "+ totalNumberOfInvocation +" methode(s) \n");
-		System.out.println("ClassCouple.java : "+"Moyenne : "+ rslt);
+		//System.out.println("ClassCouple.java : "+"Les classes invoque au total "+ totalNumberOfInvocation +" methode(s) \n");
+		//System.out.println("ClassCouple.java : "+"Moyenne : "+ rslt);
+		if(rslt>0) {
+			System.out.println("ClassCouple.java : "+"Moyenne : "+  numberOfCalls+ "/" + totalNumberOfInvocation + " Couple = "+ class1.getName()+ " et "+ class2.getName() );
+		}
 		return rslt;
 	}
 	
+	public double getValue() {
+		return value;
+	}
+
 	public boolean isSameCouple(String s1, String s2) {
 		boolean case1 = s1.equals(class1.getName()) && s2.equals(class2.getName());
 		boolean case2 = s1.equals(class2.getName()) && s2.equals(class1.getName());
@@ -67,8 +76,6 @@ public class ClassCouple {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ClassCouple.java : "+"Classes : "+this.class1.getName()+" "+ this.class2.getName()+ "\n");
-
-		
 		return builder.toString();
 	}
 

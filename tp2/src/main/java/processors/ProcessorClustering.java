@@ -43,7 +43,7 @@ public class ProcessorClustering {
 	private ArrayList<Double> initHeaderValues(){
 		ArrayList<Double> output = new ArrayList<Double>();
 		for( ClassCouple classCouple: couples) {
-			output.add(classCouple.getAvgOfCalls());
+			output.add(classCouple.getValue());
 		}
 		return output;		
 	}
@@ -68,7 +68,17 @@ public class ProcessorClustering {
 		return false;
 	}
 	
+	private ArrayList<String> removeClusterPart(ArrayList<String> columnHeader, ArrayList<String> cluster){
+		ArrayList<String> output = columnHeader;
+		for(String s : cluster) {
+			output.remove(s);
+		}
+		return output;
+	}
+	//    /home/hayaat/Desktop/Master/M1/Java/HMIN210/TP1RMI/src/
+	
 	private ArrayList<ArrayList<String>> updateHeader( ArrayList<ArrayList<String>>header,  ArrayList<String> cluster){
+		ArrayList<String> clusterTemp = cluster;
 		for(ArrayList<String> headerColumn : header) {
 			/*seulement une partie du cluster est present et le but est de tout avoir
 			 * exemple :  headerColumn(a, b, c) , cluster (b, f) 
@@ -76,18 +86,27 @@ public class ProcessorClustering {
 			 * Pour eviter le doublon on enleve toute pesence et on ajoute le cluster
 			 * */
 			if(partOfClusterIsInColumnHeader(headerColumn, cluster)) {
+				ArrayList<String> headerColumnTemp = headerColumn;
 				headerColumn.removeAll(cluster);
-				headerColumn.addAll(cluster);}
+				//headerColumnTemp = removeClusterPart(headerColumnTemp, cluster);
+				//System.out.println("headerColumnAfterRemove : "+headerColumnTemp.toString());
+				headerColumnTemp.addAll(cluster);
+				//System.out.println("headerColumnAfteradd : "+headerColumnTemp.toString() +"\n");
+				}
 			}
+
 		/*Attention ici on a probablement des headerColumn identique donc il faudra les enlever
 		 * exemple :  headerColumn(a, f,c) , cluster (b, f) => headerColumn(a, b, c, f) il est égale a celui au dessus
 		 * */
-		
+		header.remove(cluster);
 		for (int i = 0; i < header.size(); i++) {
 			for (int j = i+1; j <header.size(); j++) {
-				/*il est normalement impossible d'avoir une liste sous ensemble de l'autre , elle est egal ou differente*/
+				// il est normalement impossible d'avoir une liste sous ensemble de l'autre , elle est egal ou differente
 				if(header.get(i).containsAll(header.get(j)))
 					header.remove(j);
+				//if(header.get(j).isEmpty())
+					//header.remove(j);
+
 			}
 		}
 		return header;
@@ -96,8 +115,9 @@ public class ProcessorClustering {
 	/*Renvoie la valeur du couple , si il n'existe pas (ce qui est techniquement impossible) envoie -1*/
 	private double getValueInCoupleFromClassNames(String name1, String name2) {
 		for(ClassCouple classCouple : couples) {
-			if(classCouple.isSameCouple(name1, name2))
-				return classCouple.getAvgOfCalls();
+			if(classCouple.isSameCouple(name1, name2)) {
+				return classCouple.getValue();
+			}
 		}
 		return -1;
 	}
@@ -113,7 +133,7 @@ public class ProcessorClustering {
 				if(value!=-1)
 					output+=value;
 			}
-		}		
+		}
 		return output;
 	}
 	
@@ -126,6 +146,7 @@ public class ProcessorClustering {
 		return output;
 	}
 	
+	//   /home/hayaat/Desktop/Master/M1/Java/HMIN210/TP1RMI/src/
 	
 	public ArrayList<ArrayList<String>> clustering() {
 		/* exemple d'un tableau
@@ -140,35 +161,45 @@ public class ProcessorClustering {
 		 * On utilisera alors : getValueFromClassNames(ArrayList<String> classesNames)
 		 * */
 
-		
 		//INITIALISATION, les deux doivent etre de la meme taille
 		ArrayList<ArrayList<String>> tableHeader = initHeader();
 		ArrayList<Double> valuesOfHeader  = initHeaderValues();		
 		ArrayList<ArrayList<String>> clusters  = new ArrayList<ArrayList<String>>();
-
-		
+		/*System.out.println("Tableheader size " + tableHeader.size());
+		for(ArrayList<String> header : tableHeader) {
+			System.out.println(header.toString());
+		}
+		//System.out.println("valuesOfHeader size " + valuesOfHeader.size());*/
+		System.out.println("Processor clustering valuesOfHeader.toString() "+valuesOfHeader.toString());
+		int i = 0;
 		//On continue tant que la fusion n'a pas pas etais complete et on verifie que les tableaux on toujours la meme taille
-		while(tableHeader.size()!=1 && valuesOfHeader.size()==tableHeader.size()) {
+		while(tableHeader.size()!=0 && valuesOfHeader.size()==tableHeader.size()) {
+			i++;
 			Integer indexOfHighestValue=getIndexOfHighestValueFromHeaderValues(valuesOfHeader);
-			ArrayList<String> highestCluster = tableHeader.get(indexOfHighestValue);
+			ArrayList<String> highestCluster = new ArrayList<String>(tableHeader.get(indexOfHighestValue));
+			//System.out.println("highestCluster " + highestCluster.toString() + " value :"+ valuesOfHeader.get(indexOfHighestValue));
 			//On ajoute le cluster dans la liste des cluster
 			clusters.add(highestCluster);
 			tableHeader = updateHeader(tableHeader, highestCluster);
 			valuesOfHeader = updateValuesOfHeader(tableHeader);
+
 		}
 		return clusters;
 	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Clusters = \n");
+		builder.append("Number of classes = "+ classes.size()+"\n");
+		builder.append("Clusters => ");
 		ArrayList<ArrayList<String>>  clusters = clustering();
+		builder.append("Size : "+clusters.size()+ "\n");
 		
 		for (ArrayList<String> cluster : clusters) {
-			builder.append(cluster.toString()+ "\n");
+			//builder.append(cluster.toString()+ "\n");
 		}	
 		return builder.toString();
 	}
 	
-
+	//    /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
+	//    /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/tp2/target/test-classes/structural/src/composite/src/
 }
