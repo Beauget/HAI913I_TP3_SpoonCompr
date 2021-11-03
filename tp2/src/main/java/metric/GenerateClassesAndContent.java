@@ -88,14 +88,21 @@ public class GenerateClassesAndContent {
 			if(classToAdd!=null)
 				classes.add(classToAdd);
 			}
+
 		return classes;
 	}
 	
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
+		Integer method = 0;
+		Integer methodInvocation = 0;
+		
 		for(ClassAndContent cac : classes) {
-			builder.append(cac.toString()+"\n");
+			method+=cac.getMethods().size();
+			methodInvocation+= cac.getNumberOfInvocations();
 		}
+		builder.append("Number of Method with invocation = "+method+"\n");
+		builder.append("Number of Invocation = "+methodInvocation+"\n");
 		return builder.toString();
 	}
 	

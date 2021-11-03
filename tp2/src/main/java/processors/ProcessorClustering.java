@@ -212,6 +212,7 @@ public class ProcessorClustering extends ASTProcessor {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Classes and contents = "+ classes.toString()+"\n");
+		builder.append(generateClassesAndContent.toString());
 		builder.append("Number of classes = "+ classes.size()+"\n");
 		builder.append("Clusters => ");
 		ArrayList<ArrayList<String>>  clusters = clustering();

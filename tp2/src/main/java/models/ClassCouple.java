@@ -42,7 +42,7 @@ public class ClassCouple {
 		double rslt = 0;
 		//recuperation des appels d'une classe ou l'autre
 		double numberOfCalls = this.getNumberOfCalls();
-		double totalNumberOfInvocation = class1.numberOfInvocations()+class2.numberOfInvocations();
+		double totalNumberOfInvocation = class1.getNumberOfInvocations()+class2.getNumberOfInvocations();
 
 		if(totalNumberOfInvocation >0) {
 			rslt = numberOfCalls/ totalNumberOfInvocation;

@@ -107,6 +107,7 @@ public abstract class CallGraph extends ASTProcessor {
 	
 	@Override
 	public String toString() {
+
 		StringBuilder builder = new StringBuilder();
 		builder.append("Static Call Graph");
 		builder.append("\nMethods: "+methods.size()+".");
@@ -121,6 +122,7 @@ public abstract class CallGraph extends ASTProcessor {
 						" (" + invocations.get(source).get(destination) + " time(s))\n");
 			builder.append("\n");
 		}
+
 		return builder.toString();
 	}
 	

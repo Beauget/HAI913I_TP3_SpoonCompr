@@ -14,7 +14,7 @@ public class ClassAndContent {
 	}
 
 	
-	public Integer numberOfInvocations() {
+	public Integer getNumberOfInvocations() {
 		Integer rslt = 0;
 		for(Method method : methods) {
 			rslt+=method.numberOfInvocations();
