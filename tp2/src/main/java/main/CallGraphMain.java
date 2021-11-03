@@ -17,8 +17,9 @@ public class CallGraphMain extends AbstractMain {
 	protected void menu() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("1. Static call graph.");
-		builder.append("\n2. Dynamic call graph.");
-		builder.append("\n3. Help menu.");
+		builder.append("\n2. PreccessorClustering.");
+		builder.append("\n3. Dynamic call graph.");
+		builder.append("\n4. Help menu.");
 		builder.append("\n"+QUIT+". To quit.");
 		
 		System.out.println(builder);
@@ -69,12 +70,15 @@ public class CallGraphMain extends AbstractMain {
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/tp2/target/test-classes/structural/src/composite/src/
+					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
 					ProcessorClustering processorClustering = new ProcessorClustering(TEST_PROJECT_PATH,callGraph);
 					//processorClustering.log();
 					break;
-				
 				case "3":
+					return;
+				
+				case "4":
 					return;
 					
 				case QUIT:

@@ -18,7 +18,7 @@ import visitors.MethodInvocationsCollector;
 public class StaticCallGraph extends CallGraph {
 
 	/* CONSTRUCTOR */
-	private StaticCallGraph(String projectPath) {
+	protected StaticCallGraph(String projectPath) {
 		super(projectPath);
 	}
 	

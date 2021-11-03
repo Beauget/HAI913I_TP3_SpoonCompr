@@ -1,8 +1,6 @@
 package graphs;
 
-import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -14,18 +12,15 @@ import loggers.FileLogger;
 import loggers.LogRequest;
 import loggers.StandardLogRequestLevel;
 import processors.ASTProcessor;
-import models.ClassAndContent;
-import models.Method;
-import models.MethodInvocated;
 
-public abstract class CallGraph extends ASTProcessor {
+public class CallGraphForGenerateClassesAndContent extends ASTProcessor {
 	/* ATTRIBUTES */
 	private Set<String> methods = new HashSet<>();
 	private Map<String, Map<String, Integer>> invocations = new HashMap<>();
 	private FileLogger loggerChain;
 	
 	/* CONSTRUCTOR */
-	public CallGraph(String projectPath) {
+	public CallGraphForGenerateClassesAndContent(String projectPath) {
 		super(projectPath);
 		setLoggerChain();
 	}
@@ -103,20 +98,6 @@ public abstract class CallGraph extends ASTProcessor {
 		for (String source: map.keySet())
 			for (String destination: map.get(source).keySet())
 				this.addInvocation(source, destination, map.get(source).get(destination));
-	}
-	
-	public ArrayList<String> getClassesName(){
-		ArrayList<String> classesName = new ArrayList<String>();
-		for(String s : this.getMethods()) {
-			String[] words =s.split("::");
-			classesName.add(words[0]);
-		}
-		//suppression des tuples
-		Set<String> set = new HashSet<>(classesName);
-		classesName.clear();
-		classesName.addAll(set);
-		return classesName;
-
 	}
 	
 	@Override

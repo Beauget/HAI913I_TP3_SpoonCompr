@@ -2,7 +2,9 @@ package metric;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import graphs.CallGraph;
 import graphs.StaticCallGraph;
@@ -15,13 +17,16 @@ import models.MethodInvocated;
 
 public class GenerateClassesAndContent {
 	private CallGraph callGraph;
+	private ArrayList<String> classesName = new ArrayList<String>();
 	private Map<String, Map<String, Integer>> invocations = new HashMap<>();
 	ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
 	
 	public GenerateClassesAndContent(CallGraph callGraph2) {
 		this.callGraph =callGraph2;
 		this.invocations = callGraph2.getInvocations();
-		this.classes = this.getModel();
+		this.classesName = callGraph2.getClassesName();
+		this.classes = this.getClassesAndContent();
+	
 	}
 	public ArrayList<ClassAndContent> getClasses() {
 		return classes;
@@ -54,7 +59,7 @@ public class GenerateClassesAndContent {
 		return rslt;
 	}
 	
-	public ArrayList<ClassAndContent> getModel() {
+	public ArrayList<ClassAndContent> getOnlyClassesAndContentWithInvocation() {
 		ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
 		for (String source: invocations.keySet()) {
 			//ajout de la class. Format initial de source : elemStockage.AElemStock2::absoluteAddess
@@ -90,6 +95,27 @@ public class GenerateClassesAndContent {
 			}
 
 		return classes;
+	}
+	//Ajoute les classes qui on des méthodes mais pas d'invocations
+	public ArrayList<ClassAndContent> getClassesAndContent() {
+		ArrayList<ClassAndContent> output =new ArrayList<ClassAndContent>();
+		ArrayList<ClassAndContent> OnlyClassesWithInvocation = this.getOnlyClassesAndContentWithInvocation();
+		System.out.println(classesName.toString());
+		for(String s : classesName) {
+			boolean bool = false;
+			for(ClassAndContent cac : OnlyClassesWithInvocation) {
+				if(cac.isSame(s)|| s.equals("structural.composite.Song")) {
+					bool=true;
+				}
+			}
+			if(!bool)
+				output.add(new ClassAndContent(s));	
+		}
+
+		output.addAll(OnlyClassesWithInvocation);
+
+		//System.out.println(output.toString());
+		return output;
 	}
 	
 	public String toString() {
