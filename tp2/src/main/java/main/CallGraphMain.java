@@ -63,10 +63,15 @@ public class CallGraphMain extends AbstractMain {
 				
 				case "2":
 					/* /home/hayaat/Desktop/Master/M1/Java/TP4/src/ */
-					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);
-					GenerateClassesAndContent gcac = new GenerateClassesAndContent(callGraph);
-					ProcessorClustering processorClustering = new ProcessorClustering(gcac.getModel());
-					System.out.println(processorClustering.toString());
+					// /home/hayaat/Desktop/Master/M2/Java2021/HAI913I_badSmell/src/
+					// /home/hayaat/Desktop/Master/M1/Java/TP4/src/
+					// /home/hayaat/Desktop/Master/M1/Java/HMIN210/TP1RMI/src/
+					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
+					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
+					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/tp2/target/test-classes/structural/src/composite/src/
+					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
+					ProcessorClustering processorClustering = new ProcessorClustering(TEST_PROJECT_PATH,callGraph);
+					processorClustering.log();
 					break;
 				
 				case "3":

@@ -6,6 +6,9 @@ import java.util.Map;
 
 import graphs.CallGraph;
 import graphs.StaticCallGraph;
+import loggers.FileLogger;
+import loggers.LogRequest;
+import loggers.StandardLogRequestLevel;
 import models.ClassAndContent;
 import models.Method;
 import models.MethodInvocated;
@@ -13,10 +16,15 @@ import models.MethodInvocated;
 public class GenerateClassesAndContent {
 	private CallGraph callGraph;
 	private Map<String, Map<String, Integer>> invocations = new HashMap<>();
+	ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
 	
 	public GenerateClassesAndContent(CallGraph callGraph2) {
 		this.callGraph =callGraph2;
 		this.invocations = callGraph2.getInvocations();
+		this.classes = this.getModel();
+	}
+	public ArrayList<ClassAndContent> getClasses() {
+		return classes;
 	}
 	/* * * * * * * * * * * *
 	 * 
@@ -48,12 +56,6 @@ public class GenerateClassesAndContent {
 	
 	public ArrayList<ClassAndContent> getModel() {
 		ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
-		/*
-		 * /home/hayaat/Desktop/Master/M1/Java/TP4/src/
-		 * /home/hayaat/Desktop/Master/M1/Java/HMIN210/TP1RMI/src/
-		 */
-		StringBuilder builder = new StringBuilder();
-		
 		for (String source: invocations.keySet()) {
 			//ajout de la class. Format initial de source : elemStockage.AElemStock2::absoluteAddess
 			String[] words = source.split("::");
@@ -88,4 +90,15 @@ public class GenerateClassesAndContent {
 			}
 		return classes;
 	}
+	
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for(ClassAndContent cac : classes) {
+			builder.append(cac.toString()+"\n");
+		}
+		return builder.toString();
+	}
+	
+
+	
 }

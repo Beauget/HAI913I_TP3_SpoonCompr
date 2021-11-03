@@ -2,20 +2,33 @@ package processors;
 
 import java.util.ArrayList;
 
+import graphs.CallGraph;
 import graphs.DynamicCallGraph;
+import loggers.ConsoleLogger;
+import loggers.FileLogger;
+import loggers.LogRequest;
+import loggers.StandardLogRequestLevel;
+import metric.GenerateClassesAndContent;
 import models.ClassAndContent;
 import models.ClassCouple;
 
-public class ProcessorClustering {
+public class ProcessorClustering extends ASTProcessor {
 	/*
 	 * /home/hayaat/Desktop/Master/M1/Java/TP4/src/
 	 */
+	private CallGraph callGraph;
+	GenerateClassesAndContent generateClassesAndContent;
 	static ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
 	static ArrayList<ClassCouple> couples = new ArrayList<ClassCouple>();
+	private FileLogger loggerChain;
 	
-	public ProcessorClustering(ArrayList<ClassAndContent> classes) {
-		this.classes = classes;
+	public ProcessorClustering(String projectPath, CallGraph callGraph) {
+		super(projectPath);
+		this.callGraph = callGraph;
+		this.generateClassesAndContent = new GenerateClassesAndContent(callGraph);
+		this.classes = generateClassesAndContent.getClasses();
 		this.couples = this.getCouples();
+		setLoggerChain();
 	}
 	
 	private static ArrayList<ClassCouple> getCouples() {
@@ -75,7 +88,7 @@ public class ProcessorClustering {
 		}
 		return output;
 	}
-	//    /home/hayaat/Desktop/Master/M1/Java/HMIN210/TP1RMI/src/
+
 	
 	private ArrayList<ArrayList<String>> updateHeader( ArrayList<ArrayList<String>>header,  ArrayList<String> cluster){
 		ArrayList<String> clusterTemp = cluster;
@@ -186,20 +199,38 @@ public class ProcessorClustering {
 		}
 		return clusters;
 	}
+	
+	public String printClassesName() {
+		StringBuilder builder = new StringBuilder();
+		for(ClassAndContent c : classes) {
+			builder.append(c.getName()+ "\n");
+		}
+		return builder.toString();
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
+		builder.append("Classes and contents = "+ classes.toString()+"\n");
 		builder.append("Number of classes = "+ classes.size()+"\n");
 		builder.append("Clusters => ");
 		ArrayList<ArrayList<String>>  clusters = clustering();
 		builder.append("Size : "+clusters.size()+ "\n");
 		
 		for (ArrayList<String> cluster : clusters) {
-			//builder.append(cluster.toString()+ "\n");
-		}	
+			builder.append(cluster.toString()+ "\n");
+		}
+
 		return builder.toString();
 	}
-	
-	//    /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
-	//    /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/tp2/target/test-classes/structural/src/composite/src/
+	/* METHODS */
+	protected void setLoggerChain() {
+		loggerChain = new FileLogger(StandardLogRequestLevel.DEBUG);
+		loggerChain.setNextLogger(new ConsoleLogger(StandardLogRequestLevel.INFO));
+	}
+	public void log() {
+		loggerChain.setFilePath(parser.getProjectPath()+"processor_clustering.info");
+		loggerChain.log(new LogRequest(this.toString(), 
+				StandardLogRequestLevel.DEBUG));
+	}
 }
