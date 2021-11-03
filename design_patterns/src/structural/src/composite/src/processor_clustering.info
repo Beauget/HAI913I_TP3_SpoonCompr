@@ -1,0 +1,110 @@
+Classes and contents = [ClassName : components
+
+, ClassName : dubstep
+
+, ClassName : iterator
+
+, ClassName : crazyLarry
+
+, ClassName : java.io.PrintStream
+
+, ClassName : this
+
+, ClassName : songList
+
+, ClassName : heavyMetal
+
+, ClassName : component
+
+, ClassName : industrial
+
+, ClassName : buf
+
+, ClassName : buf.toString()
+
+, ClassName : songGenres
+
+, ClassName : structural.composite.DiscJockey
+MethodName : displaySongList
+Invocation : displayInfo from class songList 1 time(s)
+
+
+, ClassName : structural.composite.SongListGenerator
+MethodName : main
+Invocation : displaySongList from class crazyLarry 1 time(s)
+Invocation : add from class heavyMetal 2 time(s)
+Invocation : add from class songGenres 2 time(s)
+Invocation : add from class dubstep 2 time(s)
+Invocation : add from class industrial 3 time(s)
+
+
+, ClassName : structural.composite.Song
+MethodName : getInfo
+Invocation : getBandName from class this 1 time(s)
+Invocation : getSongName from class this 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 3 time(s)
+Invocation : getReleaseYear from class this 1 time(s)
+
+
+, ClassName : structural.composite.SongComponent
+MethodName : displayInfo
+Invocation : getInfo from class structural.composite.SongComponent 1 time(s)
+Invocation : println from class java.io.PrintStream 1 time(s)
+
+
+, ClassName : structural.composite.SongGroup
+MethodName : remove
+Invocation : remove from class components 1 time(s)
+
+MethodName : getInfo
+Invocation : iterator from class components 1 time(s)
+Invocation : next from class iterator 1 time(s)
+Invocation : getGroupName from class this 1 time(s)
+Invocation : getGroupDescription from class this 1 time(s)
+Invocation : hasNext from class iterator 1 time(s)
+Invocation : toString from class buf 2 time(s)
+Invocation : getInfo from class component 2 time(s)
+Invocation : append from class buf 7 time(s)
+Invocation : length from class buf.toString() 1 time(s)
+
+MethodName : add
+Invocation : add from class components 1 time(s)
+
+MethodName : getComponent
+Invocation : get from class components 1 time(s)
+
+
+, ClassName : structural.composite.Test
+MethodName : main
+Invocation : displaySongList from class crazyLarry 1 time(s)
+Invocation : add from class heavyMetal 2 time(s)
+Invocation : add from class songGenres 2 time(s)
+Invocation : add from class dubstep 2 time(s)
+Invocation : add from class industrial 3 time(s)
+
+
+]
+Number of Method with invocation = 9
+Number of Invocation = 50
+Number of classes = 19
+Clusters => Size : 18
+[songList, structural.composite.DiscJockey]
+[components, songList, structural.composite.DiscJockey]
+[structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[dubstep, buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[structural.composite.SongListGenerator, dubstep, buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[industrial, structural.composite.SongListGenerator, dubstep, buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[structural.composite.Test, industrial, structural.composite.SongListGenerator, dubstep, buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[heavyMetal, structural.composite.Test, industrial, structural.composite.SongListGenerator, dubstep, buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[songGenres, heavyMetal, structural.composite.Test, industrial, structural.composite.SongListGenerator, dubstep, buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[crazyLarry, songGenres, heavyMetal, structural.composite.Test, industrial, structural.composite.SongListGenerator, dubstep, buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[java.io.PrintStream, crazyLarry, songGenres, heavyMetal, structural.composite.Test, industrial, structural.composite.SongListGenerator, dubstep, buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+[structural.composite.SongComponent, java.io.PrintStream, crazyLarry, songGenres, heavyMetal, structural.composite.Test, industrial, structural.composite.SongListGenerator, dubstep, buf.toString(), component, iterator, this, structural.composite.Song, buf, structural.composite.SongGroup, components, songList, structural.composite.DiscJockey]
+
