@@ -8,6 +8,8 @@ public class ClassCouple {
 	double value;
 	double numberOfCallsBetweenCouple ;
 	static double totalNumberOfCallsBetweenClasses;
+	double nbOfTimeClass1IsCalled;
+	double nbOfTimeClass2IsCalled;
 	
 	public ClassCouple(ClassAndContent class1, ClassAndContent class2) {
 		this.class1 =class1;
@@ -23,6 +25,7 @@ public class ClassCouple {
 				//On identifie les methode qui on pour classe classe2
 				if(class2.getName().equals(methodInvocated.getClassOrigin())) {
 					rslt+= methodInvocated.getNumberOfTime();
+					nbOfTimeClass2IsCalled++;
 				}	
 			}
 		}
@@ -31,11 +34,13 @@ public class ClassCouple {
 				//On identifie les methode qui on pour classe classe1
 				if(class1.getName().equals(methodInvocated.getClassOrigin())) {
 					rslt+= methodInvocated.getNumberOfTime();
+					nbOfTimeClass1IsCalled++;
 				}	
 			}
 		}
 		if(rslt>0) {
-		System.out.println("ClassCouple.java : "+class1.getName()+ " et "+ class2.getName() +" se sont appelee l'une l'autre "+ rslt +" fois. \n");
+		System.out.println("ClassCouple.java : "+class1.getName()+ " et "+ class2.getName() +" se sont appelee l'une l'autre "+ rslt +" fois. \n"
+				+class1.getName() + " : "+ (nbOfTimeClass1IsCalled/rslt)*100 + "%  et "+ class2.getName()+ " : "+ (nbOfTimeClass2IsCalled/rslt)*100 + "% \n");
 		}
 		//incrémente le nombre d'appel entre classe a chaque ajout de couple
 		totalNumberOfCallsBetweenClasses+=rslt;
@@ -102,5 +107,14 @@ public class ClassCouple {
 	public static double getTotalNumberOfCallsBetweenClasses() {
 		return totalNumberOfCallsBetweenClasses;
 	}
+
+	public double getNbOfTimeClass1IsCalled() {
+		return nbOfTimeClass1IsCalled;
+	}
+
+	public double getNbOfTimeClass2IsCalled() {
+		return nbOfTimeClass2IsCalled;
+	}
+	
 	
 }

@@ -130,7 +130,7 @@ public class GenerateClassesAndContent {
 			methodInvocation+= cac.getNumberOfInvocations();
 		}
 		builder.append("Number of Method with invocation = "+method+"\n");
-		builder.append("Number of Invocation = "+methodInvocation+"\n");
+		builder.append("Number of Invocation (including none-Class invocations) = "+methodInvocation+"\n");
 		return builder.toString();
 	}
 	

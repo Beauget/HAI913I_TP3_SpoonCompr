@@ -31,7 +31,7 @@ public class ProcessorClustering extends ASTProcessor {
 		this.couples = this.getCouples();
 		if(this.couples.size()>0)
 			totalNumberOfCallsBetweenClasses = couples.get(0).getTotalNumberOfCallsBetweenClasses();
-
+		System.out.println("ProcessorClustering Conctructor: Au total il y a "+ totalNumberOfCallsBetweenClasses + " invocations de classes \n");
 		setLoggerChain();
 	}
 	
@@ -182,12 +182,7 @@ public class ProcessorClustering extends ASTProcessor {
 		ArrayList<ArrayList<String>> tableHeader = initHeader();
 		ArrayList<Double> valuesOfHeader  = initHeaderValues();		
 		ArrayList<ArrayList<String>> clusters  = new ArrayList<ArrayList<String>>();
-		/*System.out.println("Tableheader size " + tableHeader.size());
-		for(ArrayList<String> header : tableHeader) {
-			System.out.println(header.toString());
-		}
-		//System.out.println("valuesOfHeader size " + valuesOfHeader.size());*/
-		System.out.println("Processor clustering valuesOfHeader.toString() "+valuesOfHeader.toString());
+
 		int i = 0;
 		//On continue tant que la fusion n'a pas pas etais complete et on verifie que les tableaux on toujours la meme taille
 		while(tableHeader.size()!=0 && valuesOfHeader.size()==tableHeader.size()) {
