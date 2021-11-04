@@ -38,15 +38,15 @@ public class GenerateClassesAndContent {
 	 *  * * * * * * * * * */
 	//verifie si la class est dans la liste, si c'est le cas renvois sont index
 	private Integer classIsAlreadyIn(ArrayList<ClassAndContent> classes, String className) {
-		Integer rslt = 0;
+		Integer output = -1;
 		Integer i = 0;
 		for(ClassAndContent classAndContent : classes) {
 			if(classAndContent.getName().equals(className)) {
-				rslt = i;
+				output = i;
 			}
 			i++;
 		}
-		return rslt;
+		return output;
 	}
 	
 	//verifie si la class est dans la liste, si c'est le cas renvois sont index
@@ -66,9 +66,10 @@ public class GenerateClassesAndContent {
 			String[] words = source.split("::");
 			ClassAndContent classToAdd = new ClassAndContent();
 			Method method = new Method() ;
+			
 			if(words.length==2) {
 				//verifie si la classe n'existe pas deja, sinon la crée
-				if(classIsAlreadyIn(classes,words[0])>0){
+				if(classIsAlreadyIn(classes,words[0])>-1){
 					classToAdd = classes.get(classIsAlreadyIn(classes,words[0]));
 					//on supprime sont ancienne version
 					classes.remove(classes.get(classIsAlreadyIn(classes,words[0])));
@@ -100,16 +101,17 @@ public class GenerateClassesAndContent {
 	public ArrayList<ClassAndContent> getClassesAndContent() {
 		ArrayList<ClassAndContent> output =new ArrayList<ClassAndContent>();
 		ArrayList<ClassAndContent> OnlyClassesWithInvocation = this.getOnlyClassesAndContentWithInvocation();
-		System.out.println(classesName.toString());
+		//System.out.println(classesName.toString());
 		for(String s : classesName) {
 			boolean bool = false;
 			for(ClassAndContent cac : OnlyClassesWithInvocation) {
-				if(cac.isSame(s)|| s.equals("structural.composite.Song")) {
+				if(cac.isSame(s)) {
 					bool=true;
 				}
 			}
-			if(!bool)
+			if((!bool) && (isClass(s))) {
 				output.add(new ClassAndContent(s));	
+			}
 		}
 
 		output.addAll(OnlyClassesWithInvocation);
@@ -130,6 +132,17 @@ public class GenerateClassesAndContent {
 		builder.append("Number of Method with invocation = "+method+"\n");
 		builder.append("Number of Invocation = "+methodInvocation+"\n");
 		return builder.toString();
+	}
+	
+	boolean isClass(String s) {
+		String sTemp = new String(s);
+		String[] words = sTemp.split(".");
+		boolean isClass = Character.isUpperCase(sTemp.charAt(0));
+		if(words.length>1){
+			isClass = isClass || Character.isUpperCase(words[words.length-1].charAt(0));
+		}
+		isClass = isClass && !(sTemp.equals("System.out") || sTemp.equals("System.err"));
+		return isClass;
 	}
 	
 

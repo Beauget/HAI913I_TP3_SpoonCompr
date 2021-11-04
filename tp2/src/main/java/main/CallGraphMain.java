@@ -72,6 +72,7 @@ public class CallGraphMain extends AbstractMain {
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/tp2/target/test-classes/structural/src/composite/src/
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/composite/src
+					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/src/
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
 					ProcessorClustering processorClustering = new ProcessorClustering(TEST_PROJECT_PATH,callGraph);
 					processorClustering.log();

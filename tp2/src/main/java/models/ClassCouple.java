@@ -6,11 +6,13 @@ public class ClassCouple {
 	ClassAndContent class1;
 	ClassAndContent class2;
 	double value;
+	double numberOfCallsBetweenCouple ;
+	static double totalNumberOfCallsBetweenClasses;
 	
 	public ClassCouple(ClassAndContent class1, ClassAndContent class2) {
 		this.class1 =class1;
 		this.class2 = class2;
-		value = getAvgOfCalls();
+		numberOfCallsBetweenCouple = getNumberOfCalls();
 	}
 	
 	private Integer getNumberOfCalls() {
@@ -35,6 +37,8 @@ public class ClassCouple {
 		if(rslt>0) {
 		System.out.println("ClassCouple.java : "+class1.getName()+ " et "+ class2.getName() +" se sont appelee l'une l'autre "+ rslt +" fois. \n");
 		}
+		//incrémente le nombre d'appel entre classe a chaque ajout de couple
+		totalNumberOfCallsBetweenClasses+=rslt;
 		return rslt;
 	}
 	
@@ -56,8 +60,13 @@ public class ClassCouple {
 		return rslt;
 	}
 	
+	
+	
 	public double getValue() {
-		return value;
+		if(totalNumberOfCallsBetweenClasses>0) {
+		return numberOfCallsBetweenCouple/totalNumberOfCallsBetweenClasses;}
+		else 
+			return 0;
 	}
 
 	public boolean isSameCouple(String s1, String s2) {
@@ -85,4 +94,13 @@ public class ClassCouple {
 		output.add(class2.getName());
 		return (output);
 	}
+
+	public double getNumberOfCallsBetweenCouple() {
+		return numberOfCallsBetweenCouple;
+	}
+
+	public static double getTotalNumberOfCallsBetweenClasses() {
+		return totalNumberOfCallsBetweenClasses;
+	}
+	
 }

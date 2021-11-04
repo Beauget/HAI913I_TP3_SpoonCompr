@@ -1,0 +1,222 @@
+Classes and contents = [ClassName : Point
+
+, ClassName : point
+
+, ClassName : Forme
+
+, ClassName : Forme
+MethodName : getBar
+Invocation : getFoo from class Forme 1 time(s)
+
+MethodName : getX
+Invocation : getBar from class Forme 1 time(s)
+Invocation : getY from class point 1 time(s)
+Invocation : getFoo from class Forme 1 time(s)
+
+
+, ClassName : Point
+MethodName : getY
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+Invocation : getBarBar from class Point 5 time(s)
+
+MethodName : getFooFoo
+Invocation : getBar from class Forme 1 time(s)
+
+MethodName : getBarBar
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+
+
+]
+Number of Method with invocation = 5
+Number of Invocation = 14
+Number of classes = 5
+Clusters => Size : 4
+[Forme, Forme]
+[Point, Forme, Forme]
+[point, Point, Forme, Forme]
+[point, Point, Forme, Forme]
+
+Classes and contents = [ClassName : Point
+
+, ClassName : point
+
+, ClassName : Forme
+
+, ClassName : Forme
+MethodName : getBar
+Invocation : getFoo from class Forme 1 time(s)
+
+MethodName : getX
+Invocation : getBar from class Forme 1 time(s)
+Invocation : getY from class point 1 time(s)
+Invocation : getFoo from class Forme 1 time(s)
+
+
+, ClassName : Point
+MethodName : getY
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+Invocation : getBarBar from class Point 5 time(s)
+
+MethodName : getFooFoo
+Invocation : getBar from class Forme 1 time(s)
+
+MethodName : getBarBar
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+
+
+]
+Number of Method with invocation = 5
+Number of Invocation = 14
+Number of classes = 5
+Clusters => Size : 4
+[Forme, Forme]
+[Point, Forme, Forme]
+[point, Point, Forme, Forme]
+[point, Point, Forme, Forme]
+
+Classes and contents = [ClassName : Point
+
+, ClassName : point
+
+, ClassName : Forme
+
+, ClassName : Forme
+MethodName : getBar
+Invocation : getFoo from class Forme 1 time(s)
+
+MethodName : getX
+Invocation : getBar from class Forme 1 time(s)
+Invocation : getY from class point 1 time(s)
+Invocation : getFoo from class Forme 1 time(s)
+
+
+, ClassName : Point
+MethodName : getY
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+Invocation : getBarBar from class Point 5 time(s)
+
+MethodName : getFooFoo
+Invocation : getBar from class Forme 1 time(s)
+
+MethodName : getBarBar
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+
+
+]
+Number of Method with invocation = 5
+Number of Invocation = 14
+Number of classes = 5
+Clusters => Size : 4
+[Forme, Forme]
+[Point, Forme, Forme]
+[point, Point, Forme, Forme]
+[point, Point, Forme, Forme]
+
+Classes and contents = [ClassName : Point
+
+, ClassName : point
+
+, ClassName : Forme
+
+, ClassName : Forme
+MethodName : getBar
+Invocation : getFoo from class Forme 1 time(s)
+
+MethodName : getX
+Invocation : getBar from class Forme 1 time(s)
+Invocation : getY from class point 1 time(s)
+Invocation : getFoo from class Forme 1 time(s)
+
+
+, ClassName : Point
+MethodName : getY
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+Invocation : getBarBar from class Point 5 time(s)
+
+MethodName : getFooFoo
+Invocation : getBar from class Forme 1 time(s)
+
+MethodName : getBarBar
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+
+
+]
+Number of Method with invocation = 5
+Number of Invocation = 14
+Number of classes = 5
+Clusters => Size : 4
+[Forme, Forme]
+[Point, Forme, Forme]
+[point, Point, Forme, Forme]
+[point, Point, Forme, Forme]
+
+Classes and contents = [ClassName : Forme
+MethodName : getBar
+Invocation : getFoo from class Forme 1 time(s)
+
+MethodName : getX
+Invocation : getBar from class Forme 1 time(s)
+Invocation : getY from class point 1 time(s)
+Invocation : getFoo from class Forme 1 time(s)
+
+
+, ClassName : Point
+MethodName : getY
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+Invocation : getBarBar from class Point 5 time(s)
+
+MethodName : getFooFoo
+Invocation : getBar from class Forme 1 time(s)
+
+MethodName : getBarBar
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+
+
+]
+Number of Method with invocation = 5
+Number of Invocation = 14
+Number of classes = 2
+Clusters => Size : 1
+[Forme, Point]
+
+Classes and contents = [ClassName : Forme
+MethodName : getBar
+Invocation : getFoo from class Forme 1 time(s)
+
+MethodName : getX
+Invocation : getBar from class Forme 1 time(s)
+Invocation : getY from class point 1 time(s)
+Invocation : getFoo from class Forme 1 time(s)
+
+
+, ClassName : Point
+MethodName : getY
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+Invocation : getBarBar from class Point 5 time(s)
+
+MethodName : getFooFoo
+Invocation : getBar from class Forme 1 time(s)
+
+MethodName : getBarBar
+Invocation : getFooFoo from class Point 1 time(s)
+Invocation : getX from class Forme 1 time(s)
+
+
+]
+Number of Method with invocation = 5
+Number of Invocation = 14
+Number of classes = 2
+Clusters => Size : 1
+[Forme, Point]
+

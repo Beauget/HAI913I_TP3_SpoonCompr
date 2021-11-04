@@ -514,3 +514,1215 @@ Clusters => Size : 67
 [songList, buf.toString(), beverage, scanner, component, iterator, numberChecker, codeChecker, components, fredTheRobot, structural.adapter.EnemyAttacker, rx7Tank, robotAdapter, bankAccount, robot, structural.adapter.EnemyRobotAdapter, balanceSystem, structural.proxy.Test, internet, bannedSites, structural.proxy.ProxyInternet, System.err, structural.facade.BankAccountFacade, structural.bridge.Remote, device, structural.bridge.AdvancedRemote, java.io.PrintStream, structural.adapter.TestEnemyAttackers, map, structural.flyweight.ShapeFactory, structural.adapter.Test, structural.composite.SongGroup, structural.facade.BankAccountWelcomeWindow, structural.flyweight.Circle, buf, structural.composite.Song, structural.decorator.Test, this.bankAccount, structural.facade.BankAccountNumberChecker, structural.facade.BankAccountBalanceSystem, structural.facade.BankAccountSecurityCodeChecker, this, structural.composite.SongComponent, generator, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.proxy.RealInternet, System.out, advRemote, structural.bridge.Test, remote, crazyLarry, heavyMetal, songGenres, structural.composite.SongListGenerator, industrial, structural.composite.Test, dubstep, circle, random, structural.flyweight.Test, ShapeFactory, structural.facade.Test, facade, structural.decorator.SugarDecorator, this.beverage, structural.decorator.CaramelDecorator]
 [structural.composite.DiscJockey, songList, buf.toString(), beverage, scanner, component, iterator, numberChecker, codeChecker, components, fredTheRobot, structural.adapter.EnemyAttacker, rx7Tank, robotAdapter, bankAccount, robot, structural.adapter.EnemyRobotAdapter, balanceSystem, structural.proxy.Test, internet, bannedSites, structural.proxy.ProxyInternet, System.err, structural.facade.BankAccountFacade, structural.bridge.Remote, device, structural.bridge.AdvancedRemote, java.io.PrintStream, structural.adapter.TestEnemyAttackers, map, structural.flyweight.ShapeFactory, structural.adapter.Test, structural.composite.SongGroup, structural.facade.BankAccountWelcomeWindow, structural.flyweight.Circle, buf, structural.composite.Song, structural.decorator.Test, this.bankAccount, structural.facade.BankAccountNumberChecker, structural.facade.BankAccountBalanceSystem, structural.facade.BankAccountSecurityCodeChecker, this, structural.composite.SongComponent, generator, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.proxy.RealInternet, System.out, advRemote, structural.bridge.Test, remote, crazyLarry, heavyMetal, songGenres, structural.composite.SongListGenerator, industrial, structural.composite.Test, dubstep, circle, random, structural.flyweight.Test, ShapeFactory, structural.facade.Test, facade, structural.decorator.SugarDecorator, this.beverage, structural.decorator.CaramelDecorator]
 
+Classes and contents = [ClassName : ShapeFactory
+
+, ClassName : System.out
+
+, ClassName : System.err
+
+, ClassName : structural.proxy.Test
+MethodName : main
+Invocation : connectTo from class internet 2 time(s)
+
+
+, ClassName : structural.composite.Song
+MethodName : getInfo
+Invocation : getBandName from class this 1 time(s)
+Invocation : getSongName from class this 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 3 time(s)
+Invocation : getReleaseYear from class this 1 time(s)
+
+
+, ClassName : structural.flyweight.ShapeFactory
+MethodName : getCircle
+Invocation : get from class map 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : put from class map 1 time(s)
+
+
+, ClassName : structural.decorator.CaramelDecorator
+MethodName : description
+Invocation : description from class this.beverage 1 time(s)
+
+MethodName : price
+Invocation : price from class this.beverage 1 time(s)
+
+
+, ClassName : structural.bridge.AdvancedRemote
+MethodName : mute
+Invocation : getName from class device 1 time(s)
+Invocation : getVolume from class device 1 time(s)
+Invocation : setVolume from class device 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+
+, ClassName : structural.composite.Test
+MethodName : main
+Invocation : displaySongList from class crazyLarry 1 time(s)
+Invocation : add from class heavyMetal 2 time(s)
+Invocation : add from class songGenres 2 time(s)
+Invocation : add from class dubstep 2 time(s)
+Invocation : add from class industrial 3 time(s)
+
+
+, ClassName : structural.flyweight.Test
+MethodName : getRandomRadius
+Invocation : nextInt from class random 1 time(s)
+
+MethodName : main
+Invocation : getCircle from class ShapeFactory 1 time(s)
+Invocation : getRandomColor from class structural.flyweight.Test 1 time(s)
+Invocation : draw from class circle 1 time(s)
+Invocation : getRandomX from class structural.flyweight.Test 1 time(s)
+Invocation : getRandomRadius from class structural.flyweight.Test 1 time(s)
+Invocation : getRandomY from class structural.flyweight.Test 1 time(s)
+Invocation : setRadius from class circle 1 time(s)
+
+MethodName : getRandomX
+Invocation : nextInt from class random 1 time(s)
+
+MethodName : getRandomY
+Invocation : nextInt from class random 1 time(s)
+
+MethodName : getRandomColor
+Invocation : nextInt from class random 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountSecurityCodeChecker
+MethodName : match
+Invocation : getAccountSecurityCode from class this 1 time(s)
+
+MethodName : getAccountSecurityCode
+Invocation : getSecurityCode from class this.bankAccount 1 time(s)
+
+
+, ClassName : structural.proxy.ProxyInternet
+MethodName : connectTo
+Invocation : println from class System.err 1 time(s)
+Invocation : connectTo from class internet 1 time(s)
+Invocation : contains from class bannedSites 1 time(s)
+
+
+, ClassName : structural.adapter.EnemyTank
+MethodName : driveForward
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+MethodName : assignDriver
+Invocation : println from class System.out 1 time(s)
+
+MethodName : fireWeapon
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountFacade
+MethodName : BankAccountFacade
+Invocation : fetchBankAccount from class this 1 time(s)
+
+MethodName : withdrawCash
+Invocation : println from class System.err 1 time(s)
+Invocation : canWithdraw from class balanceSystem 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : match from class numberChecker 1 time(s)
+Invocation : withdraw from class balanceSystem 1 time(s)
+Invocation : match from class codeChecker 1 time(s)
+
+MethodName : depositCash
+Invocation : println from class System.err 1 time(s)
+Invocation : deposit from class balanceSystem 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : match from class numberChecker 1 time(s)
+Invocation : match from class codeChecker 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountWelcomeWindow
+MethodName : setWelcomeMessage
+Invocation : getNumber from class bankAccount 1 time(s)
+Invocation : getBalance from class bankAccount 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 4 time(s)
+
+MethodName : BankAccountWelcomeWindow
+Invocation : println from class System.out 1 time(s)
+Invocation : setWelcomeMessage from class this 1 time(s)
+
+
+, ClassName : structural.bridge.Remote
+MethodName : togglePower
+Invocation : getName from class device 1 time(s)
+Invocation : disable from class device 1 time(s)
+Invocation : enable from class device 1 time(s)
+Invocation : isEnabled from class device 2 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : volumeUp
+Invocation : getVolume from class device 2 time(s)
+Invocation : setVolume from class device 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : volumeDown
+Invocation : getVolume from class device 2 time(s)
+Invocation : setVolume from class device 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : channelDown
+Invocation : getChannel from class device 2 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : setChannel from class device 1 time(s)
+
+MethodName : channelUp
+Invocation : getChannel from class device 2 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : setChannel from class device 1 time(s)
+
+
+, ClassName : structural.composite.SongComponent
+MethodName : displayInfo
+Invocation : println from class System.out 1 time(s)
+Invocation : getInfo from class this 1 time(s)
+
+
+, ClassName : structural.decorator.SugarDecorator
+MethodName : price
+Invocation : price from class this.beverage 1 time(s)
+
+MethodName : description
+Invocation : description from class this.beverage 1 time(s)
+
+
+, ClassName : structural.adapter.TestEnemyAttackers
+MethodName : main
+Invocation : reactToHuman from class structural.adapter.EnemyRobot 1 time(s)
+Invocation : driveForward from class structural.adapter.EnemyAttacker 1 time(s)
+Invocation : fireWeapon from class structural.adapter.EnemyAttacker 1 time(s)
+Invocation : driveForward from class structural.adapter.EnemyTank 1 time(s)
+Invocation : fireWeapon from class structural.adapter.EnemyTank 1 time(s)
+Invocation : smashwithHands from class structural.adapter.EnemyRobot 1 time(s)
+Invocation : assignDriver from class structural.adapter.EnemyAttacker 1 time(s)
+Invocation : println from class java.io.PrintStream 5 time(s)
+Invocation : assignDriver from class structural.adapter.EnemyTank 1 time(s)
+Invocation : walkForward from class structural.adapter.EnemyRobot 1 time(s)
+
+
+, ClassName : structural.adapter.EnemyRobot
+MethodName : reactToHuman
+Invocation : println from class System.out 1 time(s)
+
+MethodName : smashwithHands
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+MethodName : walkForward
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+
+, ClassName : structural.composite.DiscJockey
+MethodName : displaySongList
+Invocation : displayInfo from class songList 1 time(s)
+
+
+, ClassName : structural.flyweight.Circle
+MethodName : draw
+Invocation : println from class System.out 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 4 time(s)
+
+
+, ClassName : structural.composite.SongListGenerator
+MethodName : main
+Invocation : displaySongList from class crazyLarry 1 time(s)
+Invocation : add from class heavyMetal 2 time(s)
+Invocation : add from class songGenres 2 time(s)
+Invocation : add from class dubstep 2 time(s)
+Invocation : add from class industrial 3 time(s)
+
+
+, ClassName : structural.adapter.Test
+MethodName : main
+Invocation : reactToHuman from class fredTheRobot 1 time(s)
+Invocation : walkForward from class fredTheRobot 1 time(s)
+Invocation : assignDriver from class robotAdapter 1 time(s)
+Invocation : fireWeapon from class robotAdapter 1 time(s)
+Invocation : assignDriver from class rx7Tank 1 time(s)
+Invocation : smashwithHands from class fredTheRobot 1 time(s)
+Invocation : println from class System.out 5 time(s)
+Invocation : driveForward from class rx7Tank 1 time(s)
+Invocation : fireWeapon from class rx7Tank 1 time(s)
+Invocation : driveForward from class robotAdapter 1 time(s)
+
+
+, ClassName : structural.proxy.RealInternet
+MethodName : connectTo
+Invocation : println from class System.out 1 time(s)
+
+
+, ClassName : structural.facade.Test
+MethodName : main
+Invocation : depositCash from class facade 1 time(s)
+Invocation : withdrawCash from class facade 2 time(s)
+
+
+, ClassName : structural.bridge.Test
+MethodName : advancedRemoteTest
+Invocation : channelUp from class advRemote 2 time(s)
+Invocation : volumeUp from class advRemote 3 time(s)
+Invocation : volumeDown from class advRemote 1 time(s)
+Invocation : channelDown from class advRemote 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : mute from class advRemote 1 time(s)
+Invocation : togglePower from class advRemote 2 time(s)
+
+MethodName : ordinaryRemoteTest
+Invocation : channelDown from class remote 1 time(s)
+Invocation : togglePower from class remote 2 time(s)
+Invocation : channelUp from class remote 3 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : volumeUp from class remote 4 time(s)
+Invocation : volumeDown from class remote 2 time(s)
+
+MethodName : main
+Invocation : ordinaryRemoteTest from class structural.bridge.Test 2 time(s)
+Invocation : advancedRemoteTest from class structural.bridge.Test 2 time(s)
+
+
+, ClassName : structural.composite.SongGroup
+MethodName : getComponent
+Invocation : get from class components 1 time(s)
+
+MethodName : remove
+Invocation : remove from class components 1 time(s)
+
+MethodName : getInfo
+Invocation : iterator from class components 1 time(s)
+Invocation : next from class iterator 1 time(s)
+Invocation : getGroupName from class this 1 time(s)
+Invocation : getGroupDescription from class this 1 time(s)
+Invocation : hasNext from class iterator 1 time(s)
+Invocation : toString from class buf 2 time(s)
+Invocation : getInfo from class component 2 time(s)
+Invocation : append from class buf 7 time(s)
+Invocation : length from class buf.toString() 1 time(s)
+
+MethodName : add
+Invocation : add from class components 1 time(s)
+
+
+, ClassName : structural.decorator.Test
+MethodName : orderBeverage
+Invocation : displayOrder from class structural.decorator.Test 1 time(s)
+Invocation : selectAdditionalIngredients from class structural.decorator.Test 1 time(s)
+Invocation : selectBeverage from class structural.decorator.Test 1 time(s)
+
+MethodName : additionalIngredientsMenu
+Invocation : println from class System.out 4 time(s)
+
+MethodName : displayOrder
+Invocation : description from class beverage 1 time(s)
+Invocation : println from class System.out 2 time(s)
+Invocation : price from class beverage 1 time(s)
+
+MethodName : selectBeverage
+Invocation : println from class System.err 1 time(s)
+Invocation : beveragesMenu from class structural.decorator.Test 1 time(s)
+Invocation : nextLine from class scanner 1 time(s)
+
+MethodName : beveragesMenu
+Invocation : println from class System.out 3 time(s)
+
+MethodName : main
+Invocation : orderBeverage from class structural.decorator.Test 1 time(s)
+
+MethodName : selectAdditionalIngredients
+Invocation : additionalIngredientsMenu from class structural.decorator.Test 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : nextLine from class scanner 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountBalanceSystem
+MethodName : withdraw
+Invocation : println from class System.err 1 time(s)
+Invocation : getAccountBalance from class this 3 time(s)
+Invocation : canWithdraw from class this 1 time(s)
+Invocation : println from class System.out 2 time(s)
+Invocation : setBalance from class this.bankAccount 1 time(s)
+
+MethodName : getAccountBalance
+Invocation : getBalance from class this.bankAccount 1 time(s)
+
+MethodName : deposit
+Invocation : getAccountBalance from class this 2 time(s)
+Invocation : setBalance from class this.bankAccount 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : canWithdraw
+Invocation : getBalance from class this.bankAccount 1 time(s)
+
+
+, ClassName : structural.adapter.EnemyRobotAdapter
+MethodName : assignDriver
+Invocation : reactToHuman from class robot 1 time(s)
+
+MethodName : fireWeapon
+Invocation : smashwithHands from class robot 1 time(s)
+
+MethodName : EnemyRobotAdapter
+Invocation : setRobot from class this 1 time(s)
+
+MethodName : driveForward
+Invocation : walkForward from class robot 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountNumberChecker
+MethodName : match
+Invocation : getAccountNumber from class this 1 time(s)
+
+MethodName : getAccountNumber
+Invocation : getNumber from class this.bankAccount 1 time(s)
+
+
+]
+Number of Method with invocation = 65
+Number of Invocation = 239
+Number of classes = 32
+Clusters => Size : 31
+[System.out, structural.decorator.Test]
+[structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.Test, structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.SongGroup, structural.facade.Test, structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.EnemyRobotAdapter, structural.composite.SongGroup, structural.facade.Test, structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountNumberChecker, structural.adapter.EnemyRobotAdapter, structural.composite.SongGroup, structural.facade.Test, structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+
+Classes and contents = [ClassName : ShapeFactory
+
+, ClassName : System.out
+
+, ClassName : System.err
+
+, ClassName : structural.proxy.Test
+MethodName : main
+Invocation : connectTo from class internet 2 time(s)
+
+
+, ClassName : structural.composite.Song
+MethodName : getInfo
+Invocation : getBandName from class this 1 time(s)
+Invocation : getSongName from class this 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 3 time(s)
+Invocation : getReleaseYear from class this 1 time(s)
+
+
+, ClassName : structural.flyweight.ShapeFactory
+MethodName : getCircle
+Invocation : get from class map 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : put from class map 1 time(s)
+
+
+, ClassName : structural.decorator.CaramelDecorator
+MethodName : description
+Invocation : description from class this.beverage 1 time(s)
+
+MethodName : price
+Invocation : price from class this.beverage 1 time(s)
+
+
+, ClassName : structural.bridge.AdvancedRemote
+MethodName : mute
+Invocation : getName from class device 1 time(s)
+Invocation : getVolume from class device 1 time(s)
+Invocation : setVolume from class device 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+
+, ClassName : structural.composite.Test
+MethodName : main
+Invocation : displaySongList from class crazyLarry 1 time(s)
+Invocation : add from class heavyMetal 2 time(s)
+Invocation : add from class songGenres 2 time(s)
+Invocation : add from class dubstep 2 time(s)
+Invocation : add from class industrial 3 time(s)
+
+
+, ClassName : structural.flyweight.Test
+MethodName : getRandomRadius
+Invocation : nextInt from class random 1 time(s)
+
+MethodName : main
+Invocation : getCircle from class ShapeFactory 1 time(s)
+Invocation : getRandomColor from class structural.flyweight.Test 1 time(s)
+Invocation : draw from class circle 1 time(s)
+Invocation : getRandomX from class structural.flyweight.Test 1 time(s)
+Invocation : getRandomRadius from class structural.flyweight.Test 1 time(s)
+Invocation : getRandomY from class structural.flyweight.Test 1 time(s)
+Invocation : setRadius from class circle 1 time(s)
+
+MethodName : getRandomX
+Invocation : nextInt from class random 1 time(s)
+
+MethodName : getRandomY
+Invocation : nextInt from class random 1 time(s)
+
+MethodName : getRandomColor
+Invocation : nextInt from class random 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountSecurityCodeChecker
+MethodName : match
+Invocation : getAccountSecurityCode from class this 1 time(s)
+
+MethodName : getAccountSecurityCode
+Invocation : getSecurityCode from class this.bankAccount 1 time(s)
+
+
+, ClassName : structural.proxy.ProxyInternet
+MethodName : connectTo
+Invocation : println from class System.err 1 time(s)
+Invocation : connectTo from class internet 1 time(s)
+Invocation : contains from class bannedSites 1 time(s)
+
+
+, ClassName : structural.adapter.EnemyTank
+MethodName : driveForward
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+MethodName : assignDriver
+Invocation : println from class System.out 1 time(s)
+
+MethodName : fireWeapon
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountFacade
+MethodName : BankAccountFacade
+Invocation : fetchBankAccount from class this 1 time(s)
+
+MethodName : withdrawCash
+Invocation : println from class System.err 1 time(s)
+Invocation : canWithdraw from class balanceSystem 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : match from class numberChecker 1 time(s)
+Invocation : withdraw from class balanceSystem 1 time(s)
+Invocation : match from class codeChecker 1 time(s)
+
+MethodName : depositCash
+Invocation : println from class System.err 1 time(s)
+Invocation : deposit from class balanceSystem 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : match from class numberChecker 1 time(s)
+Invocation : match from class codeChecker 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountWelcomeWindow
+MethodName : setWelcomeMessage
+Invocation : getNumber from class bankAccount 1 time(s)
+Invocation : getBalance from class bankAccount 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 4 time(s)
+
+MethodName : BankAccountWelcomeWindow
+Invocation : println from class System.out 1 time(s)
+Invocation : setWelcomeMessage from class this 1 time(s)
+
+
+, ClassName : structural.bridge.Remote
+MethodName : togglePower
+Invocation : getName from class device 1 time(s)
+Invocation : disable from class device 1 time(s)
+Invocation : enable from class device 1 time(s)
+Invocation : isEnabled from class device 2 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : volumeUp
+Invocation : getVolume from class device 2 time(s)
+Invocation : setVolume from class device 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : volumeDown
+Invocation : getVolume from class device 2 time(s)
+Invocation : setVolume from class device 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : channelDown
+Invocation : getChannel from class device 2 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : setChannel from class device 1 time(s)
+
+MethodName : channelUp
+Invocation : getChannel from class device 2 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : setChannel from class device 1 time(s)
+
+
+, ClassName : structural.composite.SongComponent
+MethodName : displayInfo
+Invocation : println from class System.out 1 time(s)
+Invocation : getInfo from class this 1 time(s)
+
+
+, ClassName : structural.decorator.SugarDecorator
+MethodName : price
+Invocation : price from class this.beverage 1 time(s)
+
+MethodName : description
+Invocation : description from class this.beverage 1 time(s)
+
+
+, ClassName : structural.adapter.TestEnemyAttackers
+MethodName : main
+Invocation : reactToHuman from class structural.adapter.EnemyRobot 1 time(s)
+Invocation : driveForward from class structural.adapter.EnemyAttacker 1 time(s)
+Invocation : fireWeapon from class structural.adapter.EnemyAttacker 1 time(s)
+Invocation : driveForward from class structural.adapter.EnemyTank 1 time(s)
+Invocation : fireWeapon from class structural.adapter.EnemyTank 1 time(s)
+Invocation : smashwithHands from class structural.adapter.EnemyRobot 1 time(s)
+Invocation : assignDriver from class structural.adapter.EnemyAttacker 1 time(s)
+Invocation : println from class java.io.PrintStream 5 time(s)
+Invocation : assignDriver from class structural.adapter.EnemyTank 1 time(s)
+Invocation : walkForward from class structural.adapter.EnemyRobot 1 time(s)
+
+
+, ClassName : structural.adapter.EnemyRobot
+MethodName : reactToHuman
+Invocation : println from class System.out 1 time(s)
+
+MethodName : smashwithHands
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+MethodName : walkForward
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+
+, ClassName : structural.composite.DiscJockey
+MethodName : displaySongList
+Invocation : displayInfo from class songList 1 time(s)
+
+
+, ClassName : structural.flyweight.Circle
+MethodName : draw
+Invocation : println from class System.out 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 4 time(s)
+
+
+, ClassName : structural.composite.SongListGenerator
+MethodName : main
+Invocation : displaySongList from class crazyLarry 1 time(s)
+Invocation : add from class heavyMetal 2 time(s)
+Invocation : add from class songGenres 2 time(s)
+Invocation : add from class dubstep 2 time(s)
+Invocation : add from class industrial 3 time(s)
+
+
+, ClassName : structural.adapter.Test
+MethodName : main
+Invocation : reactToHuman from class fredTheRobot 1 time(s)
+Invocation : walkForward from class fredTheRobot 1 time(s)
+Invocation : assignDriver from class robotAdapter 1 time(s)
+Invocation : fireWeapon from class robotAdapter 1 time(s)
+Invocation : assignDriver from class rx7Tank 1 time(s)
+Invocation : smashwithHands from class fredTheRobot 1 time(s)
+Invocation : println from class System.out 5 time(s)
+Invocation : driveForward from class rx7Tank 1 time(s)
+Invocation : fireWeapon from class rx7Tank 1 time(s)
+Invocation : driveForward from class robotAdapter 1 time(s)
+
+
+, ClassName : structural.proxy.RealInternet
+MethodName : connectTo
+Invocation : println from class System.out 1 time(s)
+
+
+, ClassName : structural.facade.Test
+MethodName : main
+Invocation : depositCash from class facade 1 time(s)
+Invocation : withdrawCash from class facade 2 time(s)
+
+
+, ClassName : structural.bridge.Test
+MethodName : advancedRemoteTest
+Invocation : channelUp from class advRemote 2 time(s)
+Invocation : volumeUp from class advRemote 3 time(s)
+Invocation : volumeDown from class advRemote 1 time(s)
+Invocation : channelDown from class advRemote 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : mute from class advRemote 1 time(s)
+Invocation : togglePower from class advRemote 2 time(s)
+
+MethodName : ordinaryRemoteTest
+Invocation : channelDown from class remote 1 time(s)
+Invocation : togglePower from class remote 2 time(s)
+Invocation : channelUp from class remote 3 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : volumeUp from class remote 4 time(s)
+Invocation : volumeDown from class remote 2 time(s)
+
+MethodName : main
+Invocation : ordinaryRemoteTest from class structural.bridge.Test 2 time(s)
+Invocation : advancedRemoteTest from class structural.bridge.Test 2 time(s)
+
+
+, ClassName : structural.composite.SongGroup
+MethodName : getComponent
+Invocation : get from class components 1 time(s)
+
+MethodName : remove
+Invocation : remove from class components 1 time(s)
+
+MethodName : getInfo
+Invocation : iterator from class components 1 time(s)
+Invocation : next from class iterator 1 time(s)
+Invocation : getGroupName from class this 1 time(s)
+Invocation : getGroupDescription from class this 1 time(s)
+Invocation : hasNext from class iterator 1 time(s)
+Invocation : toString from class buf 2 time(s)
+Invocation : getInfo from class component 2 time(s)
+Invocation : append from class buf 7 time(s)
+Invocation : length from class buf.toString() 1 time(s)
+
+MethodName : add
+Invocation : add from class components 1 time(s)
+
+
+, ClassName : structural.decorator.Test
+MethodName : orderBeverage
+Invocation : displayOrder from class structural.decorator.Test 1 time(s)
+Invocation : selectAdditionalIngredients from class structural.decorator.Test 1 time(s)
+Invocation : selectBeverage from class structural.decorator.Test 1 time(s)
+
+MethodName : additionalIngredientsMenu
+Invocation : println from class System.out 4 time(s)
+
+MethodName : displayOrder
+Invocation : description from class beverage 1 time(s)
+Invocation : println from class System.out 2 time(s)
+Invocation : price from class beverage 1 time(s)
+
+MethodName : selectBeverage
+Invocation : println from class System.err 1 time(s)
+Invocation : beveragesMenu from class structural.decorator.Test 1 time(s)
+Invocation : nextLine from class scanner 1 time(s)
+
+MethodName : beveragesMenu
+Invocation : println from class System.out 3 time(s)
+
+MethodName : main
+Invocation : orderBeverage from class structural.decorator.Test 1 time(s)
+
+MethodName : selectAdditionalIngredients
+Invocation : additionalIngredientsMenu from class structural.decorator.Test 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : nextLine from class scanner 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountBalanceSystem
+MethodName : withdraw
+Invocation : println from class System.err 1 time(s)
+Invocation : getAccountBalance from class this 3 time(s)
+Invocation : canWithdraw from class this 1 time(s)
+Invocation : println from class System.out 2 time(s)
+Invocation : setBalance from class this.bankAccount 1 time(s)
+
+MethodName : getAccountBalance
+Invocation : getBalance from class this.bankAccount 1 time(s)
+
+MethodName : deposit
+Invocation : getAccountBalance from class this 2 time(s)
+Invocation : setBalance from class this.bankAccount 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : canWithdraw
+Invocation : getBalance from class this.bankAccount 1 time(s)
+
+
+, ClassName : structural.adapter.EnemyRobotAdapter
+MethodName : assignDriver
+Invocation : reactToHuman from class robot 1 time(s)
+
+MethodName : fireWeapon
+Invocation : smashwithHands from class robot 1 time(s)
+
+MethodName : EnemyRobotAdapter
+Invocation : setRobot from class this 1 time(s)
+
+MethodName : driveForward
+Invocation : walkForward from class robot 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountNumberChecker
+MethodName : match
+Invocation : getAccountNumber from class this 1 time(s)
+
+MethodName : getAccountNumber
+Invocation : getNumber from class this.bankAccount 1 time(s)
+
+
+]
+Number of Method with invocation = 65
+Number of Invocation = 239
+Number of classes = 32
+Clusters => Size : 31
+[System.out, structural.decorator.Test]
+[structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.Test, structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.composite.SongGroup, structural.facade.Test, structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.adapter.EnemyRobotAdapter, structural.composite.SongGroup, structural.facade.Test, structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+[structural.facade.BankAccountNumberChecker, structural.adapter.EnemyRobotAdapter, structural.composite.SongGroup, structural.facade.Test, structural.composite.SongListGenerator, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.decorator.CaramelDecorator, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.proxy.RealInternet, structural.flyweight.Circle, structural.composite.SongComponent, structural.facade.BankAccountWelcomeWindow, structural.proxy.ProxyInternet, structural.bridge.AdvancedRemote, structural.flyweight.ShapeFactory, structural.bridge.Test, structural.facade.BankAccountFacade, System.err, structural.facade.BankAccountBalanceSystem, structural.adapter.EnemyRobot, structural.adapter.TestEnemyAttackers, structural.adapter.EnemyTank, structural.adapter.Test, structural.bridge.Remote, System.out, structural.decorator.Test]
+
+Classes and contents = [ClassName : ShapeFactory
+
+, ClassName : structural.proxy.Test
+MethodName : main
+Invocation : connectTo from class internet 2 time(s)
+
+
+, ClassName : structural.composite.Song
+MethodName : getInfo
+Invocation : getBandName from class this 1 time(s)
+Invocation : getSongName from class this 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 3 time(s)
+Invocation : getReleaseYear from class this 1 time(s)
+
+
+, ClassName : structural.flyweight.ShapeFactory
+MethodName : getCircle
+Invocation : get from class map 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : put from class map 1 time(s)
+
+
+, ClassName : structural.decorator.CaramelDecorator
+MethodName : description
+Invocation : description from class this.beverage 1 time(s)
+
+MethodName : price
+Invocation : price from class this.beverage 1 time(s)
+
+
+, ClassName : structural.bridge.AdvancedRemote
+MethodName : mute
+Invocation : getName from class device 1 time(s)
+Invocation : getVolume from class device 1 time(s)
+Invocation : setVolume from class device 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+
+, ClassName : structural.composite.Test
+MethodName : main
+Invocation : displaySongList from class crazyLarry 1 time(s)
+Invocation : add from class heavyMetal 2 time(s)
+Invocation : add from class songGenres 2 time(s)
+Invocation : add from class dubstep 2 time(s)
+Invocation : add from class industrial 3 time(s)
+
+
+, ClassName : structural.flyweight.Test
+MethodName : getRandomRadius
+Invocation : nextInt from class random 1 time(s)
+
+MethodName : main
+Invocation : getCircle from class ShapeFactory 1 time(s)
+Invocation : getRandomColor from class structural.flyweight.Test 1 time(s)
+Invocation : draw from class circle 1 time(s)
+Invocation : getRandomX from class structural.flyweight.Test 1 time(s)
+Invocation : getRandomRadius from class structural.flyweight.Test 1 time(s)
+Invocation : getRandomY from class structural.flyweight.Test 1 time(s)
+Invocation : setRadius from class circle 1 time(s)
+
+MethodName : getRandomX
+Invocation : nextInt from class random 1 time(s)
+
+MethodName : getRandomY
+Invocation : nextInt from class random 1 time(s)
+
+MethodName : getRandomColor
+Invocation : nextInt from class random 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountSecurityCodeChecker
+MethodName : match
+Invocation : getAccountSecurityCode from class this 1 time(s)
+
+MethodName : getAccountSecurityCode
+Invocation : getSecurityCode from class this.bankAccount 1 time(s)
+
+
+, ClassName : structural.proxy.ProxyInternet
+MethodName : connectTo
+Invocation : println from class System.err 1 time(s)
+Invocation : connectTo from class internet 1 time(s)
+Invocation : contains from class bannedSites 1 time(s)
+
+
+, ClassName : structural.adapter.EnemyTank
+MethodName : driveForward
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+MethodName : assignDriver
+Invocation : println from class System.out 1 time(s)
+
+MethodName : fireWeapon
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountFacade
+MethodName : BankAccountFacade
+Invocation : fetchBankAccount from class this 1 time(s)
+
+MethodName : withdrawCash
+Invocation : println from class System.err 1 time(s)
+Invocation : canWithdraw from class balanceSystem 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : match from class numberChecker 1 time(s)
+Invocation : withdraw from class balanceSystem 1 time(s)
+Invocation : match from class codeChecker 1 time(s)
+
+MethodName : depositCash
+Invocation : println from class System.err 1 time(s)
+Invocation : deposit from class balanceSystem 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : match from class numberChecker 1 time(s)
+Invocation : match from class codeChecker 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountWelcomeWindow
+MethodName : setWelcomeMessage
+Invocation : getNumber from class bankAccount 1 time(s)
+Invocation : getBalance from class bankAccount 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 4 time(s)
+
+MethodName : BankAccountWelcomeWindow
+Invocation : println from class System.out 1 time(s)
+Invocation : setWelcomeMessage from class this 1 time(s)
+
+
+, ClassName : structural.bridge.Remote
+MethodName : togglePower
+Invocation : getName from class device 1 time(s)
+Invocation : disable from class device 1 time(s)
+Invocation : enable from class device 1 time(s)
+Invocation : isEnabled from class device 2 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : volumeUp
+Invocation : getVolume from class device 2 time(s)
+Invocation : setVolume from class device 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : volumeDown
+Invocation : getVolume from class device 2 time(s)
+Invocation : setVolume from class device 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : channelDown
+Invocation : getChannel from class device 2 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : setChannel from class device 1 time(s)
+
+MethodName : channelUp
+Invocation : getChannel from class device 2 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : setChannel from class device 1 time(s)
+
+
+, ClassName : structural.composite.SongComponent
+MethodName : displayInfo
+Invocation : println from class System.out 1 time(s)
+Invocation : getInfo from class this 1 time(s)
+
+
+, ClassName : structural.decorator.SugarDecorator
+MethodName : price
+Invocation : price from class this.beverage 1 time(s)
+
+MethodName : description
+Invocation : description from class this.beverage 1 time(s)
+
+
+, ClassName : structural.adapter.TestEnemyAttackers
+MethodName : main
+Invocation : reactToHuman from class structural.adapter.EnemyRobot 1 time(s)
+Invocation : driveForward from class structural.adapter.EnemyAttacker 1 time(s)
+Invocation : fireWeapon from class structural.adapter.EnemyAttacker 1 time(s)
+Invocation : driveForward from class structural.adapter.EnemyTank 1 time(s)
+Invocation : fireWeapon from class structural.adapter.EnemyTank 1 time(s)
+Invocation : smashwithHands from class structural.adapter.EnemyRobot 1 time(s)
+Invocation : assignDriver from class structural.adapter.EnemyAttacker 1 time(s)
+Invocation : println from class java.io.PrintStream 5 time(s)
+Invocation : assignDriver from class structural.adapter.EnemyTank 1 time(s)
+Invocation : walkForward from class structural.adapter.EnemyRobot 1 time(s)
+
+
+, ClassName : structural.adapter.EnemyRobot
+MethodName : reactToHuman
+Invocation : println from class System.out 1 time(s)
+
+MethodName : smashwithHands
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+MethodName : walkForward
+Invocation : println from class System.out 1 time(s)
+Invocation : nextInt from class generator 1 time(s)
+
+
+, ClassName : structural.composite.DiscJockey
+MethodName : displaySongList
+Invocation : displayInfo from class songList 1 time(s)
+
+
+, ClassName : structural.flyweight.Circle
+MethodName : draw
+Invocation : println from class System.out 1 time(s)
+Invocation : toString from class buf 1 time(s)
+Invocation : append from class buf 4 time(s)
+
+
+, ClassName : structural.composite.SongListGenerator
+MethodName : main
+Invocation : displaySongList from class crazyLarry 1 time(s)
+Invocation : add from class heavyMetal 2 time(s)
+Invocation : add from class songGenres 2 time(s)
+Invocation : add from class dubstep 2 time(s)
+Invocation : add from class industrial 3 time(s)
+
+
+, ClassName : structural.adapter.Test
+MethodName : main
+Invocation : reactToHuman from class fredTheRobot 1 time(s)
+Invocation : walkForward from class fredTheRobot 1 time(s)
+Invocation : assignDriver from class robotAdapter 1 time(s)
+Invocation : fireWeapon from class robotAdapter 1 time(s)
+Invocation : assignDriver from class rx7Tank 1 time(s)
+Invocation : smashwithHands from class fredTheRobot 1 time(s)
+Invocation : println from class System.out 5 time(s)
+Invocation : driveForward from class rx7Tank 1 time(s)
+Invocation : fireWeapon from class rx7Tank 1 time(s)
+Invocation : driveForward from class robotAdapter 1 time(s)
+
+
+, ClassName : structural.proxy.RealInternet
+MethodName : connectTo
+Invocation : println from class System.out 1 time(s)
+
+
+, ClassName : structural.facade.Test
+MethodName : main
+Invocation : depositCash from class facade 1 time(s)
+Invocation : withdrawCash from class facade 2 time(s)
+
+
+, ClassName : structural.bridge.Test
+MethodName : advancedRemoteTest
+Invocation : channelUp from class advRemote 2 time(s)
+Invocation : volumeUp from class advRemote 3 time(s)
+Invocation : volumeDown from class advRemote 1 time(s)
+Invocation : channelDown from class advRemote 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : mute from class advRemote 1 time(s)
+Invocation : togglePower from class advRemote 2 time(s)
+
+MethodName : ordinaryRemoteTest
+Invocation : channelDown from class remote 1 time(s)
+Invocation : togglePower from class remote 2 time(s)
+Invocation : channelUp from class remote 3 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : volumeUp from class remote 4 time(s)
+Invocation : volumeDown from class remote 2 time(s)
+
+MethodName : main
+Invocation : ordinaryRemoteTest from class structural.bridge.Test 2 time(s)
+Invocation : advancedRemoteTest from class structural.bridge.Test 2 time(s)
+
+
+, ClassName : structural.composite.SongGroup
+MethodName : getComponent
+Invocation : get from class components 1 time(s)
+
+MethodName : remove
+Invocation : remove from class components 1 time(s)
+
+MethodName : getInfo
+Invocation : iterator from class components 1 time(s)
+Invocation : next from class iterator 1 time(s)
+Invocation : getGroupName from class this 1 time(s)
+Invocation : getGroupDescription from class this 1 time(s)
+Invocation : hasNext from class iterator 1 time(s)
+Invocation : toString from class buf 2 time(s)
+Invocation : getInfo from class component 2 time(s)
+Invocation : append from class buf 7 time(s)
+Invocation : length from class buf.toString() 1 time(s)
+
+MethodName : add
+Invocation : add from class components 1 time(s)
+
+
+, ClassName : structural.decorator.Test
+MethodName : orderBeverage
+Invocation : displayOrder from class structural.decorator.Test 1 time(s)
+Invocation : selectAdditionalIngredients from class structural.decorator.Test 1 time(s)
+Invocation : selectBeverage from class structural.decorator.Test 1 time(s)
+
+MethodName : additionalIngredientsMenu
+Invocation : println from class System.out 4 time(s)
+
+MethodName : displayOrder
+Invocation : description from class beverage 1 time(s)
+Invocation : println from class System.out 2 time(s)
+Invocation : price from class beverage 1 time(s)
+
+MethodName : selectBeverage
+Invocation : println from class System.err 1 time(s)
+Invocation : beveragesMenu from class structural.decorator.Test 1 time(s)
+Invocation : nextLine from class scanner 1 time(s)
+
+MethodName : beveragesMenu
+Invocation : println from class System.out 3 time(s)
+
+MethodName : main
+Invocation : orderBeverage from class structural.decorator.Test 1 time(s)
+
+MethodName : selectAdditionalIngredients
+Invocation : additionalIngredientsMenu from class structural.decorator.Test 1 time(s)
+Invocation : println from class System.out 1 time(s)
+Invocation : nextLine from class scanner 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountBalanceSystem
+MethodName : withdraw
+Invocation : println from class System.err 1 time(s)
+Invocation : getAccountBalance from class this 3 time(s)
+Invocation : canWithdraw from class this 1 time(s)
+Invocation : println from class System.out 2 time(s)
+Invocation : setBalance from class this.bankAccount 1 time(s)
+
+MethodName : getAccountBalance
+Invocation : getBalance from class this.bankAccount 1 time(s)
+
+MethodName : deposit
+Invocation : getAccountBalance from class this 2 time(s)
+Invocation : setBalance from class this.bankAccount 1 time(s)
+Invocation : println from class System.out 1 time(s)
+
+MethodName : canWithdraw
+Invocation : getBalance from class this.bankAccount 1 time(s)
+
+
+, ClassName : structural.adapter.EnemyRobotAdapter
+MethodName : assignDriver
+Invocation : reactToHuman from class robot 1 time(s)
+
+MethodName : fireWeapon
+Invocation : smashwithHands from class robot 1 time(s)
+
+MethodName : EnemyRobotAdapter
+Invocation : setRobot from class this 1 time(s)
+
+MethodName : driveForward
+Invocation : walkForward from class robot 1 time(s)
+
+
+, ClassName : structural.facade.BankAccountNumberChecker
+MethodName : match
+Invocation : getAccountNumber from class this 1 time(s)
+
+MethodName : getAccountNumber
+Invocation : getNumber from class this.bankAccount 1 time(s)
+
+
+]
+Number of Method with invocation = 65
+Number of Invocation = 239
+Number of classes = 30
+Clusters => Size : 29
+[structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.adapter.Test, structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.proxy.RealInternet, structural.adapter.Test, structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.facade.Test, structural.proxy.RealInternet, structural.adapter.Test, structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.bridge.Test, structural.facade.Test, structural.proxy.RealInternet, structural.adapter.Test, structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.composite.SongGroup, structural.bridge.Test, structural.facade.Test, structural.proxy.RealInternet, structural.adapter.Test, structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.decorator.Test, structural.composite.SongGroup, structural.bridge.Test, structural.facade.Test, structural.proxy.RealInternet, structural.adapter.Test, structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.facade.BankAccountBalanceSystem, structural.decorator.Test, structural.composite.SongGroup, structural.bridge.Test, structural.facade.Test, structural.proxy.RealInternet, structural.adapter.Test, structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.adapter.EnemyRobotAdapter, structural.facade.BankAccountBalanceSystem, structural.decorator.Test, structural.composite.SongGroup, structural.bridge.Test, structural.facade.Test, structural.proxy.RealInternet, structural.adapter.Test, structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+[structural.facade.BankAccountNumberChecker, structural.adapter.EnemyRobotAdapter, structural.facade.BankAccountBalanceSystem, structural.decorator.Test, structural.composite.SongGroup, structural.bridge.Test, structural.facade.Test, structural.proxy.RealInternet, structural.adapter.Test, structural.composite.SongListGenerator, structural.flyweight.Circle, structural.composite.DiscJockey, structural.decorator.SugarDecorator, structural.composite.SongComponent, structural.bridge.Remote, structural.facade.BankAccountWelcomeWindow, structural.facade.BankAccountFacade, structural.proxy.ProxyInternet, structural.facade.BankAccountSecurityCodeChecker, structural.composite.Test, structural.bridge.AdvancedRemote, structural.decorator.CaramelDecorator, structural.flyweight.ShapeFactory, structural.composite.Song, structural.proxy.Test, structural.flyweight.Test, ShapeFactory, structural.adapter.EnemyRobot, structural.adapter.EnemyTank, structural.adapter.TestEnemyAttackers]
+

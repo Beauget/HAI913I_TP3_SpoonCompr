@@ -20,6 +20,7 @@ public class ProcessorClustering extends ASTProcessor {
 	GenerateClassesAndContent generateClassesAndContent;
 	static ArrayList<ClassAndContent> classes = new ArrayList<ClassAndContent>();
 	static ArrayList<ClassCouple> couples = new ArrayList<ClassCouple>();
+	double totalNumberOfCallsBetweenClasses;
 	private FileLogger loggerChain;
 	
 	public ProcessorClustering(String projectPath, CallGraph callGraph) {
@@ -28,6 +29,9 @@ public class ProcessorClustering extends ASTProcessor {
 		this.generateClassesAndContent = new GenerateClassesAndContent(callGraph);
 		this.classes = generateClassesAndContent.getClasses();
 		this.couples = this.getCouples();
+		if(this.couples.size()>0)
+			totalNumberOfCallsBetweenClasses = couples.get(0).getTotalNumberOfCallsBetweenClasses();
+
 		setLoggerChain();
 	}
 	
