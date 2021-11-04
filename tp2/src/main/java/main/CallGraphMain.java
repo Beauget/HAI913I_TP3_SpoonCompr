@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import graphs.AllCouplesGraph;
 import graphs.CallGraph;
+import graphs.CoupleGraph;
 import graphs.DynamicCallGraph;
 import graphs.StaticCallGraph;
 import metric.GenerateClassesAndContent;
@@ -18,8 +20,9 @@ public class CallGraphMain extends AbstractMain {
 		StringBuilder builder = new StringBuilder();
 		builder.append("1. Static call graph.");
 		builder.append("\n2. PreccessorClustering.");
-		builder.append("\n3. Dynamic call graph.");
-		builder.append("\n4. Help menu.");
+		builder.append("\n3. CoupleGraph. (tel que classe1 = Point et class2 = Forme)");
+		builder.append("\n4. AllCouplesGraph.");
+		builder.append("\n5. Help menu.");
 		builder.append("\n"+QUIT+". To quit.");
 		
 		System.out.println(builder);
@@ -78,9 +81,17 @@ public class CallGraphMain extends AbstractMain {
 					processorClustering.log();
 					break;
 				case "3":
+					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
+					CoupleGraph coupleGraph = new CoupleGraph(TEST_PROJECT_PATH,callGraph);
+					coupleGraph.createFiles("Point", "Forme");
+					return;
+				case "4":
+					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
+					AllCouplesGraph allCouplesGraph = new AllCouplesGraph(TEST_PROJECT_PATH,callGraph);
+					allCouplesGraph.createFiles();
 					return;
 				
-				case "4":
+				case "5":
 					return;
 					
 				case QUIT:

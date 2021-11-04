@@ -1,0 +1,3 @@
+digraph G {
+Forme -> Point [ label = "1.0"] Point -> Forme [ label = "0.0"] 
+}

@@ -115,6 +115,14 @@ public class ClassCouple {
 	public double getNbOfTimeClass2IsCalled() {
 		return nbOfTimeClass2IsCalled;
 	}
+
+	public ClassAndContent getClass1() {
+		return class1;
+	}
+
+	public ClassAndContent getClass2() {
+		return class2;
+	}
 	
 	
 }
