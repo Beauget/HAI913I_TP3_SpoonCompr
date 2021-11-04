@@ -59,6 +59,11 @@ public class AllCouplesGraph extends ASTProcessor {
 
 		Double valueName1 = couple.getNbOfTimeClass1IsCalled()/couple.getTotalNumberOfCallsBetweenClasses();
 		Double valueName2 = couple.getNbOfTimeClass2IsCalled()/couple.getTotalNumberOfCallsBetweenClasses();
+		//Cas ou il n'y a aucune invocation
+		if(valueName1.isNaN()) {
+			valueName1=0.0;
+			valueName2=0.0;
+		}
 		StringBuilder res = new StringBuilder();
 		res.append(className1).append(" -> ").append(className2).append(" [ label = \"").append(valueName1).append("\"] ");
 		res.append(className2).append(" -> ").append(className1).append(" [ label = \"").append(valueName2).append("\"] ");

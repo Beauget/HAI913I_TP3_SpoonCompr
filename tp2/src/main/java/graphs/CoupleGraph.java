@@ -95,9 +95,13 @@ public class CoupleGraph  extends ASTProcessor {
 		String className1 = '"'+couple.getClass1().getName()+'"';
 		String className2 = '"'+couple.getClass2().getName()+'"';
 
-		Double valueName1 = round(couple.getNbOfTimeClass1IsCalled()/couple.getTotalNumberOfCallsBetweenClasses(),2);
-		Double valueName2 = round(couple.getNbOfTimeClass2IsCalled()/couple.getTotalNumberOfCallsBetweenClasses(),2);
-		
+		Double valueName1 = couple.getNbOfTimeClass1IsCalled()/couple.getTotalNumberOfCallsBetweenClasses();
+		Double valueName2 = couple.getNbOfTimeClass2IsCalled()/couple.getTotalNumberOfCallsBetweenClasses();
+		//Cas ou il n'y a aucune invocation
+		if(valueName1.isNaN()) {
+			valueName1=0.0;
+			valueName2=0.0;
+		}
 		StringBuilder res = new StringBuilder("digraph G {\n");
 		res.append(className1).append(" -> ").append(className2).append(" [ label = \"").append(valueName1).append("\"] ");
 		res.append(className2).append(" -> ").append(className1).append(" [ label = \"").append(valueName2).append("\"] ");
