@@ -87,7 +87,7 @@ public class CoupleGraph  extends ASTProcessor {
 			bw.close();
 			fw.close();
 		} catch (IOException e) {
-			System.out.println("Exception ecriture fichier");
+			System.err.println("Exception ecriture fichier");
 			e.printStackTrace();
 		}}
 		

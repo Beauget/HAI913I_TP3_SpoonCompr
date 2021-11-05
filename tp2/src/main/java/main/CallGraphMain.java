@@ -3,6 +3,7 @@ package main;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 import graphs.AllCouplesGraph;
 import graphs.CallGraph;
@@ -19,9 +20,9 @@ public class CallGraphMain extends AbstractMain {
 	protected void menu() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("1. Static call graph.");
-		builder.append("\n2. PreccessorClustering.");
-		builder.append("\n3. CoupleGraph. (tel que classe1 = Point et class2 = Forme)");
-		builder.append("\n4. AllCouplesGraph.");
+		builder.append("\n2. ProccessorClustering : Création d'un dendrogram ");
+		builder.append("\n3. CoupleGraph : Création des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnée");
+		builder.append("\n4. AllCouplesGraph : Création des fichiers CouplesGraph.dot et graphCouples.png pour un src donné, veuillez donner une liste de classe raisonnable");
 		builder.append("\n5. Help menu.");
 		builder.append("\n"+QUIT+". To quit.");
 		
@@ -81,9 +82,14 @@ public class CallGraphMain extends AbstractMain {
 					processorClustering.log();
 					break;
 				case "3":
+					Scanner sc = new Scanner(System.in);
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
 					CoupleGraph coupleGraph = new CoupleGraph(TEST_PROJECT_PATH,callGraph);
-					coupleGraph.createFiles("Point", "Forme");
+					System.out.println("Inserez le nom de la première classe (avec le package au besoin : package.class)");
+					String className1 = sc.next();
+					System.out.println("Inserez le nom de la deuxième classe (avec le package au besoin : package.class)");
+					String className2 = sc.next();
+					coupleGraph.createFiles(className1, className2);
 					return;
 				case "4":
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
