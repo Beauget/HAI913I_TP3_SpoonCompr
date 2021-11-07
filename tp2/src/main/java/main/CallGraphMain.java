@@ -8,6 +8,7 @@ import java.util.Scanner;
 import graphs.AllCouplesGraph;
 import graphs.CallGraph;
 import graphs.CoupleGraph;
+import graphs.DendrogramGraph;
 import graphs.DynamicCallGraph;
 import graphs.StaticCallGraph;
 import metric.GenerateClassesAndContent;
@@ -74,12 +75,18 @@ public class CallGraphMain extends AbstractMain {
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/tp2/target/test-classes/structural/src/composite/src/
+					
+					
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/
-					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/composite/src
+					
+					
+					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/composite/src/
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/src/
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
-					ProcessorClustering processorClustering = new ProcessorClustering(TEST_PROJECT_PATH,callGraph);
-					processorClustering.log();
+					//ProcessorClustering processorClustering = new ProcessorClustering(TEST_PROJECT_PATH,callGraph);
+					//processorClustering.log();
+					DendrogramGraph dendrogramGraph = new DendrogramGraph(TEST_PROJECT_PATH,callGraph);
+					dendrogramGraph.createFiles();
 					break;
 				case "3":
 					Scanner sc = new Scanner(System.in);

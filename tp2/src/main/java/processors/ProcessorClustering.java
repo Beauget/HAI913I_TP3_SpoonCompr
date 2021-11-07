@@ -183,10 +183,8 @@ public class ProcessorClustering extends ASTProcessor {
 		ArrayList<Double> valuesOfHeader  = initHeaderValues();		
 		ArrayList<ArrayList<String>> clusters  = new ArrayList<ArrayList<String>>();
 
-		int i = 0;
 		//On continue tant que la fusion n'a pas pas etais complete et on verifie que les tableaux on toujours la meme taille
 		while(tableHeader.size()!=0 && valuesOfHeader.size()==tableHeader.size()) {
-			i++;
 			Integer indexOfHighestValue=getIndexOfHighestValueFromHeaderValues(valuesOfHeader);
 			ArrayList<String> highestCluster = new ArrayList<String>(tableHeader.get(indexOfHighestValue));
 			//System.out.println("highestCluster " + highestCluster.toString() + " value :"+ valuesOfHeader.get(indexOfHighestValue));
@@ -194,11 +192,16 @@ public class ProcessorClustering extends ASTProcessor {
 			clusters.add(highestCluster);
 			tableHeader = updateHeader(tableHeader, highestCluster);
 			valuesOfHeader = updateValuesOfHeader(tableHeader);
-
 		}
 		return clusters;
 	}
-	
+	public boolean containsHeader(ArrayList<String> array, String sClass) {
+		for(String s : array) {
+			if(s.equals(sClass))
+				return true;
+		}
+		return false;
+	}
 	public String printClassesName() {
 		StringBuilder builder = new StringBuilder();
 		for(ClassAndContent c : classes) {
