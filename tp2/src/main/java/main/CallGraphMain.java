@@ -21,7 +21,7 @@ public class CallGraphMain extends AbstractMain {
 	protected void menu() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("1. Static call graph.");
-		builder.append("\n2. ProccessorClustering : Création d'un dendrogram ");
+		builder.append("\n2. DendrogramGraph : Création d'un dendrogram en png ");
 		builder.append("\n3. CoupleGraph : Création des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnée");
 		builder.append("\n4. AllCouplesGraph : Création des fichiers CouplesGraph.dot et graphCouples.png pour un src donné, veuillez donner une liste de classe raisonnable");
 		builder.append("\n5. Help menu.");
@@ -78,6 +78,7 @@ public class CallGraphMain extends AbstractMain {
 					
 					
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/
+					///home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/adapter/src/
 					
 					
 					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/composite/src/
