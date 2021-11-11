@@ -29,9 +29,9 @@ public class CallGraphMain extends AbstractMain {
 		builder.append("\n3. DendrogramGraph : Création d'un dendrogram en png (n'envoie plus le bon)");
 		builder.append("\n4. CoupleGraph : Création des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnée");
 		builder.append("\n5. AllCouplesGraph : Création des fichiers CouplesGraph.dot et graphCouples.png pour un src donné, veuillez donner une liste de classe raisonnable");
-		builder.append("\n7. Spoon.");
-		builder.append("\n6. Dynamic call graph.");
-		builder.append("\n7. Help menu.");
+		builder.append("\n6. Spoon.");
+		builder.append("\n7. Dynamic call graph.");
+		builder.append("\n8. Help menu.");
 		builder.append("\n"+QUIT+". To quit.");
 		
 		System.out.println(builder);
@@ -121,6 +121,9 @@ public class CallGraphMain extends AbstractMain {
                     break;
 					
 				case "7":
+					System.err.println("Not implemented yet");
+					break;
+				case "8":
 					System.err.println("Not implemented yet");
 					break;
 					

@@ -109,7 +109,7 @@ public class GenerateClassesAndContent {
 					bool=true;
 				}
 			}
-			if((!bool) && (isClass(s))) {
+			if((!bool)) {
 				output.add(new ClassAndContent(s));	
 			}
 		}
