@@ -1,9 +1,11 @@
 package parsers;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-
+import processors.ASTProcessor;
 import java.util.regex. * ;
-
+import processors.Processor;
 import loggers.ConsoleLogger;
 import loggers.FileLogger;
 import loggers.LogRequest;
@@ -26,17 +28,19 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.CtTypeParameter;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.visitor.Query;
 import spoon.reflect.visitor.filter.TypeFilter;
 import spoon.support.reflect.code.CtStatementListImpl;
 ;
 
-public class Spoon {
+public class Spoon extends ASTProcessor {
 	
 	private FileLogger loggerChain;
 	
 //Spoon pour l’identification de modules
 	
-	public Spoon() {
+	public Spoon(String path) {
+		super(path);
 		setLoggerChain();
 	}
 	
@@ -44,47 +48,68 @@ public class Spoon {
 		loggerChain = new FileLogger(StandardLogRequestLevel.DEBUG);
 		loggerChain.setNextLogger(new ConsoleLogger(StandardLogRequestLevel.INFO));
 	}
+
+	public boolean isBusinessMethod(String invokedMethodSignature) {
+		String declaringTypeFQN = invokedMethodSignature.split("::")[0];
+		int indexOfTypeDotInFQN = declaringTypeFQN.lastIndexOf(".");
+		String containingPackageFQN = declaringTypeFQN.substring(0, indexOfTypeDotInFQN);
+		return new File(
+				parser.getProjectSrcPath(), 
+				containingPackageFQN.replace(".", File.separator)
+				).exists();
+	}
 	
-	
-	public static String removeLastChar(String s) {
-	    if (s == null || s.length() == 0) {
-	      return s;
-	    }
-	    return s.substring(0, s.length() - 1);
-	  }
-	
-public static String analyzeWithSpoon(CtModel model, Launcher our) {
+public void callGraphWithSpoon(CtModel model, Launcher our) {
 
 	StringBuilder builder = new StringBuilder();
 	int nbMethod = 0;
 	int nbRefs = 0;
+	int nbClass = 0;
 	
 	
+	ArrayList<String> listVu = new ArrayList<String>();
 	for (CtType <?>s: model.getAllTypes()) {
-		  builder.append(s.getQualifiedName() + ":\n");
+		if(s.isClass()) {
+			nbClass++;
+		}
+		  builder.append(s.getQualifiedName() + "::");
+		  String actual = s.getQualifiedName();
 	      for (CtMethod m: s.getMethods()) {
-	    	  nbMethod += s.getMethods().size();
+	    	  builder.append(m.getSignature() + "\n");
 	    	  
-	        List< CtInvocation > refs = m.getElements(new TypeFilter < CtInvocation > (CtInvocation.class));
+	    	if(!isBusinessMethod(s.getQualifiedName()))
+	    	return;
+	    	nbMethod += s.getMethods().size();
+	    	  
+	        List<CtInvocation> refs = m.getElements(new TypeFilter < CtInvocation > (CtInvocation.class));
 	        nbRefs += refs.size(); 
-	        int nbE = refs.size();
-	        
+	        int nbE = 0;
+	        String invName = "";
+	       
 	        for (CtInvocation inv: refs) {
-	      //    System.out.println(s.getSimpleName() + " : " + m.getSimpleName() + " -> " + inv.toString());
-	          String invName = "";
 
-	          	          
-	          builder.append("\t---> " + m.getSimpleName() + 
-						" (" + inv.toString() + nbE + " time(s))\n");
-			builder.append("\n");
-	   
-	       //     System.out.println(m.getSimpleName() + ", " + invName);
+	         if(listVu.contains(m.getSignature())) {
+	        	 nbE +=1;
+	         }
+	         else {
+	        	 listVu.add(m.getSignature());
+	         }
+	         
+	         invName = inv.getTarget().getType().getTypeDeclaration().getQualifiedName();
+	         
 
-	            CtCodeSnippetStatement expr = our.getFactory().Code().createCodeSnippetStatement("logs.LogProcessor.logAppel( \"" + m.getSimpleName() + "\", \" " + invName + "\");");
-	            inv.getParent(CtBlock.class).insertBegin(expr);
-
+	         
+	            
+	            
 	        }
+
+	        builder.append("\t---> " + invName + "::" + m.getSignature() + " " +  "[" + nbE + " time(s)" + "]" + "\n");
+     		builder.append("\n");
+	        
+	        	
+       
 	      }
+	     
 	      
 	      
 	}
@@ -92,6 +117,7 @@ public static String analyzeWithSpoon(CtModel model, Launcher our) {
 	builder.append("Static Call Graph");
 	builder.append("\nMethods: "+nbMethod+".");
     builder.append("\nInvocations: "+nbRefs+".");
+    builder.append("\nClass: "+nbClass+".");
     builder.append("\n");
 
 	
@@ -99,7 +125,7 @@ public static String analyzeWithSpoon(CtModel model, Launcher our) {
     our.prettyprint();
 
     System.out.println(builder.toString());
-    return builder.toString();
+   // return builder.toString();
 }
 
 public void log() {
@@ -107,5 +133,6 @@ public void log() {
 	loggerChain.log(new LogRequest(this.toString(), 
 			StandardLogRequestLevel.DEBUG));
 }
+
 
 }

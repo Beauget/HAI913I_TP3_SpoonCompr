@@ -117,7 +117,8 @@ public class CallGraphMain extends AbstractMain {
                     ourLauncher.getEnvironment().setNoClasspath(true);
                     ourLauncher.run();
                     CtModel model = ourLauncher.getModel();
-                    Spoon.analyzeWithSpoon(model,ourLauncher);
+                    Spoon analyze = new Spoon(TEST_PROJECT_PATH);
+                    analyze.callGraphWithSpoon(model, ourLauncher);
                     break;
 					
 				case "7":

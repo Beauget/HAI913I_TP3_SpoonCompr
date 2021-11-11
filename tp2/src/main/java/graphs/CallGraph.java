@@ -150,7 +150,7 @@ public class CallGraph extends ASTProcessor {
 		}
 	}
 	
-	private boolean isBusinessMethod(String invokedMethodSignature) {
+	public boolean isBusinessMethod(String invokedMethodSignature) {
 		String declaringTypeFQN = invokedMethodSignature.split("::")[0];
 		int indexOfTypeDotInFQN = declaringTypeFQN.lastIndexOf(".");
 		String containingPackageFQN = declaringTypeFQN.substring(0, indexOfTypeDotInFQN);
@@ -219,5 +219,5 @@ public class CallGraph extends ASTProcessor {
 		return classesName;
 
 	}
-
+	
 }
