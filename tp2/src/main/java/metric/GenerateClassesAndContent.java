@@ -139,9 +139,9 @@ public class GenerateClassesAndContent {
 		String[] words = sTemp.split(".");
 		boolean isClass = Character.isUpperCase(sTemp.charAt(0));
 		if(words.length>1){
-			isClass = isClass || Character.isUpperCase(words[words.length-1].charAt(0));
+			isClass = isClass || (Character.isUpperCase(words[words.length-1].charAt(0) ));
 		}
-		isClass = isClass && !(sTemp.equals("System.out") || sTemp.equals("System.err"));
+		isClass = isClass && !(sTemp.equals("System.out") || sTemp.equals("String")|| sTemp.equals("DJ")|| sTemp.equals("Optional") || sTemp.equals("Arrays") || sTemp.equals("System.err")|| sTemp.equals("Arrays.asList(this.getFilledArray())"));
 		return isClass;
 	}
 	

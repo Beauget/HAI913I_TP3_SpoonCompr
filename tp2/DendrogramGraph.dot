@@ -1,3 +1,0 @@
-digraph G {
-"structural.adapter.EnemyTank" -> "C1" "structural.adapter.TestEnemyAttackers" -> "C1" "C1" -> "C2" "structural.adapter.EnemyRobot" -> "C2" "C2" -> "C3" "structural.adapter.Test" -> "C3" "C3" -> "C4" "structural.adapter.EnemyRobotAdapter" -> "C4" 
-}

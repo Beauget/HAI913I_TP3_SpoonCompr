@@ -21,6 +21,8 @@ public class EnemyShipTesting {
 			doStuffEnemy(enemy);
 		else
 			System.err.println("Unknown type " + type);
+		
+		scan.close();
 			
 	}
 

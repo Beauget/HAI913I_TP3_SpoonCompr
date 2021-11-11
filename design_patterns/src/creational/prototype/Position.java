@@ -65,8 +65,8 @@ public class Position implements Cloneable {
 	/**
 	 * Does a shallow copy of this position.
 	 */
-	@Override public Position clone() 
-			throws CloneNotSupportedException {
+	@Override
+	public Position clone() throws CloneNotSupportedException {
 		return (Position) super.clone();
 	}
 

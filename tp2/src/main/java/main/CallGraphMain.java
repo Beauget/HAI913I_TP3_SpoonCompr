@@ -3,17 +3,21 @@ package main;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 import graphs.AllCouplesGraph;
 import graphs.CallGraph;
 import graphs.CoupleGraph;
 import graphs.DendrogramGraph;
-import graphs.DynamicCallGraph;
 import graphs.StaticCallGraph;
-import metric.GenerateClassesAndContent;
+import parsers.Spoon;
 import processors.ASTProcessor;
 import processors.ProcessorClustering;
+import spoon.Launcher;
+import spoon.compiler.Environment;
+import spoon.reflect.CtModel;
 
 public class CallGraphMain extends AbstractMain {
 
@@ -21,10 +25,13 @@ public class CallGraphMain extends AbstractMain {
 	protected void menu() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("1. Static call graph.");
-		builder.append("\n2. DendrogramGraph : Création d'un dendrogram en png ");
-		builder.append("\n3. CoupleGraph : Création des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnée");
-		builder.append("\n4. AllCouplesGraph : Création des fichiers CouplesGraph.dot et graphCouples.png pour un src donné, veuillez donner une liste de classe raisonnable");
-		builder.append("\n5. Help menu.");
+		builder.append("\n2. ProcessorClustering.");
+		builder.append("\n3. DendrogramGraph : Création d'un dendrogram en png (n'envoie plus le bon)");
+		builder.append("\n4. CoupleGraph : Création des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnée");
+		builder.append("\n5. AllCouplesGraph : Création des fichiers CouplesGraph.dot et graphCouples.png pour un src donné, veuillez donner une liste de classe raisonnable");
+		builder.append("\n7. Spoon.");
+		builder.append("\n6. Dynamic call graph.");
+		builder.append("\n7. Help menu.");
 		builder.append("\n"+QUIT+". To quit.");
 		
 		System.out.println(builder);
@@ -55,41 +62,34 @@ public class CallGraphMain extends AbstractMain {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	protected void processUserInput(String userInput, ASTProcessor processor) {
 		CallGraph callGraph = (CallGraph) processor;
 		try {
 			switch(userInput) {
+			// /home/hayaat/Desktop/Master/M2/Git/design_patterns
 				case "1":
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);
 					callGraph.log();
 					break;
-				
 				case "2":
-					/* /home/hayaat/Desktop/Master/M1/Java/TP4/src/ */
-					// /home/hayaat/Desktop/Master/M2/Java2021/HAI913I_badSmell/src/
-					// /home/hayaat/Desktop/Master/M1/Java/TP4/src/
-					// /home/hayaat/Desktop/Master/M1/Java/HMIN210/TP1RMI/src/
-					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
-					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/
-					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/tp2/target/test-classes/structural/src/composite/src/
+					long start = System.currentTimeMillis();
+					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);
+					ProcessorClustering processorClustering = new ProcessorClustering(TEST_PROJECT_PATH,callGraph);
+					long end = System.currentTimeMillis();
+					processorClustering.log();
+					NumberFormat formatter = new DecimalFormat("#0.00000");
+					System.out.print("Execution time is " + formatter.format((end - start) / 1000d) + " seconds");
+					break;
 					
-					
-					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/
-					///home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/adapter/src/
-					
-					
-					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/design_patterns/src/structural/src/composite/src/
-					// /home/hayaat/Desktop/Master/M2/Git/HAI913I_TP3_SpoonCompr/src/
+				case "3":
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
-					//ProcessorClustering processorClustering = new ProcessorClustering(TEST_PROJECT_PATH,callGraph);
-					//processorClustering.log();
 					DendrogramGraph dendrogramGraph = new DendrogramGraph(TEST_PROJECT_PATH,callGraph);
 					dendrogramGraph.createFiles();
+					
 					break;
-				case "3":
+				case "4":
 					Scanner sc = new Scanner(System.in);
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
 					CoupleGraph coupleGraph = new CoupleGraph(TEST_PROJECT_PATH,callGraph);
@@ -99,14 +99,30 @@ public class CallGraphMain extends AbstractMain {
 					String className2 = sc.next();
 					coupleGraph.createFiles(className1, className2);
 					return;
-				case "4":
+				case "5":
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
 					AllCouplesGraph allCouplesGraph = new AllCouplesGraph(TEST_PROJECT_PATH,callGraph);
 					allCouplesGraph.createFiles();
 					return;
 				
-				case "5":
-					return;
+				case "6":
+                    System.out.println("Someone trying to do same things with Spoon");
+                    Launcher ourLauncher = new Launcher();
+                    ourLauncher.addInputResource(TEST_PROJECT_PATH);
+                    
+                    // Setting the environment for Spoon
+                    Environment environment = ourLauncher.getEnvironment();
+                    environment.setCommentEnabled(true); // represent the comments from the source code in the AST
+                    environment.setAutoImports(true);
+                    ourLauncher.getEnvironment().setNoClasspath(true);
+                    ourLauncher.run();
+                    CtModel model = ourLauncher.getModel();
+                    Spoon.analyzeWithSpoon(model,ourLauncher);
+                    break;
+					
+				case "7":
+					System.err.println("Not implemented yet");
+					break;
 					
 				case QUIT:
 					System.out.println("Bye...");

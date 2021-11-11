@@ -3,14 +3,14 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void creational.builder.Test::main(String[] args) invokes: 
-		robotEngineer::constructRobot()
-		robotEngineer::getRobot()
-		System.out::println("An old Robot:\n" + robot)
-		System.out::println()
-		robotEngineer::setRobotBuilder(new SophisticatedRobotBuilder())
-		robotEngineer::constructRobot()
-		robotEngineer::getRobot()
-		System.out::println("A sophisticated Robot:\n" + robot)
+		creational.builder.RobotEngineer::constructRobot()
+		creational.builder.RobotEngineer::getRobot()
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println()
+		creational.builder.RobotEngineer::setRobotBuilder(creational.builder.IRobotBuilder)
+		creational.builder.RobotEngineer::constructRobot()
+		creational.builder.RobotEngineer::getRobot()
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: creational.builder.RobotBuilder
@@ -39,11 +39,11 @@ Methods:
 	public String creational.builder.Robot::getLegs()
 	@Override public void creational.builder.Robot::setLegs(String legs)
 	@Override public String creational.builder.Robot::toString() invokes: 
-		buf::append("Head: " + head + "\n")
-		buf::append("Torso: " + torso + "\n")
-		buf::append("Arms: " + arms + "\n")
-		buf::append("Legs: " + legs)
-		buf::toString()
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::toString()
 
 
 Class: creational.builder.SophisticatedRobotBuilder
@@ -52,13 +52,13 @@ Superclasses:
 Fields: 
 Methods: 
 	@Override public void creational.builder.SophisticatedRobotBuilder::buildHead() invokes: 
-		this.robot::setHead("Sophisticated Robot head")
+		creational.builder.Robot::setHead(java.lang.String)
 	@Override public void creational.builder.SophisticatedRobotBuilder::buildTorso() invokes: 
-		this.robot::setTorso("Sophisticated Robot torso")
+		creational.builder.Robot::setTorso(java.lang.String)
 	@Override public void creational.builder.SophisticatedRobotBuilder::buildArms() invokes: 
-		this.robot::setArms("Sophisticated Robot arms")
+		creational.builder.Robot::setArms(java.lang.String)
 	@Override public void creational.builder.SophisticatedRobotBuilder::buildLegs() invokes: 
-		this.robot::setLegs("Sophisticated Robot legs")
+		creational.builder.Robot::setLegs(java.lang.String)
 
 
 Class: creational.builder.RobotEngineer
@@ -67,15 +67,15 @@ Fields:
 	private IRobotBuilder robotBuilder
 Methods: 
 	public creational.builder.RobotEngineer::RobotEngineer(IRobotBuilder robotBuilder) invokes: 
-		this::setRobotBuilder(robotBuilder)
+		creational.builder.RobotEngineer::setRobotBuilder(creational.builder.IRobotBuilder)
 	public IRobot creational.builder.RobotEngineer::getRobot() invokes: 
-		this.robotBuilder::getRobot()
+		creational.builder.IRobotBuilder::getRobot()
 	public void creational.builder.RobotEngineer::setRobotBuilder(IRobotBuilder robotBuilder)
 	public void creational.builder.RobotEngineer::constructRobot() invokes: 
-		this.robotBuilder::buildHead()
-		this.robotBuilder::buildTorso()
-		this.robotBuilder::buildArms()
-		this.robotBuilder::buildLegs()
+		creational.builder.IRobotBuilder::buildHead()
+		creational.builder.IRobotBuilder::buildTorso()
+		creational.builder.IRobotBuilder::buildArms()
+		creational.builder.IRobotBuilder::buildLegs()
 
 
 Class: creational.builder.OldRobotBuilder
@@ -84,13 +84,13 @@ Superclasses:
 Fields: 
 Methods: 
 	@Override public void creational.builder.OldRobotBuilder::buildHead() invokes: 
-		this.robot::setHead("Old Robot head")
+		creational.builder.Robot::setHead(java.lang.String)
 	@Override public void creational.builder.OldRobotBuilder::buildTorso() invokes: 
-		this.robot::setTorso("Old Robot torso")
+		creational.builder.Robot::setTorso(java.lang.String)
 	@Override public void creational.builder.OldRobotBuilder::buildArms() invokes: 
-		this.robot::setArms("Old Robot arms")
+		creational.builder.Robot::setArms(java.lang.String)
 	@Override public void creational.builder.OldRobotBuilder::buildLegs() invokes: 
-		this.robot::setLegs("Old Robot legs")
+		creational.builder.Robot::setLegs(java.lang.String)
 
 
 Class: creational.abstract_factory.Test
@@ -98,16 +98,16 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void creational.abstract_factory.Test::main(String[] args) invokes: 
-		ShapeProducer::createFactory(ShapeFactoryType.ROUNDED)
-		factory::createShape(RoundedShapeType.ROUNDED_RECTANGLE)
-		shape::draw()
-		factory::createShape(RoundedShapeType.ROUNDED_TRIANGLE)
-		shape::draw()
-		ShapeProducer::createFactory(ShapeFactoryType.STANDARD)
-		factory::createShape(StandardShapeType.RECTANGLE)
-		shape::draw()
-		factory::createShape(StandardShapeType.TRIANGLE)
-		shape::draw()
+		creational.abstract_factory.ShapeProducer::createFactory(creational.abstract_factory.ShapeFactoryType)
+		creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType)
+		creational.abstract_factory.Shape::draw()
+		creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType)
+		creational.abstract_factory.Shape::draw()
+		creational.abstract_factory.ShapeProducer::createFactory(creational.abstract_factory.ShapeFactoryType)
+		creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType)
+		creational.abstract_factory.Shape::draw()
+		creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType)
+		creational.abstract_factory.Shape::draw()
 
 
 Class: creational.abstract_factory.Rectangle
@@ -115,7 +115,7 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	@Override public void creational.abstract_factory.Rectangle::draw() invokes: 
-		System.out::println("Drawing a rectangle")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: creational.abstract_factory.RoundedRectangle
@@ -123,7 +123,7 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	@Override public void creational.abstract_factory.RoundedRectangle::draw() invokes: 
-		System.out::println("Drawing a rounded rectangle")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: creational.abstract_factory.AbstractShapeFactory
@@ -139,7 +139,7 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	@Override public void creational.abstract_factory.RoundedTriangle::draw() invokes: 
-		System.out::println("Drawing a rounded triangle")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: creational.abstract_factory.Triangle
@@ -147,7 +147,7 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	@Override public void creational.abstract_factory.Triangle::draw() invokes: 
-		System.out::println("Drawing a triangle")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: creational.abstract_factory.ShapeProducer
@@ -155,8 +155,8 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static AbstractShapeFactory creational.abstract_factory.ShapeProducer::createFactory(ShapeFactoryType type) invokes: 
-		Singleton::getInstance(StandardShapeFactory.class)
-		Singleton::getInstance(RoundedShapeFactory.class)
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
 
 
 Class: creational.abstract_factory.RoundedShapeFactory
@@ -180,16 +180,16 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void creational.factory.Test::main(String[] args) invokes: 
-		System.out::println("What type of enemy ships do you wish to create ? (U/R/B)")
-		scan::hasNextLine()
-		scan::nextLine()
-		factory::createEnemyShip(type)
-		Test::doStuffEnemy(enemy)
-		System.err::println("Unknown type " + type)
+		java.io.PrintStream::println(java.lang.String)
+		java.util.Scanner::hasNextLine()
+		java.util.Scanner::nextLine()
+		creational.factory.EnemyShipFactory::createEnemyShip(java.lang.String)
+		creational.factory.Test::doStuffEnemy(creational.factory.EnemyShip)
+		java.io.PrintStream::println(java.lang.String)
 	private static void creational.factory.Test::doStuffEnemy(EnemyShip enemy) invokes: 
-		enemy::displayEnemyShip()
-		enemy::followHeroShip()
-		enemy::enemyShipShoots()
+		creational.factory.EnemyShip::displayEnemyShip()
+		creational.factory.EnemyShip::followHeroShip()
+		creational.factory.EnemyShip::enemyShipShoots()
 
 
 Class: creational.factory.EnemyShipTesting
@@ -197,16 +197,17 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void creational.factory.EnemyShipTesting::main(String[] args) invokes: 
-		System.out::println("What type of enemy ships do you wish to create ? (U/R/B)")
-		scan::hasNextLine()
-		scan::nextLine()
-		factory::createEnemyShip(type)
-		EnemyShipTesting::doStuffEnemy(enemy)
-		System.err::println("Unknown type " + type)
+		java.io.PrintStream::println(java.lang.String)
+		java.util.Scanner::hasNextLine()
+		java.util.Scanner::nextLine()
+		creational.factory.EnemyShipFactory::createEnemyShip(java.lang.String)
+		creational.factory.EnemyShipTesting::doStuffEnemy(creational.factory.EnemyShip)
+		java.io.PrintStream::println(java.lang.String)
+		java.util.Scanner::close()
 	private static void creational.factory.EnemyShipTesting::doStuffEnemy(EnemyShip enemy) invokes: 
-		enemy::displayEnemyShip()
-		enemy::followHeroShip()
-		enemy::enemyShipShoots()
+		creational.factory.EnemyShip::displayEnemyShip()
+		creational.factory.EnemyShip::followHeroShip()
+		creational.factory.EnemyShip::enemyShipShoots()
 
 
 Class: creational.factory.EnemyShipFactory
@@ -231,18 +232,18 @@ Fields:
 	private double amtDamage
 Methods: 
 	public creational.factory.EnemyShip::EnemyShip(String name, double amtDamage) invokes: 
-		this::setName(name)
-		this::setAmtDamage(amtDamage)
+		creational.factory.EnemyShip::setName(java.lang.String)
+		creational.factory.EnemyShip::setAmtDamage(double)
 	public String creational.factory.EnemyShip::getName()
 	public void creational.factory.EnemyShip::setName(String name)
 	public double creational.factory.EnemyShip::getAmtDamage()
 	public void creational.factory.EnemyShip::setAmtDamage(double amtDamage)
 	public void creational.factory.EnemyShip::followHeroShip() invokes: 
-		System.out::println(this.name + " is following the hero")
+		java.io.PrintStream::println(java.lang.String)
 	public void creational.factory.EnemyShip::displayEnemyShip() invokes: 
-		System.out::println(this.name + " is on the screen")
+		java.io.PrintStream::println(java.lang.String)
 	public void creational.factory.EnemyShip::enemyShipShoots() invokes: 
-		System.out::println(this.name + " attacks and does " + this.amtDamage+ " damage")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: creational.factory.UFOEnemyShip
@@ -267,19 +268,19 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void creational.singleton.Test::main(String[] args) invokes: 
-		Singleton::getInstance(ExtendedSingleton.class)
-		Singleton::getInstance(ExtendedSingleton.class)
-		Singleton::getInstance(ExtendedSingleton2.class)
-		Singleton::getInstance(ExtendedSingleton2.class)
-		System.out::println("singleton1 = sameSingleton1 : " + (singleton1.hashCode() == sameSingleton1.hashCode()))
-		singleton1::hashCode()
-		sameSingleton1::hashCode()
-		System.out::println("singleton2 = sameSingleton2 : " + (singleton2.hashCode() == sameSingleton2.hashCode()))
-		singleton2::hashCode()
-		sameSingleton2::hashCode()
-		System.out::println("singleton1 = singleton2 : " + (singleton1.hashCode() == singleton2.hashCode()))
-		singleton1::hashCode()
-		singleton2::hashCode()
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.Object::hashCode()
+		java.lang.Object::hashCode()
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.Object::hashCode()
+		java.lang.Object::hashCode()
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.Object::hashCode()
+		java.lang.Object::hashCode()
 
 
 Class: creational.singleton.Singleton
@@ -289,17 +290,17 @@ Fields:
 	protected static SingletonRegistry registry
 Methods: 
 	protected creational.singleton.Singleton::Singleton() invokes: 
-		registry::register(getRegistryKey(this.getClass()), this)
-		Singleton::getRegistryKey(this.getClass())
-		this::getClass()
+		creational.singleton.SingletonRegistry::register(java.lang.String, creational.singleton.Singleton)
+		creational.singleton.Singleton::getRegistryKey(java.lang.Class<? extends creational.singleton.Singleton>)
+		java.lang.Object::getClass()
 	public static Singleton creational.singleton.Singleton::getInstance(Class<? extends Singleton> cls) invokes: 
-		cls.getDeclaredConstructor()::newInstance()
-		cls::getDeclaredConstructor()
-		e::printStackTrace()
-		registry::lookup(getRegistryKey(cls))
-		Singleton::getRegistryKey(cls)
+		java.lang.reflect.Constructor<>::newInstance()
+		java.lang.Class<>::getDeclaredConstructor()
+		java.lang.Throwable::printStackTrace()
+		creational.singleton.SingletonRegistry::lookup(java.lang.String)
+		creational.singleton.Singleton::getRegistryKey(java.lang.Class<? extends creational.singleton.Singleton>)
 	private static String creational.singleton.Singleton::getRegistryKey(Class<? extends Singleton> cls) invokes: 
-		cls::getName()
+		java.lang.Class<>::getName()
 
 
 Class: creational.singleton.ExtendedSingleton2
@@ -315,10 +316,10 @@ Fields:
 	private Map<String,Singleton> registry
 Methods: 
 	public void creational.singleton.SingletonRegistry::register(String key, Singleton singleton) invokes: 
-		registry::containsKey(key)
-		registry::put(key, singleton)
+		java.util.Map<java.lang.String,creational.singleton.Singleton>::containsKey(java.lang.Object)
+		java.util.Map<java.lang.String,creational.singleton.Singleton>::put(java.lang.String, creational.singleton.Singleton)
 	public Singleton creational.singleton.SingletonRegistry::lookup(String key) invokes: 
-		registry::get(key)
+		java.util.Map<java.lang.String,creational.singleton.Singleton>::get(java.lang.Object)
 
 
 Class: creational.singleton.ExtendedSingleton
@@ -333,23 +334,23 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void creational.prototype.Test::main(String[] args) invokes: 
-		ShapeCache::loadCache()
-		System.out::println("The contents of the prototypes cache")
-		ShapeCache::displayCacheContent()
-		System.out::println()
-		ShapeCache::getShape("1")
-		clonedShape1.getPosition()::setX(-1)
-		clonedShape1::getPosition()
-		ShapeCache::getShape("2")
-		clonedShape2.getPosition()::setY(0)
-		clonedShape2::getPosition()
-		ShapeCache::getShape("3")
-		clonedShape3.getPosition()::setX(100)
-		clonedShape3::getPosition()
-		System.out::println("The cloned and modified shapes")
-		System.out::println(clonedShape1)
-		System.out::println(clonedShape2)
-		System.out::println(clonedShape3)
+		creational.prototype.ShapeCache::loadCache()
+		java.io.PrintStream::println(java.lang.String)
+		creational.prototype.ShapeCache::displayCacheContent()
+		java.io.PrintStream::println()
+		creational.prototype.ShapeCache::getShape(java.lang.String)
+		creational.prototype.Position::setX(double)
+		creational.prototype.Shape::getPosition()
+		creational.prototype.ShapeCache::getShape(java.lang.String)
+		creational.prototype.Position::setY(double)
+		creational.prototype.Shape::getPosition()
+		creational.prototype.ShapeCache::getShape(java.lang.String)
+		creational.prototype.Position::setX(double)
+		creational.prototype.Shape::getPosition()
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.Object)
+		java.io.PrintStream::println(java.lang.Object)
+		java.io.PrintStream::println(java.lang.Object)
 
 
 Class: creational.prototype.Rectangle
@@ -359,7 +360,7 @@ Fields:
 Methods: 
 	public creational.prototype.Rectangle::Rectangle()
 	@Override void creational.prototype.Rectangle::draw() invokes: 
-		System.out::println("Drawing a Rectangle.")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: creational.prototype.Position
@@ -374,9 +375,9 @@ Methods:
 	public double creational.prototype.Position::getY()
 	public void creational.prototype.Position::setY(double y)
 	@Override public Position creational.prototype.Position::clone() invokes: 
-		)
+		java.lang.Object::clone()
 	@Override public String creational.prototype.Position::toString() invokes: 
-		this::hashCode()
+		java.lang.Object::hashCode()
 
 
 Class: creational.prototype.ShapeCache
@@ -385,24 +386,24 @@ Fields:
 	private static HashMap<String,Shape> map
 Methods: 
 	public static Shape creational.prototype.ShapeCache::getShape(String id) invokes: 
-		map::get(id)
-		cachedShape::clone()
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::get(java.lang.Object)
+		creational.prototype.Shape::clone()
 	public static void creational.prototype.ShapeCache::loadCache() invokes: 
-		circle::setId("1")
-		circle::setPosition(new Position(1,1))
-		map::put(circle.getId(), circle)
-		circle::getId()
-		triangle::setId("2")
-		triangle::setPosition(new Position(2,2))
-		map::put(triangle.getId(), triangle)
-		triangle::getId()
-		rectangle::setId("3")
-		rectangle::setPosition(new Position(3,3))
-		map::put(rectangle.getId(), rectangle)
-		rectangle::getId()
+		creational.prototype.Shape::setId(java.lang.String)
+		creational.prototype.Shape::setPosition(creational.prototype.Position)
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::put(java.lang.String, creational.prototype.Shape)
+		creational.prototype.Shape::getId()
+		creational.prototype.Shape::setId(java.lang.String)
+		creational.prototype.Shape::setPosition(creational.prototype.Position)
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::put(java.lang.String, creational.prototype.Shape)
+		creational.prototype.Shape::getId()
+		creational.prototype.Shape::setId(java.lang.String)
+		creational.prototype.Shape::setPosition(creational.prototype.Position)
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::put(java.lang.String, creational.prototype.Shape)
+		creational.prototype.Shape::getId()
 	public static void creational.prototype.ShapeCache::displayCacheContent() invokes: 
-		map::values()
-		System.out::println(shape)
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::values()
+		java.io.PrintStream::println(java.lang.Object)
 
 
 Class: creational.prototype.Triangle
@@ -412,7 +413,7 @@ Fields:
 Methods: 
 	public creational.prototype.Triangle::Triangle()
 	@Override void creational.prototype.Triangle::draw() invokes: 
-		System.out::println("Drawing a Triangle")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: creational.prototype.Circle
@@ -422,7 +423,7 @@ Fields:
 Methods: 
 	public creational.prototype.Circle::Circle()
 	@Override void creational.prototype.Circle::draw() invokes: 
-		System.out::println("Drawing a Circle")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: creational.prototype.Shape
@@ -439,13 +440,13 @@ Methods:
 	public void creational.prototype.Shape::setPosition(Position position)
 	abstract void creational.prototype.Shape::draw()
 	@Override public Shape creational.prototype.Shape::clone() invokes: 
-		clone::setPosition(this.getPosition().clone())
-		this.getPosition()::clone()
-		this::getPosition()
-		e::printStackTrace()
-		)
+		creational.prototype.Shape::setPosition(creational.prototype.Position)
+		creational.prototype.Position::clone()
+		creational.prototype.Shape::getPosition()
+		java.lang.Throwable::printStackTrace()
+		java.lang.Object::clone()
 	@Override public String creational.prototype.Shape::toString() invokes: 
-		this::hashCode()
+		java.lang.Object::hashCode()
 
 
 Class: structural.decorator.Test
@@ -453,33 +454,33 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void structural.decorator.Test::main(String[] args) invokes: 
-		Test::orderBeverage()
+		structural.decorator.Test::orderBeverage()
 	public static void structural.decorator.Test::orderBeverage() invokes: 
-		Test::selectBeverage(scanner)
-		Test::selectAdditionalIngredients(beverage, scanner)
-		Test::displayOrder(beverage)
+		structural.decorator.Test::selectBeverage(java.util.Scanner)
+		structural.decorator.Test::selectAdditionalIngredients(structural.decorator.Beverage, java.util.Scanner)
+		structural.decorator.Test::displayOrder(structural.decorator.Beverage)
 	public static void structural.decorator.Test::beveragesMenu() invokes: 
-		System.out::println("Beverages\n--------------")
-		System.out::println("1. <E>: Espresso")
-		System.out::println("2. <T>: Tea")
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
 	public static Beverage structural.decorator.Test::selectBeverage(Scanner scanner) invokes: 
-		Test::beveragesMenu()
-		scanner::nextLine()
-		System.err::println("Your choice is invalid. Please select again")
+		structural.decorator.Test::beveragesMenu()
+		java.util.Scanner::nextLine()
+		java.io.PrintStream::println(java.lang.String)
 	public static void structural.decorator.Test::additionalIngredientsMenu() invokes: 
-		System.out::println("Additional Ingredients\n----------------------------")
-		System.out::println("1. <C>: Caramel")
-		System.out::println("2. <S>: Sugar")
-		System.out::println("3. <Enter>: when done")
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
 	public static Beverage structural.decorator.Test::selectAdditionalIngredients(Beverage beverage, Scanner scanner) invokes: 
-		Test::additionalIngredientsMenu()
-		scanner::nextLine()
-		System.out::println("Your choice is invalid. Please select again")
+		structural.decorator.Test::additionalIngredientsMenu()
+		java.util.Scanner::nextLine()
+		java.io.PrintStream::println(java.lang.String)
 	public static void structural.decorator.Test::displayOrder(Beverage beverage) invokes: 
-		System.out::println("Your order is: " + beverage.description())
-		beverage::description()
-		System.out::println("Total cost: " + beverage.price())
-		beverage::price()
+		java.io.PrintStream::println(java.lang.String)
+		structural.decorator.Beverage::description()
+		java.io.PrintStream::println(java.lang.String)
+		structural.decorator.Beverage::price()
 
 
 Class: structural.decorator.Tea
@@ -519,9 +520,9 @@ Fields:
 Methods: 
 	public structural.decorator.CaramelDecorator::CaramelDecorator(Beverage beverage)
 	@Override public String structural.decorator.CaramelDecorator::description() invokes: 
-		this.beverage::description()
+		structural.decorator.Beverage::description()
 	@Override public double structural.decorator.CaramelDecorator::price() invokes: 
-		this.beverage::price()
+		structural.decorator.Beverage::price()
 
 
 Class: structural.decorator.BeverageDecorator
@@ -540,9 +541,9 @@ Fields:
 Methods: 
 	public structural.decorator.SugarDecorator::SugarDecorator(Beverage beverage)
 	@Override public String structural.decorator.SugarDecorator::description() invokes: 
-		this.beverage::description()
+		structural.decorator.Beverage::description()
 	@Override public double structural.decorator.SugarDecorator::price() invokes: 
-		this.beverage::price()
+		structural.decorator.Beverage::price()
 
 
 Class: structural.bridge.Test
@@ -550,36 +551,36 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void structural.bridge.Test::main(String[] args) invokes: 
-		Test::ordinaryRemoteTest(remote)
-		Test::ordinaryRemoteTest(remote)
-		Test::advancedRemoteTest(advRemote)
-		Test::advancedRemoteTest(advRemote)
+		structural.bridge.Test::ordinaryRemoteTest(structural.bridge.Remote)
+		structural.bridge.Test::ordinaryRemoteTest(structural.bridge.Remote)
+		structural.bridge.Test::advancedRemoteTest(structural.bridge.AdvancedRemote)
+		structural.bridge.Test::advancedRemoteTest(structural.bridge.AdvancedRemote)
 	public static void structural.bridge.Test::ordinaryRemoteTest(Remote remote) invokes: 
-		remote::togglePower()
-		remote::channelUp()
-		remote::channelUp()
-		remote::channelUp()
-		remote::channelDown()
-		remote::volumeUp()
-		remote::volumeUp()
-		remote::volumeUp()
-		remote::volumeUp()
-		remote::volumeDown()
-		remote::volumeDown()
-		remote::togglePower()
-		System.out::println()
+		structural.bridge.Remote::togglePower()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelDown()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeDown()
+		structural.bridge.Remote::volumeDown()
+		structural.bridge.Remote::togglePower()
+		java.io.PrintStream::println()
 	public static void structural.bridge.Test::advancedRemoteTest(AdvancedRemote advRemote) invokes: 
-		advRemote::togglePower()
-		advRemote::channelUp()
-		advRemote::channelUp()
-		advRemote::channelDown()
-		advRemote::volumeUp()
-		advRemote::volumeUp()
-		advRemote::volumeUp()
-		advRemote::volumeDown()
-		advRemote::mute()
-		advRemote::togglePower()
-		System.out::println()
+		structural.bridge.Remote::togglePower()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelDown()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeDown()
+		structural.bridge.AdvancedRemote::mute()
+		structural.bridge.Remote::togglePower()
+		java.io.PrintStream::println()
 
 
 Class: structural.bridge.TV
@@ -607,10 +608,10 @@ Fields:
 Methods: 
 	public structural.bridge.AdvancedRemote::AdvancedRemote(Device device)
 	public void structural.bridge.AdvancedRemote::mute() invokes: 
-		device::setVolume(0)
-		System.out::println(device.getName() + " is muted. " + "Volume: "+ device.getVolume())
-		device::getName()
-		device::getVolume()
+		structural.bridge.Device::setVolume(int)
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getName()
+		structural.bridge.Device::getVolume()
 
 
 Class: structural.bridge.Device
@@ -638,32 +639,32 @@ Fields:
 Methods: 
 	public structural.bridge.Remote::Remote(Device device)
 	public void structural.bridge.Remote::togglePower() invokes: 
-		device::isEnabled()
-		device::disable()
-		device::enable()
-		System.out::println(device.getName() + " is now " + (device.isEnabled() ? "On." : "Off."))
-		device::getName()
-		device::isEnabled()
+		structural.bridge.Device::isEnabled()
+		structural.bridge.Device::disable()
+		structural.bridge.Device::enable()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getName()
+		structural.bridge.Device::isEnabled()
 	public void structural.bridge.Remote::volumeDown() invokes: 
-		device::setVolume(device.getVolume() - 1)
-		device::getVolume()
-		System.out::println("Volume: " + device.getVolume())
-		device::getVolume()
+		structural.bridge.Device::setVolume(int)
+		structural.bridge.Device::getVolume()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getVolume()
 	public void structural.bridge.Remote::volumeUp() invokes: 
-		device::setVolume(device.getVolume() + 1)
-		device::getVolume()
-		System.out::println("Volume: " + device.getVolume())
-		device::getVolume()
+		structural.bridge.Device::setVolume(int)
+		structural.bridge.Device::getVolume()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getVolume()
 	public void structural.bridge.Remote::channelDown() invokes: 
-		device::setChannel(device.getChannel() - 1)
-		device::getChannel()
-		System.out::println("Channel: " + device.getChannel())
-		device::getChannel()
+		structural.bridge.Device::setChannel(int)
+		structural.bridge.Device::getChannel()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getChannel()
 	public void structural.bridge.Remote::channelUp() invokes: 
-		device::setChannel(device.getChannel() + 1)
-		device::getChannel()
-		System.out::println("Channel: " + device.getChannel())
-		device::getChannel()
+		structural.bridge.Device::setChannel(int)
+		structural.bridge.Device::getChannel()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getChannel()
 
 
 Class: structural.proxy.Test
@@ -671,8 +672,8 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void structural.proxy.Test::main(String[] args) invokes: 
-		internet::connectTo("abc.com")
-		internet::connectTo("google.com")
+		structural.proxy.Internet::connectTo(java.lang.String)
+		structural.proxy.Internet::connectTo(java.lang.String)
 
 
 Class: structural.proxy.ProxyInternet
@@ -682,9 +683,9 @@ Fields:
 	private static List<String> bannedSites
 Methods: 
 	@Override public void structural.proxy.ProxyInternet::connectTo(String serverHost) invokes: 
-		bannedSites::contains(serverHost)
-		System.err::println("Access Denied to " + serverHost)
-		internet::connectTo(serverHost)
+		java.util.List<java.lang.String>::contains(java.lang.Object)
+		java.io.PrintStream::println(java.lang.String)
+		structural.proxy.Internet::connectTo(java.lang.String)
 
 
 Class: structural.proxy.RealInternet
@@ -692,7 +693,7 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	@Override public void structural.proxy.RealInternet::connectTo(String serverHost) invokes: 
-		System.out::println("Connecting to " + serverHost)
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: structural.flyweight.Test
@@ -702,21 +703,21 @@ Fields:
 	private static Random random
 Methods: 
 	public static void structural.flyweight.Test::main(String[] args) invokes: 
-		ShapeFactory::getCircle(getRandomColor())
-		Test::getRandomColor()
-		circle::setRadius(getRandomRadius())
-		Test::getRandomRadius()
-		circle::draw(new Position(getRandomX(),getRandomY()))
-		Test::getRandomX()
-		Test::getRandomY()
+		structural.flyweight.ShapeFactory::getCircle(java.lang.String)
+		structural.flyweight.Test::getRandomColor()
+		structural.flyweight.Circle::setRadius(int)
+		structural.flyweight.Test::getRandomRadius()
+		structural.flyweight.Circle::draw(structural.flyweight.Position)
+		structural.flyweight.Test::getRandomX()
+		structural.flyweight.Test::getRandomY()
 	private static String structural.flyweight.Test::getRandomColor() invokes: 
-		random::nextInt(colors.length)
+		java.util.Random::nextInt(int)
 	private static int structural.flyweight.Test::getRandomRadius() invokes: 
-		random::nextInt(100)
+		java.util.Random::nextInt(int)
 	private static double structural.flyweight.Test::getRandomX() invokes: 
-		random::nextInt(100)
+		java.util.Random::nextInt(int)
 	private static double structural.flyweight.Test::getRandomY() invokes: 
-		random::nextInt(100)
+		java.util.Random::nextInt(int)
 
 
 Class: structural.flyweight.ShapeFactory
@@ -725,9 +726,9 @@ Fields:
 	private static Map<String,Shape> map
 Methods: 
 	public static Shape structural.flyweight.ShapeFactory::getCircle(String color) invokes: 
-		map::get(color)
-		map::put(color, circle)
-		System.out::println("Creating Circle of color " + color)
+		java.util.Map<java.lang.String,structural.flyweight.Shape>::get(java.lang.Object)
+		java.util.Map<java.lang.String,structural.flyweight.Shape>::put(java.lang.String, structural.flyweight.Shape)
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: structural.flyweight.Position
@@ -754,12 +755,12 @@ Methods:
 	public int structural.flyweight.Circle::getRadius()
 	public void structural.flyweight.Circle::setRadius(int radius)
 	@Override public void structural.flyweight.Circle::draw(Position position) invokes: 
-		buf::append("Circle=[")
-		buf::append("color=" + color)
-		buf::append(", radius=" + radius)
-		buf::append(", position=" + position + "]")
-		System.out::println(buf.toString())
-		buf::toString()
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.StringBuffer::toString()
 
 
 Class: structural.composite.Test
@@ -767,16 +768,16 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void structural.composite.Test::main(String[] args) invokes: 
-		industrial::add(new Song("Head Like a Hole","NIN",1990))
-		industrial::add(new Song("Headhunter","Front 242",1988))
-		songGenres::add(industrial)
-		industrial::add(dubstep)
-		dubstep::add(new Song("Centipede","Knife Party",2012))
-		dubstep::add(new Song("Tetris","Doctor P",2011))
-		heavyMetal::add(new Song("War Pigs","Black Sabbath",1970))
-		heavyMetal::add(new Song("Ace of Spades","Motorhead",1980))
-		songGenres::add(heavyMetal)
-		crazyLarry::displaySongList()
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.DiscJockey::displaySongList()
 
 
 Class: structural.composite.SongGroup
@@ -791,29 +792,29 @@ Methods:
 	public String structural.composite.SongGroup::getGroupName()
 	public String structural.composite.SongGroup::getGroupDescription()
 	@Override public void structural.composite.SongGroup::add(SongComponent component) invokes: 
-		components::add(component)
+		java.util.ArrayList<structural.composite.SongComponent>::add(structural.composite.SongComponent)
 	@Override public void structural.composite.SongGroup::remove(SongComponent component) invokes: 
-		components::remove(component)
+		java.util.ArrayList<structural.composite.SongComponent>::remove(java.lang.Object)
 	@Override public SongComponent structural.composite.SongGroup::getComponent(int index) invokes: 
-		components::get(index)
+		java.util.ArrayList<structural.composite.SongComponent>::get(int)
 	@Override public String structural.composite.SongGroup::getInfo() invokes: 
-		buf::append("Genre: " + this.getGroupName())
-		this::getGroupName()
-		buf::append(", Description: " + this.getGroupDescription())
-		this::getGroupDescription()
-		buf.toString()::length()
-		buf::toString()
-		buf::append("\n")
-		buf::append("=")
-		buf::append("\n")
-		components::iterator()
-		iterator::hasNext()
-		iterator::next()
-		buf::append("\n" + component.getInfo())
-		component::getInfo()
-		buf::append(component.getInfo() + "\n")
-		component::getInfo()
-		buf::toString()
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.composite.SongGroup::getGroupName()
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.composite.SongGroup::getGroupDescription()
+		java.lang.String::length()
+		java.lang.StringBuffer::toString()
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.util.ArrayList<structural.composite.SongComponent>::iterator()
+		java.util.Iterator<structural.composite.SongComponent>::hasNext()
+		java.util.Iterator<structural.composite.SongComponent>::next()
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.composite.SongComponent::getInfo()
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.composite.SongComponent::getInfo()
+		java.lang.StringBuffer::toString()
 
 
 Class: structural.composite.SongListGenerator
@@ -821,16 +822,16 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void structural.composite.SongListGenerator::main(String[] args) invokes: 
-		songGenres::add(industrial)
-		industrial::add(new Song("Head Like a Hole","NIN",1990))
-		industrial::add(new Song("Headhunter","Front 242",1988))
-		industrial::add(dubstep)
-		dubstep::add(new Song("Centipede","Knife Party",2012))
-		dubstep::add(new Song("Tetris","Doctor P",2011))
-		songGenres::add(heavyMetal)
-		heavyMetal::add(new Song("War Pigs","Black Sabbath",1970))
-		heavyMetal::add(new Song("Ace of Spades","Motorhead",1980))
-		crazyLarry::displaySongList()
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.DiscJockey::displaySongList()
 
 
 Class: structural.composite.Song
@@ -846,13 +847,13 @@ Methods:
 	@Override public String structural.composite.Song::getBandName()
 	@Override public int structural.composite.Song::getReleaseYear()
 	@Override public String structural.composite.Song::getInfo() invokes: 
-		buf::append("Song: " + this.getSongName())
-		this::getSongName()
-		buf::append(", Band: " + this.getBandName())
-		this::getBandName()
-		buf::append(", Year: " + this.getReleaseYear())
-		this::getReleaseYear()
-		buf::toString()
+		java.lang.StringBuilder::append(java.lang.String)
+		structural.composite.Song::getSongName()
+		java.lang.StringBuilder::append(java.lang.String)
+		structural.composite.Song::getBandName()
+		java.lang.StringBuilder::append(java.lang.String)
+		structural.composite.Song::getReleaseYear()
+		java.lang.StringBuilder::toString()
 
 
 Class: structural.composite.DiscJockey
@@ -863,7 +864,7 @@ Methods:
 	public structural.composite.DiscJockey::DiscJockey(SongComponent songList)
 	public SongComponent structural.composite.DiscJockey::getSongList()
 	public void structural.composite.DiscJockey::displaySongList() invokes: 
-		songList::displayInfo()
+		structural.composite.SongComponent::displayInfo()
 
 
 Class: structural.composite.SongComponent
@@ -878,8 +879,8 @@ Methods:
 	public int structural.composite.SongComponent::getReleaseYear()
 	public String structural.composite.SongComponent::getInfo()
 	public void structural.composite.SongComponent::displayInfo() invokes: 
-		System.out::println(this.getInfo())
-		this::getInfo()
+		java.io.PrintStream::println(java.lang.String)
+		structural.composite.SongComponent::getInfo()
 
 
 Class: structural.facade.BankAccountSecurityCodeChecker
@@ -889,9 +890,9 @@ Fields:
 Methods: 
 	public structural.facade.BankAccountSecurityCodeChecker::BankAccountSecurityCodeChecker(BankAccount bankAccount)
 	public int structural.facade.BankAccountSecurityCodeChecker::getAccountSecurityCode() invokes: 
-		this.bankAccount::getSecurityCode()
+		structural.facade.BankAccount::getSecurityCode()
 	public boolean structural.facade.BankAccountSecurityCodeChecker::match(int securityCode) invokes: 
-		this::getAccountSecurityCode()
+		structural.facade.BankAccountSecurityCodeChecker::getAccountSecurityCode()
 
 
 Class: structural.facade.Test
@@ -899,9 +900,9 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void structural.facade.Test::main(String[] args) invokes: 
-		facade::withdrawCash(50)
-		facade::withdrawCash(900)
-		facade::depositCash(200)
+		structural.facade.BankAccountFacade::withdrawCash(double)
+		structural.facade.BankAccountFacade::withdrawCash(double)
+		structural.facade.BankAccountFacade::depositCash(double)
 
 
 Class: structural.facade.BankAccountWelcomeWindow
@@ -910,16 +911,16 @@ Fields:
 	private BankAccount bankAccount
 Methods: 
 	public structural.facade.BankAccountWelcomeWindow::BankAccountWelcomeWindow(BankAccount bankAccount) invokes: 
-		System.out::println(this.setWelcomeMessage())
-		this::setWelcomeMessage()
+		java.io.PrintStream::println(java.lang.String)
+		structural.facade.BankAccountWelcomeWindow::setWelcomeMessage()
 	public String structural.facade.BankAccountWelcomeWindow::setWelcomeMessage() invokes: 
-		buf::append("Welcome to ABC Bank\n")
-		buf::append("We're happy to provide you with money, " + "if we can\n")
-		buf::append("Account: " + bankAccount.getNumber() + "\n")
-		bankAccount::getNumber()
-		buf::append("Balance: " + bankAccount.getBalance())
-		bankAccount::getBalance()
-		buf::toString()
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.facade.BankAccount::getNumber()
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.facade.BankAccount::getBalance()
+		java.lang.StringBuffer::toString()
 
 
 Class: structural.facade.BankAccount
@@ -946,9 +947,9 @@ Fields:
 Methods: 
 	public structural.facade.BankAccountNumberChecker::BankAccountNumberChecker(BankAccount bankAccount)
 	public int structural.facade.BankAccountNumberChecker::getAccountNumber() invokes: 
-		this.bankAccount::getNumber()
+		structural.facade.BankAccount::getNumber()
 	public boolean structural.facade.BankAccountNumberChecker::match(int accountNumber) invokes: 
-		this::getAccountNumber()
+		structural.facade.BankAccountNumberChecker::getAccountNumber()
 
 
 Class: structural.facade.BankAccountFacade
@@ -963,22 +964,22 @@ Fields:
 	private BankAccountBalanceSystem balanceSystem
 Methods: 
 	public structural.facade.BankAccountFacade::BankAccountFacade(int accountNumber, int securityCode) invokes: 
-		this::fetchBankAccount()
+		structural.facade.BankAccountFacade::fetchBankAccount()
 	public int structural.facade.BankAccountFacade::getAccountNumber()
 	public int structural.facade.BankAccountFacade::getSecurityCode()
 	public void structural.facade.BankAccountFacade::withdrawCash(double cash) invokes: 
-		numberChecker::match(accountNumber)
-		codeChecker::match(securityCode)
-		balanceSystem::canWithdraw(cash)
-		balanceSystem::withdraw(cash)
-		System.out::println("Transaction Complete.\n")
-		System.err::println("Transaction Failed.\n")
+		structural.facade.BankAccountNumberChecker::match(int)
+		structural.facade.BankAccountSecurityCodeChecker::match(int)
+		structural.facade.BankAccountBalanceSystem::canWithdraw(double)
+		structural.facade.BankAccountBalanceSystem::withdraw(double)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
 	public void structural.facade.BankAccountFacade::depositCash(double cash) invokes: 
-		numberChecker::match(accountNumber)
-		codeChecker::match(securityCode)
-		balanceSystem::deposit(cash)
-		System.out::println("Transaction Complete.\n")
-		System.err::println("Transaction Failed.\n")
+		structural.facade.BankAccountNumberChecker::match(int)
+		structural.facade.BankAccountSecurityCodeChecker::match(int)
+		structural.facade.BankAccountBalanceSystem::deposit(double)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
 	private void structural.facade.BankAccountFacade::fetchBankAccount()
 
 
@@ -989,23 +990,23 @@ Fields:
 Methods: 
 	structural.facade.BankAccountBalanceSystem::BankAccountBalanceSystem(BankAccount bankAccount)
 	public double structural.facade.BankAccountBalanceSystem::getAccountBalance() invokes: 
-		this.bankAccount::getBalance()
+		structural.facade.BankAccount::getBalance()
 	public void structural.facade.BankAccountBalanceSystem::deposit(double cash) invokes: 
-		this.bankAccount::setBalance(this.getAccountBalance() + cash)
-		this::getAccountBalance()
-		System.out::println("Deposit complete: Current Balance is " + this.getAccountBalance())
-		this::getAccountBalance()
+		structural.facade.BankAccount::setBalance(double)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
+		java.io.PrintStream::println(java.lang.String)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
 	public void structural.facade.BankAccountBalanceSystem::withdraw(double cash) invokes: 
-		this::canWithdraw(cash)
-		System.err::println("Error: You don't have enough money")
-		System.out::println("Current Balance is " + this.getAccountBalance())
-		this::getAccountBalance()
-		this.bankAccount::setBalance(this.getAccountBalance() - cash)
-		this::getAccountBalance()
-		System.out::println("Withdrawal complete: Current Balance is " + this.getAccountBalance())
-		this::getAccountBalance()
+		structural.facade.BankAccountBalanceSystem::canWithdraw(double)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
+		structural.facade.BankAccount::setBalance(double)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
+		java.io.PrintStream::println(java.lang.String)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
 	public boolean structural.facade.BankAccountBalanceSystem::canWithdraw(double cash) invokes: 
-		this.bankAccount::getBalance()
+		structural.facade.BankAccount::getBalance()
 
 
 Class: structural.adapter.Test
@@ -1013,20 +1014,20 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void structural.adapter.Test::main(String[] args) invokes: 
-		System.out::println("The Enemy Tank")
-		rx7Tank::assignDriver("Frank")
-		rx7Tank::driveForward()
-		rx7Tank::fireWeapon()
-		System.out::println()
-		System.out::println("The Robot")
-		fredTheRobot::reactToHuman("Paul")
-		fredTheRobot::walkForward()
-		fredTheRobot::smashwithHands()
-		System.out::println()
-		System.out::println("The Robot with Adapter")
-		robotAdapter::assignDriver("Mark")
-		robotAdapter::driveForward()
-		robotAdapter::fireWeapon()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyTank::assignDriver(java.lang.String)
+		structural.adapter.EnemyTank::driveForward()
+		structural.adapter.EnemyTank::fireWeapon()
+		java.io.PrintStream::println()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyRobot::reactToHuman(java.lang.String)
+		structural.adapter.EnemyRobot::walkForward()
+		structural.adapter.EnemyRobot::smashwithHands()
+		java.io.PrintStream::println()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyAttacker::assignDriver(java.lang.String)
+		structural.adapter.EnemyAttacker::driveForward()
+		structural.adapter.EnemyAttacker::fireWeapon()
 
 
 Class: structural.adapter.EnemyRobot
@@ -1035,13 +1036,13 @@ Fields:
 	Random generator
 Methods: 
 	public void structural.adapter.EnemyRobot::smashwithHands() invokes: 
-		generator::nextInt(10)
-		System.out::println("Enemy Robot causes " + attackDamage + " damage with its hands")
+		java.util.Random::nextInt(int)
+		java.io.PrintStream::println(java.lang.String)
 	public void structural.adapter.EnemyRobot::walkForward() invokes: 
-		generator::nextInt(5)
-		System.out::println("Enemy Robot walks forward " + movement + " spaces")
+		java.util.Random::nextInt(int)
+		java.io.PrintStream::println(java.lang.String)
 	public void structural.adapter.EnemyRobot::reactToHuman(String driverName) invokes: 
-		System.out::println("Enemy Robot Tramps on " + driverName + "!")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: structural.adapter.TestEnemyAttackers
@@ -1049,20 +1050,20 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void structural.adapter.TestEnemyAttackers::main(String[] args) invokes: 
-		System.out::println("The Robot")
-		fredTheRobot::reactToHuman("Paul")
-		fredTheRobot::walkForward()
-		fredTheRobot::smashwithHands()
-		System.out::println()
-		System.out::println("The Enemy Tank")
-		rx7Tank::assignDriver("Frank")
-		rx7Tank::driveForward()
-		rx7Tank::fireWeapon()
-		System.out::println()
-		System.out::println("The Robot with Adapter")
-		robotAdapter::assignDriver("Mark")
-		robotAdapter::driveForward()
-		robotAdapter::fireWeapon()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyRobot::reactToHuman(java.lang.String)
+		structural.adapter.EnemyRobot::walkForward()
+		structural.adapter.EnemyRobot::smashwithHands()
+		java.io.PrintStream::println()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyTank::assignDriver(java.lang.String)
+		structural.adapter.EnemyTank::driveForward()
+		structural.adapter.EnemyTank::fireWeapon()
+		java.io.PrintStream::println()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyAttacker::assignDriver(java.lang.String)
+		structural.adapter.EnemyAttacker::driveForward()
+		structural.adapter.EnemyAttacker::fireWeapon()
 
 
 Class: structural.adapter.EnemyRobotAdapter
@@ -1071,14 +1072,14 @@ Fields:
 	private EnemyRobot robot
 Methods: 
 	public structural.adapter.EnemyRobotAdapter::EnemyRobotAdapter(EnemyRobot robot) invokes: 
-		this::setRobot(robot)
+		structural.adapter.EnemyRobotAdapter::setRobot(structural.adapter.EnemyRobot)
 	public void structural.adapter.EnemyRobotAdapter::setRobot(EnemyRobot robot)
 	@Override public void structural.adapter.EnemyRobotAdapter::fireWeapon() invokes: 
-		robot::smashwithHands()
+		structural.adapter.EnemyRobot::smashwithHands()
 	@Override public void structural.adapter.EnemyRobotAdapter::driveForward() invokes: 
-		robot::walkForward()
+		structural.adapter.EnemyRobot::walkForward()
 	@Override public void structural.adapter.EnemyRobotAdapter::assignDriver(String driverName) invokes: 
-		robot::reactToHuman(driverName)
+		structural.adapter.EnemyRobot::reactToHuman(java.lang.String)
 
 
 Class: structural.adapter.EnemyTank
@@ -1087,13 +1088,13 @@ Fields:
 	private Random generator
 Methods: 
 	@Override public void structural.adapter.EnemyTank::fireWeapon() invokes: 
-		generator::nextInt(10)
-		System.out::println("Enemy Tank does " + attackDamage + " damage")
+		java.util.Random::nextInt(int)
+		java.io.PrintStream::println(java.lang.String)
 	@Override public void structural.adapter.EnemyTank::driveForward() invokes: 
-		generator::nextInt(5)
-		System.out::println("Enemy Tank moves " + movement + " spaces")
+		java.util.Random::nextInt(int)
+		java.io.PrintStream::println(java.lang.String)
 	@Override public void structural.adapter.EnemyTank::assignDriver(String driverName) invokes: 
-		System.out::println(driverName + " is driving the tank")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: behavioral.template_method.Test
@@ -1101,9 +1102,9 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.template_method.Test::main(String[] args) invokes: 
-		game::play()
-		System.out::println()
-		game::play()
+		behavioral.template_method.Game::play()
+		java.io.PrintStream::println()
+		behavioral.template_method.Game::play()
 
 
 Class: behavioral.template_method.Football
@@ -1112,11 +1113,11 @@ Superclasses:
 Fields: 
 Methods: 
 	@Override protected void behavioral.template_method.Football::initialize() invokes: 
-		System.out::println("Football game initialized! Start playing.")
+		java.io.PrintStream::println(java.lang.String)
 	@Override protected void behavioral.template_method.Football::start() invokes: 
-		System.out::println("Football game started. Enjoy the game!")
+		java.io.PrintStream::println(java.lang.String)
 	@Override protected void behavioral.template_method.Football::end() invokes: 
-		System.out::println("Football game finished!")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: behavioral.template_method.Basketball
@@ -1125,11 +1126,11 @@ Superclasses:
 Fields: 
 Methods: 
 	@Override protected void behavioral.template_method.Basketball::initialize() invokes: 
-		System.out::println("Basketball game initialized! Start playing.")
+		java.io.PrintStream::println(java.lang.String)
 	@Override protected void behavioral.template_method.Basketball::start() invokes: 
-		System.out::println("Basketball game started. Enjoy the game!")
+		java.io.PrintStream::println(java.lang.String)
 	@Override protected void behavioral.template_method.Basketball::end() invokes: 
-		System.out::println("Basketball game finished!")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: behavioral.template_method.Game
@@ -1137,9 +1138,9 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public final void behavioral.template_method.Game::play() invokes: 
-		Game::initialize()
-		Game::start()
-		Game::end()
+		behavioral.template_method.Game::initialize()
+		behavioral.template_method.Game::start()
+		behavioral.template_method.Game::end()
 	protected abstract void behavioral.template_method.Game::initialize()
 	protected abstract void behavioral.template_method.Game::start()
 	protected abstract void behavioral.template_method.Game::end()
@@ -1150,13 +1151,13 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.chain_of_responsibility.Test::main(String[] args) invokes: 
-		Test::getChainOfLoggers()
-		chain::log(new LogRequest("This is a standard information",StandardLogRequestLevel.INFO))
-		chain::log(new LogRequest("This is a debug level information",StandardLogRequestLevel.DEBUG))
-		chain::log(new LogRequest("This is an error level information",StandardLogRequestLevel.ERROR))
+		behavioral.chain_of_responsibility.Test::getChainOfLoggers()
+		behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest)
+		behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest)
+		behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest)
 	private static ILogger behavioral.chain_of_responsibility.Test::getChainOfLoggers() invokes: 
-		errorLogger::setNextLogger(fileLogger)
-		fileLogger::setNextLogger(consoleLogger)
+		behavioral.chain_of_responsibility.ILogger::setNextLogger(behavioral.chain_of_responsibility.ILogger)
+		behavioral.chain_of_responsibility.ILogger::setNextLogger(behavioral.chain_of_responsibility.ILogger)
 
 
 Class: behavioral.chain_of_responsibility.FileLogger
@@ -1170,11 +1171,11 @@ Methods:
 	public String behavioral.chain_of_responsibility.FileLogger::getFilePath()
 	public void behavioral.chain_of_responsibility.FileLogger::setFilePath(String filePath)
 	@Override protected void behavioral.chain_of_responsibility.FileLogger::write(LogRequest request) invokes: 
-		writer::append(request.getMessage() + "\n")
-		request::getMessage()
-		e::printStackTrace()
-		System.out::println("File " + filePath + ":\n"+ request.getMessage())
-		request::getMessage()
+		java.io.Writer::append(java.lang.CharSequence)
+		behavioral.chain_of_responsibility.LogRequest::getMessage()
+		java.lang.Throwable::printStackTrace()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.chain_of_responsibility.LogRequest::getMessage()
 
 
 Class: behavioral.chain_of_responsibility.ConsoleLogger
@@ -1184,8 +1185,8 @@ Fields:
 Methods: 
 	public behavioral.chain_of_responsibility.ConsoleLogger::ConsoleLogger(LogRequestLevel level)
 	@Override protected void behavioral.chain_of_responsibility.ConsoleLogger::write(LogRequest request) invokes: 
-		System.out::println(request.getMessage())
-		request::getMessage()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.chain_of_responsibility.LogRequest::getMessage()
 
 
 Class: behavioral.chain_of_responsibility.LogRequest
@@ -1208,8 +1209,8 @@ Fields:
 Methods: 
 	public behavioral.chain_of_responsibility.ErrorLogger::ErrorLogger(LogRequestLevel level)
 	@Override protected void behavioral.chain_of_responsibility.ErrorLogger::write(LogRequest request) invokes: 
-		System.err::println(request.getMessage())
-		request::getMessage()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.chain_of_responsibility.LogRequest::getMessage()
 
 
 Class: behavioral.chain_of_responsibility.Logger
@@ -1221,11 +1222,11 @@ Methods:
 	public behavioral.chain_of_responsibility.Logger::Logger(LogRequestLevel level)
 	@Override public void behavioral.chain_of_responsibility.Logger::setNextLogger(ILogger nextLogger)
 	@Override public void behavioral.chain_of_responsibility.Logger::log(LogRequest request) invokes: 
-		this.level::value()
-		request.getLevel()::value()
-		request::getLevel()
-		Logger::write(request)
-		nextLogger::log(request)
+		behavioral.chain_of_responsibility.LogRequestLevel::value()
+		behavioral.chain_of_responsibility.LogRequestLevel::value()
+		behavioral.chain_of_responsibility.LogRequest::getLevel()
+		behavioral.chain_of_responsibility.Logger::write(behavioral.chain_of_responsibility.LogRequest)
+		behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest)
 	protected abstract void behavioral.chain_of_responsibility.Logger::write(LogRequest request)
 
 
@@ -1234,21 +1235,21 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.command.Test::main(String[] args) invokes: 
-		CommandManager::getInstance(CommandManager.class)
-		manager::execute(new SwitchOnCommand(tv))
-		manager::undo()
-		manager::redo()
-		manager::execute(new SwitchOffCommand(tv))
-		manager::undo()
-		manager::redo()
-		manager::execute(new SwitchOnCommand(tv))
-		manager::execute(new SwitchChannelCommand(tv,1))
-		manager::execute(new SwitchChannelCommand(tv,2))
-		manager::execute(new SwitchChannelCommand(tv,3))
-		manager::undo()
-		manager::undo()
-		manager::redo()
-		manager::history()
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::undo()
+		behavioral.command.CommandManager::redo()
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::undo()
+		behavioral.command.CommandManager::redo()
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::undo()
+		behavioral.command.CommandManager::undo()
+		behavioral.command.CommandManager::redo()
+		behavioral.command.CommandManager::history()
 
 
 Class: behavioral.command.TV
@@ -1271,11 +1272,11 @@ Fields:
 Methods: 
 	public behavioral.command.SwitchOffCommand::SwitchOffCommand(TV tv)
 	@Override public void behavioral.command.SwitchOffCommand::execute() invokes: 
-		tv::switchOff()
+		behavioral.command.TV::switchOff()
 	@Override public void behavioral.command.SwitchOffCommand::undo() invokes: 
-		tv::switchOn()
+		behavioral.command.TV::switchOn()
 	@Override public String behavioral.command.SwitchOffCommand::getName() invokes: 
-		tv::isOn()
+		behavioral.command.TV::isOn()
 
 
 Class: behavioral.command.SwitchChannelCommand
@@ -1287,13 +1288,13 @@ Fields:
 Methods: 
 	public behavioral.command.SwitchChannelCommand::SwitchChannelCommand(TV tv, int newChannel)
 	@Override public void behavioral.command.SwitchChannelCommand::execute() invokes: 
-		tv::getChannel()
-		tv::switchChannel(newChannel)
+		behavioral.command.TV::getChannel()
+		behavioral.command.TV::switchChannel(int)
 	@Override public void behavioral.command.SwitchChannelCommand::undo() invokes: 
-		tv::getChannel()
-		tv::switchChannel(oldChannel)
+		behavioral.command.TV::getChannel()
+		behavioral.command.TV::switchChannel(int)
 	@Override public String behavioral.command.SwitchChannelCommand::getName() invokes: 
-		tv::getChannel()
+		behavioral.command.TV::getChannel()
 
 
 Class: behavioral.command.SwitchOnCommand
@@ -1303,11 +1304,11 @@ Fields:
 Methods: 
 	public behavioral.command.SwitchOnCommand::SwitchOnCommand(TV tv)
 	@Override public void behavioral.command.SwitchOnCommand::execute() invokes: 
-		tv::switchOn()
+		behavioral.command.TV::switchOn()
 	@Override public void behavioral.command.SwitchOnCommand::undo() invokes: 
-		tv::switchOff()
+		behavioral.command.TV::switchOff()
 	@Override public String behavioral.command.SwitchOnCommand::getName() invokes: 
-		tv::isOn()
+		behavioral.command.TV::isOn()
 
 
 Class: behavioral.command.CommandManager
@@ -1319,20 +1320,28 @@ Fields:
 	private List<String> history
 Methods: 
 	public void behavioral.command.CommandManager::history() invokes: 
-		history::forEach(null)
+		java.lang.Iterable<java.lang.String>::forEach(java.util.function.Consumer<? super java.lang.String>)
 	public void behavioral.command.CommandManager::execute(Command command) invokes: 
-		command::execute()
-		undoStack::push(command)
-		history::add(command.getName())
-		command::getName()
+		behavioral.command.Command::execute()
+		java.util.Stack<behavioral.command.Command>::push(behavioral.command.Command)
+		java.util.List<java.lang.String>::add(java.lang.String)
+		behavioral.command.Command::getName()
 	public void behavioral.command.CommandManager::undo() invokes: 
-		Optional::of(undoStack.pop())
-		undoStack::pop()
-		command::ifPresent(null)
+		java.util.Optional::of(behavioral.command.Command)
+		java.util.Stack<behavioral.command.Command>::pop()
+		java.util.Optional<behavioral.command.Command>::ifPresent(java.util.function.Consumer<? super behavioral.command.Command>)
+		behavioral.command.Command::undo()
+		java.util.Stack<behavioral.command.Command>::push(behavioral.command.Command)
+		java.util.List<java.lang.String>::add(java.lang.String)
+		behavioral.command.Command::getName()
 	public void behavioral.command.CommandManager::redo() invokes: 
-		Optional::of(redoStack.pop())
-		redoStack::pop()
-		command::ifPresent(null)
+		java.util.Optional::of(behavioral.command.Command)
+		java.util.Stack<behavioral.command.Command>::pop()
+		java.util.Optional<behavioral.command.Command>::ifPresent(java.util.function.Consumer<? super behavioral.command.Command>)
+		behavioral.command.Command::execute()
+		java.util.Stack<behavioral.command.Command>::push(behavioral.command.Command)
+		java.util.List<java.lang.String>::add(java.lang.String)
+		behavioral.command.Command::getName()
 
 
 Class: behavioral.observer.Test
@@ -1340,16 +1349,16 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.observer.Test::main(String[] args) invokes: 
-		stockGrabber::setIBMStock(197.00)
-		stockGrabber::setAppleStock(677.60)
-		stockGrabber::setGoogleStock(676.40)
-		stockGrabber::setIBMStock(197.00)
-		stockGrabber::setAppleStock(677.60)
-		stockGrabber::setGoogleStock(676.40)
-		stockGrabber::unregister(observer1)
-		stockGrabber::setIBMStock(197.00)
-		stockGrabber::setAppleStock(677.60)
-		stockGrabber::setGoogleStock(676.40)
+		behavioral.observer.StockGrabber::setIBMStock(double)
+		behavioral.observer.StockGrabber::setAppleStock(double)
+		behavioral.observer.StockGrabber::setGoogleStock(double)
+		behavioral.observer.StockGrabber::setIBMStock(double)
+		behavioral.observer.StockGrabber::setAppleStock(double)
+		behavioral.observer.StockGrabber::setGoogleStock(double)
+		behavioral.observer.StockGrabber::unregister(behavioral.observer.Observer)
+		behavioral.observer.StockGrabber::setIBMStock(double)
+		behavioral.observer.StockGrabber::setAppleStock(double)
+		behavioral.observer.StockGrabber::setGoogleStock(double)
 
 
 Class: behavioral.observer.StockObserver
@@ -1363,19 +1372,19 @@ Fields:
 	private static int idTracker
 Methods: 
 	public behavioral.observer.StockObserver::StockObserver(StockGrabber stockGrabber) invokes: 
-		stockGrabber::register(this)
+		behavioral.observer.StockGrabber::register(behavioral.observer.Observer)
 	@Override public void behavioral.observer.StockObserver::update() invokes: 
-		stockGrabber::getIBMStock()
-		stockGrabber::getAppleStock()
-		stockGrabber::getGoogleStock()
-		StockObserver::displayPrices()
+		behavioral.observer.StockGrabber::getIBMStock()
+		behavioral.observer.StockGrabber::getAppleStock()
+		behavioral.observer.StockGrabber::getGoogleStock()
+		behavioral.observer.StockObserver::displayPrices()
 	public void behavioral.observer.StockObserver::displayPrices() invokes: 
-		buf::append("Observer " + id + "\n")
-		buf::append("IBM: " + ibmStock + "\n")
-		buf::append("Apple: " + appleStock + "\n")
-		buf::append("Google: " + googleStock + "\n")
-		System.out::println(buf.toString())
-		buf::toString()
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.StringBuffer::toString()
 
 
 Class: behavioral.observer.StockGrabber
@@ -1389,21 +1398,21 @@ Methods:
 	public behavioral.observer.StockGrabber::StockGrabber()
 	public double behavioral.observer.StockGrabber::getIBMStock()
 	public void behavioral.observer.StockGrabber::setIBMStock(double ibmStock) invokes: 
-		StockGrabber::notifyObserver()
+		behavioral.observer.StockGrabber::notifyObserver()
 	public double behavioral.observer.StockGrabber::getAppleStock()
 	public void behavioral.observer.StockGrabber::setAppleStock(double appleStock) invokes: 
-		StockGrabber::notifyObserver()
+		behavioral.observer.StockGrabber::notifyObserver()
 	public double behavioral.observer.StockGrabber::getGoogleStock()
 	public void behavioral.observer.StockGrabber::setGoogleStock(double googleStock) invokes: 
-		StockGrabber::notifyObserver()
+		behavioral.observer.StockGrabber::notifyObserver()
 	@Override public void behavioral.observer.StockGrabber::register(Observer observer) invokes: 
-		observers::add(observer)
+		java.util.List<behavioral.observer.Observer>::add(behavioral.observer.Observer)
 	@Override public void behavioral.observer.StockGrabber::unregister(Observer o) invokes: 
-		observers::indexOf(o)
-		System.out::println("Observer " + (observerIndex + 1) + " deleted")
-		observers::remove(observerIndex)
+		java.util.List<behavioral.observer.Observer>::indexOf(java.lang.Object)
+		java.io.PrintStream::println(java.lang.String)
+		java.util.List<behavioral.observer.Observer>::remove(int)
 	@Override public void behavioral.observer.StockGrabber::notifyObserver() invokes: 
-		observer::update()
+		behavioral.observer.Observer::update()
 
 
 Class: behavioral.mediator.ChatUser
@@ -1413,13 +1422,13 @@ Fields:
 Methods: 
 	public behavioral.mediator.ChatUser::ChatUser(String name, IChatRoom room)
 	@Override public void behavioral.mediator.ChatUser::send(String message, String userId) invokes: 
-		System.out::println(this.getName() + " ==> " + message)
-		this::getName()
-		this.getRoom()::sendMessage(message, userId)
-		this::getRoom()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.mediator.User::getName()
+		behavioral.mediator.IChatRoom::sendMessage(java.lang.String, java.lang.String)
+		behavioral.mediator.User::getRoom()
 	@Override public void behavioral.mediator.ChatUser::receive(String message) invokes: 
-		System.out::println(this.getName() + " <== " + message)
-		this::getName()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.mediator.User::getName()
 
 
 Class: behavioral.mediator.Test
@@ -1427,15 +1436,15 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.mediator.Test::main(String[] args) invokes: 
-		room::addUser(alex)
-		room::addUser(brian)
-		room::addUser(charles)
-		room::addUser(david)
-		alex::send("Hello " + brian.getName(), brian.getId())
-		brian::getName()
-		brian::getId()
-		brian::send("Hey dude", alex.getId())
-		alex::getId()
+		behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User)
+		behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User)
+		behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User)
+		behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User)
+		behavioral.mediator.User::send(java.lang.String, java.lang.String)
+		behavioral.mediator.User::getName()
+		behavioral.mediator.User::getId()
+		behavioral.mediator.User::send(java.lang.String, java.lang.String)
+		behavioral.mediator.User::getId()
 
 
 Class: behavioral.mediator.User
@@ -1447,7 +1456,7 @@ Fields:
 	private static int idCounter
 Methods: 
 	public behavioral.mediator.User::User(String name, IChatRoom room) invokes: 
-		String::valueOf(idCounter++)
+		java.lang.String::valueOf(int)
 	public String behavioral.mediator.User::getId()
 	public String behavioral.mediator.User::getName()
 	public IChatRoom behavioral.mediator.User::getRoom()
@@ -1461,12 +1470,13 @@ Fields:
 	private Map<String,User> users
 Methods: 
 	@Override public void behavioral.mediator.ChatRoom::sendMessage(String message, String userId) invokes: 
-		Optional::of(users.get(userId))
-		users::get(userId)
-		user::ifPresent(null)
+		java.util.Optional::of(behavioral.mediator.User)
+		java.util.Map<java.lang.String,behavioral.mediator.User>::get(java.lang.Object)
+		java.util.Optional<behavioral.mediator.User>::ifPresent(java.util.function.Consumer<? super behavioral.mediator.User>)
+		behavioral.mediator.User::receive(java.lang.String)
 	@Override public void behavioral.mediator.ChatRoom::addUser(User user) invokes: 
-		users::put(user.getId(), user)
-		user::getId()
+		java.util.Map<java.lang.String,behavioral.mediator.User>::put(java.lang.String, behavioral.mediator.User)
+		behavioral.mediator.User::getId()
 
 
 Class: behavioral.strategy.Test
@@ -1474,16 +1484,16 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.strategy.Test::main(String[] args) invokes: 
-		Test::computeAndDisplay(new Add(), "+", x, y)
-		Test::computeAndDisplay(new Subtract(), "-", x, y)
-		Test::computeAndDisplay(new Multiply(), "*", x, y)
-		Test::computeAndDisplay(new Divide(), "/", x, y)
-		Test::computeAndDisplay(new Modulo(), "%", x, y)
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
 	public static void behavioral.strategy.Test::computeAndDisplay(ArithmeticOperation anOperation, String operationSymbol, int x, int y) invokes: 
-		Calculator::setOperation(anOperation)
-		Calculator::computeOperation(x, y)
-		System.out::println(x + " " + operationSymbol+ " "+ y+ " = "+ Calculator.getResult())
-		Calculator::getResult()
+		behavioral.strategy.Calculator::setOperation(behavioral.strategy.ArithmeticOperation)
+		behavioral.strategy.Calculator::computeOperation(int, int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.strategy.Calculator::getResult()
 
 
 Class: behavioral.strategy.Multiply
@@ -1528,7 +1538,7 @@ Fields:
 	private static ArithmeticOperation operation
 Methods: 
 	public static void behavioral.strategy.Calculator::computeOperation(int x, int y) invokes: 
-		operation::execute(x, y)
+		behavioral.strategy.ArithmeticOperation::execute(int, int)
 	public static int behavioral.strategy.Calculator::getResult()
 	public static void behavioral.strategy.Calculator::setOperation(ArithmeticOperation anOperation)
 	public static void behavioral.strategy.Calculator::reset()
@@ -1539,17 +1549,17 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.state.Test::main(String[] args) invokes: 
-		atm::insertCard()
-		atm::ejectCard()
-		atm::insertCard()
-		atm::insertPin(12)
-		atm::insertCard()
-		atm::insertPin(1234)
-		atm::requestCash(2500)
-		atm::insertCard()
-		atm::insertPin(1234)
-		atm::requestCash(2000)
-		atm::insertCard()
+		behavioral.state.ATMMachine::insertCard()
+		behavioral.state.ATMMachine::ejectCard()
+		behavioral.state.ATMMachine::insertCard()
+		behavioral.state.ATMMachine::insertPin(int)
+		behavioral.state.ATMMachine::insertCard()
+		behavioral.state.ATMMachine::insertPin(int)
+		behavioral.state.ATMMachine::requestCash(int)
+		behavioral.state.ATMMachine::insertCard()
+		behavioral.state.ATMMachine::insertPin(int)
+		behavioral.state.ATMMachine::requestCash(int)
+		behavioral.state.ATMMachine::insertCard()
 
 
 Class: behavioral.state.ATMMachine
@@ -1572,13 +1582,13 @@ Methods:
 	public int behavioral.state.ATMMachine::getCashInMachine()
 	public void behavioral.state.ATMMachine::setCashInMachine(int cashInMachine)
 	public void behavioral.state.ATMMachine::insertCard() invokes: 
-		this.atmState::insertCard()
+		behavioral.state.IATMState::insertCard()
 	public void behavioral.state.ATMMachine::ejectCard() invokes: 
-		this.atmState::ejectCard()
+		behavioral.state.IATMState::ejectCard()
 	public void behavioral.state.ATMMachine::insertPin(int pin) invokes: 
-		this.atmState::insertPin(pin)
+		behavioral.state.IATMState::insertPin(int)
 	public void behavioral.state.ATMMachine::requestCash(int cash) invokes: 
-		this.atmState::requestCash(cash)
+		behavioral.state.IATMState::requestCash(int)
 
 
 Class: behavioral.state.CorrectPin
@@ -1588,23 +1598,23 @@ Fields:
 Methods: 
 	public behavioral.state.CorrectPin::CorrectPin(ATMMachine context)
 	@Override public void behavioral.state.CorrectPin::insertCard() invokes: 
-		System.out::println("You can't insert more than one card")
+		java.io.PrintStream::println(java.lang.String)
 	@Override public void behavioral.state.CorrectPin::ejectCard() invokes: 
-		System.out::println("Card Ejected")
-		this.context::setATMState(this.context.getNoCardState())
-		this.context::getNoCardState()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getNoCardState()
 	@Override public void behavioral.state.CorrectPin::insertPin(int pin) invokes: 
-		System.out::println("Already entered PIN")
+		java.io.PrintStream::println(java.lang.String)
 	@Override public void behavioral.state.CorrectPin::requestCash(int cash) invokes: 
-		this.context::getCashInMachine()
-		System.out::println("Not enough cash to complete this transaction")
-		System.out::println(cash + " is provided by the machine")
-		this.context::setCashInMachine(this.context.getCashInMachine() - cash)
-		this.context::getCashInMachine()
-		this::ejectCard()
-		this.context::getCashInMachine()
-		this.context::setATMState(this.context.getNoCashState())
-		this.context::getNoCashState()
+		behavioral.state.ATMMachine::getCashInMachine()
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setCashInMachine(int)
+		behavioral.state.ATMMachine::getCashInMachine()
+		behavioral.state.CorrectPin::ejectCard()
+		behavioral.state.ATMMachine::getCashInMachine()
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getNoCashState()
 
 
 Class: behavioral.state.HasCard
@@ -1614,19 +1624,19 @@ Fields:
 Methods: 
 	public behavioral.state.HasCard::HasCard(ATMMachine context)
 	@Override public void behavioral.state.HasCard::insertCard() invokes: 
-		System.out::println("You can't insert more than one card")
+		java.io.PrintStream::println(java.lang.String)
 	@Override public void behavioral.state.HasCard::ejectCard() invokes: 
-		System.out::println("Card Ejected")
-		this.context::setATMState(this.context.getNoCardState())
-		this.context::getNoCardState()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getNoCardState()
 	@Override public void behavioral.state.HasCard::insertPin(int pin) invokes: 
-		System.out::println("Correct PIN")
-		this.context::setATMState(this.context.getCorrectPinState())
-		this.context::getCorrectPinState()
-		System.out::println("Wrong PIN")
-		this::ejectCard()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getCorrectPinState()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.HasCard::ejectCard()
 	@Override public void behavioral.state.HasCard::requestCash(int cash) invokes: 
-		System.out::println("Enter PIN First")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: behavioral.state.NoCard
@@ -1636,17 +1646,17 @@ Fields:
 Methods: 
 	public behavioral.state.NoCard::NoCard(ATMMachine context)
 	@Override public void behavioral.state.NoCard::insertCard() invokes: 
-		System.out::println("Please enter a PIN")
-		this.context::setATMState(this.context.getHasCardState())
-		this.context::getHasCardState()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getHasCardState()
 	@Override public void behavioral.state.NoCard::ejectCard() invokes: 
-		NoCard::defaultMessage()
+		behavioral.state.NoCard::defaultMessage()
 	@Override public void behavioral.state.NoCard::insertPin(int pin) invokes: 
-		NoCard::defaultMessage()
+		behavioral.state.NoCard::defaultMessage()
 	@Override public void behavioral.state.NoCard::requestCash(int cash) invokes: 
-		NoCard::defaultMessage()
+		behavioral.state.NoCard::defaultMessage()
 	private void behavioral.state.NoCard::defaultMessage() invokes: 
-		System.out::println("Enter a card first")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: behavioral.state.NoCash
@@ -1656,15 +1666,15 @@ Fields:
 Methods: 
 	public behavioral.state.NoCash::NoCash(ATMMachine context)
 	@Override public void behavioral.state.NoCash::insertCard() invokes: 
-		NoCash::defaultMessage()
+		behavioral.state.NoCash::defaultMessage()
 	@Override public void behavioral.state.NoCash::ejectCard() invokes: 
-		NoCash::defaultMessage()
+		behavioral.state.NoCash::defaultMessage()
 	@Override public void behavioral.state.NoCash::insertPin(int pin) invokes: 
-		NoCash::defaultMessage()
+		behavioral.state.NoCash::defaultMessage()
 	@Override public void behavioral.state.NoCash::requestCash(int cash) invokes: 
-		NoCash::defaultMessage()
+		behavioral.state.NoCash::defaultMessage()
 	private void behavioral.state.NoCash::defaultMessage() invokes: 
-		System.out::println("No cash in the machine")
+		java.io.PrintStream::println(java.lang.String)
 
 
 Class: behavioral.state.ATMState
@@ -1680,24 +1690,24 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.memento.Test::main(String[] args) invokes: 
-		originator::setState("State 1")
-		originator::setState("State 2")
-		careTaker::addMemento(originator.externalizeState())
-		originator::externalizeState()
-		originator::setState("State 3")
-		careTaker::addMemento(originator.externalizeState())
-		originator::externalizeState()
-		originator::setState("State 4")
-		System.out::println("Originator's current state: " + originator.getState())
-		originator::getState()
-		originator::restoreState(careTaker.get(0))
-		careTaker::get(0)
-		System.out::println("Originator's first saved state: " + originator.getState())
-		originator::getState()
-		originator::restoreState(careTaker.get(1))
-		careTaker::get(1)
-		System.out::println("Originator's second saved state: " + originator.getState())
-		originator::getState()
+		behavioral.memento.Originator::setState(java.lang.String)
+		behavioral.memento.Originator::setState(java.lang.String)
+		behavioral.memento.CareTaker::addMemento(behavioral.memento.Memento)
+		behavioral.memento.Originator::externalizeState()
+		behavioral.memento.Originator::setState(java.lang.String)
+		behavioral.memento.CareTaker::addMemento(behavioral.memento.Memento)
+		behavioral.memento.Originator::externalizeState()
+		behavioral.memento.Originator::setState(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.memento.Originator::getState()
+		behavioral.memento.Originator::restoreState(behavioral.memento.Memento)
+		behavioral.memento.CareTaker::get(int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.memento.Originator::getState()
+		behavioral.memento.Originator::restoreState(behavioral.memento.Memento)
+		behavioral.memento.CareTaker::get(int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.memento.Originator::getState()
 
 
 Class: behavioral.memento.CareTaker
@@ -1706,9 +1716,9 @@ Fields:
 	List<Memento> mementos
 Methods: 
 	public void behavioral.memento.CareTaker::addMemento(Memento memento) invokes: 
-		mementos::add(memento)
+		java.util.List<behavioral.memento.Memento>::add(behavioral.memento.Memento)
 	public Memento behavioral.memento.CareTaker::get(int index) invokes: 
-		mementos::get(index)
+		java.util.List<behavioral.memento.Memento>::get(int)
 
 
 Class: behavioral.memento.Originator
@@ -1720,8 +1730,8 @@ Methods:
 	public void behavioral.memento.Originator::setState(String state)
 	public Memento behavioral.memento.Originator::externalizeState()
 	public void behavioral.memento.Originator::restoreState(Memento memento) invokes: 
-		Originator::setState(memento.getState())
-		memento::getState()
+		behavioral.memento.Originator::setState(java.lang.String)
+		behavioral.memento.Memento::getState()
 
 
 Class: behavioral.memento.Memento
@@ -1738,15 +1748,15 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.visitor.Test::main(String[] args) invokes: 
-		Arrays::asList(new Necessity("Milk",3.47), new Liquor("Vodka",11.99), new Tobacco("Cigar",19.99))
-		System.out::println("Tax prices\n==========")
-		Test::computeTaxForProducts(products, new TaxVisitor())
-		System.out::println("Holiday Tax prices\n==================")
-		Test::computeTaxForProducts(products, new TaxHolidayVisitor())
+		java.util.Arrays::asList(behavioral.visitor.Product[])
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.visitor.Test::computeTaxForProducts(java.util.List<behavioral.visitor.Product>, behavioral.visitor.TaxVisitor)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.visitor.Test::computeTaxForProducts(java.util.List<behavioral.visitor.Product>, behavioral.visitor.TaxVisitor)
 	private static void behavioral.visitor.Test::computeTaxForProducts(List<Product> products, TaxVisitor taxVisitor) invokes: 
-		product::accept(taxVisitor)
-		System.out::println(taxVisitor.getComputedTax() + "\n")
-		taxVisitor::getComputedTax()
+		behavioral.visitor.Visitable::accept(behavioral.visitor.Visitor)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.visitor.TaxVisitor::getComputedTax()
 
 
 Class: behavioral.visitor.Necessity
@@ -1756,7 +1766,7 @@ Fields:
 Methods: 
 	public behavioral.visitor.Necessity::Necessity(String name, double price)
 	@Override public void behavioral.visitor.Necessity::accept(Visitor visitor) invokes: 
-		visitor::visit(this)
+		behavioral.visitor.Visitor::visit(behavioral.visitor.Necessity)
 
 
 Class: behavioral.visitor.TaxHolidayVisitor
@@ -1765,9 +1775,9 @@ Superclasses:
 Fields: 
 Methods: 
 	@Override public void behavioral.visitor.TaxHolidayVisitor::visit(Liquor liquor) invokes: 
-		TaxHolidayVisitor::computeTax(liquor)
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
 	@Override public void behavioral.visitor.TaxHolidayVisitor::visit(Tobacco tobacco) invokes: 
-		TaxHolidayVisitor::computeTax(tobacco)
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
 
 
 Class: behavioral.visitor.TaxVisitor
@@ -1779,16 +1789,16 @@ Methods:
 	public double behavioral.visitor.TaxVisitor::getComputedTax()
 	public double behavioral.visitor.TaxVisitor::getTaxRate()
 	protected void behavioral.visitor.TaxVisitor::computeTax(Product product) invokes: 
-		System.out::println(product.getClass().getSimpleName() + " item: Price with Tax")
-		product.getClass()::getSimpleName()
-		product::getClass()
-		product::getPrice()
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.Class<>::getSimpleName()
+		java.lang.Object::getClass()
+		behavioral.visitor.Product::getPrice()
 	@Override public void behavioral.visitor.TaxVisitor::visit(Liquor liquor) invokes: 
-		TaxVisitor::computeTax(liquor)
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
 	@Override public void behavioral.visitor.TaxVisitor::visit(Tobacco tobacco) invokes: 
-		TaxVisitor::computeTax(tobacco)
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
 	@Override public void behavioral.visitor.TaxVisitor::visit(Necessity necessity) invokes: 
-		TaxVisitor::computeTax(necessity)
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
 
 
 Class: behavioral.visitor.Product
@@ -1798,8 +1808,8 @@ Fields:
 	private double price
 Methods: 
 	public behavioral.visitor.Product::Product(String name, double price) invokes: 
-		this::setName(name)
-		this::setPrice(price)
+		behavioral.visitor.Product::setName(java.lang.String)
+		behavioral.visitor.Product::setPrice(double)
 	public String behavioral.visitor.Product::getName()
 	public void behavioral.visitor.Product::setName(String name)
 	public double behavioral.visitor.Product::getPrice()
@@ -1813,7 +1823,7 @@ Fields:
 Methods: 
 	public behavioral.visitor.Liquor::Liquor(String name, double price)
 	@Override public void behavioral.visitor.Liquor::accept(Visitor visitor) invokes: 
-		visitor::visit(this)
+		behavioral.visitor.Visitor::visit(behavioral.visitor.Liquor)
 
 
 Class: behavioral.visitor.Tobacco
@@ -1823,7 +1833,7 @@ Fields:
 Methods: 
 	public behavioral.visitor.Tobacco::Tobacco(String name, double price)
 	@Override public void behavioral.visitor.Tobacco::accept(Visitor visitor) invokes: 
-		visitor::visit(this)
+		behavioral.visitor.Visitor::visit(behavioral.visitor.Tobacco)
 
 
 Class: behavioral.iterator.Test
@@ -1831,24 +1841,24 @@ Superclasses: java.lang.Object
 Fields: 
 Methods: 
 	public static void behavioral.iterator.Test::main(String[] args) invokes: 
-		songs::addSong("Imagine", "John Lennon", 1971)
-		songs::addSong("American Pie", "Don McLean", 1971)
-		songs::addSong("I Will Survive", "Gloria Gyanor", 1979)
-		System.out::println("Songs in a SongList")
-		DJ::displaySongs()
-		System.out::println()
-		songs::addSong("Roam", "B52s", 1989)
-		songs::addSong("Cruel Summer", "Bananarama", 1984)
-		songs::addSong("Head over Heels", "Tears for Fears", 1985)
-		System.out::println("Songs in a SongArray")
-		DJ::displaySongs()
-		System.out::println()
-		songs::addSong("Losing My Religion", "REM", 1991)
-		songs::addSong("Creep", "Radiohead", 1993)
-		songs::addSong("Walk on the Ocean", "Toad the Wet Sprocket", 1991)
-		System.out::println("Songs in a SongHashtable")
-		DJ::displaySongs()
-		System.out::println()
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.iterator.DiscJockey::displaySongs()
+		java.io.PrintStream::println()
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.iterator.DiscJockey::displaySongs()
+		java.io.PrintStream::println()
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.iterator.DiscJockey::displaySongs()
+		java.io.PrintStream::println()
 
 
 Class: behavioral.iterator.SongHashtable
@@ -1858,10 +1868,10 @@ Fields:
 	private int hashKey
 Methods: 
 	@Override public void behavioral.iterator.SongHashtable::addSong(String songName, String bandName, int releaseYear) invokes: 
-		table::put(hashKey++, new Song(songName,bandName,releaseYear))
+		java.util.Hashtable<java.lang.Integer,structural.composite.Song>::put(java.lang.Integer, structural.composite.Song)
 	@Override public Iterator<Song> behavioral.iterator.SongHashtable::iterator() invokes: 
-		table.values()::iterator()
-		table::values()
+		java.util.Collection<structural.composite.Song>::iterator()
+		java.util.Hashtable<java.lang.Integer,structural.composite.Song>::values()
 
 
 Class: behavioral.iterator.SongList
@@ -1870,9 +1880,9 @@ Fields:
 	private ArrayList<Song> songs
 Methods: 
 	@Override public void behavioral.iterator.SongList::addSong(String songName, String bandName, int releaseYear) invokes: 
-		songs::add(new Song(songName,bandName,releaseYear))
+		java.util.ArrayList<structural.composite.Song>::add(structural.composite.Song)
 	@Override public Iterator<Song> behavioral.iterator.SongList::iterator() invokes: 
-		songs::iterator()
+		java.util.ArrayList<structural.composite.Song>::iterator()
 
 
 Class: behavioral.iterator.SongArray
@@ -1885,12 +1895,12 @@ Methods:
 	public behavioral.iterator.SongArray::SongArray(int allocatedSize)
 	public int behavioral.iterator.SongArray::length()
 	private Song[] behavioral.iterator.SongArray::getFilledArray() invokes: 
-		this::length()
+		behavioral.iterator.SongArray::length()
 	@Override public void behavioral.iterator.SongArray::addSong(String songName, String bandName, int releaseYear)
 	@Override public Iterator<Song> behavioral.iterator.SongArray::iterator() invokes: 
-		Arrays.asList(this.getFilledArray())::iterator()
-		Arrays::asList(this.getFilledArray())
-		this::getFilledArray()
+		java.util.List<structural.composite.Song>::iterator()
+		java.util.Arrays::asList(structural.composite.Song[])
+		behavioral.iterator.SongArray::getFilledArray()
 
 
 Class: behavioral.iterator.Song
@@ -1905,10 +1915,10 @@ Methods:
 	public String behavioral.iterator.Song::getBandName()
 	public int behavioral.iterator.Song::getYearReleased()
 	@Override public String behavioral.iterator.Song::toString() invokes: 
-		buf::append("Title: " + songName + "\n")
-		buf::append("Band: " + bandName + "\n")
-		buf::append("Release year: " + yearReleased + "\n")
-		buf::toString()
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::toString()
 
 
 Class: behavioral.iterator.DiscJockey
@@ -1918,7 +1928,7 @@ Fields:
 Methods: 
 	public behavioral.iterator.DiscJockey::DiscJockey(SongAggregate songs)
 	public void behavioral.iterator.DiscJockey::displaySongs() invokes: 
-		song::displayInfo()
+		structural.composite.SongComponent::displayInfo()
 
 
 Class: behavioral.interpreter.Test
@@ -1927,14 +1937,14 @@ Fields:
 Methods: 
 	public static Expression behavioral.interpreter.Test::getIsFemaleExpression()
 	public static Expression behavioral.interpreter.Test::getIsMarriedWomanExpression() invokes: 
-		Test::getIsFemaleExpression()
+		behavioral.interpreter.Test::getIsFemaleExpression()
 	public static void behavioral.interpreter.Test::main(String[] args) invokes: 
-		Test::getIsFemaleExpression()
-		Test::getIsMarriedWomanExpression()
-		System.out::println(input + " " + isMarriedWoman.interpret(input))
-		isMarriedWoman::interpret(input)
-		System.out::println(input + " " + isFemale.interpret(input))
-		isFemale::interpret(input)
+		behavioral.interpreter.Test::getIsFemaleExpression()
+		behavioral.interpreter.Test::getIsMarriedWomanExpression()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
 
 
 Class: behavioral.interpreter.OrExpression
@@ -1944,8 +1954,8 @@ Fields:
 Methods: 
 	public behavioral.interpreter.OrExpression::OrExpression(Expression leftExpression, Expression rightExpression)
 	@Override public boolean behavioral.interpreter.OrExpression::interpret(String context) invokes: 
-		leftExpression::interpret(context)
-		rightExpression::interpret(context)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
 
 
 Class: behavioral.interpreter.TerminalExpression
@@ -1955,7 +1965,7 @@ Fields:
 Methods: 
 	public behavioral.interpreter.TerminalExpression::TerminalExpression(String data)
 	@Override public boolean behavioral.interpreter.TerminalExpression::interpret(String context) invokes: 
-		context::contains(data)
+		java.lang.String::contains(java.lang.CharSequence)
 
 
 Class: behavioral.interpreter.AndExpression
@@ -1965,8 +1975,8 @@ Fields:
 Methods: 
 	public behavioral.interpreter.AndExpression::AndExpression(Expression leftExpression, Expression rightExpression)
 	@Override public boolean behavioral.interpreter.AndExpression::interpret(String context) invokes: 
-		leftExpression::interpret(context)
-		rightExpression::interpret(context)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
 
 
 Class: behavioral.interpreter.BinaryExpression

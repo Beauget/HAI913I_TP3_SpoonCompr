@@ -1,7 +1,0 @@
-ClassCouple.java : structural.adapter.EnemyTank et structural.adapter.TestEnemyAttackers se sont appelee l'une l'autre 3 fois. 
-structural.adapter.EnemyTank : 100.0%  et structural.adapter.TestEnemyAttackers : 0.0% 
-
-ClassCouple.java : structural.adapter.TestEnemyAttackers et structural.adapter.EnemyRobot se sont appelee l'une l'autre 3 fois. 
-structural.adapter.TestEnemyAttackers : 0.0%  et structural.adapter.EnemyRobot : 100.0% 
-
-ProcessorClustering Conctructor: Au total il y a 6.0 invocations de classes 

@@ -88,6 +88,11 @@ public class DendrogramGraph {
 		Graphviz.fromGraph(g).render(Format.PNG).toFile(new File("dendrogram.png"));
 	}
 	public void createFiles() throws IOException {
+		
+		System.out.println("DendrogramGraph: affichage de DendrogramGraph.clusters (proviens de ProcessorClustering.clustering()) \n ");
+		for(ArrayList<String> array : clusters) {
+			System.out.println(array.toString());
+		}
 		this.saveGraph();
 		this.saveGraphAsPNG();
 	}

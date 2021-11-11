@@ -1,888 +1,1170 @@
 Static Call Graph
-Methods: 478.
-Invocations: 642.
-creational.builder.SophisticatedRobotBuilder::buildArms:
-	---> this.robot::setArms (1 time(s))
-
-behavioral.iterator.SongList::iterator:
-	---> songs::iterator (1 time(s))
-
-creational.builder.OldRobotBuilder::buildArms:
-	---> creational.builder.Robot::setArms (1 time(s))
-
-structural.bridge.Test::advancedRemoteTest:
-	---> advRemote::channelUp (2 time(s))
-	---> advRemote::volumeUp (3 time(s))
-	---> advRemote::volumeDown (1 time(s))
-	---> advRemote::channelDown (1 time(s))
-	---> System.out::println (1 time(s))
-	---> advRemote::mute (1 time(s))
-	---> advRemote::togglePower (2 time(s))
-
-behavioral.interpreter.Test::main:
-	---> behavioral.interpreter.Test::getIsMarriedWomanExpression (1 time(s))
-	---> isMarriedWoman::interpret (1 time(s))
-	---> System.out::println (2 time(s))
-	---> behavioral.interpreter.Test::getIsFemaleExpression (1 time(s))
-	---> isFemale::interpret (1 time(s))
-
-behavioral.command.SwitchOnCommand::execute:
-	---> tv::switchOn (1 time(s))
-
-behavioral.mediator.ChatRoom::sendMessage:
-	---> user::ifPresent (1 time(s))
-	---> users::get (1 time(s))
-	---> Optional::of (1 time(s))
-
-behavioral.state.CorrectPin::requestCash:
-	---> this.context::getCashInMachine (3 time(s))
-	---> this.context::setATMState (1 time(s))
-	---> this.context::setCashInMachine (1 time(s))
-	---> System.out::println (2 time(s))
-	---> this::ejectCard (1 time(s))
-	---> this.context::getNoCashState (1 time(s))
-
-behavioral.command.SwitchOnCommand::undo:
-	---> tv::switchOff (1 time(s))
-
-creational.singleton.Singleton::Singleton:
-	---> creational.singleton.Singleton::getRegistryKey (1 time(s))
-	---> this::getClass (1 time(s))
-	---> registry::register (1 time(s))
-
-structural.facade.BankAccountBalanceSystem::withdraw:
-	---> System.err::println (1 time(s))
-	---> this::getAccountBalance (3 time(s))
-	---> this::canWithdraw (1 time(s))
-	---> System.out::println (2 time(s))
-	---> this.bankAccount::setBalance (1 time(s))
-
-behavioral.interpreter.Test::getIsMarriedWomanExpression:
-	---> behavioral.interpreter.Test::getIsFemaleExpression (1 time(s))
-
-structural.decorator.CaramelDecorator::price:
-	---> this.beverage::price (1 time(s))
-
-behavioral.visitor.Necessity::accept:
-	---> visitor::visit (1 time(s))
-
-structural.bridge.Remote::togglePower:
-	---> device::getName (1 time(s))
-	---> device::disable (1 time(s))
-	---> device::enable (1 time(s))
-	---> device::isEnabled (2 time(s))
-	---> System.out::println (1 time(s))
-
-behavioral.state.ATMMachine::insertPin:
-	---> this.atmState::insertPin (1 time(s))
-
-behavioral.memento.CareTaker::get:
-	---> mementos::get (1 time(s))
-
-creational.factory.EnemyShip::displayEnemyShip:
-	---> System.out::println (1 time(s))
-
-structural.decorator.SugarDecorator::price:
-	---> this.beverage::price (1 time(s))
-
-behavioral.visitor.Product::Product:
-	---> this::setPrice (1 time(s))
-	---> this::setName (1 time(s))
-
-structural.composite.Test::main:
-	---> crazyLarry::displaySongList (1 time(s))
-	---> heavyMetal::add (2 time(s))
-	---> songGenres::add (2 time(s))
-	---> dubstep::add (2 time(s))
-	---> industrial::add (3 time(s))
-
-structural.decorator.Test::beveragesMenu:
-	---> System.out::println (3 time(s))
-
-structural.flyweight.Test::getRandomColor:
-	---> random::nextInt (1 time(s))
-
-behavioral.visitor.Tobacco::accept:
-	---> visitor::visit (1 time(s))
-
-behavioral.state.NoCash::defaultMessage:
-	---> System.out::println (1 time(s))
-
-creational.abstract_factory.ShapeProducer::createFactory:
-	---> Singleton::getInstance (2 time(s))
-
-structural.adapter.EnemyTank::fireWeapon:
-	---> System.out::println (1 time(s))
-	---> generator::nextInt (1 time(s))
-
-behavioral.state.NoCash::requestCash:
-	---> behavioral.state.NoCash::defaultMessage (1 time(s))
-
-behavioral.state.NoCash::insertPin:
-	---> behavioral.state.NoCash::defaultMessage (1 time(s))
-
-behavioral.state.CorrectPin::insertPin:
-	---> System.out::println (1 time(s))
-
-behavioral.command.SwitchOffCommand::execute:
-	---> tv::switchOff (1 time(s))
-
-structural.decorator.SugarDecorator::description:
-	---> this.beverage::description (1 time(s))
-
-structural.adapter.TestEnemyAttackers::main:
-	---> fredTheRobot::reactToHuman (1 time(s))
-	---> fredTheRobot::walkForward (1 time(s))
-	---> robotAdapter::assignDriver (1 time(s))
-	---> robotAdapter::fireWeapon (1 time(s))
-	---> fredTheRobot::smashwithHands (1 time(s))
-	---> rx7Tank::assignDriver (1 time(s))
-	---> System.out::println (5 time(s))
-	---> rx7Tank::driveForward (1 time(s))
-	---> rx7Tank::fireWeapon (1 time(s))
-	---> robotAdapter::driveForward (1 time(s))
-
-behavioral.iterator.DiscJockey::displaySongs:
-	---> song::displayInfo (1 time(s))
-
-behavioral.template_method.Football::end:
-	---> System.out::println (1 time(s))
-
-creational.builder.OldRobotBuilder::buildTorso:
-	---> creational.builder.Robot::setTorso (1 time(s))
-
-creational.singleton.Singleton::getInstance:
-	---> e::printStackTrace (1 time(s))
-	---> registry::lookup (1 time(s))
-	---> creational.singleton.Singleton::getRegistryKey (1 time(s))
-	---> cls::getDeclaredConstructor (1 time(s))
-	---> cls.getDeclaredConstructor()::newInstance (1 time(s))
-
-structural.composite.SongListGenerator::main:
-	---> crazyLarry::displaySongList (1 time(s))
-	---> heavyMetal::add (2 time(s))
-	---> songGenres::add (2 time(s))
-	---> dubstep::add (2 time(s))
-	---> industrial::add (3 time(s))
-
-structural.facade.BankAccountBalanceSystem::deposit:
-	---> this::getAccountBalance (2 time(s))
-	---> this.bankAccount::setBalance (1 time(s))
-	---> System.out::println (1 time(s))
-
-creational.prototype.Rectangle::draw:
-	---> System.out::println (1 time(s))
-
-creational.factory.EnemyShip::enemyShipShoots:
-	---> System.out::println (1 time(s))
+Classes: 131.
+Methods: 387.
+Invocations: 411.
+behavioral.chain_of_responsibility.ConsoleLogger::write(behavioral.chain_of_responsibility.LogRequest):
+	---> behavioral.chain_of_responsibility.LogRequest::getMessage() [1 time(s)]
 
-structural.decorator.Test::main:
-	---> structural.decorator.Test::orderBeverage (1 time(s))
+behavioral.chain_of_responsibility.ErrorLogger::write(behavioral.chain_of_responsibility.LogRequest):
+	---> behavioral.chain_of_responsibility.LogRequest::getMessage() [1 time(s)]
 
-structural.facade.BankAccountNumberChecker::match:
-	---> this::getAccountNumber (1 time(s))
-
-structural.adapter.Test::main:
-	---> fredTheRobot::reactToHuman (1 time(s))
-	---> fredTheRobot::walkForward (1 time(s))
-	---> robotAdapter::assignDriver (1 time(s))
-	---> robotAdapter::fireWeapon (1 time(s))
-	---> rx7Tank::assignDriver (1 time(s))
-	---> fredTheRobot::smashwithHands (1 time(s))
-	---> System.out::println (5 time(s))
-	---> rx7Tank::driveForward (1 time(s))
-	---> rx7Tank::fireWeapon (1 time(s))
-	---> robotAdapter::driveForward (1 time(s))
-
-structural.proxy.RealInternet::connectTo:
-	---> System.out::println (1 time(s))
-
-behavioral.template_method.Basketball::initialize:
-	---> System.out::println (1 time(s))
-
-behavioral.strategy.Test::main:
-	---> behavioral.strategy.Test::computeAndDisplay (5 time(s))
-
-creational.prototype.Shape::clone:
-	---> e::printStackTrace (1 time(s))
-	---> clone::setPosition (1 time(s))
-	---> this::getPosition (1 time(s))
-	---> clone (1 time(s))
-	---> this.getPosition()::clone (1 time(s))
-
-behavioral.state.NoCash::insertCard:
-	---> behavioral.state.NoCash::defaultMessage (1 time(s))
-
-structural.bridge.Test::main:
-	---> structural.bridge.Test::ordinaryRemoteTest (2 time(s))
-	---> structural.bridge.Test::advancedRemoteTest (2 time(s))
-
-structural.facade.BankAccountBalanceSystem::canWithdraw:
-	---> this.bankAccount::getBalance (1 time(s))
-
-behavioral.command.SwitchOffCommand::undo:
-	---> tv::switchOn (1 time(s))
-
-behavioral.chain_of_responsibility.Test::getChainOfLoggers:
-	---> fileLogger::setNextLogger (1 time(s))
-	---> errorLogger::setNextLogger (1 time(s))
-
-behavioral.state.ATMMachine::ejectCard:
-	---> this.atmState::ejectCard (1 time(s))
-
-creational.factory.EnemyShip::EnemyShip:
-	---> this::setAmtDamage (1 time(s))
-	---> this::setName (1 time(s))
-
-creational.builder.SophisticatedRobotBuilder::buildLegs:
-	---> this.robot::setLegs (1 time(s))
-
-structural.decorator.Test::orderBeverage:
-	---> structural.decorator.Test::displayOrder (1 time(s))
-	---> structural.decorator.Test::selectAdditionalIngredients (1 time(s))
-	---> structural.decorator.Test::selectBeverage (1 time(s))
-
-structural.facade.BankAccountWelcomeWindow::setWelcomeMessage:
-	---> bankAccount::getNumber (1 time(s))
-	---> bankAccount::getBalance (1 time(s))
-	---> buf::toString (1 time(s))
-	---> buf::append (4 time(s))
-
-creational.factory.Test::doStuffEnemy:
-	---> enemy::followHeroShip (1 time(s))
-	---> enemy::enemyShipShoots (1 time(s))
-	---> enemy::displayEnemyShip (1 time(s))
-
-behavioral.state.CorrectPin::insertCard:
-	---> System.out::println (1 time(s))
-
-behavioral.command.SwitchChannelCommand::execute:
-	---> tv::getChannel (1 time(s))
-	---> tv::switchChannel (1 time(s))
-
-structural.decorator.Test::additionalIngredientsMenu:
-	---> System.out::println (4 time(s))
-
-structural.facade.BankAccountFacade::BankAccountFacade:
-	---> this::fetchBankAccount (1 time(s))
-
-behavioral.template_method.Basketball::end:
-	---> System.out::println (1 time(s))
-
-structural.adapter.EnemyTank::assignDriver:
-	---> System.out::println (1 time(s))
-
-structural.decorator.CaramelDecorator::description:
-	---> this.beverage::description (1 time(s))
-
-structural.flyweight.Test::getRandomRadius:
-	---> random::nextInt (1 time(s))
-
-behavioral.chain_of_responsibility.FileLogger::write:
-	---> e::printStackTrace (1 time(s))
-	---> writer::append (1 time(s))
-	---> System.out::println (1 time(s))
-	---> request::getMessage (2 time(s))
-
-behavioral.state.CorrectPin::ejectCard:
-	---> this.context::setATMState (1 time(s))
-	---> System.out::println (1 time(s))
-	---> this.context::getNoCardState (1 time(s))
-
-creational.prototype.ShapeCache::displayCacheContent:
-	---> map::values (1 time(s))
-	---> System.out::println (1 time(s))
-
-behavioral.observer.StockGrabber::unregister:
-	---> observers::indexOf (1 time(s))
-	---> System.out::println (1 time(s))
-	---> observers::remove (1 time(s))
-
-structural.composite.SongGroup::getComponent:
-	---> components::get (1 time(s))
-
-creational.abstract_factory.Triangle::draw:
-	---> System.out::println (1 time(s))
-
-structural.adapter.EnemyRobotAdapter::EnemyRobotAdapter:
-	---> this::setRobot (1 time(s))
-
-behavioral.mediator.Test::main:
-	---> brian::getName (1 time(s))
-	---> alex::send (1 time(s))
-	---> brian::send (1 time(s))
-	---> brian::getId (1 time(s))
-	---> alex::getId (1 time(s))
-	---> room::addUser (4 time(s))
-
-creational.prototype.ShapeCache::getShape:
-	---> map::get (1 time(s))
-	---> cachedShape::clone (1 time(s))
-
-behavioral.state.HasCard::ejectCard:
-	---> this.context::setATMState (1 time(s))
-	---> System.out::println (1 time(s))
-	---> this.context::getNoCardState (1 time(s))
-
-behavioral.iterator.Song::toString:
-	---> buf::toString (1 time(s))
-	---> buf::append (3 time(s))
-
-creational.abstract_factory.Rectangle::draw:
-	---> System.out::println (1 time(s))
-
-structural.bridge.Remote::volumeUp:
-	---> device::getVolume (2 time(s))
-	---> device::setVolume (1 time(s))
-	---> System.out::println (1 time(s))
-
-structural.flyweight.Test::main:
-	---> ShapeFactory::getCircle (1 time(s))
-	---> structural.flyweight.Test::getRandomColor (1 time(s))
-	---> circle::draw (1 time(s))
-	---> structural.flyweight.Test::getRandomX (1 time(s))
-	---> structural.flyweight.Test::getRandomRadius (1 time(s))
-	---> structural.flyweight.Test::getRandomY (1 time(s))
-	---> circle::setRadius (1 time(s))
-
-behavioral.iterator.SongArray::getFilledArray:
-	---> this::length (1 time(s))
-
-behavioral.strategy.Test::computeAndDisplay:
-	---> Calculator::computeOperation (1 time(s))
-	---> Calculator::getResult (1 time(s))
-	---> System.out::println (1 time(s))
-	---> Calculator::setOperation (1 time(s))
-
-behavioral.strategy.Calculator::computeOperation:
-	---> operation::execute (1 time(s))
-
-structural.decorator.Test::selectBeverage:
-	---> System.err::println (1 time(s))
-	---> structural.decorator.Test::beveragesMenu (1 time(s))
-	---> scanner::nextLine (1 time(s))
-
-behavioral.observer.StockGrabber::setAppleStock:
-	---> behavioral.observer.StockGrabber::notifyObserver (1 time(s))
-
-behavioral.visitor.Liquor::accept:
-	---> visitor::visit (1 time(s))
-
-behavioral.template_method.Football::start:
-	---> System.out::println (1 time(s))
-
-creational.factory.Test::main:
-	---> System.err::println (1 time(s))
-	---> factory::createEnemyShip (1 time(s))
-	---> creational.factory.Test::doStuffEnemy (1 time(s))
-	---> System.out::println (1 time(s))
-	---> scan::hasNextLine (1 time(s))
-	---> scan::nextLine (1 time(s))
-
-creational.abstract_factory.RoundedTriangle::draw:
-	---> System.out::println (1 time(s))
-
-creational.factory.EnemyShipTesting::main:
-	---> System.err::println (1 time(s))
-	---> factory::createEnemyShip (1 time(s))
-	---> System.out::println (1 time(s))
-	---> scan::hasNextLine (1 time(s))
-	---> creational.factory.EnemyShipTesting::doStuffEnemy (1 time(s))
-	---> scan::nextLine (1 time(s))
-
-behavioral.command.CommandManager::redo:
-	---> command::ifPresent (1 time(s))
-	---> redoStack::pop (1 time(s))
-	---> Optional::of (1 time(s))
-
-structural.bridge.Remote::volumeDown:
-	---> device::getVolume (2 time(s))
-	---> device::setVolume (1 time(s))
-	---> System.out::println (1 time(s))
-
-behavioral.visitor.TaxVisitor::computeTax:
-	---> product::getPrice (1 time(s))
-	---> product::getClass (1 time(s))
-	---> System.out::println (1 time(s))
-	---> product.getClass()::getSimpleName (1 time(s))
-
-behavioral.iterator.SongArray::iterator:
-	---> Arrays.asList(this.getFilledArray())::iterator (1 time(s))
-	---> this::getFilledArray (1 time(s))
-	---> Arrays::asList (1 time(s))
-
-creational.builder.RobotEngineer::getRobot:
-	---> this.robotBuilder::getRobot (1 time(s))
-
-creational.builder.Robot::toString:
-	---> buf::toString (1 time(s))
-	---> buf::append (4 time(s))
-
-creational.builder.SophisticatedRobotBuilder::buildHead:
-	---> this.robot::setHead (1 time(s))
-
-structural.adapter.EnemyRobot::walkForward:
-	---> System.out::println (1 time(s))
-	---> generator::nextInt (1 time(s))
-
-creational.builder.RobotEngineer::constructRobot:
-	---> this.robotBuilder::buildLegs (1 time(s))
-	---> this.robotBuilder::buildArms (1 time(s))
-	---> this.robotBuilder::buildHead (1 time(s))
-	---> this.robotBuilder::buildTorso (1 time(s))
-
-behavioral.command.SwitchChannelCommand::getName:
-	---> tv::getChannel (1 time(s))
-
-behavioral.iterator.SongList::addSong:
-	---> songs::add (1 time(s))
-
-behavioral.iterator.Test::main:
-	---> DJ::displaySongs (3 time(s))
-	---> System.out::println (6 time(s))
-	---> songs::addSong (9 time(s))
-
-behavioral.state.NoCard::ejectCard:
-	---> behavioral.state.NoCard::defaultMessage (1 time(s))
-
-structural.composite.SongGroup::getInfo:
-	---> components::iterator (1 time(s))
-	---> iterator::next (1 time(s))
-	---> this::getGroupName (1 time(s))
-	---> this::getGroupDescription (1 time(s))
-	---> iterator::hasNext (1 time(s))
-	---> buf::toString (2 time(s))
-	---> component::getInfo (2 time(s))
-	---> buf::append (7 time(s))
-	---> buf.toString()::length (1 time(s))
-
-behavioral.observer.StockGrabber::register:
-	---> observers::add (1 time(s))
-
-behavioral.mediator.ChatRoom::addUser:
-	---> user::getId (1 time(s))
-	---> users::put (1 time(s))
-
-structural.composite.SongGroup::add:
-	---> components::add (1 time(s))
-
-structural.decorator.Test::selectAdditionalIngredients:
-	---> structural.decorator.Test::additionalIngredientsMenu (1 time(s))
-	---> System.out::println (1 time(s))
-	---> scanner::nextLine (1 time(s))
-
-behavioral.state.ATMMachine::requestCash:
-	---> this.atmState::requestCash (1 time(s))
-
-structural.facade.BankAccountSecurityCodeChecker::match:
-	---> this::getAccountSecurityCode (1 time(s))
-
-structural.adapter.EnemyTank::driveForward:
-	---> System.out::println (1 time(s))
-	---> generator::nextInt (1 time(s))
-
-structural.proxy.Test::main:
-	---> internet::connectTo (2 time(s))
-
-creational.prototype.Position::toString:
-	---> this::hashCode (1 time(s))
-
-creational.prototype.Shape::toString:
-	---> this::hashCode (1 time(s))
-
-structural.adapter.EnemyRobot::reactToHuman:
-	---> System.out::println (1 time(s))
-
-behavioral.chain_of_responsibility.ConsoleLogger::write:
-	---> System.out::println (1 time(s))
-	---> request::getMessage (1 time(s))
-
-behavioral.command.CommandManager::history:
-	---> history::forEach (1 time(s))
-
-behavioral.template_method.Football::initialize:
-	---> System.out::println (1 time(s))
-
-behavioral.observer.StockObserver::update:
-	---> behavioral.observer.StockObserver::displayPrices (1 time(s))
-	---> stockGrabber::getGoogleStock (1 time(s))
-	---> stockGrabber::getAppleStock (1 time(s))
-	---> stockGrabber::getIBMStock (1 time(s))
-
-structural.adapter.EnemyRobotAdapter::fireWeapon:
-	---> robot::smashwithHands (1 time(s))
-
-structural.facade.BankAccountFacade::withdrawCash:
-	---> System.err::println (1 time(s))
-	---> balanceSystem::canWithdraw (1 time(s))
-	---> System.out::println (1 time(s))
-	---> numberChecker::match (1 time(s))
-	---> balanceSystem::withdraw (1 time(s))
-	---> codeChecker::match (1 time(s))
-
-behavioral.state.NoCard::insertPin:
-	---> behavioral.state.NoCard::defaultMessage (1 time(s))
-
-behavioral.state.ATMMachine::insertCard:
-	---> this.atmState::insertCard (1 time(s))
-
-creational.singleton.Test::main:
-	---> singleton1::hashCode (2 time(s))
-	---> sameSingleton1::hashCode (1 time(s))
-	---> Singleton::getInstance (4 time(s))
-	---> System.out::println (3 time(s))
-	---> singleton2::hashCode (2 time(s))
-	---> sameSingleton2::hashCode (1 time(s))
-
-structural.bridge.Test::ordinaryRemoteTest:
-	---> remote::channelDown (1 time(s))
-	---> remote::togglePower (2 time(s))
-	---> remote::channelUp (3 time(s))
-	---> System.out::println (1 time(s))
-	---> remote::volumeUp (4 time(s))
-	---> remote::volumeDown (2 time(s))
-
-structural.bridge.AdvancedRemote::mute:
-	---> device::getName (1 time(s))
-	---> device::getVolume (1 time(s))
-	---> device::setVolume (1 time(s))
-	---> System.out::println (1 time(s))
-
-creational.prototype.Test::main:
-	---> clonedShape1::getPosition (1 time(s))
-	---> clonedShape1.getPosition()::setX (1 time(s))
-	---> clonedShape3.getPosition()::setX (1 time(s))
-	---> System.out::println (6 time(s))
-	---> ShapeCache::displayCacheContent (1 time(s))
-	---> clonedShape2::getPosition (1 time(s))
-	---> ShapeCache::loadCache (1 time(s))
-	---> clonedShape2.getPosition()::setY (1 time(s))
-	---> ShapeCache::getShape (3 time(s))
-	---> clonedShape3::getPosition (1 time(s))
-
-structural.decorator.Test::displayOrder:
-	---> beverage::description (1 time(s))
-	---> System.out::println (2 time(s))
-	---> beverage::price (1 time(s))
-
-behavioral.observer.StockObserver::StockObserver:
-	---> stockGrabber::register (1 time(s))
-
-behavioral.mediator.ChatUser::receive:
-	---> System.out::println (1 time(s))
-	---> this::getName (1 time(s))
-
-behavioral.interpreter.TerminalExpression::interpret:
-	---> context::contains (1 time(s))
-
-behavioral.interpreter.OrExpression::interpret:
-	---> leftExpression::interpret (1 time(s))
-	---> rightExpression::interpret (1 time(s))
-
-behavioral.visitor.Test::main:
-	---> behavioral.visitor.Test::computeTaxForProducts (2 time(s))
-	---> Arrays::asList (1 time(s))
-	---> System.out::println (2 time(s))
-
-structural.flyweight.Test::getRandomX:
-	---> random::nextInt (1 time(s))
-
-behavioral.memento.Test::main:
-	---> originator::externalizeState (2 time(s))
-	---> careTaker::addMemento (2 time(s))
-	---> System.out::println (3 time(s))
-	---> originator::setState (4 time(s))
-	---> careTaker::get (2 time(s))
-	---> originator::getState (3 time(s))
-	---> originator::restoreState (2 time(s))
-
-structural.flyweight.Test::getRandomY:
-	---> random::nextInt (1 time(s))
-
-behavioral.visitor.TaxVisitor::visit:
-	---> behavioral.visitor.TaxVisitor::computeTax (3 time(s))
-
-behavioral.command.SwitchChannelCommand::undo:
-	---> tv::getChannel (1 time(s))
-	---> tv::switchChannel (1 time(s))
-
-behavioral.memento.Originator::restoreState:
-	---> behavioral.memento.Originator::setState (1 time(s))
-	---> memento::getState (1 time(s))
-
-behavioral.state.NoCard::requestCash:
-	---> behavioral.state.NoCard::defaultMessage (1 time(s))
-
-behavioral.mediator.User::User:
-	---> String::valueOf (1 time(s))
-
-behavioral.state.Test::main:
-	---> atm::ejectCard (1 time(s))
-	---> atm::insertPin (3 time(s))
-	---> atm::insertCard (5 time(s))
-	---> atm::requestCash (2 time(s))
-
-structural.facade.BankAccountSecurityCodeChecker::getAccountSecurityCode:
-	---> this.bankAccount::getSecurityCode (1 time(s))
-
-behavioral.interpreter.AndExpression::interpret:
-	---> leftExpression::interpret (1 time(s))
-	---> rightExpression::interpret (1 time(s))
-
-behavioral.state.HasCard::insertCard:
-	---> System.out::println (1 time(s))
-
-creational.builder.SophisticatedRobotBuilder::buildTorso:
-	---> this.robot::setTorso (1 time(s))
-
-structural.proxy.ProxyInternet::connectTo:
-	---> System.err::println (1 time(s))
-	---> internet::connectTo (1 time(s))
-	---> bannedSites::contains (1 time(s))
-
-creational.singleton.Singleton::getRegistryKey:
-	---> cls::getName (1 time(s))
-
-creational.singleton.SingletonRegistry::register:
-	---> registry::put (1 time(s))
-	---> registry::containsKey (1 time(s))
-
-behavioral.command.SwitchOnCommand::getName:
-	---> tv::isOn (1 time(s))
-
-structural.bridge.Remote::channelDown:
-	---> device::getChannel (2 time(s))
-	---> System.out::println (1 time(s))
-	---> device::setChannel (1 time(s))
-
-structural.facade.BankAccountFacade::depositCash:
-	---> System.err::println (1 time(s))
-	---> balanceSystem::deposit (1 time(s))
-	---> System.out::println (1 time(s))
-	---> numberChecker::match (1 time(s))
-	---> codeChecker::match (1 time(s))
-
-behavioral.template_method.Basketball::start:
-	---> System.out::println (1 time(s))
-
-structural.facade.BankAccountWelcomeWindow::BankAccountWelcomeWindow:
-	---> System.out::println (1 time(s))
-	---> this::setWelcomeMessage (1 time(s))
-
-structural.bridge.Remote::channelUp:
-	---> device::getChannel (2 time(s))
-	---> System.out::println (1 time(s))
-	---> device::setChannel (1 time(s))
-
-structural.composite.SongComponent::displayInfo:
-	---> System.out::println (1 time(s))
-	---> this::getInfo (1 time(s))
-
-behavioral.memento.CareTaker::addMemento:
-	---> mementos::add (1 time(s))
-
-behavioral.template_method.Game::play:
-	---> behavioral.template_method.Game::end (1 time(s))
-	---> behavioral.template_method.Game::start (1 time(s))
-	---> behavioral.template_method.Game::initialize (1 time(s))
-
-structural.composite.DiscJockey::displaySongList:
-	---> songList::displayInfo (1 time(s))
-
-behavioral.observer.StockGrabber::setIBMStock:
-	---> behavioral.observer.StockGrabber::notifyObserver (1 time(s))
-
-behavioral.observer.StockGrabber::notifyObserver:
-	---> observer::update (1 time(s))
-
-behavioral.observer.Test::main:
-	---> stockGrabber::setAppleStock (3 time(s))
-	---> stockGrabber::unregister (1 time(s))
-	---> stockGrabber::setIBMStock (3 time(s))
-	---> stockGrabber::setGoogleStock (3 time(s))
-
-structural.facade.Test::main:
-	---> facade::depositCash (1 time(s))
-	---> facade::withdrawCash (2 time(s))
-
-creational.builder.Test::main:
-	---> robotEngineer::constructRobot (2 time(s))
-	---> robotEngineer::getRobot (2 time(s))
-	---> System.out::println (3 time(s))
-	---> robotEngineer::setRobotBuilder (1 time(s))
-
-creational.abstract_factory.RoundedRectangle::draw:
-	---> System.out::println (1 time(s))
-
-behavioral.chain_of_responsibility.Logger::log:
-	---> request::getLevel (1 time(s))
-	---> this.level::value (1 time(s))
-	---> behavioral.chain_of_responsibility.Logger::write (1 time(s))
-	---> nextLogger::log (1 time(s))
-	---> request.getLevel()::value (1 time(s))
-
-structural.adapter.EnemyRobotAdapter::driveForward:
-	---> robot::walkForward (1 time(s))
-
-structural.facade.BankAccountNumberChecker::getAccountNumber:
-	---> this.bankAccount::getNumber (1 time(s))
-
-creational.builder.OldRobotBuilder::buildLegs:
-	---> creational.builder.Robot::setLegs (1 time(s))
-
-structural.adapter.EnemyRobotAdapter::assignDriver:
-	---> robot::reactToHuman (1 time(s))
-
-creational.builder.RobotEngineer::RobotEngineer:
-	---> this::setRobotBuilder (1 time(s))
-
-creational.prototype.Position::clone:
-	---> clone (1 time(s))
-
-behavioral.template_method.Test::main:
-	---> game::play (2 time(s))
-	---> System.out::println (1 time(s))
-
-behavioral.observer.StockGrabber::setGoogleStock:
-	---> behavioral.observer.StockGrabber::notifyObserver (1 time(s))
-
-creational.singleton.SingletonRegistry::lookup:
-	---> registry::get (1 time(s))
-
-structural.composite.Song::getInfo:
-	---> this::getBandName (1 time(s))
-	---> this::getSongName (1 time(s))
-	---> buf::toString (1 time(s))
-	---> buf::append (3 time(s))
-	---> this::getReleaseYear (1 time(s))
-
-behavioral.command.CommandManager::undo:
-	---> command::ifPresent (1 time(s))
-	---> undoStack::pop (1 time(s))
-	---> Optional::of (1 time(s))
-
-creational.factory.EnemyShipTesting::doStuffEnemy:
-	---> enemy::followHeroShip (1 time(s))
-	---> enemy::enemyShipShoots (1 time(s))
-	---> enemy::displayEnemyShip (1 time(s))
-
-structural.flyweight.ShapeFactory::getCircle:
-	---> map::get (1 time(s))
-	---> System.out::println (1 time(s))
-	---> map::put (1 time(s))
-
-behavioral.mediator.ChatUser::send:
-	---> this.getRoom()::sendMessage (1 time(s))
-	---> System.out::println (1 time(s))
-	---> this::getRoom (1 time(s))
-	---> this::getName (1 time(s))
-
-behavioral.visitor.Test::computeTaxForProducts:
-	---> taxVisitor::getComputedTax (1 time(s))
-	---> System.out::println (1 time(s))
-	---> product::accept (1 time(s))
-
-structural.adapter.EnemyRobot::smashwithHands:
-	---> System.out::println (1 time(s))
-	---> generator::nextInt (1 time(s))
-
-behavioral.iterator.SongHashtable::addSong:
-	---> table::put (1 time(s))
-
-creational.prototype.ShapeCache::loadCache:
-	---> rectangle::setPosition (1 time(s))
-	---> circle::setPosition (1 time(s))
-	---> circle::getId (1 time(s))
-	---> triangle::getId (1 time(s))
-	---> rectangle::setId (1 time(s))
-	---> map::put (3 time(s))
-	---> circle::setId (1 time(s))
-	---> triangle::setId (1 time(s))
-	---> triangle::setPosition (1 time(s))
-	---> rectangle::getId (1 time(s))
-
-behavioral.visitor.TaxHolidayVisitor::visit:
-	---> behavioral.visitor.TaxHolidayVisitor::computeTax (2 time(s))
-
-creational.factory.EnemyShip::followHeroShip:
-	---> System.out::println (1 time(s))
-
-behavioral.chain_of_responsibility.Test::main:
-	---> chain::log (3 time(s))
-	---> behavioral.chain_of_responsibility.Test::getChainOfLoggers (1 time(s))
-
-creational.prototype.Circle::draw:
-	---> System.out::println (1 time(s))
-
-behavioral.command.Test::main:
-	---> CommandManager::getInstance (1 time(s))
-	---> manager::undo (4 time(s))
-	---> manager::history (1 time(s))
-	---> manager::redo (3 time(s))
-	---> manager::execute (6 time(s))
-
-behavioral.state.NoCash::ejectCard:
-	---> behavioral.state.NoCash::defaultMessage (1 time(s))
-
-behavioral.state.HasCard::requestCash:
-	---> System.out::println (1 time(s))
-
-creational.abstract_factory.Test::main:
-	---> factory::createShape (4 time(s))
-	---> ShapeProducer::createFactory (2 time(s))
-	---> shape::draw (4 time(s))
-
-behavioral.observer.StockObserver::displayPrices:
-	---> System.out::println (1 time(s))
-	---> buf::toString (1 time(s))
-	---> buf::append (4 time(s))
-
-creational.prototype.Triangle::draw:
-	---> System.out::println (1 time(s))
-
-creational.builder.OldRobotBuilder::buildHead:
-	---> creational.builder.Robot::setHead (1 time(s))
-
-behavioral.command.CommandManager::execute:
-	---> history::add (1 time(s))
-	---> command::getName (1 time(s))
-	---> undoStack::push (1 time(s))
-	---> command::execute (1 time(s))
-
-structural.flyweight.Circle::draw:
-	---> System.out::println (1 time(s))
-	---> buf::toString (1 time(s))
-	---> buf::append (4 time(s))
-
-behavioral.chain_of_responsibility.ErrorLogger::write:
-	---> System.err::println (1 time(s))
-	---> request::getMessage (1 time(s))
-
-behavioral.state.HasCard::insertPin:
-	---> this.context::setATMState (1 time(s))
-	---> this.context::getCorrectPinState (1 time(s))
-	---> System.out::println (2 time(s))
-	---> this::ejectCard (1 time(s))
-
-structural.facade.BankAccountBalanceSystem::getAccountBalance:
-	---> this.bankAccount::getBalance (1 time(s))
-
-behavioral.command.SwitchOffCommand::getName:
-	---> tv::isOn (1 time(s))
-
-behavioral.state.NoCard::defaultMessage:
-	---> System.out::println (1 time(s))
-
-structural.composite.SongGroup::remove:
-	---> components::remove (1 time(s))
-
-behavioral.iterator.SongHashtable::iterator:
-	---> table::values (1 time(s))
-	---> table.values()::iterator (1 time(s))
-
-behavioral.state.NoCard::insertCard:
-	---> this.context::setATMState (1 time(s))
-	---> this.context::getHasCardState (1 time(s))
-	---> System.out::println (1 time(s))
+behavioral.chain_of_responsibility.FileLogger::write(behavioral.chain_of_responsibility.LogRequest):
+	---> behavioral.chain_of_responsibility.LogRequest::getMessage() [2 time(s)]
+
+behavioral.chain_of_responsibility.Logger::log(behavioral.chain_of_responsibility.LogRequest):
+	---> behavioral.chain_of_responsibility.LogRequest::getLevel() [1 time(s)]
+	---> behavioral.chain_of_responsibility.LogRequestLevel::value() [2 time(s)]
+	---> behavioral.chain_of_responsibility.Logger::write(behavioral.chain_of_responsibility.LogRequest) [1 time(s)]
+	---> behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest) [1 time(s)]
+
+behavioral.chain_of_responsibility.Test::getChainOfLoggers():
+	---> behavioral.chain_of_responsibility.ILogger::setNextLogger(behavioral.chain_of_responsibility.ILogger) [2 time(s)]
+
+behavioral.chain_of_responsibility.Test::main(java.lang.String[]):
+	---> behavioral.chain_of_responsibility.Test::getChainOfLoggers() [1 time(s)]
+	---> behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest) [3 time(s)]
+
+behavioral.command.CommandManager::execute(behavioral.command.Command):
+	---> behavioral.command.Command::execute() [1 time(s)]
+	---> behavioral.command.Command::getName() [1 time(s)]
+
+behavioral.command.CommandManager::redo():
+	---> behavioral.command.Command::execute() [1 time(s)]
+	---> behavioral.command.Command::getName() [1 time(s)]
+
+behavioral.command.CommandManager::undo():
+	---> behavioral.command.Command::getName() [1 time(s)]
+	---> behavioral.command.Command::undo() [1 time(s)]
+
+behavioral.command.SwitchChannelCommand::execute():
+	---> behavioral.command.TV::getChannel() [1 time(s)]
+	---> behavioral.command.TV::switchChannel(int) [1 time(s)]
+
+behavioral.command.SwitchChannelCommand::getName():
+	---> behavioral.command.TV::getChannel() [1 time(s)]
+
+behavioral.command.SwitchChannelCommand::undo():
+	---> behavioral.command.TV::getChannel() [1 time(s)]
+	---> behavioral.command.TV::switchChannel(int) [1 time(s)]
+
+behavioral.command.SwitchOffCommand::execute():
+	---> behavioral.command.TV::switchOff() [1 time(s)]
+
+behavioral.command.SwitchOffCommand::getName():
+	---> behavioral.command.TV::isOn() [1 time(s)]
+
+behavioral.command.SwitchOffCommand::undo():
+	---> behavioral.command.TV::switchOn() [1 time(s)]
+
+behavioral.command.SwitchOnCommand::execute():
+	---> behavioral.command.TV::switchOn() [1 time(s)]
+
+behavioral.command.SwitchOnCommand::getName():
+	---> behavioral.command.TV::isOn() [1 time(s)]
+
+behavioral.command.SwitchOnCommand::undo():
+	---> behavioral.command.TV::switchOff() [1 time(s)]
+
+behavioral.command.Test::main(java.lang.String[]):
+	---> creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>) [1 time(s)]
+	---> behavioral.command.CommandManager::undo() [4 time(s)]
+	---> behavioral.command.CommandManager::execute(behavioral.command.Command) [6 time(s)]
+	---> behavioral.command.CommandManager::redo() [3 time(s)]
+	---> behavioral.command.CommandManager::history() [1 time(s)]
+
+behavioral.interpreter.AndExpression::interpret(java.lang.String):
+	---> behavioral.interpreter.Expression::interpret(java.lang.String) [2 time(s)]
+
+behavioral.interpreter.OrExpression::interpret(java.lang.String):
+	---> behavioral.interpreter.Expression::interpret(java.lang.String) [2 time(s)]
+
+behavioral.interpreter.Test::getIsMarriedWomanExpression():
+	---> behavioral.interpreter.Test::getIsFemaleExpression() [1 time(s)]
+
+behavioral.interpreter.Test::main(java.lang.String[]):
+	---> behavioral.interpreter.Test::getIsFemaleExpression() [1 time(s)]
+	---> behavioral.interpreter.Test::getIsMarriedWomanExpression() [1 time(s)]
+	---> behavioral.interpreter.Expression::interpret(java.lang.String) [2 time(s)]
+
+behavioral.iterator.DiscJockey::displaySongs():
+	---> structural.composite.SongComponent::displayInfo() [1 time(s)]
+
+behavioral.iterator.SongArray::getFilledArray():
+	---> behavioral.iterator.SongArray::length() [1 time(s)]
+
+behavioral.iterator.SongArray::iterator():
+	---> behavioral.iterator.SongArray::getFilledArray() [1 time(s)]
+
+behavioral.iterator.Test::main(java.lang.String[]):
+	---> behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int) [9 time(s)]
+	---> behavioral.iterator.DiscJockey::displaySongs() [3 time(s)]
+
+behavioral.mediator.ChatRoom::addUser(behavioral.mediator.User):
+	---> behavioral.mediator.User::getId() [1 time(s)]
+
+behavioral.mediator.ChatRoom::sendMessage(java.lang.String, java.lang.String):
+	---> behavioral.mediator.User::receive(java.lang.String) [1 time(s)]
+
+behavioral.mediator.ChatUser::receive(java.lang.String):
+	---> behavioral.mediator.User::getName() [1 time(s)]
+
+behavioral.mediator.ChatUser::send(java.lang.String, java.lang.String):
+	---> behavioral.mediator.User::getRoom() [1 time(s)]
+	---> behavioral.mediator.User::getName() [1 time(s)]
+	---> behavioral.mediator.IChatRoom::sendMessage(java.lang.String, java.lang.String) [1 time(s)]
+
+behavioral.mediator.Test::main(java.lang.String[]):
+	---> behavioral.mediator.User::getId() [2 time(s)]
+	---> behavioral.mediator.User::send(java.lang.String, java.lang.String) [2 time(s)]
+	---> behavioral.mediator.User::getName() [1 time(s)]
+	---> behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User) [4 time(s)]
+
+behavioral.memento.Originator::restoreState(behavioral.memento.Memento):
+	---> behavioral.memento.Memento::getState() [1 time(s)]
+	---> behavioral.memento.Originator::setState(java.lang.String) [1 time(s)]
+
+behavioral.memento.Test::main(java.lang.String[]):
+	---> behavioral.memento.Originator::getState() [3 time(s)]
+	---> behavioral.memento.Originator::restoreState(behavioral.memento.Memento) [2 time(s)]
+	---> behavioral.memento.CareTaker::addMemento(behavioral.memento.Memento) [2 time(s)]
+	---> behavioral.memento.Originator::setState(java.lang.String) [4 time(s)]
+	---> behavioral.memento.Originator::externalizeState() [2 time(s)]
+	---> behavioral.memento.CareTaker::get(int) [2 time(s)]
+
+behavioral.observer.StockGrabber::notifyObserver():
+	---> behavioral.observer.Observer::update() [1 time(s)]
+
+behavioral.observer.StockGrabber::setAppleStock(double):
+	---> behavioral.observer.StockGrabber::notifyObserver() [1 time(s)]
+
+behavioral.observer.StockGrabber::setGoogleStock(double):
+	---> behavioral.observer.StockGrabber::notifyObserver() [1 time(s)]
+
+behavioral.observer.StockGrabber::setIBMStock(double):
+	---> behavioral.observer.StockGrabber::notifyObserver() [1 time(s)]
+
+behavioral.observer.StockObserver::StockObserver(behavioral.observer.StockGrabber):
+	---> behavioral.observer.StockGrabber::register(behavioral.observer.Observer) [1 time(s)]
+
+behavioral.observer.StockObserver::update():
+	---> behavioral.observer.StockGrabber::getIBMStock() [1 time(s)]
+	---> behavioral.observer.StockGrabber::getAppleStock() [1 time(s)]
+	---> behavioral.observer.StockGrabber::getGoogleStock() [1 time(s)]
+	---> behavioral.observer.StockObserver::displayPrices() [1 time(s)]
+
+behavioral.observer.Test::main(java.lang.String[]):
+	---> behavioral.observer.StockGrabber::unregister(behavioral.observer.Observer) [1 time(s)]
+	---> behavioral.observer.StockGrabber::setGoogleStock(double) [3 time(s)]
+	---> behavioral.observer.StockGrabber::setIBMStock(double) [3 time(s)]
+	---> behavioral.observer.StockGrabber::setAppleStock(double) [3 time(s)]
+
+behavioral.state.ATMMachine::ejectCard():
+	---> behavioral.state.IATMState::ejectCard() [1 time(s)]
+
+behavioral.state.ATMMachine::insertCard():
+	---> behavioral.state.IATMState::insertCard() [1 time(s)]
+
+behavioral.state.ATMMachine::insertPin(int):
+	---> behavioral.state.IATMState::insertPin(int) [1 time(s)]
+
+behavioral.state.ATMMachine::requestCash(int):
+	---> behavioral.state.IATMState::requestCash(int) [1 time(s)]
+
+behavioral.state.CorrectPin::ejectCard():
+	---> behavioral.state.ATMMachine::getNoCardState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+
+behavioral.state.CorrectPin::requestCash(int):
+	---> behavioral.state.ATMMachine::getCashInMachine() [3 time(s)]
+	---> behavioral.state.ATMMachine::getNoCashState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setCashInMachine(int) [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+	---> behavioral.state.CorrectPin::ejectCard() [1 time(s)]
+
+behavioral.state.HasCard::ejectCard():
+	---> behavioral.state.ATMMachine::getNoCardState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+
+behavioral.state.HasCard::insertPin(int):
+	---> behavioral.state.HasCard::ejectCard() [1 time(s)]
+	---> behavioral.state.ATMMachine::getCorrectPinState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+
+behavioral.state.NoCard::ejectCard():
+	---> behavioral.state.NoCard::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCard::insertCard():
+	---> behavioral.state.ATMMachine::getHasCardState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+
+behavioral.state.NoCard::insertPin(int):
+	---> behavioral.state.NoCard::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCard::requestCash(int):
+	---> behavioral.state.NoCard::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCash::ejectCard():
+	---> behavioral.state.NoCash::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCash::insertCard():
+	---> behavioral.state.NoCash::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCash::insertPin(int):
+	---> behavioral.state.NoCash::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCash::requestCash(int):
+	---> behavioral.state.NoCash::defaultMessage() [1 time(s)]
+
+behavioral.state.Test::main(java.lang.String[]):
+	---> behavioral.state.ATMMachine::ejectCard() [1 time(s)]
+	---> behavioral.state.ATMMachine::insertCard() [5 time(s)]
+	---> behavioral.state.ATMMachine::requestCash(int) [2 time(s)]
+	---> behavioral.state.ATMMachine::insertPin(int) [3 time(s)]
+
+behavioral.strategy.Calculator::computeOperation(int, int):
+	---> behavioral.strategy.ArithmeticOperation::execute(int, int) [1 time(s)]
+
+behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int):
+	---> behavioral.strategy.Calculator::setOperation(behavioral.strategy.ArithmeticOperation) [1 time(s)]
+	---> behavioral.strategy.Calculator::getResult() [1 time(s)]
+	---> behavioral.strategy.Calculator::computeOperation(int, int) [1 time(s)]
+
+behavioral.strategy.Test::main(java.lang.String[]):
+	---> behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int) [5 time(s)]
+
+behavioral.template_method.Game::play():
+	---> behavioral.template_method.Game::end() [1 time(s)]
+	---> behavioral.template_method.Game::initialize() [1 time(s)]
+	---> behavioral.template_method.Game::start() [1 time(s)]
+
+behavioral.template_method.Test::main(java.lang.String[]):
+	---> behavioral.template_method.Game::play() [2 time(s)]
+
+behavioral.visitor.Liquor::accept(behavioral.visitor.Visitor):
+	---> behavioral.visitor.Visitor::visit(behavioral.visitor.Liquor) [1 time(s)]
+
+behavioral.visitor.Necessity::accept(behavioral.visitor.Visitor):
+	---> behavioral.visitor.Visitor::visit(behavioral.visitor.Necessity) [1 time(s)]
+
+behavioral.visitor.Product::Product(java.lang.String, double):
+	---> behavioral.visitor.Product::setName(java.lang.String) [1 time(s)]
+	---> behavioral.visitor.Product::setPrice(double) [1 time(s)]
+
+behavioral.visitor.TaxHolidayVisitor::visit(behavioral.visitor.Liquor):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.TaxHolidayVisitor::visit(behavioral.visitor.Tobacco):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product):
+	---> behavioral.visitor.Product::getPrice() [1 time(s)]
+
+behavioral.visitor.TaxVisitor::visit(behavioral.visitor.Liquor):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.TaxVisitor::visit(behavioral.visitor.Necessity):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.TaxVisitor::visit(behavioral.visitor.Tobacco):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.Test::computeTaxForProducts(java.util.List<behavioral.visitor.Product>, behavioral.visitor.TaxVisitor):
+	---> behavioral.visitor.Visitable::accept(behavioral.visitor.Visitor) [1 time(s)]
+	---> behavioral.visitor.TaxVisitor::getComputedTax() [1 time(s)]
+
+behavioral.visitor.Test::main(java.lang.String[]):
+	---> behavioral.visitor.Test::computeTaxForProducts(java.util.List<behavioral.visitor.Product>, behavioral.visitor.TaxVisitor) [2 time(s)]
+
+behavioral.visitor.Tobacco::accept(behavioral.visitor.Visitor):
+	---> behavioral.visitor.Visitor::visit(behavioral.visitor.Tobacco) [1 time(s)]
+
+creational.abstract_factory.ShapeProducer::createFactory(creational.abstract_factory.ShapeFactoryType):
+	---> creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>) [2 time(s)]
+
+creational.abstract_factory.Test::main(java.lang.String[]):
+	---> creational.abstract_factory.ShapeProducer::createFactory(creational.abstract_factory.ShapeFactoryType) [2 time(s)]
+	---> creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType) [4 time(s)]
+	---> creational.abstract_factory.Shape::draw() [4 time(s)]
+
+creational.builder.OldRobotBuilder::buildArms():
+	---> creational.builder.Robot::setArms(java.lang.String) [1 time(s)]
+
+creational.builder.OldRobotBuilder::buildHead():
+	---> creational.builder.Robot::setHead(java.lang.String) [1 time(s)]
+
+creational.builder.OldRobotBuilder::buildLegs():
+	---> creational.builder.Robot::setLegs(java.lang.String) [1 time(s)]
+
+creational.builder.OldRobotBuilder::buildTorso():
+	---> creational.builder.Robot::setTorso(java.lang.String) [1 time(s)]
+
+creational.builder.RobotEngineer::RobotEngineer(creational.builder.IRobotBuilder):
+	---> creational.builder.RobotEngineer::setRobotBuilder(creational.builder.IRobotBuilder) [1 time(s)]
+
+creational.builder.RobotEngineer::constructRobot():
+	---> creational.builder.IRobotBuilder::buildArms() [1 time(s)]
+	---> creational.builder.IRobotBuilder::buildHead() [1 time(s)]
+	---> creational.builder.IRobotBuilder::buildTorso() [1 time(s)]
+	---> creational.builder.IRobotBuilder::buildLegs() [1 time(s)]
+
+creational.builder.RobotEngineer::getRobot():
+	---> creational.builder.IRobotBuilder::getRobot() [1 time(s)]
+
+creational.builder.SophisticatedRobotBuilder::buildArms():
+	---> creational.builder.Robot::setArms(java.lang.String) [1 time(s)]
+
+creational.builder.SophisticatedRobotBuilder::buildHead():
+	---> creational.builder.Robot::setHead(java.lang.String) [1 time(s)]
+
+creational.builder.SophisticatedRobotBuilder::buildLegs():
+	---> creational.builder.Robot::setLegs(java.lang.String) [1 time(s)]
+
+creational.builder.SophisticatedRobotBuilder::buildTorso():
+	---> creational.builder.Robot::setTorso(java.lang.String) [1 time(s)]
+
+creational.builder.Test::main(java.lang.String[]):
+	---> creational.builder.RobotEngineer::getRobot() [2 time(s)]
+	---> creational.builder.RobotEngineer::setRobotBuilder(creational.builder.IRobotBuilder) [1 time(s)]
+	---> creational.builder.RobotEngineer::constructRobot() [2 time(s)]
+
+creational.factory.EnemyShip::EnemyShip(java.lang.String, double):
+	---> creational.factory.EnemyShip::setName(java.lang.String) [1 time(s)]
+	---> creational.factory.EnemyShip::setAmtDamage(double) [1 time(s)]
+
+creational.factory.EnemyShipTesting::doStuffEnemy(creational.factory.EnemyShip):
+	---> creational.factory.EnemyShip::displayEnemyShip() [1 time(s)]
+	---> creational.factory.EnemyShip::enemyShipShoots() [1 time(s)]
+	---> creational.factory.EnemyShip::followHeroShip() [1 time(s)]
+
+creational.factory.EnemyShipTesting::main(java.lang.String[]):
+	---> creational.factory.EnemyShipFactory::createEnemyShip(java.lang.String) [1 time(s)]
+	---> creational.factory.EnemyShipTesting::doStuffEnemy(creational.factory.EnemyShip) [1 time(s)]
+
+creational.factory.Test::doStuffEnemy(creational.factory.EnemyShip):
+	---> creational.factory.EnemyShip::displayEnemyShip() [1 time(s)]
+	---> creational.factory.EnemyShip::enemyShipShoots() [1 time(s)]
+	---> creational.factory.EnemyShip::followHeroShip() [1 time(s)]
+
+creational.factory.Test::main(java.lang.String[]):
+	---> creational.factory.EnemyShipFactory::createEnemyShip(java.lang.String) [1 time(s)]
+	---> creational.factory.Test::doStuffEnemy(creational.factory.EnemyShip) [1 time(s)]
+
+creational.prototype.Shape::clone():
+	---> creational.prototype.Position::clone() [1 time(s)]
+	---> creational.prototype.Shape::setPosition(creational.prototype.Position) [1 time(s)]
+	---> creational.prototype.Shape::getPosition() [1 time(s)]
+
+creational.prototype.ShapeCache::getShape(java.lang.String):
+	---> creational.prototype.Shape::clone() [1 time(s)]
+
+creational.prototype.ShapeCache::loadCache():
+	---> creational.prototype.Shape::setId(java.lang.String) [3 time(s)]
+	---> creational.prototype.Shape::getId() [3 time(s)]
+	---> creational.prototype.Shape::setPosition(creational.prototype.Position) [3 time(s)]
+
+creational.prototype.Test::main(java.lang.String[]):
+	---> creational.prototype.ShapeCache::displayCacheContent() [1 time(s)]
+	---> creational.prototype.ShapeCache::loadCache() [1 time(s)]
+	---> creational.prototype.Position::setX(double) [2 time(s)]
+	---> creational.prototype.Position::setY(double) [1 time(s)]
+	---> creational.prototype.Shape::getPosition() [3 time(s)]
+	---> creational.prototype.ShapeCache::getShape(java.lang.String) [3 time(s)]
+
+creational.singleton.Singleton::Singleton():
+	---> creational.singleton.Singleton::getRegistryKey(java.lang.Class<? extends creational.singleton.Singleton>) [1 time(s)]
+	---> creational.singleton.SingletonRegistry::register(java.lang.String, creational.singleton.Singleton) [1 time(s)]
+
+creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>):
+	---> creational.singleton.Singleton::getRegistryKey(java.lang.Class<? extends creational.singleton.Singleton>) [1 time(s)]
+	---> creational.singleton.SingletonRegistry::lookup(java.lang.String) [1 time(s)]
+
+creational.singleton.Test::main(java.lang.String[]):
+	---> creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>) [4 time(s)]
+
+structural.adapter.EnemyRobotAdapter::EnemyRobotAdapter(structural.adapter.EnemyRobot):
+	---> structural.adapter.EnemyRobotAdapter::setRobot(structural.adapter.EnemyRobot) [1 time(s)]
+
+structural.adapter.EnemyRobotAdapter::assignDriver(java.lang.String):
+	---> structural.adapter.EnemyRobot::reactToHuman(java.lang.String) [1 time(s)]
+
+structural.adapter.EnemyRobotAdapter::driveForward():
+	---> structural.adapter.EnemyRobot::walkForward() [1 time(s)]
+
+structural.adapter.EnemyRobotAdapter::fireWeapon():
+	---> structural.adapter.EnemyRobot::smashwithHands() [1 time(s)]
+
+structural.adapter.Test::main(java.lang.String[]):
+	---> structural.adapter.EnemyRobot::reactToHuman(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::driveForward() [1 time(s)]
+	---> structural.adapter.EnemyTank::assignDriver(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyRobot::walkForward() [1 time(s)]
+	---> structural.adapter.EnemyAttacker::assignDriver(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::fireWeapon() [1 time(s)]
+	---> structural.adapter.EnemyTank::driveForward() [1 time(s)]
+	---> structural.adapter.EnemyRobot::smashwithHands() [1 time(s)]
+	---> structural.adapter.EnemyTank::fireWeapon() [1 time(s)]
+
+structural.adapter.TestEnemyAttackers::main(java.lang.String[]):
+	---> structural.adapter.EnemyRobot::reactToHuman(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::driveForward() [1 time(s)]
+	---> structural.adapter.EnemyRobot::walkForward() [1 time(s)]
+	---> structural.adapter.EnemyTank::assignDriver(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::assignDriver(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::fireWeapon() [1 time(s)]
+	---> structural.adapter.EnemyRobot::smashwithHands() [1 time(s)]
+	---> structural.adapter.EnemyTank::driveForward() [1 time(s)]
+	---> structural.adapter.EnemyTank::fireWeapon() [1 time(s)]
+
+structural.bridge.AdvancedRemote::mute():
+	---> structural.bridge.Device::setVolume(int) [1 time(s)]
+	---> structural.bridge.Device::getName() [1 time(s)]
+	---> structural.bridge.Device::getVolume() [1 time(s)]
+
+structural.bridge.Remote::channelDown():
+	---> structural.bridge.Device::setChannel(int) [1 time(s)]
+	---> structural.bridge.Device::getChannel() [2 time(s)]
+
+structural.bridge.Remote::channelUp():
+	---> structural.bridge.Device::setChannel(int) [1 time(s)]
+	---> structural.bridge.Device::getChannel() [2 time(s)]
+
+structural.bridge.Remote::togglePower():
+	---> structural.bridge.Device::enable() [1 time(s)]
+	---> structural.bridge.Device::getName() [1 time(s)]
+	---> structural.bridge.Device::disable() [1 time(s)]
+	---> structural.bridge.Device::isEnabled() [2 time(s)]
+
+structural.bridge.Remote::volumeDown():
+	---> structural.bridge.Device::setVolume(int) [1 time(s)]
+	---> structural.bridge.Device::getVolume() [2 time(s)]
+
+structural.bridge.Remote::volumeUp():
+	---> structural.bridge.Device::setVolume(int) [1 time(s)]
+	---> structural.bridge.Device::getVolume() [2 time(s)]
+
+structural.bridge.Test::advancedRemoteTest(structural.bridge.AdvancedRemote):
+	---> structural.bridge.Remote::channelUp() [2 time(s)]
+	---> structural.bridge.Remote::togglePower() [2 time(s)]
+	---> structural.bridge.Remote::channelDown() [1 time(s)]
+	---> structural.bridge.AdvancedRemote::mute() [1 time(s)]
+	---> structural.bridge.Remote::volumeUp() [3 time(s)]
+	---> structural.bridge.Remote::volumeDown() [1 time(s)]
+
+structural.bridge.Test::main(java.lang.String[]):
+	---> structural.bridge.Test::ordinaryRemoteTest(structural.bridge.Remote) [2 time(s)]
+	---> structural.bridge.Test::advancedRemoteTest(structural.bridge.AdvancedRemote) [2 time(s)]
+
+structural.bridge.Test::ordinaryRemoteTest(structural.bridge.Remote):
+	---> structural.bridge.Remote::channelUp() [3 time(s)]
+	---> structural.bridge.Remote::togglePower() [2 time(s)]
+	---> structural.bridge.Remote::channelDown() [1 time(s)]
+	---> structural.bridge.Remote::volumeUp() [4 time(s)]
+	---> structural.bridge.Remote::volumeDown() [2 time(s)]
+
+structural.composite.DiscJockey::displaySongList():
+	---> structural.composite.SongComponent::displayInfo() [1 time(s)]
+
+structural.composite.Song::getInfo():
+	---> structural.composite.Song::getSongName() [1 time(s)]
+	---> structural.composite.Song::getBandName() [1 time(s)]
+	---> structural.composite.Song::getReleaseYear() [1 time(s)]
+
+structural.composite.SongComponent::displayInfo():
+	---> structural.composite.SongComponent::getInfo() [1 time(s)]
+
+structural.composite.SongGroup::getInfo():
+	---> structural.composite.SongGroup::getGroupDescription() [1 time(s)]
+	---> structural.composite.SongComponent::getInfo() [2 time(s)]
+	---> structural.composite.SongGroup::getGroupName() [1 time(s)]
+
+structural.composite.SongListGenerator::main(java.lang.String[]):
+	---> structural.composite.DiscJockey::displaySongList() [1 time(s)]
+	---> structural.composite.SongComponent::add(structural.composite.SongComponent) [9 time(s)]
+
+structural.composite.Test::main(java.lang.String[]):
+	---> structural.composite.DiscJockey::displaySongList() [1 time(s)]
+	---> structural.composite.SongComponent::add(structural.composite.SongComponent) [9 time(s)]
+
+structural.decorator.CaramelDecorator::description():
+	---> structural.decorator.Beverage::description() [1 time(s)]
+
+structural.decorator.CaramelDecorator::price():
+	---> structural.decorator.Beverage::price() [1 time(s)]
+
+structural.decorator.SugarDecorator::description():
+	---> structural.decorator.Beverage::description() [1 time(s)]
+
+structural.decorator.SugarDecorator::price():
+	---> structural.decorator.Beverage::price() [1 time(s)]
+
+structural.decorator.Test::displayOrder(structural.decorator.Beverage):
+	---> structural.decorator.Beverage::price() [1 time(s)]
+	---> structural.decorator.Beverage::description() [1 time(s)]
+
+structural.decorator.Test::main(java.lang.String[]):
+	---> structural.decorator.Test::orderBeverage() [1 time(s)]
+
+structural.decorator.Test::orderBeverage():
+	---> structural.decorator.Test::selectAdditionalIngredients(structural.decorator.Beverage, java.util.Scanner) [1 time(s)]
+	---> structural.decorator.Test::displayOrder(structural.decorator.Beverage) [1 time(s)]
+	---> structural.decorator.Test::selectBeverage(java.util.Scanner) [1 time(s)]
+
+structural.decorator.Test::selectAdditionalIngredients(structural.decorator.Beverage, java.util.Scanner):
+	---> structural.decorator.Test::additionalIngredientsMenu() [1 time(s)]
+
+structural.decorator.Test::selectBeverage(java.util.Scanner):
+	---> structural.decorator.Test::beveragesMenu() [1 time(s)]
+
+structural.facade.BankAccountBalanceSystem::canWithdraw(double):
+	---> structural.facade.BankAccount::getBalance() [1 time(s)]
+
+structural.facade.BankAccountBalanceSystem::deposit(double):
+	---> structural.facade.BankAccountBalanceSystem::getAccountBalance() [2 time(s)]
+	---> structural.facade.BankAccount::setBalance(double) [1 time(s)]
+
+structural.facade.BankAccountBalanceSystem::getAccountBalance():
+	---> structural.facade.BankAccount::getBalance() [1 time(s)]
+
+structural.facade.BankAccountBalanceSystem::withdraw(double):
+	---> structural.facade.BankAccountBalanceSystem::getAccountBalance() [3 time(s)]
+	---> structural.facade.BankAccountBalanceSystem::canWithdraw(double) [1 time(s)]
+	---> structural.facade.BankAccount::setBalance(double) [1 time(s)]
+
+structural.facade.BankAccountFacade::BankAccountFacade(int, int):
+	---> structural.facade.BankAccountFacade::fetchBankAccount() [1 time(s)]
+
+structural.facade.BankAccountFacade::depositCash(double):
+	---> structural.facade.BankAccountSecurityCodeChecker::match(int) [1 time(s)]
+	---> structural.facade.BankAccountBalanceSystem::deposit(double) [1 time(s)]
+	---> structural.facade.BankAccountNumberChecker::match(int) [1 time(s)]
+
+structural.facade.BankAccountFacade::withdrawCash(double):
+	---> structural.facade.BankAccountBalanceSystem::canWithdraw(double) [1 time(s)]
+	---> structural.facade.BankAccountSecurityCodeChecker::match(int) [1 time(s)]
+	---> structural.facade.BankAccountBalanceSystem::withdraw(double) [1 time(s)]
+	---> structural.facade.BankAccountNumberChecker::match(int) [1 time(s)]
+
+structural.facade.BankAccountNumberChecker::getAccountNumber():
+	---> structural.facade.BankAccount::getNumber() [1 time(s)]
+
+structural.facade.BankAccountNumberChecker::match(int):
+	---> structural.facade.BankAccountNumberChecker::getAccountNumber() [1 time(s)]
+
+structural.facade.BankAccountSecurityCodeChecker::getAccountSecurityCode():
+	---> structural.facade.BankAccount::getSecurityCode() [1 time(s)]
+
+structural.facade.BankAccountSecurityCodeChecker::match(int):
+	---> structural.facade.BankAccountSecurityCodeChecker::getAccountSecurityCode() [1 time(s)]
+
+structural.facade.BankAccountWelcomeWindow::BankAccountWelcomeWindow(structural.facade.BankAccount):
+	---> structural.facade.BankAccountWelcomeWindow::setWelcomeMessage() [1 time(s)]
+
+structural.facade.BankAccountWelcomeWindow::setWelcomeMessage():
+	---> structural.facade.BankAccount::getBalance() [1 time(s)]
+	---> structural.facade.BankAccount::getNumber() [1 time(s)]
+
+structural.facade.Test::main(java.lang.String[]):
+	---> structural.facade.BankAccountFacade::withdrawCash(double) [2 time(s)]
+	---> structural.facade.BankAccountFacade::depositCash(double) [1 time(s)]
+
+structural.flyweight.Test::main(java.lang.String[]):
+	---> structural.flyweight.ShapeFactory::getCircle(java.lang.String) [1 time(s)]
+	---> structural.flyweight.Test::getRandomColor() [1 time(s)]
+	---> structural.flyweight.Test::getRandomY() [1 time(s)]
+	---> structural.flyweight.Test::getRandomX() [1 time(s)]
+	---> structural.flyweight.Circle::setRadius(int) [1 time(s)]
+	---> structural.flyweight.Circle::draw(structural.flyweight.Position) [1 time(s)]
+	---> structural.flyweight.Test::getRandomRadius() [1 time(s)]
+
+structural.proxy.ProxyInternet::connectTo(java.lang.String):
+	---> structural.proxy.Internet::connectTo(java.lang.String) [1 time(s)]
+
+structural.proxy.Test::main(java.lang.String[]):
+	---> structural.proxy.Internet::connectTo(java.lang.String) [2 time(s)]
+
+
+Static Call Graph
+Classes: 131.
+Methods: 387.
+Invocations: 411.
+behavioral.chain_of_responsibility.ConsoleLogger::write(behavioral.chain_of_responsibility.LogRequest):
+	---> behavioral.chain_of_responsibility.LogRequest::getMessage() [1 time(s)]
+
+behavioral.chain_of_responsibility.ErrorLogger::write(behavioral.chain_of_responsibility.LogRequest):
+	---> behavioral.chain_of_responsibility.LogRequest::getMessage() [1 time(s)]
+
+behavioral.chain_of_responsibility.FileLogger::write(behavioral.chain_of_responsibility.LogRequest):
+	---> behavioral.chain_of_responsibility.LogRequest::getMessage() [2 time(s)]
+
+behavioral.chain_of_responsibility.Logger::log(behavioral.chain_of_responsibility.LogRequest):
+	---> behavioral.chain_of_responsibility.LogRequest::getLevel() [1 time(s)]
+	---> behavioral.chain_of_responsibility.LogRequestLevel::value() [2 time(s)]
+	---> behavioral.chain_of_responsibility.Logger::write(behavioral.chain_of_responsibility.LogRequest) [1 time(s)]
+	---> behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest) [1 time(s)]
+
+behavioral.chain_of_responsibility.Test::getChainOfLoggers():
+	---> behavioral.chain_of_responsibility.ILogger::setNextLogger(behavioral.chain_of_responsibility.ILogger) [2 time(s)]
+
+behavioral.chain_of_responsibility.Test::main(java.lang.String[]):
+	---> behavioral.chain_of_responsibility.Test::getChainOfLoggers() [1 time(s)]
+	---> behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest) [3 time(s)]
+
+behavioral.command.CommandManager::execute(behavioral.command.Command):
+	---> behavioral.command.Command::execute() [1 time(s)]
+	---> behavioral.command.Command::getName() [1 time(s)]
+
+behavioral.command.CommandManager::redo():
+	---> behavioral.command.Command::execute() [1 time(s)]
+	---> behavioral.command.Command::getName() [1 time(s)]
+
+behavioral.command.CommandManager::undo():
+	---> behavioral.command.Command::getName() [1 time(s)]
+	---> behavioral.command.Command::undo() [1 time(s)]
+
+behavioral.command.SwitchChannelCommand::execute():
+	---> behavioral.command.TV::getChannel() [1 time(s)]
+	---> behavioral.command.TV::switchChannel(int) [1 time(s)]
+
+behavioral.command.SwitchChannelCommand::getName():
+	---> behavioral.command.TV::getChannel() [1 time(s)]
+
+behavioral.command.SwitchChannelCommand::undo():
+	---> behavioral.command.TV::getChannel() [1 time(s)]
+	---> behavioral.command.TV::switchChannel(int) [1 time(s)]
+
+behavioral.command.SwitchOffCommand::execute():
+	---> behavioral.command.TV::switchOff() [1 time(s)]
+
+behavioral.command.SwitchOffCommand::getName():
+	---> behavioral.command.TV::isOn() [1 time(s)]
+
+behavioral.command.SwitchOffCommand::undo():
+	---> behavioral.command.TV::switchOn() [1 time(s)]
+
+behavioral.command.SwitchOnCommand::execute():
+	---> behavioral.command.TV::switchOn() [1 time(s)]
+
+behavioral.command.SwitchOnCommand::getName():
+	---> behavioral.command.TV::isOn() [1 time(s)]
+
+behavioral.command.SwitchOnCommand::undo():
+	---> behavioral.command.TV::switchOff() [1 time(s)]
+
+behavioral.command.Test::main(java.lang.String[]):
+	---> creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>) [1 time(s)]
+	---> behavioral.command.CommandManager::undo() [4 time(s)]
+	---> behavioral.command.CommandManager::execute(behavioral.command.Command) [6 time(s)]
+	---> behavioral.command.CommandManager::redo() [3 time(s)]
+	---> behavioral.command.CommandManager::history() [1 time(s)]
+
+behavioral.interpreter.AndExpression::interpret(java.lang.String):
+	---> behavioral.interpreter.Expression::interpret(java.lang.String) [2 time(s)]
+
+behavioral.interpreter.OrExpression::interpret(java.lang.String):
+	---> behavioral.interpreter.Expression::interpret(java.lang.String) [2 time(s)]
+
+behavioral.interpreter.Test::getIsMarriedWomanExpression():
+	---> behavioral.interpreter.Test::getIsFemaleExpression() [1 time(s)]
+
+behavioral.interpreter.Test::main(java.lang.String[]):
+	---> behavioral.interpreter.Test::getIsFemaleExpression() [1 time(s)]
+	---> behavioral.interpreter.Test::getIsMarriedWomanExpression() [1 time(s)]
+	---> behavioral.interpreter.Expression::interpret(java.lang.String) [2 time(s)]
+
+behavioral.iterator.DiscJockey::displaySongs():
+	---> structural.composite.SongComponent::displayInfo() [1 time(s)]
+
+behavioral.iterator.SongArray::getFilledArray():
+	---> behavioral.iterator.SongArray::length() [1 time(s)]
+
+behavioral.iterator.SongArray::iterator():
+	---> behavioral.iterator.SongArray::getFilledArray() [1 time(s)]
+
+behavioral.iterator.Test::main(java.lang.String[]):
+	---> behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int) [9 time(s)]
+	---> behavioral.iterator.DiscJockey::displaySongs() [3 time(s)]
+
+behavioral.mediator.ChatRoom::addUser(behavioral.mediator.User):
+	---> behavioral.mediator.User::getId() [1 time(s)]
+
+behavioral.mediator.ChatRoom::sendMessage(java.lang.String, java.lang.String):
+	---> behavioral.mediator.User::receive(java.lang.String) [1 time(s)]
+
+behavioral.mediator.ChatUser::receive(java.lang.String):
+	---> behavioral.mediator.User::getName() [1 time(s)]
+
+behavioral.mediator.ChatUser::send(java.lang.String, java.lang.String):
+	---> behavioral.mediator.User::getRoom() [1 time(s)]
+	---> behavioral.mediator.User::getName() [1 time(s)]
+	---> behavioral.mediator.IChatRoom::sendMessage(java.lang.String, java.lang.String) [1 time(s)]
+
+behavioral.mediator.Test::main(java.lang.String[]):
+	---> behavioral.mediator.User::getId() [2 time(s)]
+	---> behavioral.mediator.User::send(java.lang.String, java.lang.String) [2 time(s)]
+	---> behavioral.mediator.User::getName() [1 time(s)]
+	---> behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User) [4 time(s)]
+
+behavioral.memento.Originator::restoreState(behavioral.memento.Memento):
+	---> behavioral.memento.Memento::getState() [1 time(s)]
+	---> behavioral.memento.Originator::setState(java.lang.String) [1 time(s)]
+
+behavioral.memento.Test::main(java.lang.String[]):
+	---> behavioral.memento.Originator::getState() [3 time(s)]
+	---> behavioral.memento.Originator::restoreState(behavioral.memento.Memento) [2 time(s)]
+	---> behavioral.memento.CareTaker::addMemento(behavioral.memento.Memento) [2 time(s)]
+	---> behavioral.memento.Originator::setState(java.lang.String) [4 time(s)]
+	---> behavioral.memento.Originator::externalizeState() [2 time(s)]
+	---> behavioral.memento.CareTaker::get(int) [2 time(s)]
+
+behavioral.observer.StockGrabber::notifyObserver():
+	---> behavioral.observer.Observer::update() [1 time(s)]
+
+behavioral.observer.StockGrabber::setAppleStock(double):
+	---> behavioral.observer.StockGrabber::notifyObserver() [1 time(s)]
+
+behavioral.observer.StockGrabber::setGoogleStock(double):
+	---> behavioral.observer.StockGrabber::notifyObserver() [1 time(s)]
+
+behavioral.observer.StockGrabber::setIBMStock(double):
+	---> behavioral.observer.StockGrabber::notifyObserver() [1 time(s)]
+
+behavioral.observer.StockObserver::StockObserver(behavioral.observer.StockGrabber):
+	---> behavioral.observer.StockGrabber::register(behavioral.observer.Observer) [1 time(s)]
+
+behavioral.observer.StockObserver::update():
+	---> behavioral.observer.StockGrabber::getIBMStock() [1 time(s)]
+	---> behavioral.observer.StockGrabber::getAppleStock() [1 time(s)]
+	---> behavioral.observer.StockGrabber::getGoogleStock() [1 time(s)]
+	---> behavioral.observer.StockObserver::displayPrices() [1 time(s)]
+
+behavioral.observer.Test::main(java.lang.String[]):
+	---> behavioral.observer.StockGrabber::unregister(behavioral.observer.Observer) [1 time(s)]
+	---> behavioral.observer.StockGrabber::setGoogleStock(double) [3 time(s)]
+	---> behavioral.observer.StockGrabber::setIBMStock(double) [3 time(s)]
+	---> behavioral.observer.StockGrabber::setAppleStock(double) [3 time(s)]
+
+behavioral.state.ATMMachine::ejectCard():
+	---> behavioral.state.IATMState::ejectCard() [1 time(s)]
+
+behavioral.state.ATMMachine::insertCard():
+	---> behavioral.state.IATMState::insertCard() [1 time(s)]
+
+behavioral.state.ATMMachine::insertPin(int):
+	---> behavioral.state.IATMState::insertPin(int) [1 time(s)]
+
+behavioral.state.ATMMachine::requestCash(int):
+	---> behavioral.state.IATMState::requestCash(int) [1 time(s)]
+
+behavioral.state.CorrectPin::ejectCard():
+	---> behavioral.state.ATMMachine::getNoCardState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+
+behavioral.state.CorrectPin::requestCash(int):
+	---> behavioral.state.ATMMachine::getCashInMachine() [3 time(s)]
+	---> behavioral.state.ATMMachine::getNoCashState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setCashInMachine(int) [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+	---> behavioral.state.CorrectPin::ejectCard() [1 time(s)]
+
+behavioral.state.HasCard::ejectCard():
+	---> behavioral.state.ATMMachine::getNoCardState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+
+behavioral.state.HasCard::insertPin(int):
+	---> behavioral.state.HasCard::ejectCard() [1 time(s)]
+	---> behavioral.state.ATMMachine::getCorrectPinState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+
+behavioral.state.NoCard::ejectCard():
+	---> behavioral.state.NoCard::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCard::insertCard():
+	---> behavioral.state.ATMMachine::getHasCardState() [1 time(s)]
+	---> behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState) [1 time(s)]
+
+behavioral.state.NoCard::insertPin(int):
+	---> behavioral.state.NoCard::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCard::requestCash(int):
+	---> behavioral.state.NoCard::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCash::ejectCard():
+	---> behavioral.state.NoCash::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCash::insertCard():
+	---> behavioral.state.NoCash::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCash::insertPin(int):
+	---> behavioral.state.NoCash::defaultMessage() [1 time(s)]
+
+behavioral.state.NoCash::requestCash(int):
+	---> behavioral.state.NoCash::defaultMessage() [1 time(s)]
+
+behavioral.state.Test::main(java.lang.String[]):
+	---> behavioral.state.ATMMachine::ejectCard() [1 time(s)]
+	---> behavioral.state.ATMMachine::insertCard() [5 time(s)]
+	---> behavioral.state.ATMMachine::requestCash(int) [2 time(s)]
+	---> behavioral.state.ATMMachine::insertPin(int) [3 time(s)]
+
+behavioral.strategy.Calculator::computeOperation(int, int):
+	---> behavioral.strategy.ArithmeticOperation::execute(int, int) [1 time(s)]
+
+behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int):
+	---> behavioral.strategy.Calculator::setOperation(behavioral.strategy.ArithmeticOperation) [1 time(s)]
+	---> behavioral.strategy.Calculator::getResult() [1 time(s)]
+	---> behavioral.strategy.Calculator::computeOperation(int, int) [1 time(s)]
+
+behavioral.strategy.Test::main(java.lang.String[]):
+	---> behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int) [5 time(s)]
+
+behavioral.template_method.Game::play():
+	---> behavioral.template_method.Game::end() [1 time(s)]
+	---> behavioral.template_method.Game::initialize() [1 time(s)]
+	---> behavioral.template_method.Game::start() [1 time(s)]
+
+behavioral.template_method.Test::main(java.lang.String[]):
+	---> behavioral.template_method.Game::play() [2 time(s)]
+
+behavioral.visitor.Liquor::accept(behavioral.visitor.Visitor):
+	---> behavioral.visitor.Visitor::visit(behavioral.visitor.Liquor) [1 time(s)]
+
+behavioral.visitor.Necessity::accept(behavioral.visitor.Visitor):
+	---> behavioral.visitor.Visitor::visit(behavioral.visitor.Necessity) [1 time(s)]
+
+behavioral.visitor.Product::Product(java.lang.String, double):
+	---> behavioral.visitor.Product::setName(java.lang.String) [1 time(s)]
+	---> behavioral.visitor.Product::setPrice(double) [1 time(s)]
+
+behavioral.visitor.TaxHolidayVisitor::visit(behavioral.visitor.Liquor):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.TaxHolidayVisitor::visit(behavioral.visitor.Tobacco):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product):
+	---> behavioral.visitor.Product::getPrice() [1 time(s)]
+
+behavioral.visitor.TaxVisitor::visit(behavioral.visitor.Liquor):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.TaxVisitor::visit(behavioral.visitor.Necessity):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.TaxVisitor::visit(behavioral.visitor.Tobacco):
+	---> behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product) [1 time(s)]
+
+behavioral.visitor.Test::computeTaxForProducts(java.util.List<behavioral.visitor.Product>, behavioral.visitor.TaxVisitor):
+	---> behavioral.visitor.Visitable::accept(behavioral.visitor.Visitor) [1 time(s)]
+	---> behavioral.visitor.TaxVisitor::getComputedTax() [1 time(s)]
+
+behavioral.visitor.Test::main(java.lang.String[]):
+	---> behavioral.visitor.Test::computeTaxForProducts(java.util.List<behavioral.visitor.Product>, behavioral.visitor.TaxVisitor) [2 time(s)]
+
+behavioral.visitor.Tobacco::accept(behavioral.visitor.Visitor):
+	---> behavioral.visitor.Visitor::visit(behavioral.visitor.Tobacco) [1 time(s)]
+
+creational.abstract_factory.ShapeProducer::createFactory(creational.abstract_factory.ShapeFactoryType):
+	---> creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>) [2 time(s)]
+
+creational.abstract_factory.Test::main(java.lang.String[]):
+	---> creational.abstract_factory.ShapeProducer::createFactory(creational.abstract_factory.ShapeFactoryType) [2 time(s)]
+	---> creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType) [4 time(s)]
+	---> creational.abstract_factory.Shape::draw() [4 time(s)]
+
+creational.builder.OldRobotBuilder::buildArms():
+	---> creational.builder.Robot::setArms(java.lang.String) [1 time(s)]
+
+creational.builder.OldRobotBuilder::buildHead():
+	---> creational.builder.Robot::setHead(java.lang.String) [1 time(s)]
+
+creational.builder.OldRobotBuilder::buildLegs():
+	---> creational.builder.Robot::setLegs(java.lang.String) [1 time(s)]
+
+creational.builder.OldRobotBuilder::buildTorso():
+	---> creational.builder.Robot::setTorso(java.lang.String) [1 time(s)]
+
+creational.builder.RobotEngineer::RobotEngineer(creational.builder.IRobotBuilder):
+	---> creational.builder.RobotEngineer::setRobotBuilder(creational.builder.IRobotBuilder) [1 time(s)]
+
+creational.builder.RobotEngineer::constructRobot():
+	---> creational.builder.IRobotBuilder::buildArms() [1 time(s)]
+	---> creational.builder.IRobotBuilder::buildHead() [1 time(s)]
+	---> creational.builder.IRobotBuilder::buildTorso() [1 time(s)]
+	---> creational.builder.IRobotBuilder::buildLegs() [1 time(s)]
+
+creational.builder.RobotEngineer::getRobot():
+	---> creational.builder.IRobotBuilder::getRobot() [1 time(s)]
+
+creational.builder.SophisticatedRobotBuilder::buildArms():
+	---> creational.builder.Robot::setArms(java.lang.String) [1 time(s)]
+
+creational.builder.SophisticatedRobotBuilder::buildHead():
+	---> creational.builder.Robot::setHead(java.lang.String) [1 time(s)]
+
+creational.builder.SophisticatedRobotBuilder::buildLegs():
+	---> creational.builder.Robot::setLegs(java.lang.String) [1 time(s)]
+
+creational.builder.SophisticatedRobotBuilder::buildTorso():
+	---> creational.builder.Robot::setTorso(java.lang.String) [1 time(s)]
+
+creational.builder.Test::main(java.lang.String[]):
+	---> creational.builder.RobotEngineer::getRobot() [2 time(s)]
+	---> creational.builder.RobotEngineer::setRobotBuilder(creational.builder.IRobotBuilder) [1 time(s)]
+	---> creational.builder.RobotEngineer::constructRobot() [2 time(s)]
+
+creational.factory.EnemyShip::EnemyShip(java.lang.String, double):
+	---> creational.factory.EnemyShip::setName(java.lang.String) [1 time(s)]
+	---> creational.factory.EnemyShip::setAmtDamage(double) [1 time(s)]
+
+creational.factory.EnemyShipTesting::doStuffEnemy(creational.factory.EnemyShip):
+	---> creational.factory.EnemyShip::displayEnemyShip() [1 time(s)]
+	---> creational.factory.EnemyShip::enemyShipShoots() [1 time(s)]
+	---> creational.factory.EnemyShip::followHeroShip() [1 time(s)]
+
+creational.factory.EnemyShipTesting::main(java.lang.String[]):
+	---> creational.factory.EnemyShipFactory::createEnemyShip(java.lang.String) [1 time(s)]
+	---> creational.factory.EnemyShipTesting::doStuffEnemy(creational.factory.EnemyShip) [1 time(s)]
+
+creational.factory.Test::doStuffEnemy(creational.factory.EnemyShip):
+	---> creational.factory.EnemyShip::displayEnemyShip() [1 time(s)]
+	---> creational.factory.EnemyShip::enemyShipShoots() [1 time(s)]
+	---> creational.factory.EnemyShip::followHeroShip() [1 time(s)]
+
+creational.factory.Test::main(java.lang.String[]):
+	---> creational.factory.EnemyShipFactory::createEnemyShip(java.lang.String) [1 time(s)]
+	---> creational.factory.Test::doStuffEnemy(creational.factory.EnemyShip) [1 time(s)]
+
+creational.prototype.Shape::clone():
+	---> creational.prototype.Position::clone() [1 time(s)]
+	---> creational.prototype.Shape::setPosition(creational.prototype.Position) [1 time(s)]
+	---> creational.prototype.Shape::getPosition() [1 time(s)]
+
+creational.prototype.ShapeCache::getShape(java.lang.String):
+	---> creational.prototype.Shape::clone() [1 time(s)]
+
+creational.prototype.ShapeCache::loadCache():
+	---> creational.prototype.Shape::setId(java.lang.String) [3 time(s)]
+	---> creational.prototype.Shape::getId() [3 time(s)]
+	---> creational.prototype.Shape::setPosition(creational.prototype.Position) [3 time(s)]
+
+creational.prototype.Test::main(java.lang.String[]):
+	---> creational.prototype.ShapeCache::displayCacheContent() [1 time(s)]
+	---> creational.prototype.ShapeCache::loadCache() [1 time(s)]
+	---> creational.prototype.Position::setX(double) [2 time(s)]
+	---> creational.prototype.Position::setY(double) [1 time(s)]
+	---> creational.prototype.Shape::getPosition() [3 time(s)]
+	---> creational.prototype.ShapeCache::getShape(java.lang.String) [3 time(s)]
+
+creational.singleton.Singleton::Singleton():
+	---> creational.singleton.Singleton::getRegistryKey(java.lang.Class<? extends creational.singleton.Singleton>) [1 time(s)]
+	---> creational.singleton.SingletonRegistry::register(java.lang.String, creational.singleton.Singleton) [1 time(s)]
+
+creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>):
+	---> creational.singleton.Singleton::getRegistryKey(java.lang.Class<? extends creational.singleton.Singleton>) [1 time(s)]
+	---> creational.singleton.SingletonRegistry::lookup(java.lang.String) [1 time(s)]
+
+creational.singleton.Test::main(java.lang.String[]):
+	---> creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>) [4 time(s)]
+
+structural.adapter.EnemyRobotAdapter::EnemyRobotAdapter(structural.adapter.EnemyRobot):
+	---> structural.adapter.EnemyRobotAdapter::setRobot(structural.adapter.EnemyRobot) [1 time(s)]
+
+structural.adapter.EnemyRobotAdapter::assignDriver(java.lang.String):
+	---> structural.adapter.EnemyRobot::reactToHuman(java.lang.String) [1 time(s)]
+
+structural.adapter.EnemyRobotAdapter::driveForward():
+	---> structural.adapter.EnemyRobot::walkForward() [1 time(s)]
+
+structural.adapter.EnemyRobotAdapter::fireWeapon():
+	---> structural.adapter.EnemyRobot::smashwithHands() [1 time(s)]
+
+structural.adapter.Test::main(java.lang.String[]):
+	---> structural.adapter.EnemyRobot::reactToHuman(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::driveForward() [1 time(s)]
+	---> structural.adapter.EnemyTank::assignDriver(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyRobot::walkForward() [1 time(s)]
+	---> structural.adapter.EnemyAttacker::assignDriver(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::fireWeapon() [1 time(s)]
+	---> structural.adapter.EnemyTank::driveForward() [1 time(s)]
+	---> structural.adapter.EnemyRobot::smashwithHands() [1 time(s)]
+	---> structural.adapter.EnemyTank::fireWeapon() [1 time(s)]
+
+structural.adapter.TestEnemyAttackers::main(java.lang.String[]):
+	---> structural.adapter.EnemyRobot::reactToHuman(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::driveForward() [1 time(s)]
+	---> structural.adapter.EnemyRobot::walkForward() [1 time(s)]
+	---> structural.adapter.EnemyTank::assignDriver(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::assignDriver(java.lang.String) [1 time(s)]
+	---> structural.adapter.EnemyAttacker::fireWeapon() [1 time(s)]
+	---> structural.adapter.EnemyRobot::smashwithHands() [1 time(s)]
+	---> structural.adapter.EnemyTank::driveForward() [1 time(s)]
+	---> structural.adapter.EnemyTank::fireWeapon() [1 time(s)]
+
+structural.bridge.AdvancedRemote::mute():
+	---> structural.bridge.Device::setVolume(int) [1 time(s)]
+	---> structural.bridge.Device::getName() [1 time(s)]
+	---> structural.bridge.Device::getVolume() [1 time(s)]
+
+structural.bridge.Remote::channelDown():
+	---> structural.bridge.Device::setChannel(int) [1 time(s)]
+	---> structural.bridge.Device::getChannel() [2 time(s)]
+
+structural.bridge.Remote::channelUp():
+	---> structural.bridge.Device::setChannel(int) [1 time(s)]
+	---> structural.bridge.Device::getChannel() [2 time(s)]
+
+structural.bridge.Remote::togglePower():
+	---> structural.bridge.Device::enable() [1 time(s)]
+	---> structural.bridge.Device::getName() [1 time(s)]
+	---> structural.bridge.Device::disable() [1 time(s)]
+	---> structural.bridge.Device::isEnabled() [2 time(s)]
+
+structural.bridge.Remote::volumeDown():
+	---> structural.bridge.Device::setVolume(int) [1 time(s)]
+	---> structural.bridge.Device::getVolume() [2 time(s)]
+
+structural.bridge.Remote::volumeUp():
+	---> structural.bridge.Device::setVolume(int) [1 time(s)]
+	---> structural.bridge.Device::getVolume() [2 time(s)]
+
+structural.bridge.Test::advancedRemoteTest(structural.bridge.AdvancedRemote):
+	---> structural.bridge.Remote::channelUp() [2 time(s)]
+	---> structural.bridge.Remote::togglePower() [2 time(s)]
+	---> structural.bridge.Remote::channelDown() [1 time(s)]
+	---> structural.bridge.AdvancedRemote::mute() [1 time(s)]
+	---> structural.bridge.Remote::volumeUp() [3 time(s)]
+	---> structural.bridge.Remote::volumeDown() [1 time(s)]
+
+structural.bridge.Test::main(java.lang.String[]):
+	---> structural.bridge.Test::ordinaryRemoteTest(structural.bridge.Remote) [2 time(s)]
+	---> structural.bridge.Test::advancedRemoteTest(structural.bridge.AdvancedRemote) [2 time(s)]
+
+structural.bridge.Test::ordinaryRemoteTest(structural.bridge.Remote):
+	---> structural.bridge.Remote::channelUp() [3 time(s)]
+	---> structural.bridge.Remote::togglePower() [2 time(s)]
+	---> structural.bridge.Remote::channelDown() [1 time(s)]
+	---> structural.bridge.Remote::volumeUp() [4 time(s)]
+	---> structural.bridge.Remote::volumeDown() [2 time(s)]
+
+structural.composite.DiscJockey::displaySongList():
+	---> structural.composite.SongComponent::displayInfo() [1 time(s)]
+
+structural.composite.Song::getInfo():
+	---> structural.composite.Song::getSongName() [1 time(s)]
+	---> structural.composite.Song::getBandName() [1 time(s)]
+	---> structural.composite.Song::getReleaseYear() [1 time(s)]
+
+structural.composite.SongComponent::displayInfo():
+	---> structural.composite.SongComponent::getInfo() [1 time(s)]
+
+structural.composite.SongGroup::getInfo():
+	---> structural.composite.SongGroup::getGroupDescription() [1 time(s)]
+	---> structural.composite.SongComponent::getInfo() [2 time(s)]
+	---> structural.composite.SongGroup::getGroupName() [1 time(s)]
+
+structural.composite.SongListGenerator::main(java.lang.String[]):
+	---> structural.composite.DiscJockey::displaySongList() [1 time(s)]
+	---> structural.composite.SongComponent::add(structural.composite.SongComponent) [9 time(s)]
+
+structural.composite.Test::main(java.lang.String[]):
+	---> structural.composite.DiscJockey::displaySongList() [1 time(s)]
+	---> structural.composite.SongComponent::add(structural.composite.SongComponent) [9 time(s)]
+
+structural.decorator.CaramelDecorator::description():
+	---> structural.decorator.Beverage::description() [1 time(s)]
+
+structural.decorator.CaramelDecorator::price():
+	---> structural.decorator.Beverage::price() [1 time(s)]
+
+structural.decorator.SugarDecorator::description():
+	---> structural.decorator.Beverage::description() [1 time(s)]
+
+structural.decorator.SugarDecorator::price():
+	---> structural.decorator.Beverage::price() [1 time(s)]
+
+structural.decorator.Test::displayOrder(structural.decorator.Beverage):
+	---> structural.decorator.Beverage::price() [1 time(s)]
+	---> structural.decorator.Beverage::description() [1 time(s)]
+
+structural.decorator.Test::main(java.lang.String[]):
+	---> structural.decorator.Test::orderBeverage() [1 time(s)]
+
+structural.decorator.Test::orderBeverage():
+	---> structural.decorator.Test::selectAdditionalIngredients(structural.decorator.Beverage, java.util.Scanner) [1 time(s)]
+	---> structural.decorator.Test::displayOrder(structural.decorator.Beverage) [1 time(s)]
+	---> structural.decorator.Test::selectBeverage(java.util.Scanner) [1 time(s)]
+
+structural.decorator.Test::selectAdditionalIngredients(structural.decorator.Beverage, java.util.Scanner):
+	---> structural.decorator.Test::additionalIngredientsMenu() [1 time(s)]
+
+structural.decorator.Test::selectBeverage(java.util.Scanner):
+	---> structural.decorator.Test::beveragesMenu() [1 time(s)]
+
+structural.facade.BankAccountBalanceSystem::canWithdraw(double):
+	---> structural.facade.BankAccount::getBalance() [1 time(s)]
+
+structural.facade.BankAccountBalanceSystem::deposit(double):
+	---> structural.facade.BankAccountBalanceSystem::getAccountBalance() [2 time(s)]
+	---> structural.facade.BankAccount::setBalance(double) [1 time(s)]
+
+structural.facade.BankAccountBalanceSystem::getAccountBalance():
+	---> structural.facade.BankAccount::getBalance() [1 time(s)]
+
+structural.facade.BankAccountBalanceSystem::withdraw(double):
+	---> structural.facade.BankAccountBalanceSystem::getAccountBalance() [3 time(s)]
+	---> structural.facade.BankAccountBalanceSystem::canWithdraw(double) [1 time(s)]
+	---> structural.facade.BankAccount::setBalance(double) [1 time(s)]
+
+structural.facade.BankAccountFacade::BankAccountFacade(int, int):
+	---> structural.facade.BankAccountFacade::fetchBankAccount() [1 time(s)]
+
+structural.facade.BankAccountFacade::depositCash(double):
+	---> structural.facade.BankAccountSecurityCodeChecker::match(int) [1 time(s)]
+	---> structural.facade.BankAccountBalanceSystem::deposit(double) [1 time(s)]
+	---> structural.facade.BankAccountNumberChecker::match(int) [1 time(s)]
+
+structural.facade.BankAccountFacade::withdrawCash(double):
+	---> structural.facade.BankAccountBalanceSystem::canWithdraw(double) [1 time(s)]
+	---> structural.facade.BankAccountSecurityCodeChecker::match(int) [1 time(s)]
+	---> structural.facade.BankAccountBalanceSystem::withdraw(double) [1 time(s)]
+	---> structural.facade.BankAccountNumberChecker::match(int) [1 time(s)]
+
+structural.facade.BankAccountNumberChecker::getAccountNumber():
+	---> structural.facade.BankAccount::getNumber() [1 time(s)]
+
+structural.facade.BankAccountNumberChecker::match(int):
+	---> structural.facade.BankAccountNumberChecker::getAccountNumber() [1 time(s)]
+
+structural.facade.BankAccountSecurityCodeChecker::getAccountSecurityCode():
+	---> structural.facade.BankAccount::getSecurityCode() [1 time(s)]
+
+structural.facade.BankAccountSecurityCodeChecker::match(int):
+	---> structural.facade.BankAccountSecurityCodeChecker::getAccountSecurityCode() [1 time(s)]
+
+structural.facade.BankAccountWelcomeWindow::BankAccountWelcomeWindow(structural.facade.BankAccount):
+	---> structural.facade.BankAccountWelcomeWindow::setWelcomeMessage() [1 time(s)]
+
+structural.facade.BankAccountWelcomeWindow::setWelcomeMessage():
+	---> structural.facade.BankAccount::getBalance() [1 time(s)]
+	---> structural.facade.BankAccount::getNumber() [1 time(s)]
+
+structural.facade.Test::main(java.lang.String[]):
+	---> structural.facade.BankAccountFacade::withdrawCash(double) [2 time(s)]
+	---> structural.facade.BankAccountFacade::depositCash(double) [1 time(s)]
+
+structural.flyweight.Test::main(java.lang.String[]):
+	---> structural.flyweight.ShapeFactory::getCircle(java.lang.String) [1 time(s)]
+	---> structural.flyweight.Test::getRandomColor() [1 time(s)]
+	---> structural.flyweight.Test::getRandomY() [1 time(s)]
+	---> structural.flyweight.Test::getRandomX() [1 time(s)]
+	---> structural.flyweight.Circle::setRadius(int) [1 time(s)]
+	---> structural.flyweight.Circle::draw(structural.flyweight.Position) [1 time(s)]
+	---> structural.flyweight.Test::getRandomRadius() [1 time(s)]
+
+structural.proxy.ProxyInternet::connectTo(java.lang.String):
+	---> structural.proxy.Internet::connectTo(java.lang.String) [1 time(s)]
+
+structural.proxy.Test::main(java.lang.String[]):
+	---> structural.proxy.Internet::connectTo(java.lang.String) [2 time(s)]
 
 

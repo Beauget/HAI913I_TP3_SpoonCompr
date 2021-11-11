@@ -86,36 +86,63 @@ public class ProcessorClustering extends ASTProcessor {
 	}
 	
 	private ArrayList<String> removeClusterPart(ArrayList<String> columnHeader, ArrayList<String> cluster){
-		ArrayList<String> output = columnHeader;
+		ArrayList<String> output = new ArrayList<String>(columnHeader);
 		for(String s : cluster) {
 			output.remove(s);
 		}
 		return output;
 	}
+	
+	//vérifie si les classes de la colonnes on une relation avec tout le cluster
+	private boolean ContainsCoupleWithValueWithAllOfCluster(ArrayList<String> cluster,ArrayList<String> column) {
+		ArrayList<String> output = new ArrayList<String>();
+		for(String s1 : column) {
+			for(String s2 : cluster) {
+				if((getValueInCoupleFromClassNames(s1,s2)>0)) {
+					output.add(s2);			
+				}
+			}
+		}
+		return output.containsAll(cluster);
+	}
 
 	
 	private ArrayList<ArrayList<String>> updateHeader( ArrayList<ArrayList<String>>header,  ArrayList<String> cluster){
 		ArrayList<String> clusterTemp = cluster;
+		ArrayList<ArrayList<String>> columnToRemove = new ArrayList<ArrayList<String>>();
+		ArrayList<ArrayList<String>> columnToAdd = new ArrayList<ArrayList<String>>();
 		for(ArrayList<String> headerColumn : header) {
 			/*seulement une partie du cluster est present et le but est de tout avoir
 			 * exemple :  headerColumn(a, b, c) , cluster (b, f) 
 			 * ce qu'on veut : headerColumn(a, b, c, f)
 			 * Pour eviter le doublon on enleve toute pesence et on ajoute le cluster
 			 * */
-			if(partOfClusterIsInColumnHeader(headerColumn, cluster)) {
+			/*if(partOfClusterIsInColumnHeader(headerColumn, cluster)) {
 				ArrayList<String> headerColumnTemp = headerColumn;
 				headerColumn.removeAll(cluster);
-				//headerColumnTemp = removeClusterPart(headerColumnTemp, cluster);
-				//System.out.println("headerColumnAfterRemove : "+headerColumnTemp.toString());
 				headerColumnTemp.addAll(cluster);
 				//System.out.println("headerColumnAfteradd : "+headerColumnTemp.toString() +"\n");
-				}
+				}*/
+			
+			if (ContainsCoupleWithValueWithAllOfCluster(cluster, headerColumn)) {
+				ArrayList<String> headerColumnTemp = removeClusterPart(headerColumn, cluster);
+				headerColumnTemp.addAll(cluster);
+				columnToRemove.add(headerColumn);
+				columnToAdd.add(headerColumnTemp);
 			}
+			
+		}
+
+		for (ArrayList<String> array : columnToRemove) {
+			header.remove(array);
+		}
+		header.addAll(columnToAdd);
+		
+				
 
 		/*Attention ici on a probablement des headerColumn identique donc il faudra les enlever
 		 * exemple :  headerColumn(a, f,c) , cluster (b, f) => headerColumn(a, b, c, f) il est égale a celui au dessus
 		 * */
-		header.remove(cluster);
 		for (int i = 0; i < header.size(); i++) {
 			for (int j = i+1; j <header.size(); j++) {
 				// il est normalement impossible d'avoir une liste sous ensemble de l'autre , elle est egal ou differente
@@ -179,19 +206,35 @@ public class ProcessorClustering extends ASTProcessor {
 		 * */
 
 		//INITIALISATION, les deux doivent etre de la meme taille
-		ArrayList<ArrayList<String>> tableHeader = initHeader();
-		ArrayList<Double> valuesOfHeader  = initHeaderValues();		
-		ArrayList<ArrayList<String>> clusters  = new ArrayList<ArrayList<String>>();
+		ArrayList<ArrayList<String>> tableHeader = initHeader(); //tout les couples 
+		ArrayList<Double> valuesOfHeader  = initHeaderValues();	 //toute les valeur des couples	
+		ArrayList<ArrayList<String>> clusters  = new ArrayList<ArrayList<String>>(); //le retour qui contient tout les cluster
 
+		Integer i = 0;
+		
 		//On continue tant que la fusion n'a pas pas etais complete et on verifie que les tableaux on toujours la meme taille
 		while(tableHeader.size()!=0 && valuesOfHeader.size()==tableHeader.size()) {
 			Integer indexOfHighestValue=getIndexOfHighestValueFromHeaderValues(valuesOfHeader);
 			ArrayList<String> highestCluster = new ArrayList<String>(tableHeader.get(indexOfHighestValue));
 			//System.out.println("highestCluster " + highestCluster.toString() + " value :"+ valuesOfHeader.get(indexOfHighestValue));
 			//On ajoute le cluster dans la liste des cluster
+			
+
+			//Verifie si le dernier ajout de cluster n'apporte aucun changement au niveau de la valeur
+			/*if(!lastHighestCluster.isEmpty() && highestCluster.containsAll(lastHighestCluster) && 
+					lastHighestClusterValue==valuesOfHeader.get(indexOfHighestValue)) {
+				//On verifie si un autre couple est pertinent
+				clusters.add(highestCluster);
+			}
+			else {}*/
+			
 			clusters.add(highestCluster);
+			
+			tableHeader.remove(highestCluster);
 			tableHeader = updateHeader(tableHeader, highestCluster);
 			valuesOfHeader = updateValuesOfHeader(tableHeader);
+			i++;
+			
 		}
 		return clusters;
 	}
@@ -213,16 +256,22 @@ public class ProcessorClustering extends ASTProcessor {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Classes and contents = "+ classes.toString()+"\n");
-		builder.append(generateClassesAndContent.toString());
+		//builder.append("Classes and contents = "+ classes.toString()+"\n");
+		//builder.append(generateClassesAndContent.toString());
 		builder.append("Number of classes = "+ classes.size()+"\n");
+		builder.append("Couples => \n");
+		for(ClassCouple couple : couples) {
+			if(couple.getValue()>0) {
+				builder.append(couple.toString());
+			}
+		}
 		builder.append("Clusters => ");
-		ArrayList<ArrayList<String>>  clusters = clustering();
+		/*ArrayList<ArrayList<String>>  clusters = clustering();
 		builder.append("Size : "+clusters.size()+ "\n");
 		
 		for (ArrayList<String> cluster : clusters) {
 			builder.append(cluster.toString()+ "\n");
-		}
+		}*/
 
 		return builder.toString();
 	}

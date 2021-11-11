@@ -89,7 +89,7 @@ public class ClassCouple {
 	
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ClassCouple.java : "+"Classes : "+this.class1.getName()+" "+ this.class2.getName()+ "\n");
+		builder.append("ClassCouple.java : "+"Classes : "+this.class1.getName()+" AND "+ this.class2.getName()+ " " + this.getValue()+"\n");
 		return builder.toString();
 	}
 
