@@ -25,7 +25,7 @@ public class ClassCouple {
 				//On identifie les methode qui on pour classe classe2
 				if(class2.getName().equals(methodInvocated.getClassOrigin())) {
 					rslt+= methodInvocated.getNumberOfTime();
-					nbOfTimeClass2IsCalled++;
+					nbOfTimeClass2IsCalled+= methodInvocated.getNumberOfTime();
 				}	
 			}
 		}
@@ -34,13 +34,14 @@ public class ClassCouple {
 				//On identifie les methode qui on pour classe classe1
 				if(class1.getName().equals(methodInvocated.getClassOrigin())) {
 					rslt+= methodInvocated.getNumberOfTime();
-					nbOfTimeClass1IsCalled++;
+					nbOfTimeClass1IsCalled+= methodInvocated.getNumberOfTime();
 				}	
 			}
 		}
 		if(rslt>0) {
 		System.out.println("ClassCouple.java : "+class1.getName()+ " et "+ class2.getName() +" se sont appelee l'une l'autre "+ rslt +" fois. \n"
-				+class1.getName() + " : "+ (nbOfTimeClass1IsCalled/rslt)*100 + "%  et "+ class2.getName()+ " : "+ (nbOfTimeClass2IsCalled/rslt)*100 + "% \n");
+				+class1.getName() + " : "+ (nbOfTimeClass1IsCalled/rslt)*100 + "%  et "
+				+ class2.getName()+ " : "+ (nbOfTimeClass2IsCalled/rslt)*100 + "% \n");
 		}
 		//incrémente le nombre d'appel entre classe a chaque ajout de couple
 		totalNumberOfCallsBetweenClasses+=rslt;

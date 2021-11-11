@@ -24,7 +24,7 @@ public class CallGraphMain extends AbstractMain {
 	@Override
 	protected void menu() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("1. Static call graph.");
+		builder.append("\n1. Static call graph.");
 		builder.append("\n2. ProcessorClustering.");
 		builder.append("\n3. DendrogramGraph : Création d'un dendrogram en png (n'envoie plus le bon)");
 		builder.append("\n4. CoupleGraph : Création des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnée");
