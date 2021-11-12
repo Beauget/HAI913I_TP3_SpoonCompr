@@ -101,7 +101,7 @@ public class CallGraph extends ASTProcessor {
 	public void addInvocation(MethodDeclaration source, Expression destination) {
 		String method = Utility.getMethodFullyQualifiedName(source);
 		String invokedMethod = getInvokedMethodSignature(destination);
-		
+		System.out.println(method);
 		if (!isBusinessMethod(invokedMethod))
 			return;
 

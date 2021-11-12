@@ -18,9 +18,11 @@ import spoon.reflect.CtModel;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtCodeSnippetStatement;
+import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtStatementList;
+import spoon.reflect.code.CtTargetedExpression;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtPackage;
@@ -37,10 +39,17 @@ public class Spoon extends ASTProcessor {
 	
 	private FileLogger loggerChain;
 	
-//Spoon pour l’identification de modules
+	ArrayList<CtMethod> methodList = new ArrayList<CtMethod>();
+	ArrayList<CtType> typeList = new ArrayList<CtType>();
+	ArrayList<CtInvocation> invocationList = new ArrayList<CtInvocation>();
+	CtModel model;
+	int nbMethod = 0;
+	int nbClass = 0;
+	long nbAppels = 0;
 	
-	public Spoon(String path) {
+	public Spoon(String path, CtModel model) {
 		super(path);
+		this.model = model;
 		setLoggerChain();
 	}
 	
@@ -59,77 +68,120 @@ public class Spoon extends ASTProcessor {
 				).exists();
 	}
 	
-public void callGraphWithSpoon(CtModel model, Launcher our) {
 
-	StringBuilder builder = new StringBuilder();
-	int nbMethod = 0;
-	int nbRefs = 0;
-	int nbClass = 0;
+public long getDataWithSpoon(CtModel model) {
 	
 	
-	ArrayList<String> listVu = new ArrayList<String>();
-	for (CtType <?>s: model.getAllTypes()) {
-		if(s.isClass()) {
+	
+	long result = 0;
+
+	for (CtType<?> type : model.getAllTypes()) { 
+		if(type.isClass()) {
 			nbClass++;
+			typeList.add(type);
 		}
-		  builder.append(s.getQualifiedName() + "::");
-		  String actual = s.getQualifiedName();
-	      for (CtMethod m: s.getMethods()) {
-	    	  builder.append(m.getSignature() + "\n");
-	    	  
-	    	if(!isBusinessMethod(s.getQualifiedName()))
-	    	return;
-	    	nbMethod += s.getMethods().size();
-	    	  
-	        List<CtInvocation> refs = m.getElements(new TypeFilter < CtInvocation > (CtInvocation.class));
-	        nbRefs += refs.size(); 
-	        int nbE = 0;
-	        String invName = "";
-	       
-	        for (CtInvocation inv: refs) {
-
-	         if(listVu.contains(m.getSignature())) {
-	        	 nbE +=1;
-	         }
-	         else {
-	        	 listVu.add(m.getSignature());
-	         }
-	         
-	         invName = inv.getTarget().getType().getTypeDeclaration().getQualifiedName();
-	         
-
-	         
-	            
-	            
-	        }
-
-	        builder.append("\t---> " + invName + "::" + m.getSignature() + " " +  "[" + nbE + " time(s)" + "]" + "\n");
-     		builder.append("\n");
-	        
-	        	
-       
-	      }
-	     
-	      
-	      
+		for (CtMethod<?> method : type.getAllMethods()) { 
+			if(!methodList.contains(method)) {
+				methodList.add(method);
+				nbMethod += 1;
+			}
+			for (CtInvocation<?> methodInvocation : Query.getElements(method,
+					new TypeFilter<CtInvocation<?>>(CtInvocation.class))) { 
+				if (methodInvocation.getTarget().getType() != null) {
+					
+					if ((!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().equals("void"))
+							&& (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.io."))
+							&&  (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.util."))
+							 && (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.lang"))
+							) {
+						        	
+						         
+						invocationList.add(methodInvocation);
+						System.out.println(methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName() + "::" + method.getSignature());
+						result++;
+					}
+				}
+			}
+		}
+	
 	}
+	
+	nbAppels = result;
+	return result;
+	
+}
+
+public String toString() {
+	StringBuilder builder = new StringBuilder();
+	ArrayList<String> listVu = new ArrayList<String>();
+	
+	String invocName = "";
 	
 	builder.append("Static Call Graph");
 	builder.append("\nMethods: "+nbMethod+".");
-    builder.append("\nInvocations: "+nbRefs+".");
+    builder.append("\nInvocations: "+nbAppels+".");
     builder.append("\nClass: "+nbClass+".");
     builder.append("\n");
+    
+    for (CtType<?> type : model.getAllTypes()) { 
+		if(type.isClass()) {
+			nbClass++;
+			typeList.add(type);
+			
+		}
+		
+		System.out.println(type.getQualifiedName());
+		builder.append(type.getQualifiedName() + ":" + "\n");
+		for (CtMethod<?> method : type.getAllMethods()) { 
+			if(!methodList.contains(method)) {
+				methodList.add(method);
+				nbMethod += 1;
+			}
+			
+			
+			int nbE = 0;
+			for (CtInvocation<?> methodInvocation : Query.getElements(method,
+					new TypeFilter<CtInvocation<?>>(CtInvocation.class))) { 
+				if (methodInvocation.getTarget().getType() != null) {
+					
+					if ((!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().equals("void"))
+							&& (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.io."))
+							&&  (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.util."))
+							&& (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.lang"))
+							) {
+						
+						 if(listVu.contains(methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName())) {
+		    	        	 nbE +=1;
+		    	         }
+		    	         else {
+		    	        	 listVu.add(methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName());
+		    	        	 nbE = 1;
+		    	         }
+						        	
+						invocName = methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName();
+						invocationList.add(methodInvocation);
+						System.out.println(invocName);
+					}
+					
+				}
+				
+				builder.append("\t---> " + invocName  + "::" + method.getSignature() + " " +  "[" + nbE + " time(s)" + "]" + "\n");
+	 	     	builder.append("\n");
+			}
+			
 
-	
-	our.setSourceOutputDirectory("/home/dnspc/Desktop/M2/Evo-restru/TP4ASTSpoon/HAI913I_TP3_SpoonCompr/SpoonOutput/");
-    our.prettyprint();
-
+			
+		}
+    }
     System.out.println(builder.toString());
-   // return builder.toString();
+	
+    return builder.toString();
 }
 
+
+
 public void log() {
-	loggerChain.setFilePath("/home/dnspc/Desktop/M2/Evo-restru/TP4ASTSpoon/HAI913I_TP3_SpoonCompr/static-callgraph.info");
+	loggerChain.setFilePath("C:\\Users\\beaug\\Desktop\\M2\\M2\\Evo-restru\\TP3\\HAI913I_TP3_SpoonCompr\\design_patterns\\static-callgraphSpoon.info");
 	loggerChain.log(new LogRequest(this.toString(), 
 			StandardLogRequestLevel.DEBUG));
 }
