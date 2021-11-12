@@ -13,6 +13,7 @@ import graphs.CoupleGraph;
 import graphs.DendrogramGraph;
 import graphs.StaticCallGraph;
 import parsers.Spoon;
+import parsers.SpoonClustering;
 import processors.ASTProcessor;
 import processors.ProcessorClustering;
 import spoon.Launcher;
@@ -145,12 +146,19 @@ public class CallGraphMain extends AbstractMain {
                     System.out.println(analyze.getCouplingMetric(classNameA, classNameB));
 					break;
 				case "8":
+					System.out.println("Début de génération du graphe de couplage pondéré...");
+					 start = System.currentTimeMillis();
 					 analyze.getDataWithSpoon(model);
 					 analyze.createCouplingGraph();
-					 
+					 end = System.currentTimeMillis();
+					 System.out.println("Temp d'exécution pour le graphe de couplage pondéré (en PNG) avec Spoon : " + ((end - start) / 1000) + " secondes");
 					break;
 				case "9":
-					System.err.println("Not implemented yet");
+					System.out.println("Début de génération du clustering...");
+					analyze.getDataWithSpoon(model);
+					analyze.createCouplingGraph();
+					SpoonClustering clustering = new SpoonClustering(TEST_PROJECT_PATH,model);
+					clustering.createHierarchicalClustering(clustering.Initialise(),clustering.createListOfClassesCouple(analyze));
 					break;
 				case "10":
 					System.err.println("Not implemented yet");

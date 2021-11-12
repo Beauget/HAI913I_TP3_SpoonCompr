@@ -17,6 +17,8 @@ public class ClassCouple {
 		numberOfCallsBetweenCouple = getNumberOfCalls();
 	}
 	
+
+
 	private Integer getNumberOfCalls() {
 		Integer rslt = 0;
 		//On parcours les methodes de chaques classes pour voir les invocations

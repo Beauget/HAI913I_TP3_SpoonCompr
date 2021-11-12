@@ -49,7 +49,7 @@ import spoon.support.reflect.code.CtStatementListImpl;
 import utility.Utility;
 ;
 
-public class Spoon extends ASTProcessor {
+public class Spoon {
 	
 	private FileLogger loggerChain;
 	
@@ -68,7 +68,6 @@ public class Spoon extends ASTProcessor {
 	double nbAppels = 0;
 	
 	public Spoon(String path, CtModel model) {
-		super(path);
 		this.model = model;
 		setLoggerChain();
 	}
@@ -78,17 +77,14 @@ public class Spoon extends ASTProcessor {
 		loggerChain.setNextLogger(new ConsoleLogger(StandardLogRequestLevel.INFO));
 	}
 
-	public boolean isBusinessMethod(String invokedMethodSignature) {
-		String declaringTypeFQN = invokedMethodSignature.split("::")[0];
-		int indexOfTypeDotInFQN = declaringTypeFQN.lastIndexOf(".");
-		String containingPackageFQN = declaringTypeFQN.substring(0, indexOfTypeDotInFQN);
-		return new File(
-				parser.getProjectSrcPath(), 
-				containingPackageFQN.replace(".", File.separator)
-				).exists();
-	}
 	
+	
+	public Map<String, Map<String, Double>> getCouplingGraph() {
+		return this.CouplingGraph;
+	}
 
+	
+// GET UTILITY DATA FOR SPOON
 public void getDataWithSpoon(CtModel model) {
 	
 	
@@ -128,6 +124,8 @@ public void getDataWithSpoon(CtModel model) {
 	nbAppels = result;
 }
 
+//END GET UTILITY DATA FOR SPOON
+
 
 public long getNbRelations(String classA, String classB) {
 	long result = 0;
@@ -154,11 +152,11 @@ public long getNbRelations(String classA, String classB) {
 
 public double getCouplingMetric(String classNameA, String classNameB) {
 	long nbRelations = this.getNbRelations(classNameA, classNameB);
-	//if(nbRelations != 0) {
-	//System.out.println("RELATIONS : " + classNameA + " --> " + classNameB + " = " + nbRelations);
-	//}
+	if(nbRelations != 0) {
+	System.out.println("RELATIONS : " + classNameA + " --> " + classNameB + " = " + nbRelations);
+	}
 	double result = (nbRelations + 0.0) / (nbAppels + 0.0);
-	return round(result,2);
+	return round(result,3);
 }
 
 
@@ -253,7 +251,7 @@ public String toString() {
     return builder.toString();
 }
 
-//SAVE RESULT
+// SAVE AS PNG AND DOT GENERATION
 public  String getCoupleGraphAsDotSpoon(Map<String, Map<String, Double>> couple) {
 	StringBuilder res = new StringBuilder("digraph G {\n");
 	String coupling = "";
@@ -275,6 +273,8 @@ public void saveGraphAsPNGSpoon(Map<String, Map<String, Double>> couple) throws 
 
 }
 
+
+//END SAVE AS PNG AND DOT GENERATION
 public static double round(double value, int places) {
 	if (places < 0)
 		throw new IllegalArgumentException();
