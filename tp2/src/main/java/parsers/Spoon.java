@@ -160,7 +160,7 @@ public double getCouplingMetric(String classNameA, String classNameB) {
 }
 
 
-public void createCouplingGraph () throws IOException {
+public void createCouplingGraph() throws IOException {
 	String classNameA, classNameB;
 	Double couplingValue;
 	for (CtType<?> typeClassA : model.getAllTypes()) { 

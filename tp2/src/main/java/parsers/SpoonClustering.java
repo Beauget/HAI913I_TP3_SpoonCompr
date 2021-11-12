@@ -29,7 +29,7 @@ public class SpoonClustering extends Spoon {
 	
 	
 	@SuppressWarnings("unlikely-arg-type")
-	public ArrayList<Cluster> Initialise() {
+	public ArrayList<Cluster> InitialiseClusterSpoon() {
 		Cluster toAdd;
 		for (CtType<?> type : model.getAllTypes()) {
 			if (!this.cluster.contains(type.getQualifiedName())){
@@ -80,8 +80,8 @@ public class SpoonClustering extends Spoon {
 	public void createHierarchicalClustering(ArrayList<Cluster> clusters,
 			ArrayList<ClassCoupleSpoon> couplesOfClasses) throws IOException {
 		Cluster clusterA, clusterB, partieGauche, partieDroite, tempCluster;
-		double greaterCouplingMetricValue, tempCouplingMetricValue;
-		int indexBeginPartA, indexBeginPartB;
+		double CouplingMax, tempCouplingMax;
+		int indexPartA, indexPartB;
 		ArrayList<String> tempClasses;
 
 		
@@ -89,48 +89,52 @@ public class SpoonClustering extends Spoon {
 		System.out.println("\nCréation de la hiérarchie des clusters :");
 
 		while (clusters.size() > 1) {
-			indexBeginPartA = 0;
-			indexBeginPartB = 0;
-			greaterCouplingMetricValue = 0;
+			indexPartA = 0;
+			indexPartB = 0;
+			CouplingMax = 0;
 			for (int i = 0; i < clusters.size(); i++) {
+				
 				clusterA = clusters.get(i);
 				for (int j = 0; j < clusters.size(); j++) {
+					
 					clusterB = clusters.get(j);
 					if (i != j) {
-						tempCouplingMetricValue = getScoreClusters(clusterA, clusterB, couplesOfClasses);
-						if (tempCouplingMetricValue > greaterCouplingMetricValue) {
-							greaterCouplingMetricValue = tempCouplingMetricValue;
-							indexBeginPartA = i;
-							indexBeginPartB = j;
+						
+						tempCouplingMax = getScoreClusters(clusterA, clusterB, couplesOfClasses);
+						if (tempCouplingMax > CouplingMax) {
+							CouplingMax = tempCouplingMax;
+							indexPartA = i;
+							indexPartB = j;
 						}
 					}
 				}
 			}
-			if (greaterCouplingMetricValue > 0) {
-				partieGauche = clusters.get(indexBeginPartA);
-				partieDroite = clusters.get(indexBeginPartB);
+			if (CouplingMax > 0) {
+				partieGauche = clusters.get(indexPartA);
+				partieDroite = clusters.get(indexPartB);
 				
 				
 				tempClasses = new ArrayList<String>(partieGauche.getClassList());
-				tempCluster = new Cluster(tempClasses, greaterCouplingMetricValue);
+				tempCluster = new Cluster(tempClasses, CouplingMax);
 				tempCluster.add(partieDroite.getClassList());
-				clusters.add(tempCluster);
+				
+				//Algo du cours : enlève, enlève, ajoute
+				
 				clusters.remove(partieGauche);
 				clusters.remove(partieDroite);
-				
+				clusters.add(tempCluster);
 				
 				
 				
 				// En cas de modifications
 				
 				
-				System.out.println("\nFusion entre clusters");
-				System.out.println(" Partie A De la fussion : ");
+				System.out.println("\nChangement : fusion entre clusters");
+				System.out.println("Première partie de la fussion : ");
 				partieGauche.getClassList().forEach(classe -> System.out.println("Classe :  " + classe.toString()));
-				System.out.println("Parie B de la fusion");
+				System.out.println("Deuxième partie de la fusion");
 				partieDroite.getClassList().forEach(classe -> System.out.println("Classe :  " + classe.toString()));
-				System.out.println("valeur du couplage : " + greaterCouplingMetricValue);
-				System.out.println("\n\n");
+				System.out.println(" Nouvelle valeurCouplage : " + CouplingMax + "\n");
 			}
 		}
 		saveGraphAsPNG();

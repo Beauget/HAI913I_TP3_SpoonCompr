@@ -158,7 +158,7 @@ public class CallGraphMain extends AbstractMain {
 					analyze.getDataWithSpoon(model);
 					analyze.createCouplingGraph();
 					SpoonClustering clustering = new SpoonClustering(TEST_PROJECT_PATH,model);
-					clustering.createHierarchicalClustering(clustering.Initialise(),clustering.createListOfClassesCouple(analyze));
+					clustering.createHierarchicalClustering(clustering.InitialiseClusterSpoon(),clustering.createListOfClassesCouple(analyze));
 					break;
 				case "10":
 					System.err.println("Not implemented yet");
