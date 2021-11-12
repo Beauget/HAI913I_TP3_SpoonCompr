@@ -142,6 +142,14 @@ public String toString() {
 			int nbE = 0;
 			for (CtInvocation<?> methodInvocation : Query.getElements(method,
 					new TypeFilter<CtInvocation<?>>(CtInvocation.class))) { 
+				
+				 if(listVu.contains(method.getSignature())) {
+    	        	 nbE +=1;
+    	         }
+    	         else {
+    	        	 listVu.add(method.getSignature());
+    	        	 nbE = 1;
+    	         }
 				if (methodInvocation.getTarget().getType() != null) {
 					
 					if ((!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().equals("void"))
@@ -150,13 +158,7 @@ public String toString() {
 							&& (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.lang"))
 							) {
 						
-						 if(listVu.contains(methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName())) {
-		    	        	 nbE +=1;
-		    	         }
-		    	         else {
-		    	        	 listVu.add(methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName());
-		    	        	 nbE = 1;
-		    	         }
+						
 						        	
 						invocName = methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName();
 						invocationList.add(methodInvocation);
