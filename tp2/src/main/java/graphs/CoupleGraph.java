@@ -108,11 +108,14 @@ public class CoupleGraph  extends ASTProcessor {
 		res.append("\n}");
 		return res.toString();
 }
-
+	
+	
 	public void saveGraphAsPNG(ClassCouple couple) throws IOException {
 		MutableGraph g = new Parser().read(this.getCoupleGraphAsDot(couple));
 		Graphviz.fromGraph(g).width(700).render(Format.PNG).toFile(new File("graphCouple.png"));
 	}
+	
+
 	public static double round(double value, int places) {
 	    if (places < 0) throw new IllegalArgumentException();
 

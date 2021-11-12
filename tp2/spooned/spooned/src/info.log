@@ -1,0 +1,1990 @@
+Class: creational.builder.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void creational.builder.Test::main(String[] args) invokes: 
+		creational.builder.RobotEngineer::constructRobot()
+		creational.builder.RobotEngineer::getRobot()
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println()
+		creational.builder.RobotEngineer::setRobotBuilder(creational.builder.IRobotBuilder)
+		creational.builder.RobotEngineer::constructRobot()
+		creational.builder.RobotEngineer::getRobot()
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: creational.builder.RobotBuilder
+Superclasses: java.lang.Object
+Fields: 
+	protected Robot robot
+Methods: 
+	public creational.builder.RobotBuilder::RobotBuilder()
+	@Override public IRobot creational.builder.RobotBuilder::getRobot()
+
+
+Class: creational.builder.Robot
+Superclasses: java.lang.Object
+Fields: 
+	private String head
+	private String torso
+	private String arms
+	private String legs
+Methods: 
+	public String creational.builder.Robot::getHead()
+	@Override public void creational.builder.Robot::setHead(String head)
+	public String creational.builder.Robot::getTorso()
+	@Override public void creational.builder.Robot::setTorso(String torso)
+	public String creational.builder.Robot::getArms()
+	@Override public void creational.builder.Robot::setArms(String arms)
+	public String creational.builder.Robot::getLegs()
+	@Override public void creational.builder.Robot::setLegs(String legs)
+	@Override public String creational.builder.Robot::toString() invokes: 
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::toString()
+
+
+Class: creational.builder.SophisticatedRobotBuilder
+Superclasses: 
+	RobotBuilder
+Fields: 
+Methods: 
+	@Override public void creational.builder.SophisticatedRobotBuilder::buildHead() invokes: 
+		creational.builder.Robot::setHead(java.lang.String)
+	@Override public void creational.builder.SophisticatedRobotBuilder::buildTorso() invokes: 
+		creational.builder.Robot::setTorso(java.lang.String)
+	@Override public void creational.builder.SophisticatedRobotBuilder::buildArms() invokes: 
+		creational.builder.Robot::setArms(java.lang.String)
+	@Override public void creational.builder.SophisticatedRobotBuilder::buildLegs() invokes: 
+		creational.builder.Robot::setLegs(java.lang.String)
+
+
+Class: creational.builder.RobotEngineer
+Superclasses: java.lang.Object
+Fields: 
+	private IRobotBuilder robotBuilder
+Methods: 
+	public creational.builder.RobotEngineer::RobotEngineer(IRobotBuilder robotBuilder) invokes: 
+		creational.builder.RobotEngineer::setRobotBuilder(creational.builder.IRobotBuilder)
+	public IRobot creational.builder.RobotEngineer::getRobot() invokes: 
+		creational.builder.IRobotBuilder::getRobot()
+	public void creational.builder.RobotEngineer::setRobotBuilder(IRobotBuilder robotBuilder)
+	public void creational.builder.RobotEngineer::constructRobot() invokes: 
+		creational.builder.IRobotBuilder::buildHead()
+		creational.builder.IRobotBuilder::buildTorso()
+		creational.builder.IRobotBuilder::buildArms()
+		creational.builder.IRobotBuilder::buildLegs()
+
+
+Class: creational.builder.OldRobotBuilder
+Superclasses: 
+	RobotBuilder
+Fields: 
+Methods: 
+	@Override public void creational.builder.OldRobotBuilder::buildHead() invokes: 
+		creational.builder.Robot::setHead(java.lang.String)
+	@Override public void creational.builder.OldRobotBuilder::buildTorso() invokes: 
+		creational.builder.Robot::setTorso(java.lang.String)
+	@Override public void creational.builder.OldRobotBuilder::buildArms() invokes: 
+		creational.builder.Robot::setArms(java.lang.String)
+	@Override public void creational.builder.OldRobotBuilder::buildLegs() invokes: 
+		creational.builder.Robot::setLegs(java.lang.String)
+
+
+Class: creational.abstract_factory.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void creational.abstract_factory.Test::main(String[] args) invokes: 
+		creational.abstract_factory.ShapeProducer::createFactory(creational.abstract_factory.ShapeFactoryType)
+		creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType)
+		creational.abstract_factory.Shape::draw()
+		creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType)
+		creational.abstract_factory.Shape::draw()
+		creational.abstract_factory.ShapeProducer::createFactory(creational.abstract_factory.ShapeFactoryType)
+		creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType)
+		creational.abstract_factory.Shape::draw()
+		creational.abstract_factory.AbstractShapeFactory::createShape(creational.abstract_factory.ShapeType)
+		creational.abstract_factory.Shape::draw()
+
+
+Class: creational.abstract_factory.Rectangle
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public void creational.abstract_factory.Rectangle::draw() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: creational.abstract_factory.RoundedRectangle
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public void creational.abstract_factory.RoundedRectangle::draw() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: creational.abstract_factory.AbstractShapeFactory
+Superclasses: 
+	Singleton
+Fields: 
+Methods: 
+	public abstract Shape creational.abstract_factory.AbstractShapeFactory::createShape(ShapeType shapeType)
+
+
+Class: creational.abstract_factory.RoundedTriangle
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public void creational.abstract_factory.RoundedTriangle::draw() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: creational.abstract_factory.Triangle
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public void creational.abstract_factory.Triangle::draw() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: creational.abstract_factory.ShapeProducer
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static AbstractShapeFactory creational.abstract_factory.ShapeProducer::createFactory(ShapeFactoryType type) invokes: 
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+
+
+Class: creational.abstract_factory.RoundedShapeFactory
+Superclasses: 
+	AbstractShapeFactory
+Fields: 
+Methods: 
+	@Override public Shape creational.abstract_factory.RoundedShapeFactory::createShape(ShapeType shapeType)
+
+
+Class: creational.abstract_factory.StandardShapeFactory
+Superclasses: 
+	AbstractShapeFactory
+Fields: 
+Methods: 
+	@Override public Shape creational.abstract_factory.StandardShapeFactory::createShape(ShapeType shapeType)
+
+
+Class: creational.factory.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void creational.factory.Test::main(String[] args) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		java.util.Scanner::hasNextLine()
+		java.util.Scanner::nextLine()
+		creational.factory.EnemyShipFactory::createEnemyShip(java.lang.String)
+		creational.factory.Test::doStuffEnemy(creational.factory.EnemyShip)
+		java.io.PrintStream::println(java.lang.String)
+	private static void creational.factory.Test::doStuffEnemy(EnemyShip enemy) invokes: 
+		creational.factory.EnemyShip::displayEnemyShip()
+		creational.factory.EnemyShip::followHeroShip()
+		creational.factory.EnemyShip::enemyShipShoots()
+
+
+Class: creational.factory.EnemyShipTesting
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void creational.factory.EnemyShipTesting::main(String[] args) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		java.util.Scanner::hasNextLine()
+		java.util.Scanner::nextLine()
+		creational.factory.EnemyShipFactory::createEnemyShip(java.lang.String)
+		creational.factory.EnemyShipTesting::doStuffEnemy(creational.factory.EnemyShip)
+		java.io.PrintStream::println(java.lang.String)
+		java.util.Scanner::close()
+	private static void creational.factory.EnemyShipTesting::doStuffEnemy(EnemyShip enemy) invokes: 
+		creational.factory.EnemyShip::displayEnemyShip()
+		creational.factory.EnemyShip::followHeroShip()
+		creational.factory.EnemyShip::enemyShipShoots()
+
+
+Class: creational.factory.EnemyShipFactory
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public EnemyShip creational.factory.EnemyShipFactory::createEnemyShip(String type)
+
+
+Class: creational.factory.BigUFOEnemyShip
+Superclasses: 
+	UFOEnemyShip
+Fields: 
+Methods: 
+	public creational.factory.BigUFOEnemyShip::BigUFOEnemyShip()
+
+
+Class: creational.factory.EnemyShip
+Superclasses: java.lang.Object
+Fields: 
+	private String name
+	private double amtDamage
+Methods: 
+	public creational.factory.EnemyShip::EnemyShip(String name, double amtDamage) invokes: 
+		creational.factory.EnemyShip::setName(java.lang.String)
+		creational.factory.EnemyShip::setAmtDamage(double)
+	public String creational.factory.EnemyShip::getName()
+	public void creational.factory.EnemyShip::setName(String name)
+	public double creational.factory.EnemyShip::getAmtDamage()
+	public void creational.factory.EnemyShip::setAmtDamage(double amtDamage)
+	public void creational.factory.EnemyShip::followHeroShip() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+	public void creational.factory.EnemyShip::displayEnemyShip() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+	public void creational.factory.EnemyShip::enemyShipShoots() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: creational.factory.UFOEnemyShip
+Superclasses: 
+	EnemyShip
+Fields: 
+Methods: 
+	public creational.factory.UFOEnemyShip::UFOEnemyShip()
+	public creational.factory.UFOEnemyShip::UFOEnemyShip(String name, double amtDamage)
+
+
+Class: creational.factory.RocketEnemyShip
+Superclasses: 
+	EnemyShip
+Fields: 
+Methods: 
+	public creational.factory.RocketEnemyShip::RocketEnemyShip()
+
+
+Class: creational.singleton.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void creational.singleton.Test::main(String[] args) invokes: 
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.Object::hashCode()
+		java.lang.Object::hashCode()
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.Object::hashCode()
+		java.lang.Object::hashCode()
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.Object::hashCode()
+		java.lang.Object::hashCode()
+
+
+Class: creational.singleton.Singleton
+Superclasses: java.lang.Object
+Fields: 
+	private static Singleton instance
+	protected static SingletonRegistry registry
+Methods: 
+	protected creational.singleton.Singleton::Singleton() invokes: 
+		creational.singleton.SingletonRegistry::register(java.lang.String, creational.singleton.Singleton)
+		creational.singleton.Singleton::getRegistryKey(java.lang.Class<? extends creational.singleton.Singleton>)
+		java.lang.Object::getClass()
+	public static Singleton creational.singleton.Singleton::getInstance(Class<? extends Singleton> cls) invokes: 
+		java.lang.reflect.Constructor<>::newInstance()
+		java.lang.Class<>::getDeclaredConstructor()
+		java.lang.Throwable::printStackTrace()
+		creational.singleton.SingletonRegistry::lookup(java.lang.String)
+		creational.singleton.Singleton::getRegistryKey(java.lang.Class<? extends creational.singleton.Singleton>)
+	private static String creational.singleton.Singleton::getRegistryKey(Class<? extends Singleton> cls) invokes: 
+		java.lang.Class<>::getName()
+
+
+Class: creational.singleton.ExtendedSingleton2
+Superclasses: 
+	Singleton
+Fields: 
+Methods: 
+
+
+Class: creational.singleton.SingletonRegistry
+Superclasses: java.lang.Object
+Fields: 
+	private Map<String,Singleton> registry
+Methods: 
+	public void creational.singleton.SingletonRegistry::register(String key, Singleton singleton) invokes: 
+		java.util.Map<java.lang.String,creational.singleton.Singleton>::containsKey(java.lang.Object)
+		java.util.Map<java.lang.String,creational.singleton.Singleton>::put(java.lang.String, creational.singleton.Singleton)
+	public Singleton creational.singleton.SingletonRegistry::lookup(String key) invokes: 
+		java.util.Map<java.lang.String,creational.singleton.Singleton>::get(java.lang.Object)
+
+
+Class: creational.singleton.ExtendedSingleton
+Superclasses: 
+	Singleton
+Fields: 
+Methods: 
+
+
+Class: creational.prototype.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void creational.prototype.Test::main(String[] args) invokes: 
+		creational.prototype.ShapeCache::loadCache()
+		java.io.PrintStream::println(java.lang.String)
+		creational.prototype.ShapeCache::displayCacheContent()
+		java.io.PrintStream::println()
+		creational.prototype.ShapeCache::getShape(java.lang.String)
+		creational.prototype.Position::setX(double)
+		creational.prototype.Shape::getPosition()
+		creational.prototype.ShapeCache::getShape(java.lang.String)
+		creational.prototype.Position::setY(double)
+		creational.prototype.Shape::getPosition()
+		creational.prototype.ShapeCache::getShape(java.lang.String)
+		creational.prototype.Position::setX(double)
+		creational.prototype.Shape::getPosition()
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.Object)
+		java.io.PrintStream::println(java.lang.Object)
+		java.io.PrintStream::println(java.lang.Object)
+
+
+Class: creational.prototype.Rectangle
+Superclasses: 
+	Shape
+Fields: 
+Methods: 
+	public creational.prototype.Rectangle::Rectangle()
+	@Override void creational.prototype.Rectangle::draw() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: creational.prototype.Position
+Superclasses: java.lang.Object
+Fields: 
+	private double x
+	private double y
+Methods: 
+	public creational.prototype.Position::Position(double x, double y)
+	public double creational.prototype.Position::getX()
+	public void creational.prototype.Position::setX(double x)
+	public double creational.prototype.Position::getY()
+	public void creational.prototype.Position::setY(double y)
+	@Override public Position creational.prototype.Position::clone() invokes: 
+		java.lang.Object::clone()
+	@Override public String creational.prototype.Position::toString() invokes: 
+		java.lang.Object::hashCode()
+
+
+Class: creational.prototype.ShapeCache
+Superclasses: java.lang.Object
+Fields: 
+	private static HashMap<String,Shape> map
+Methods: 
+	public static Shape creational.prototype.ShapeCache::getShape(String id) invokes: 
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::get(java.lang.Object)
+		creational.prototype.Shape::clone()
+	public static void creational.prototype.ShapeCache::loadCache() invokes: 
+		creational.prototype.Shape::setId(java.lang.String)
+		creational.prototype.Shape::setPosition(creational.prototype.Position)
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::put(java.lang.String, creational.prototype.Shape)
+		creational.prototype.Shape::getId()
+		creational.prototype.Shape::setId(java.lang.String)
+		creational.prototype.Shape::setPosition(creational.prototype.Position)
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::put(java.lang.String, creational.prototype.Shape)
+		creational.prototype.Shape::getId()
+		creational.prototype.Shape::setId(java.lang.String)
+		creational.prototype.Shape::setPosition(creational.prototype.Position)
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::put(java.lang.String, creational.prototype.Shape)
+		creational.prototype.Shape::getId()
+	public static void creational.prototype.ShapeCache::displayCacheContent() invokes: 
+		java.util.HashMap<java.lang.String,creational.prototype.Shape>::values()
+		java.io.PrintStream::println(java.lang.Object)
+
+
+Class: creational.prototype.Triangle
+Superclasses: 
+	Shape
+Fields: 
+Methods: 
+	public creational.prototype.Triangle::Triangle()
+	@Override void creational.prototype.Triangle::draw() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: creational.prototype.Circle
+Superclasses: 
+	Shape
+Fields: 
+Methods: 
+	public creational.prototype.Circle::Circle()
+	@Override void creational.prototype.Circle::draw() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: creational.prototype.Shape
+Superclasses: java.lang.Object
+Fields: 
+	private String id
+	protected String type
+	private Position position
+Methods: 
+	public String creational.prototype.Shape::getId()
+	public void creational.prototype.Shape::setId(String id)
+	public String creational.prototype.Shape::getType()
+	public Position creational.prototype.Shape::getPosition()
+	public void creational.prototype.Shape::setPosition(Position position)
+	abstract void creational.prototype.Shape::draw()
+	@Override public Shape creational.prototype.Shape::clone() invokes: 
+		creational.prototype.Shape::setPosition(creational.prototype.Position)
+		creational.prototype.Position::clone()
+		creational.prototype.Shape::getPosition()
+		java.lang.Throwable::printStackTrace()
+		java.lang.Object::clone()
+	@Override public String creational.prototype.Shape::toString() invokes: 
+		java.lang.Object::hashCode()
+
+
+Class: structural.decorator.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void structural.decorator.Test::main(String[] args) invokes: 
+		structural.decorator.Test::orderBeverage()
+	public static void structural.decorator.Test::orderBeverage() invokes: 
+		structural.decorator.Test::selectBeverage(java.util.Scanner)
+		structural.decorator.Test::selectAdditionalIngredients(structural.decorator.Beverage, java.util.Scanner)
+		structural.decorator.Test::displayOrder(structural.decorator.Beverage)
+	public static void structural.decorator.Test::beveragesMenu() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+	public static Beverage structural.decorator.Test::selectBeverage(Scanner scanner) invokes: 
+		structural.decorator.Test::beveragesMenu()
+		java.util.Scanner::nextLine()
+		java.io.PrintStream::println(java.lang.String)
+	public static void structural.decorator.Test::additionalIngredientsMenu() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+	public static Beverage structural.decorator.Test::selectAdditionalIngredients(Beverage beverage, Scanner scanner) invokes: 
+		structural.decorator.Test::additionalIngredientsMenu()
+		java.util.Scanner::nextLine()
+		java.io.PrintStream::println(java.lang.String)
+	public static void structural.decorator.Test::displayOrder(Beverage beverage) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		structural.decorator.Beverage::description()
+		java.io.PrintStream::println(java.lang.String)
+		structural.decorator.Beverage::price()
+
+
+Class: structural.decorator.Tea
+Superclasses: 
+	Beverage
+Fields: 
+Methods: 
+	public structural.decorator.Tea::Tea()
+	public structural.decorator.Tea::Tea(String description, double price)
+
+
+Class: structural.decorator.Espresso
+Superclasses: 
+	Beverage
+Fields: 
+Methods: 
+	public structural.decorator.Espresso::Espresso()
+	public structural.decorator.Espresso::Espresso(String description, double price)
+
+
+Class: structural.decorator.Beverage
+Superclasses: java.lang.Object
+Fields: 
+	protected String description
+	protected double price
+Methods: 
+	public structural.decorator.Beverage::Beverage()
+	public structural.decorator.Beverage::Beverage(String description, double price)
+	@Override public String structural.decorator.Beverage::description()
+	@Override public double structural.decorator.Beverage::price()
+
+
+Class: structural.decorator.CaramelDecorator
+Superclasses: 
+	BeverageDecorator
+Fields: 
+Methods: 
+	public structural.decorator.CaramelDecorator::CaramelDecorator(Beverage beverage)
+	@Override public String structural.decorator.CaramelDecorator::description() invokes: 
+		structural.decorator.Beverage::description()
+	@Override public double structural.decorator.CaramelDecorator::price() invokes: 
+		structural.decorator.Beverage::price()
+
+
+Class: structural.decorator.BeverageDecorator
+Superclasses: 
+	Beverage
+Fields: 
+	protected Beverage beverage
+Methods: 
+	public structural.decorator.BeverageDecorator::BeverageDecorator(Beverage beverage)
+
+
+Class: structural.decorator.SugarDecorator
+Superclasses: 
+	BeverageDecorator
+Fields: 
+Methods: 
+	public structural.decorator.SugarDecorator::SugarDecorator(Beverage beverage)
+	@Override public String structural.decorator.SugarDecorator::description() invokes: 
+		structural.decorator.Beverage::description()
+	@Override public double structural.decorator.SugarDecorator::price() invokes: 
+		structural.decorator.Beverage::price()
+
+
+Class: structural.bridge.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void structural.bridge.Test::main(String[] args) invokes: 
+		structural.bridge.Test::ordinaryRemoteTest(structural.bridge.Remote)
+		structural.bridge.Test::ordinaryRemoteTest(structural.bridge.Remote)
+		structural.bridge.Test::advancedRemoteTest(structural.bridge.AdvancedRemote)
+		structural.bridge.Test::advancedRemoteTest(structural.bridge.AdvancedRemote)
+	public static void structural.bridge.Test::ordinaryRemoteTest(Remote remote) invokes: 
+		structural.bridge.Remote::togglePower()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelDown()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeDown()
+		structural.bridge.Remote::volumeDown()
+		structural.bridge.Remote::togglePower()
+		java.io.PrintStream::println()
+	public static void structural.bridge.Test::advancedRemoteTest(AdvancedRemote advRemote) invokes: 
+		structural.bridge.Remote::togglePower()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelUp()
+		structural.bridge.Remote::channelDown()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeUp()
+		structural.bridge.Remote::volumeDown()
+		structural.bridge.AdvancedRemote::mute()
+		structural.bridge.Remote::togglePower()
+		java.io.PrintStream::println()
+
+
+Class: structural.bridge.TV
+Superclasses: 
+	Device
+Fields: 
+Methods: 
+	public structural.bridge.TV::TV()
+	public structural.bridge.TV::TV(String name)
+
+
+Class: structural.bridge.Radio
+Superclasses: 
+	Device
+Fields: 
+Methods: 
+	public structural.bridge.Radio::Radio()
+	public structural.bridge.Radio::Radio(String name)
+
+
+Class: structural.bridge.AdvancedRemote
+Superclasses: 
+	Remote
+Fields: 
+Methods: 
+	public structural.bridge.AdvancedRemote::AdvancedRemote(Device device)
+	public void structural.bridge.AdvancedRemote::mute() invokes: 
+		structural.bridge.Device::setVolume(int)
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getName()
+		structural.bridge.Device::getVolume()
+
+
+Class: structural.bridge.Device
+Superclasses: java.lang.Object
+Fields: 
+	private int volume
+	private int channel
+	private boolean isEnabled
+	protected String name
+Methods: 
+	public boolean structural.bridge.Device::isEnabled()
+	public void structural.bridge.Device::enable()
+	public void structural.bridge.Device::disable()
+	public int structural.bridge.Device::getVolume()
+	public void structural.bridge.Device::setVolume(int volume)
+	public int structural.bridge.Device::getChannel()
+	public void structural.bridge.Device::setChannel(int channel)
+	public String structural.bridge.Device::getName()
+
+
+Class: structural.bridge.Remote
+Superclasses: java.lang.Object
+Fields: 
+	protected Device device
+Methods: 
+	public structural.bridge.Remote::Remote(Device device)
+	public void structural.bridge.Remote::togglePower() invokes: 
+		structural.bridge.Device::isEnabled()
+		structural.bridge.Device::disable()
+		structural.bridge.Device::enable()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getName()
+		structural.bridge.Device::isEnabled()
+	public void structural.bridge.Remote::volumeDown() invokes: 
+		structural.bridge.Device::setVolume(int)
+		structural.bridge.Device::getVolume()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getVolume()
+	public void structural.bridge.Remote::volumeUp() invokes: 
+		structural.bridge.Device::setVolume(int)
+		structural.bridge.Device::getVolume()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getVolume()
+	public void structural.bridge.Remote::channelDown() invokes: 
+		structural.bridge.Device::setChannel(int)
+		structural.bridge.Device::getChannel()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getChannel()
+	public void structural.bridge.Remote::channelUp() invokes: 
+		structural.bridge.Device::setChannel(int)
+		structural.bridge.Device::getChannel()
+		java.io.PrintStream::println(java.lang.String)
+		structural.bridge.Device::getChannel()
+
+
+Class: structural.proxy.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void structural.proxy.Test::main(String[] args) invokes: 
+		structural.proxy.Internet::connectTo(java.lang.String)
+		structural.proxy.Internet::connectTo(java.lang.String)
+
+
+Class: structural.proxy.ProxyInternet
+Superclasses: java.lang.Object
+Fields: 
+	private Internet internet
+	private static List<String> bannedSites
+Methods: 
+	@Override public void structural.proxy.ProxyInternet::connectTo(String serverHost) invokes: 
+		java.util.List<java.lang.String>::contains(java.lang.Object)
+		java.io.PrintStream::println(java.lang.String)
+		structural.proxy.Internet::connectTo(java.lang.String)
+
+
+Class: structural.proxy.RealInternet
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public void structural.proxy.RealInternet::connectTo(String serverHost) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: structural.flyweight.Test
+Superclasses: java.lang.Object
+Fields: 
+	private static final String[] colors
+	private static Random random
+Methods: 
+	public static void structural.flyweight.Test::main(String[] args) invokes: 
+		structural.flyweight.ShapeFactory::getCircle(java.lang.String)
+		structural.flyweight.Test::getRandomColor()
+		structural.flyweight.Circle::setRadius(int)
+		structural.flyweight.Test::getRandomRadius()
+		structural.flyweight.Circle::draw(structural.flyweight.Position)
+		structural.flyweight.Test::getRandomX()
+		structural.flyweight.Test::getRandomY()
+	private static String structural.flyweight.Test::getRandomColor() invokes: 
+		java.util.Random::nextInt(int)
+	private static int structural.flyweight.Test::getRandomRadius() invokes: 
+		java.util.Random::nextInt(int)
+	private static double structural.flyweight.Test::getRandomX() invokes: 
+		java.util.Random::nextInt(int)
+	private static double structural.flyweight.Test::getRandomY() invokes: 
+		java.util.Random::nextInt(int)
+
+
+Class: structural.flyweight.ShapeFactory
+Superclasses: java.lang.Object
+Fields: 
+	private static Map<String,Shape> map
+Methods: 
+	public static Shape structural.flyweight.ShapeFactory::getCircle(String color) invokes: 
+		java.util.Map<java.lang.String,structural.flyweight.Shape>::get(java.lang.Object)
+		java.util.Map<java.lang.String,structural.flyweight.Shape>::put(java.lang.String, structural.flyweight.Shape)
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: structural.flyweight.Position
+Superclasses: java.lang.Object
+Fields: 
+	private double x
+	private double y
+Methods: 
+	public structural.flyweight.Position::Position(double x, double y)
+	public double structural.flyweight.Position::getX()
+	public void structural.flyweight.Position::setX(double x)
+	public double structural.flyweight.Position::getY()
+	public void structural.flyweight.Position::setY(double y)
+	@Override public String structural.flyweight.Position::toString()
+
+
+Class: structural.flyweight.Circle
+Superclasses: java.lang.Object
+Fields: 
+	private String color
+	private int radius
+Methods: 
+	public structural.flyweight.Circle::Circle(String color)
+	public int structural.flyweight.Circle::getRadius()
+	public void structural.flyweight.Circle::setRadius(int radius)
+	@Override public void structural.flyweight.Circle::draw(Position position) invokes: 
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.StringBuffer::toString()
+
+
+Class: structural.composite.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void structural.composite.Test::main(String[] args) invokes: 
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.DiscJockey::displaySongList()
+
+
+Class: structural.composite.SongGroup
+Superclasses: 
+	SongComponent
+Fields: 
+	private ArrayList<SongComponent> components
+	private String groupName
+	private String groupDescription
+Methods: 
+	public structural.composite.SongGroup::SongGroup(String groupName, String groupDescription)
+	public String structural.composite.SongGroup::getGroupName()
+	public String structural.composite.SongGroup::getGroupDescription()
+	@Override public void structural.composite.SongGroup::add(SongComponent component) invokes: 
+		java.util.ArrayList<structural.composite.SongComponent>::add(structural.composite.SongComponent)
+	@Override public void structural.composite.SongGroup::remove(SongComponent component) invokes: 
+		java.util.ArrayList<structural.composite.SongComponent>::remove(java.lang.Object)
+	@Override public SongComponent structural.composite.SongGroup::getComponent(int index) invokes: 
+		java.util.ArrayList<structural.composite.SongComponent>::get(int)
+	@Override public String structural.composite.SongGroup::getInfo() invokes: 
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.composite.SongGroup::getGroupName()
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.composite.SongGroup::getGroupDescription()
+		java.lang.String::length()
+		java.lang.StringBuffer::toString()
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.util.ArrayList<structural.composite.SongComponent>::iterator()
+		java.util.Iterator<structural.composite.SongComponent>::hasNext()
+		java.util.Iterator<structural.composite.SongComponent>::next()
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.composite.SongComponent::getInfo()
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.composite.SongComponent::getInfo()
+		java.lang.StringBuffer::toString()
+
+
+Class: structural.composite.SongListGenerator
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void structural.composite.SongListGenerator::main(String[] args) invokes: 
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.SongComponent::add(structural.composite.SongComponent)
+		structural.composite.DiscJockey::displaySongList()
+
+
+Class: structural.composite.Song
+Superclasses: 
+	SongComponent
+Fields: 
+	private String songName
+	private String bandName
+	private int releaseYear
+Methods: 
+	public structural.composite.Song::Song(String songName, String bandName, int releaseYear)
+	@Override public String structural.composite.Song::getSongName()
+	@Override public String structural.composite.Song::getBandName()
+	@Override public int structural.composite.Song::getReleaseYear()
+	@Override public String structural.composite.Song::getInfo() invokes: 
+		java.lang.StringBuilder::append(java.lang.String)
+		structural.composite.Song::getSongName()
+		java.lang.StringBuilder::append(java.lang.String)
+		structural.composite.Song::getBandName()
+		java.lang.StringBuilder::append(java.lang.String)
+		structural.composite.Song::getReleaseYear()
+		java.lang.StringBuilder::toString()
+
+
+Class: structural.composite.DiscJockey
+Superclasses: java.lang.Object
+Fields: 
+	private SongComponent songList
+Methods: 
+	public structural.composite.DiscJockey::DiscJockey(SongComponent songList)
+	public SongComponent structural.composite.DiscJockey::getSongList()
+	public void structural.composite.DiscJockey::displaySongList() invokes: 
+		structural.composite.SongComponent::displayInfo()
+
+
+Class: structural.composite.SongComponent
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public void structural.composite.SongComponent::add(SongComponent component)
+	public void structural.composite.SongComponent::remove(SongComponent component)
+	public SongComponent structural.composite.SongComponent::getComponent(int index)
+	public String structural.composite.SongComponent::getSongName()
+	public String structural.composite.SongComponent::getBandName()
+	public int structural.composite.SongComponent::getReleaseYear()
+	public String structural.composite.SongComponent::getInfo()
+	public void structural.composite.SongComponent::displayInfo() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		structural.composite.SongComponent::getInfo()
+
+
+Class: structural.facade.BankAccountSecurityCodeChecker
+Superclasses: java.lang.Object
+Fields: 
+	private BankAccount bankAccount
+Methods: 
+	public structural.facade.BankAccountSecurityCodeChecker::BankAccountSecurityCodeChecker(BankAccount bankAccount)
+	public int structural.facade.BankAccountSecurityCodeChecker::getAccountSecurityCode() invokes: 
+		structural.facade.BankAccount::getSecurityCode()
+	public boolean structural.facade.BankAccountSecurityCodeChecker::match(int securityCode) invokes: 
+		structural.facade.BankAccountSecurityCodeChecker::getAccountSecurityCode()
+
+
+Class: structural.facade.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void structural.facade.Test::main(String[] args) invokes: 
+		structural.facade.BankAccountFacade::withdrawCash(double)
+		structural.facade.BankAccountFacade::withdrawCash(double)
+		structural.facade.BankAccountFacade::depositCash(double)
+
+
+Class: structural.facade.BankAccountWelcomeWindow
+Superclasses: java.lang.Object
+Fields: 
+	private BankAccount bankAccount
+Methods: 
+	public structural.facade.BankAccountWelcomeWindow::BankAccountWelcomeWindow(BankAccount bankAccount) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		structural.facade.BankAccountWelcomeWindow::setWelcomeMessage()
+	public String structural.facade.BankAccountWelcomeWindow::setWelcomeMessage() invokes: 
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.facade.BankAccount::getNumber()
+		java.lang.StringBuffer::append(java.lang.String)
+		structural.facade.BankAccount::getBalance()
+		java.lang.StringBuffer::toString()
+
+
+Class: structural.facade.BankAccount
+Superclasses: java.lang.Object
+Fields: 
+	private int number
+	private int securityCode
+	private double balance
+Methods: 
+	public structural.facade.BankAccount::BankAccount()
+	public structural.facade.BankAccount::BankAccount(int number, int securityCode, double balance)
+	public int structural.facade.BankAccount::getNumber()
+	public void structural.facade.BankAccount::setNumber(int number)
+	public int structural.facade.BankAccount::getSecurityCode()
+	public void structural.facade.BankAccount::setSecurityCode(int securityCode)
+	public double structural.facade.BankAccount::getBalance()
+	public void structural.facade.BankAccount::setBalance(double balance)
+
+
+Class: structural.facade.BankAccountNumberChecker
+Superclasses: java.lang.Object
+Fields: 
+	private BankAccount bankAccount
+Methods: 
+	public structural.facade.BankAccountNumberChecker::BankAccountNumberChecker(BankAccount bankAccount)
+	public int structural.facade.BankAccountNumberChecker::getAccountNumber() invokes: 
+		structural.facade.BankAccount::getNumber()
+	public boolean structural.facade.BankAccountNumberChecker::match(int accountNumber) invokes: 
+		structural.facade.BankAccountNumberChecker::getAccountNumber()
+
+
+Class: structural.facade.BankAccountFacade
+Superclasses: java.lang.Object
+Fields: 
+	private BankAccount bankAccount
+	private BankAccountWelcomeWindow welcomeWindow
+	private int accountNumber
+	private int securityCode
+	private BankAccountNumberChecker numberChecker
+	private BankAccountSecurityCodeChecker codeChecker
+	private BankAccountBalanceSystem balanceSystem
+Methods: 
+	public structural.facade.BankAccountFacade::BankAccountFacade(int accountNumber, int securityCode) invokes: 
+		structural.facade.BankAccountFacade::fetchBankAccount()
+	public int structural.facade.BankAccountFacade::getAccountNumber()
+	public int structural.facade.BankAccountFacade::getSecurityCode()
+	public void structural.facade.BankAccountFacade::withdrawCash(double cash) invokes: 
+		structural.facade.BankAccountNumberChecker::match(int)
+		structural.facade.BankAccountSecurityCodeChecker::match(int)
+		structural.facade.BankAccountBalanceSystem::canWithdraw(double)
+		structural.facade.BankAccountBalanceSystem::withdraw(double)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+	public void structural.facade.BankAccountFacade::depositCash(double cash) invokes: 
+		structural.facade.BankAccountNumberChecker::match(int)
+		structural.facade.BankAccountSecurityCodeChecker::match(int)
+		structural.facade.BankAccountBalanceSystem::deposit(double)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+	private void structural.facade.BankAccountFacade::fetchBankAccount()
+
+
+Class: structural.facade.BankAccountBalanceSystem
+Superclasses: java.lang.Object
+Fields: 
+	private BankAccount bankAccount
+Methods: 
+	structural.facade.BankAccountBalanceSystem::BankAccountBalanceSystem(BankAccount bankAccount)
+	public double structural.facade.BankAccountBalanceSystem::getAccountBalance() invokes: 
+		structural.facade.BankAccount::getBalance()
+	public void structural.facade.BankAccountBalanceSystem::deposit(double cash) invokes: 
+		structural.facade.BankAccount::setBalance(double)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
+		java.io.PrintStream::println(java.lang.String)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
+	public void structural.facade.BankAccountBalanceSystem::withdraw(double cash) invokes: 
+		structural.facade.BankAccountBalanceSystem::canWithdraw(double)
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
+		structural.facade.BankAccount::setBalance(double)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
+		java.io.PrintStream::println(java.lang.String)
+		structural.facade.BankAccountBalanceSystem::getAccountBalance()
+	public boolean structural.facade.BankAccountBalanceSystem::canWithdraw(double cash) invokes: 
+		structural.facade.BankAccount::getBalance()
+
+
+Class: structural.adapter.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void structural.adapter.Test::main(String[] args) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyTank::assignDriver(java.lang.String)
+		structural.adapter.EnemyTank::driveForward()
+		structural.adapter.EnemyTank::fireWeapon()
+		java.io.PrintStream::println()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyRobot::reactToHuman(java.lang.String)
+		structural.adapter.EnemyRobot::walkForward()
+		structural.adapter.EnemyRobot::smashwithHands()
+		java.io.PrintStream::println()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyAttacker::assignDriver(java.lang.String)
+		structural.adapter.EnemyAttacker::driveForward()
+		structural.adapter.EnemyAttacker::fireWeapon()
+
+
+Class: structural.adapter.EnemyRobot
+Superclasses: java.lang.Object
+Fields: 
+	Random generator
+Methods: 
+	public void structural.adapter.EnemyRobot::smashwithHands() invokes: 
+		java.util.Random::nextInt(int)
+		java.io.PrintStream::println(java.lang.String)
+	public void structural.adapter.EnemyRobot::walkForward() invokes: 
+		java.util.Random::nextInt(int)
+		java.io.PrintStream::println(java.lang.String)
+	public void structural.adapter.EnemyRobot::reactToHuman(String driverName) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: structural.adapter.TestEnemyAttackers
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void structural.adapter.TestEnemyAttackers::main(String[] args) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyRobot::reactToHuman(java.lang.String)
+		structural.adapter.EnemyRobot::walkForward()
+		structural.adapter.EnemyRobot::smashwithHands()
+		java.io.PrintStream::println()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyTank::assignDriver(java.lang.String)
+		structural.adapter.EnemyTank::driveForward()
+		structural.adapter.EnemyTank::fireWeapon()
+		java.io.PrintStream::println()
+		java.io.PrintStream::println(java.lang.String)
+		structural.adapter.EnemyAttacker::assignDriver(java.lang.String)
+		structural.adapter.EnemyAttacker::driveForward()
+		structural.adapter.EnemyAttacker::fireWeapon()
+
+
+Class: structural.adapter.EnemyRobotAdapter
+Superclasses: java.lang.Object
+Fields: 
+	private EnemyRobot robot
+Methods: 
+	public structural.adapter.EnemyRobotAdapter::EnemyRobotAdapter(EnemyRobot robot) invokes: 
+		structural.adapter.EnemyRobotAdapter::setRobot(structural.adapter.EnemyRobot)
+	public void structural.adapter.EnemyRobotAdapter::setRobot(EnemyRobot robot)
+	@Override public void structural.adapter.EnemyRobotAdapter::fireWeapon() invokes: 
+		structural.adapter.EnemyRobot::smashwithHands()
+	@Override public void structural.adapter.EnemyRobotAdapter::driveForward() invokes: 
+		structural.adapter.EnemyRobot::walkForward()
+	@Override public void structural.adapter.EnemyRobotAdapter::assignDriver(String driverName) invokes: 
+		structural.adapter.EnemyRobot::reactToHuman(java.lang.String)
+
+
+Class: structural.adapter.EnemyTank
+Superclasses: java.lang.Object
+Fields: 
+	private Random generator
+Methods: 
+	@Override public void structural.adapter.EnemyTank::fireWeapon() invokes: 
+		java.util.Random::nextInt(int)
+		java.io.PrintStream::println(java.lang.String)
+	@Override public void structural.adapter.EnemyTank::driveForward() invokes: 
+		java.util.Random::nextInt(int)
+		java.io.PrintStream::println(java.lang.String)
+	@Override public void structural.adapter.EnemyTank::assignDriver(String driverName) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: behavioral.template_method.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.template_method.Test::main(String[] args) invokes: 
+		behavioral.template_method.Game::play()
+		java.io.PrintStream::println()
+		behavioral.template_method.Game::play()
+
+
+Class: behavioral.template_method.Football
+Superclasses: 
+	Game
+Fields: 
+Methods: 
+	@Override protected void behavioral.template_method.Football::initialize() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+	@Override protected void behavioral.template_method.Football::start() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+	@Override protected void behavioral.template_method.Football::end() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: behavioral.template_method.Basketball
+Superclasses: 
+	Game
+Fields: 
+Methods: 
+	@Override protected void behavioral.template_method.Basketball::initialize() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+	@Override protected void behavioral.template_method.Basketball::start() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+	@Override protected void behavioral.template_method.Basketball::end() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: behavioral.template_method.Game
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public final void behavioral.template_method.Game::play() invokes: 
+		behavioral.template_method.Game::initialize()
+		behavioral.template_method.Game::start()
+		behavioral.template_method.Game::end()
+	protected abstract void behavioral.template_method.Game::initialize()
+	protected abstract void behavioral.template_method.Game::start()
+	protected abstract void behavioral.template_method.Game::end()
+
+
+Class: behavioral.chain_of_responsibility.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.chain_of_responsibility.Test::main(String[] args) invokes: 
+		behavioral.chain_of_responsibility.Test::getChainOfLoggers()
+		behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest)
+		behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest)
+		behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest)
+	private static ILogger behavioral.chain_of_responsibility.Test::getChainOfLoggers() invokes: 
+		behavioral.chain_of_responsibility.ILogger::setNextLogger(behavioral.chain_of_responsibility.ILogger)
+		behavioral.chain_of_responsibility.ILogger::setNextLogger(behavioral.chain_of_responsibility.ILogger)
+
+
+Class: behavioral.chain_of_responsibility.FileLogger
+Superclasses: 
+	Logger
+Fields: 
+	protected String filePath
+Methods: 
+	public behavioral.chain_of_responsibility.FileLogger::FileLogger(LogRequestLevel level)
+	public behavioral.chain_of_responsibility.FileLogger::FileLogger(String filePath, LogRequestLevel level)
+	public String behavioral.chain_of_responsibility.FileLogger::getFilePath()
+	public void behavioral.chain_of_responsibility.FileLogger::setFilePath(String filePath)
+	@Override protected void behavioral.chain_of_responsibility.FileLogger::write(LogRequest request) invokes: 
+		java.io.Writer::append(java.lang.CharSequence)
+		behavioral.chain_of_responsibility.LogRequest::getMessage()
+		java.lang.Throwable::printStackTrace()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.chain_of_responsibility.LogRequest::getMessage()
+
+
+Class: behavioral.chain_of_responsibility.ConsoleLogger
+Superclasses: 
+	Logger
+Fields: 
+Methods: 
+	public behavioral.chain_of_responsibility.ConsoleLogger::ConsoleLogger(LogRequestLevel level)
+	@Override protected void behavioral.chain_of_responsibility.ConsoleLogger::write(LogRequest request) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.chain_of_responsibility.LogRequest::getMessage()
+
+
+Class: behavioral.chain_of_responsibility.LogRequest
+Superclasses: java.lang.Object
+Fields: 
+	protected String message
+	protected LogRequestLevel level
+Methods: 
+	public behavioral.chain_of_responsibility.LogRequest::LogRequest(String message, LogRequestLevel level)
+	public String behavioral.chain_of_responsibility.LogRequest::getMessage()
+	public void behavioral.chain_of_responsibility.LogRequest::setMessage(String message)
+	public LogRequestLevel behavioral.chain_of_responsibility.LogRequest::getLevel()
+	public void behavioral.chain_of_responsibility.LogRequest::setLevel(LogRequestLevel level)
+
+
+Class: behavioral.chain_of_responsibility.ErrorLogger
+Superclasses: 
+	Logger
+Fields: 
+Methods: 
+	public behavioral.chain_of_responsibility.ErrorLogger::ErrorLogger(LogRequestLevel level)
+	@Override protected void behavioral.chain_of_responsibility.ErrorLogger::write(LogRequest request) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.chain_of_responsibility.LogRequest::getMessage()
+
+
+Class: behavioral.chain_of_responsibility.Logger
+Superclasses: java.lang.Object
+Fields: 
+	protected ILogger nextLogger
+	protected LogRequestLevel level
+Methods: 
+	public behavioral.chain_of_responsibility.Logger::Logger(LogRequestLevel level)
+	@Override public void behavioral.chain_of_responsibility.Logger::setNextLogger(ILogger nextLogger)
+	@Override public void behavioral.chain_of_responsibility.Logger::log(LogRequest request) invokes: 
+		behavioral.chain_of_responsibility.LogRequestLevel::value()
+		behavioral.chain_of_responsibility.LogRequestLevel::value()
+		behavioral.chain_of_responsibility.LogRequest::getLevel()
+		behavioral.chain_of_responsibility.Logger::write(behavioral.chain_of_responsibility.LogRequest)
+		behavioral.chain_of_responsibility.ILogger::log(behavioral.chain_of_responsibility.LogRequest)
+	protected abstract void behavioral.chain_of_responsibility.Logger::write(LogRequest request)
+
+
+Class: behavioral.command.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.command.Test::main(String[] args) invokes: 
+		creational.singleton.Singleton::getInstance(java.lang.Class<? extends creational.singleton.Singleton>)
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::undo()
+		behavioral.command.CommandManager::redo()
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::undo()
+		behavioral.command.CommandManager::redo()
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::execute(behavioral.command.Command)
+		behavioral.command.CommandManager::undo()
+		behavioral.command.CommandManager::undo()
+		behavioral.command.CommandManager::redo()
+		behavioral.command.CommandManager::history()
+
+
+Class: behavioral.command.TV
+Superclasses: java.lang.Object
+Fields: 
+	private boolean isOn
+	private int channel
+Methods: 
+	public boolean behavioral.command.TV::isOn()
+	public int behavioral.command.TV::getChannel()
+	public void behavioral.command.TV::switchOn()
+	public void behavioral.command.TV::switchOff()
+	public void behavioral.command.TV::switchChannel(int channel)
+
+
+Class: behavioral.command.SwitchOffCommand
+Superclasses: java.lang.Object
+Fields: 
+	private TV tv
+Methods: 
+	public behavioral.command.SwitchOffCommand::SwitchOffCommand(TV tv)
+	@Override public void behavioral.command.SwitchOffCommand::execute() invokes: 
+		behavioral.command.TV::switchOff()
+	@Override public void behavioral.command.SwitchOffCommand::undo() invokes: 
+		behavioral.command.TV::switchOn()
+	@Override public String behavioral.command.SwitchOffCommand::getName() invokes: 
+		behavioral.command.TV::isOn()
+
+
+Class: behavioral.command.SwitchChannelCommand
+Superclasses: java.lang.Object
+Fields: 
+	private TV tv
+	private int oldChannel
+	private int newChannel
+Methods: 
+	public behavioral.command.SwitchChannelCommand::SwitchChannelCommand(TV tv, int newChannel)
+	@Override public void behavioral.command.SwitchChannelCommand::execute() invokes: 
+		behavioral.command.TV::getChannel()
+		behavioral.command.TV::switchChannel(int)
+	@Override public void behavioral.command.SwitchChannelCommand::undo() invokes: 
+		behavioral.command.TV::getChannel()
+		behavioral.command.TV::switchChannel(int)
+	@Override public String behavioral.command.SwitchChannelCommand::getName() invokes: 
+		behavioral.command.TV::getChannel()
+
+
+Class: behavioral.command.SwitchOnCommand
+Superclasses: java.lang.Object
+Fields: 
+	private TV tv
+Methods: 
+	public behavioral.command.SwitchOnCommand::SwitchOnCommand(TV tv)
+	@Override public void behavioral.command.SwitchOnCommand::execute() invokes: 
+		behavioral.command.TV::switchOn()
+	@Override public void behavioral.command.SwitchOnCommand::undo() invokes: 
+		behavioral.command.TV::switchOff()
+	@Override public String behavioral.command.SwitchOnCommand::getName() invokes: 
+		behavioral.command.TV::isOn()
+
+
+Class: behavioral.command.CommandManager
+Superclasses: 
+	Singleton
+Fields: 
+	private Stack<Command> undoStack
+	private Stack<Command> redoStack
+	private List<String> history
+Methods: 
+	public void behavioral.command.CommandManager::history() invokes: 
+		java.lang.Iterable<java.lang.String>::forEach(java.util.function.Consumer<? super java.lang.String>)
+	public void behavioral.command.CommandManager::execute(Command command) invokes: 
+		behavioral.command.Command::execute()
+		java.util.Stack<behavioral.command.Command>::push(behavioral.command.Command)
+		java.util.List<java.lang.String>::add(java.lang.String)
+		behavioral.command.Command::getName()
+	public void behavioral.command.CommandManager::undo() invokes: 
+		java.util.Optional::of(behavioral.command.Command)
+		java.util.Stack<behavioral.command.Command>::pop()
+		java.util.Optional<behavioral.command.Command>::ifPresent(java.util.function.Consumer<? super behavioral.command.Command>)
+		behavioral.command.Command::undo()
+		java.util.Stack<behavioral.command.Command>::push(behavioral.command.Command)
+		java.util.List<java.lang.String>::add(java.lang.String)
+		behavioral.command.Command::getName()
+	public void behavioral.command.CommandManager::redo() invokes: 
+		java.util.Optional::of(behavioral.command.Command)
+		java.util.Stack<behavioral.command.Command>::pop()
+		java.util.Optional<behavioral.command.Command>::ifPresent(java.util.function.Consumer<? super behavioral.command.Command>)
+		behavioral.command.Command::execute()
+		java.util.Stack<behavioral.command.Command>::push(behavioral.command.Command)
+		java.util.List<java.lang.String>::add(java.lang.String)
+		behavioral.command.Command::getName()
+
+
+Class: behavioral.observer.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.observer.Test::main(String[] args) invokes: 
+		behavioral.observer.StockGrabber::setIBMStock(double)
+		behavioral.observer.StockGrabber::setAppleStock(double)
+		behavioral.observer.StockGrabber::setGoogleStock(double)
+		behavioral.observer.StockGrabber::setIBMStock(double)
+		behavioral.observer.StockGrabber::setAppleStock(double)
+		behavioral.observer.StockGrabber::setGoogleStock(double)
+		behavioral.observer.StockGrabber::unregister(behavioral.observer.Observer)
+		behavioral.observer.StockGrabber::setIBMStock(double)
+		behavioral.observer.StockGrabber::setAppleStock(double)
+		behavioral.observer.StockGrabber::setGoogleStock(double)
+
+
+Class: behavioral.observer.StockObserver
+Superclasses: java.lang.Object
+Fields: 
+	private StockGrabber stockGrabber
+	private int id
+	private double ibmStock
+	private double appleStock
+	private double googleStock
+	private static int idTracker
+Methods: 
+	public behavioral.observer.StockObserver::StockObserver(StockGrabber stockGrabber) invokes: 
+		behavioral.observer.StockGrabber::register(behavioral.observer.Observer)
+	@Override public void behavioral.observer.StockObserver::update() invokes: 
+		behavioral.observer.StockGrabber::getIBMStock()
+		behavioral.observer.StockGrabber::getAppleStock()
+		behavioral.observer.StockGrabber::getGoogleStock()
+		behavioral.observer.StockObserver::displayPrices()
+	public void behavioral.observer.StockObserver::displayPrices() invokes: 
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.StringBuffer::toString()
+
+
+Class: behavioral.observer.StockGrabber
+Superclasses: java.lang.Object
+Fields: 
+	private List<Observer> observers
+	private double ibmStock
+	private double appleStock
+	private double googleStock
+Methods: 
+	public behavioral.observer.StockGrabber::StockGrabber()
+	public double behavioral.observer.StockGrabber::getIBMStock()
+	public void behavioral.observer.StockGrabber::setIBMStock(double ibmStock) invokes: 
+		behavioral.observer.StockGrabber::notifyObserver()
+	public double behavioral.observer.StockGrabber::getAppleStock()
+	public void behavioral.observer.StockGrabber::setAppleStock(double appleStock) invokes: 
+		behavioral.observer.StockGrabber::notifyObserver()
+	public double behavioral.observer.StockGrabber::getGoogleStock()
+	public void behavioral.observer.StockGrabber::setGoogleStock(double googleStock) invokes: 
+		behavioral.observer.StockGrabber::notifyObserver()
+	@Override public void behavioral.observer.StockGrabber::register(Observer observer) invokes: 
+		java.util.List<behavioral.observer.Observer>::add(behavioral.observer.Observer)
+	@Override public void behavioral.observer.StockGrabber::unregister(Observer o) invokes: 
+		java.util.List<behavioral.observer.Observer>::indexOf(java.lang.Object)
+		java.io.PrintStream::println(java.lang.String)
+		java.util.List<behavioral.observer.Observer>::remove(int)
+	@Override public void behavioral.observer.StockGrabber::notifyObserver() invokes: 
+		behavioral.observer.Observer::update()
+
+
+Class: behavioral.mediator.ChatUser
+Superclasses: 
+	User
+Fields: 
+Methods: 
+	public behavioral.mediator.ChatUser::ChatUser(String name, IChatRoom room)
+	@Override public void behavioral.mediator.ChatUser::send(String message, String userId) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.mediator.User::getName()
+		behavioral.mediator.IChatRoom::sendMessage(java.lang.String, java.lang.String)
+		behavioral.mediator.User::getRoom()
+	@Override public void behavioral.mediator.ChatUser::receive(String message) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.mediator.User::getName()
+
+
+Class: behavioral.mediator.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.mediator.Test::main(String[] args) invokes: 
+		behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User)
+		behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User)
+		behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User)
+		behavioral.mediator.IChatRoom::addUser(behavioral.mediator.User)
+		behavioral.mediator.User::send(java.lang.String, java.lang.String)
+		behavioral.mediator.User::getName()
+		behavioral.mediator.User::getId()
+		behavioral.mediator.User::send(java.lang.String, java.lang.String)
+		behavioral.mediator.User::getId()
+
+
+Class: behavioral.mediator.User
+Superclasses: java.lang.Object
+Fields: 
+	private String id
+	private String name
+	private IChatRoom room
+	private static int idCounter
+Methods: 
+	public behavioral.mediator.User::User(String name, IChatRoom room) invokes: 
+		java.lang.String::valueOf(int)
+	public String behavioral.mediator.User::getId()
+	public String behavioral.mediator.User::getName()
+	public IChatRoom behavioral.mediator.User::getRoom()
+	public abstract void behavioral.mediator.User::send(String message, String userId)
+	public abstract void behavioral.mediator.User::receive(String message)
+
+
+Class: behavioral.mediator.ChatRoom
+Superclasses: java.lang.Object
+Fields: 
+	private Map<String,User> users
+Methods: 
+	@Override public void behavioral.mediator.ChatRoom::sendMessage(String message, String userId) invokes: 
+		java.util.Optional::of(behavioral.mediator.User)
+		java.util.Map<java.lang.String,behavioral.mediator.User>::get(java.lang.Object)
+		java.util.Optional<behavioral.mediator.User>::ifPresent(java.util.function.Consumer<? super behavioral.mediator.User>)
+		behavioral.mediator.User::receive(java.lang.String)
+	@Override public void behavioral.mediator.ChatRoom::addUser(User user) invokes: 
+		java.util.Map<java.lang.String,behavioral.mediator.User>::put(java.lang.String, behavioral.mediator.User)
+		behavioral.mediator.User::getId()
+
+
+Class: behavioral.strategy.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.strategy.Test::main(String[] args) invokes: 
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
+		behavioral.strategy.Test::computeAndDisplay(behavioral.strategy.ArithmeticOperation, java.lang.String, int, int)
+	public static void behavioral.strategy.Test::computeAndDisplay(ArithmeticOperation anOperation, String operationSymbol, int x, int y) invokes: 
+		behavioral.strategy.Calculator::setOperation(behavioral.strategy.ArithmeticOperation)
+		behavioral.strategy.Calculator::computeOperation(int, int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.strategy.Calculator::getResult()
+
+
+Class: behavioral.strategy.Multiply
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public int behavioral.strategy.Multiply::execute(int x, int y)
+
+
+Class: behavioral.strategy.Modulo
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public int behavioral.strategy.Modulo::execute(int x, int y)
+
+
+Class: behavioral.strategy.Add
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public int behavioral.strategy.Add::execute(int x, int y)
+
+
+Class: behavioral.strategy.Subtract
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public int behavioral.strategy.Subtract::execute(int x, int y)
+
+
+Class: behavioral.strategy.Divide
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	@Override public int behavioral.strategy.Divide::execute(int x, int y)
+
+
+Class: behavioral.strategy.Calculator
+Superclasses: java.lang.Object
+Fields: 
+	private static int result
+	private static ArithmeticOperation operation
+Methods: 
+	public static void behavioral.strategy.Calculator::computeOperation(int x, int y) invokes: 
+		behavioral.strategy.ArithmeticOperation::execute(int, int)
+	public static int behavioral.strategy.Calculator::getResult()
+	public static void behavioral.strategy.Calculator::setOperation(ArithmeticOperation anOperation)
+	public static void behavioral.strategy.Calculator::reset()
+
+
+Class: behavioral.state.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.state.Test::main(String[] args) invokes: 
+		behavioral.state.ATMMachine::insertCard()
+		behavioral.state.ATMMachine::ejectCard()
+		behavioral.state.ATMMachine::insertCard()
+		behavioral.state.ATMMachine::insertPin(int)
+		behavioral.state.ATMMachine::insertCard()
+		behavioral.state.ATMMachine::insertPin(int)
+		behavioral.state.ATMMachine::requestCash(int)
+		behavioral.state.ATMMachine::insertCard()
+		behavioral.state.ATMMachine::insertPin(int)
+		behavioral.state.ATMMachine::requestCash(int)
+		behavioral.state.ATMMachine::insertCard()
+
+
+Class: behavioral.state.ATMMachine
+Superclasses: java.lang.Object
+Fields: 
+	protected ATMState atmState
+	private ATMState hasCard
+	private ATMState noCard
+	private ATMState correctPin
+	private ATMState noCash
+	private int cashInMachine
+Methods: 
+	public behavioral.state.ATMMachine::ATMMachine()
+	public ATMState behavioral.state.ATMMachine::getATMState()
+	public void behavioral.state.ATMMachine::setATMState(ATMState atmState)
+	public ATMState behavioral.state.ATMMachine::getNoCardState()
+	public ATMState behavioral.state.ATMMachine::getHasCardState()
+	public ATMState behavioral.state.ATMMachine::getCorrectPinState()
+	public ATMState behavioral.state.ATMMachine::getNoCashState()
+	public int behavioral.state.ATMMachine::getCashInMachine()
+	public void behavioral.state.ATMMachine::setCashInMachine(int cashInMachine)
+	public void behavioral.state.ATMMachine::insertCard() invokes: 
+		behavioral.state.IATMState::insertCard()
+	public void behavioral.state.ATMMachine::ejectCard() invokes: 
+		behavioral.state.IATMState::ejectCard()
+	public void behavioral.state.ATMMachine::insertPin(int pin) invokes: 
+		behavioral.state.IATMState::insertPin(int)
+	public void behavioral.state.ATMMachine::requestCash(int cash) invokes: 
+		behavioral.state.IATMState::requestCash(int)
+
+
+Class: behavioral.state.CorrectPin
+Superclasses: 
+	ATMState
+Fields: 
+Methods: 
+	public behavioral.state.CorrectPin::CorrectPin(ATMMachine context)
+	@Override public void behavioral.state.CorrectPin::insertCard() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+	@Override public void behavioral.state.CorrectPin::ejectCard() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getNoCardState()
+	@Override public void behavioral.state.CorrectPin::insertPin(int pin) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+	@Override public void behavioral.state.CorrectPin::requestCash(int cash) invokes: 
+		behavioral.state.ATMMachine::getCashInMachine()
+		java.io.PrintStream::println(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setCashInMachine(int)
+		behavioral.state.ATMMachine::getCashInMachine()
+		behavioral.state.CorrectPin::ejectCard()
+		behavioral.state.ATMMachine::getCashInMachine()
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getNoCashState()
+
+
+Class: behavioral.state.HasCard
+Superclasses: 
+	ATMState
+Fields: 
+Methods: 
+	public behavioral.state.HasCard::HasCard(ATMMachine context)
+	@Override public void behavioral.state.HasCard::insertCard() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+	@Override public void behavioral.state.HasCard::ejectCard() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getNoCardState()
+	@Override public void behavioral.state.HasCard::insertPin(int pin) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getCorrectPinState()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.HasCard::ejectCard()
+	@Override public void behavioral.state.HasCard::requestCash(int cash) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: behavioral.state.NoCard
+Superclasses: 
+	ATMState
+Fields: 
+Methods: 
+	public behavioral.state.NoCard::NoCard(ATMMachine context)
+	@Override public void behavioral.state.NoCard::insertCard() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.state.ATMMachine::setATMState(behavioral.state.ATMState)
+		behavioral.state.ATMMachine::getHasCardState()
+	@Override public void behavioral.state.NoCard::ejectCard() invokes: 
+		behavioral.state.NoCard::defaultMessage()
+	@Override public void behavioral.state.NoCard::insertPin(int pin) invokes: 
+		behavioral.state.NoCard::defaultMessage()
+	@Override public void behavioral.state.NoCard::requestCash(int cash) invokes: 
+		behavioral.state.NoCard::defaultMessage()
+	private void behavioral.state.NoCard::defaultMessage() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: behavioral.state.NoCash
+Superclasses: 
+	ATMState
+Fields: 
+Methods: 
+	public behavioral.state.NoCash::NoCash(ATMMachine context)
+	@Override public void behavioral.state.NoCash::insertCard() invokes: 
+		behavioral.state.NoCash::defaultMessage()
+	@Override public void behavioral.state.NoCash::ejectCard() invokes: 
+		behavioral.state.NoCash::defaultMessage()
+	@Override public void behavioral.state.NoCash::insertPin(int pin) invokes: 
+		behavioral.state.NoCash::defaultMessage()
+	@Override public void behavioral.state.NoCash::requestCash(int cash) invokes: 
+		behavioral.state.NoCash::defaultMessage()
+	private void behavioral.state.NoCash::defaultMessage() invokes: 
+		java.io.PrintStream::println(java.lang.String)
+
+
+Class: behavioral.state.ATMState
+Superclasses: java.lang.Object
+Fields: 
+	protected ATMMachine context
+Methods: 
+	public behavioral.state.ATMState::ATMState(ATMMachine context)
+
+
+Class: behavioral.memento.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.memento.Test::main(String[] args) invokes: 
+		behavioral.memento.Originator::setState(java.lang.String)
+		behavioral.memento.Originator::setState(java.lang.String)
+		behavioral.memento.CareTaker::addMemento(behavioral.memento.Memento)
+		behavioral.memento.Originator::externalizeState()
+		behavioral.memento.Originator::setState(java.lang.String)
+		behavioral.memento.CareTaker::addMemento(behavioral.memento.Memento)
+		behavioral.memento.Originator::externalizeState()
+		behavioral.memento.Originator::setState(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.memento.Originator::getState()
+		behavioral.memento.Originator::restoreState(behavioral.memento.Memento)
+		behavioral.memento.CareTaker::get(int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.memento.Originator::getState()
+		behavioral.memento.Originator::restoreState(behavioral.memento.Memento)
+		behavioral.memento.CareTaker::get(int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.memento.Originator::getState()
+
+
+Class: behavioral.memento.CareTaker
+Superclasses: java.lang.Object
+Fields: 
+	List<Memento> mementos
+Methods: 
+	public void behavioral.memento.CareTaker::addMemento(Memento memento) invokes: 
+		java.util.List<behavioral.memento.Memento>::add(behavioral.memento.Memento)
+	public Memento behavioral.memento.CareTaker::get(int index) invokes: 
+		java.util.List<behavioral.memento.Memento>::get(int)
+
+
+Class: behavioral.memento.Originator
+Superclasses: java.lang.Object
+Fields: 
+	private String state
+Methods: 
+	public String behavioral.memento.Originator::getState()
+	public void behavioral.memento.Originator::setState(String state)
+	public Memento behavioral.memento.Originator::externalizeState()
+	public void behavioral.memento.Originator::restoreState(Memento memento) invokes: 
+		behavioral.memento.Originator::setState(java.lang.String)
+		behavioral.memento.Memento::getState()
+
+
+Class: behavioral.memento.Memento
+Superclasses: java.lang.Object
+Fields: 
+	private String state
+Methods: 
+	public behavioral.memento.Memento::Memento(String state)
+	public String behavioral.memento.Memento::getState()
+
+
+Class: behavioral.visitor.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.visitor.Test::main(String[] args) invokes: 
+		java.util.Arrays::asList(behavioral.visitor.Product[])
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.visitor.Test::computeTaxForProducts(java.util.List<behavioral.visitor.Product>, behavioral.visitor.TaxVisitor)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.visitor.Test::computeTaxForProducts(java.util.List<behavioral.visitor.Product>, behavioral.visitor.TaxVisitor)
+	private static void behavioral.visitor.Test::computeTaxForProducts(List<Product> products, TaxVisitor taxVisitor) invokes: 
+		behavioral.visitor.Visitable::accept(behavioral.visitor.Visitor)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.visitor.TaxVisitor::getComputedTax()
+
+
+Class: behavioral.visitor.Necessity
+Superclasses: 
+	Product
+Fields: 
+Methods: 
+	public behavioral.visitor.Necessity::Necessity(String name, double price)
+	@Override public void behavioral.visitor.Necessity::accept(Visitor visitor) invokes: 
+		behavioral.visitor.Visitor::visit(behavioral.visitor.Necessity)
+
+
+Class: behavioral.visitor.TaxHolidayVisitor
+Superclasses: 
+	TaxVisitor
+Fields: 
+Methods: 
+	@Override public void behavioral.visitor.TaxHolidayVisitor::visit(Liquor liquor) invokes: 
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
+	@Override public void behavioral.visitor.TaxHolidayVisitor::visit(Tobacco tobacco) invokes: 
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
+
+
+Class: behavioral.visitor.TaxVisitor
+Superclasses: java.lang.Object
+Fields: 
+	protected double computedTax
+	protected double taxRate
+Methods: 
+	public double behavioral.visitor.TaxVisitor::getComputedTax()
+	public double behavioral.visitor.TaxVisitor::getTaxRate()
+	protected void behavioral.visitor.TaxVisitor::computeTax(Product product) invokes: 
+		java.io.PrintStream::println(java.lang.String)
+		java.lang.Class<>::getSimpleName()
+		java.lang.Object::getClass()
+		behavioral.visitor.Product::getPrice()
+	@Override public void behavioral.visitor.TaxVisitor::visit(Liquor liquor) invokes: 
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
+	@Override public void behavioral.visitor.TaxVisitor::visit(Tobacco tobacco) invokes: 
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
+	@Override public void behavioral.visitor.TaxVisitor::visit(Necessity necessity) invokes: 
+		behavioral.visitor.TaxVisitor::computeTax(behavioral.visitor.Product)
+
+
+Class: behavioral.visitor.Product
+Superclasses: java.lang.Object
+Fields: 
+	private String name
+	private double price
+Methods: 
+	public behavioral.visitor.Product::Product(String name, double price) invokes: 
+		behavioral.visitor.Product::setName(java.lang.String)
+		behavioral.visitor.Product::setPrice(double)
+	public String behavioral.visitor.Product::getName()
+	public void behavioral.visitor.Product::setName(String name)
+	public double behavioral.visitor.Product::getPrice()
+	public void behavioral.visitor.Product::setPrice(double price)
+
+
+Class: behavioral.visitor.Liquor
+Superclasses: 
+	Product
+Fields: 
+Methods: 
+	public behavioral.visitor.Liquor::Liquor(String name, double price)
+	@Override public void behavioral.visitor.Liquor::accept(Visitor visitor) invokes: 
+		behavioral.visitor.Visitor::visit(behavioral.visitor.Liquor)
+
+
+Class: behavioral.visitor.Tobacco
+Superclasses: 
+	Product
+Fields: 
+Methods: 
+	public behavioral.visitor.Tobacco::Tobacco(String name, double price)
+	@Override public void behavioral.visitor.Tobacco::accept(Visitor visitor) invokes: 
+		behavioral.visitor.Visitor::visit(behavioral.visitor.Tobacco)
+
+
+Class: behavioral.iterator.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static void behavioral.iterator.Test::main(String[] args) invokes: 
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.iterator.DiscJockey::displaySongs()
+		java.io.PrintStream::println()
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.iterator.DiscJockey::displaySongs()
+		java.io.PrintStream::println()
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		behavioral.iterator.SongAggregate::addSong(java.lang.String, java.lang.String, int)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.iterator.DiscJockey::displaySongs()
+		java.io.PrintStream::println()
+
+
+Class: behavioral.iterator.SongHashtable
+Superclasses: java.lang.Object
+Fields: 
+	private Hashtable<Integer,Song> table
+	private int hashKey
+Methods: 
+	@Override public void behavioral.iterator.SongHashtable::addSong(String songName, String bandName, int releaseYear) invokes: 
+		java.util.Hashtable<java.lang.Integer,structural.composite.Song>::put(java.lang.Integer, structural.composite.Song)
+	@Override public Iterator<Song> behavioral.iterator.SongHashtable::iterator() invokes: 
+		java.util.Collection<structural.composite.Song>::iterator()
+		java.util.Hashtable<java.lang.Integer,structural.composite.Song>::values()
+
+
+Class: behavioral.iterator.SongList
+Superclasses: java.lang.Object
+Fields: 
+	private ArrayList<Song> songs
+Methods: 
+	@Override public void behavioral.iterator.SongList::addSong(String songName, String bandName, int releaseYear) invokes: 
+		java.util.ArrayList<structural.composite.Song>::add(structural.composite.Song)
+	@Override public Iterator<Song> behavioral.iterator.SongList::iterator() invokes: 
+		java.util.ArrayList<structural.composite.Song>::iterator()
+
+
+Class: behavioral.iterator.SongArray
+Superclasses: java.lang.Object
+Fields: 
+	private Song[] songs
+	private int allocatedSize
+	private int currentIndex
+Methods: 
+	public behavioral.iterator.SongArray::SongArray(int allocatedSize)
+	public int behavioral.iterator.SongArray::length()
+	private Song[] behavioral.iterator.SongArray::getFilledArray() invokes: 
+		behavioral.iterator.SongArray::length()
+	@Override public void behavioral.iterator.SongArray::addSong(String songName, String bandName, int releaseYear)
+	@Override public Iterator<Song> behavioral.iterator.SongArray::iterator() invokes: 
+		java.util.List<structural.composite.Song>::iterator()
+		java.util.Arrays::asList(structural.composite.Song[])
+		behavioral.iterator.SongArray::getFilledArray()
+
+
+Class: behavioral.iterator.Song
+Superclasses: java.lang.Object
+Fields: 
+	private String songName
+	private String bandName
+	private int yearReleased
+Methods: 
+	public behavioral.iterator.Song::Song(String songName, String bandName, int yearReleased)
+	public String behavioral.iterator.Song::getSongName()
+	public String behavioral.iterator.Song::getBandName()
+	public int behavioral.iterator.Song::getYearReleased()
+	@Override public String behavioral.iterator.Song::toString() invokes: 
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::append(java.lang.String)
+		java.lang.StringBuffer::toString()
+
+
+Class: behavioral.iterator.DiscJockey
+Superclasses: java.lang.Object
+Fields: 
+	private SongAggregate songs
+Methods: 
+	public behavioral.iterator.DiscJockey::DiscJockey(SongAggregate songs)
+	public void behavioral.iterator.DiscJockey::displaySongs() invokes: 
+		structural.composite.SongComponent::displayInfo()
+
+
+Class: behavioral.interpreter.Test
+Superclasses: java.lang.Object
+Fields: 
+Methods: 
+	public static Expression behavioral.interpreter.Test::getIsFemaleExpression()
+	public static Expression behavioral.interpreter.Test::getIsMarriedWomanExpression() invokes: 
+		behavioral.interpreter.Test::getIsFemaleExpression()
+	public static void behavioral.interpreter.Test::main(String[] args) invokes: 
+		behavioral.interpreter.Test::getIsFemaleExpression()
+		behavioral.interpreter.Test::getIsMarriedWomanExpression()
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
+		java.io.PrintStream::println(java.lang.String)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
+
+
+Class: behavioral.interpreter.OrExpression
+Superclasses: 
+	BinaryExpression
+Fields: 
+Methods: 
+	public behavioral.interpreter.OrExpression::OrExpression(Expression leftExpression, Expression rightExpression)
+	@Override public boolean behavioral.interpreter.OrExpression::interpret(String context) invokes: 
+		behavioral.interpreter.Expression::interpret(java.lang.String)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
+
+
+Class: behavioral.interpreter.TerminalExpression
+Superclasses: java.lang.Object
+Fields: 
+	private String data
+Methods: 
+	public behavioral.interpreter.TerminalExpression::TerminalExpression(String data)
+	@Override public boolean behavioral.interpreter.TerminalExpression::interpret(String context) invokes: 
+		java.lang.String::contains(java.lang.CharSequence)
+
+
+Class: behavioral.interpreter.AndExpression
+Superclasses: 
+	BinaryExpression
+Fields: 
+Methods: 
+	public behavioral.interpreter.AndExpression::AndExpression(Expression leftExpression, Expression rightExpression)
+	@Override public boolean behavioral.interpreter.AndExpression::interpret(String context) invokes: 
+		behavioral.interpreter.Expression::interpret(java.lang.String)
+		behavioral.interpreter.Expression::interpret(java.lang.String)
+
+
+Class: behavioral.interpreter.BinaryExpression
+Superclasses: java.lang.Object
+Fields: 
+	protected Expression leftExpression
+	protected Expression rightExpression
+Methods: 
+	public behavioral.interpreter.BinaryExpression::BinaryExpression(Expression leftExpression, Expression rightExpression)
+
+

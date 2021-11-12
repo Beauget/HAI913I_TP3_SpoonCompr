@@ -145,7 +145,9 @@ public class CallGraphMain extends AbstractMain {
                     System.out.println(analyze.getCouplingMetric(classNameA, classNameB));
 					break;
 				case "8":
-					System.err.println("Not implemented yet");
+					 analyze.getDataWithSpoon(model);
+					 analyze.createCouplingGraph();
+					 
 					break;
 				case "9":
 					System.err.println("Not implemented yet");

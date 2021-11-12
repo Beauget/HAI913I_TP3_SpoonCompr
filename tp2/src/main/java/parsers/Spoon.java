@@ -5,9 +5,19 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import processors.ASTProcessor;
 import java.util.regex. * ;
+
+import guru.nidi.graphviz.attribute.Color;
+import guru.nidi.graphviz.attribute.Style;
+import guru.nidi.graphviz.engine.Format;
+import guru.nidi.graphviz.engine.Graphviz;
+import guru.nidi.graphviz.model.MutableGraph;
+import guru.nidi.graphviz.parse.Parser;
 import processors.Processor;
 import loggers.ConsoleLogger;
 import loggers.FileLogger;
@@ -46,6 +56,12 @@ public class Spoon extends ASTProcessor {
 	ArrayList<CtMethod> methodList = new ArrayList<CtMethod>();
 	ArrayList<CtType> typeList = new ArrayList<CtType>();
 	ArrayList<CtInvocation> invocationList = new ArrayList<CtInvocation>();
+	
+	
+	 Map<String, Map<String, Double>> CouplingGraph  = new HashMap<>();
+	
+	
+	
 	CtModel model;
 	int nbMethod = 0;
 	int nbClass = 0;
@@ -119,12 +135,12 @@ public long getNbRelations(String classA, String classB) {
 		return 0;
 	}
 	for (CtType<?> type : model.getAllTypes()) { 
-		if (classA.equals(type.getQualifiedName())) { 
+		if (classB.equals(type.getQualifiedName())) { 
 			for (CtMethod<?> method : type.getAllMethods()) { 
 				for (CtInvocation<?> methodInvocation : Query.getElements(method,
 						new TypeFilter<CtInvocation<?>>(CtInvocation.class))) { 
 					if (methodInvocation.getTarget().getType() != null) {
-						if (classB.equals(
+						if (classA.equals(
 								methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName())) {
 							result++;
 						}
@@ -138,9 +154,35 @@ public long getNbRelations(String classA, String classB) {
 
 public double getCouplingMetric(String classNameA, String classNameB) {
 	long nbRelations = this.getNbRelations(classNameA, classNameB);
-	System.out.println("RELATIONS : " + classNameA + " --> " + classNameB + " = " + nbRelations);
+	//if(nbRelations != 0) {
+	//System.out.println("RELATIONS : " + classNameA + " --> " + classNameB + " = " + nbRelations);
+	//}
 	double result = (nbRelations + 0.0) / (nbAppels + 0.0);
 	return round(result,2);
+}
+
+
+public void createCouplingGraph () throws IOException {
+	String classNameA, classNameB;
+	Double couplingValue;
+	for (CtType<?> typeClassA : model.getAllTypes()) { 
+		classNameA = typeClassA.getQualifiedName();
+		for (CtType<?> typeClassB : model.getAllTypes()) {
+			classNameB = typeClassB.getQualifiedName();
+			if(!classNameA.equals(classNameB)) {
+				couplingValue = getCouplingMetric(classNameA, classNameB);
+				if (couplingValue > 0) {
+					if (!CouplingGraph.containsKey(classNameA)) {
+						CouplingGraph.put(classNameA, new HashMap<String, Double>());
+					}
+					CouplingGraph.get(classNameA).put(classNameB, couplingValue);
+				}
+			}
+	
+		}
+
+	}
+	saveGraphAsPNGSpoon(CouplingGraph);
 }
 
 public String toString() {
@@ -211,6 +253,28 @@ public String toString() {
     return builder.toString();
 }
 
+//SAVE RESULT
+public  String getCoupleGraphAsDotSpoon(Map<String, Map<String, Double>> couple) {
+	StringBuilder res = new StringBuilder("digraph G {\n");
+	String coupling = "";
+	for (String classNameA : couple.keySet()) {
+		for (String classNameB : couple.get(classNameA).keySet()) {
+			coupling = couple.get(classNameA).get(classNameB) + " ";
+			res.append('"').append(classNameA).append('"').append(" -> ").append('"').append(classNameB).append('"')
+					.append(" [ label = \"").append(coupling).append("\"] ");
+		}
+	}
+	res.append("\n}");
+	return res.toString();
+}
+
+
+public void saveGraphAsPNGSpoon(Map<String, Map<String, Double>> couple) throws IOException{
+	MutableGraph g = new Parser().read(this.getCoupleGraphAsDotSpoon(couple));
+	Graphviz.fromGraph(g).height(1920).render(Format.PNG).toFile(new File("grapheCoupleSpoon.png"));
+
+}
+
 public static double round(double value, int places) {
 	if (places < 0)
 		throw new IllegalArgumentException();
@@ -219,8 +283,6 @@ public static double round(double value, int places) {
 	toRound = toRound.setScale(places, RoundingMode.HALF_UP);
 	return toRound.doubleValue();
 }
-
-
 
 public void log() {
 	loggerChain.setFilePath("C:\\Users\\beaug\\Desktop\\M2\\M2\\Evo-restru\\TP3\\HAI913I_TP3_SpoonCompr\\design_patterns\\static-callgraphSpoon.info");
