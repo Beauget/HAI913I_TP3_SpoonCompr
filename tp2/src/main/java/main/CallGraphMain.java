@@ -29,9 +29,14 @@ public class CallGraphMain extends AbstractMain {
 		builder.append("\n3. DendrogramGraph : CrÃ©ation d'un dendrogram en png (n'envoie plus le bon)");
 		builder.append("\n4. CoupleGraph : CrÃ©ation des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnÃ©e");
 		builder.append("\n5. AllCouplesGraph : CrÃ©ation des fichiers CouplesGraph.dot et graphCouples.png pour un src donnÃ©, veuillez donner une liste de classe raisonnable");
-		builder.append("\n6. Spoon.");
-		builder.append("\n7. Dynamic call graph.");
-		builder.append("\n8. Help menu.");
+		
+		builder.append("\n6. Static call graph (avec Spoon).");
+		builder.append("\n7. Calculer la métrique de couplage entre deux classes A et B (avec Spoon)");
+		builder.append("\n8. Générez un graphe de couplage pondéré entre les classes de l'application. (avec Spoon)");
+		builder.append("\n9. Générer le regroupement hierrarchique des classes (avec Spoon)");
+		builder.append("\n10. Générer les groupes de classes couplés (partitions)s (avec Spoon)");
+		builder.append("\n11. Dynamic call graph.");
+		builder.append("\n12. Help menu.");
 		builder.append("\n"+QUIT+". To quit.");
 		
 		System.out.println(builder);
@@ -66,6 +71,22 @@ public class CallGraphMain extends AbstractMain {
 	
 	protected void processUserInput(String userInput, ASTProcessor processor) {
 		CallGraph callGraph = (CallGraph) processor;
+		Scanner sc = new Scanner(System.in);
+		
+		
+		Launcher ourLauncher = new Launcher();
+        ourLauncher.addInputResource(TEST_PROJECT_PATH);
+        
+        // Setting the environment for Spoon
+        Environment environment = ourLauncher.getEnvironment();
+        environment.setCommentEnabled(true); // represent the comments from the source code in the AST
+        environment.setAutoImports(true);
+        ourLauncher.getEnvironment().setNoClasspath(true);
+        ourLauncher.run();
+        CtModel model = ourLauncher.getModel();
+        Spoon analyze = new Spoon(TEST_PROJECT_PATH,model);
+        
+        
 		try {
 			switch(userInput) {
 			// /home/hayaat/Desktop/Master/M2/Git/design_patterns
@@ -90,7 +111,6 @@ public class CallGraphMain extends AbstractMain {
 					
 					break;
 				case "4":
-					Scanner sc = new Scanner(System.in);
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
 					CoupleGraph coupleGraph = new CoupleGraph(TEST_PROJECT_PATH,callGraph);
 					System.out.println("Inserez le nom de la premiÃ¨re classe (avec le package au besoin : package.class)");
@@ -106,26 +126,31 @@ public class CallGraphMain extends AbstractMain {
 					return;
 				
 				case "6":
-                    System.out.println("Someone trying to do same things with Spoon");
-                    Launcher ourLauncher = new Launcher();
-                    ourLauncher.addInputResource(TEST_PROJECT_PATH);
-                    
-                    // Setting the environment for Spoon
-                    Environment environment = ourLauncher.getEnvironment();
-                    environment.setCommentEnabled(true); // represent the comments from the source code in the AST
-                    environment.setAutoImports(true);
-                    ourLauncher.getEnvironment().setNoClasspath(true);
-                    ourLauncher.run();
-                    CtModel model = ourLauncher.getModel();
-                    Spoon analyze = new Spoon(TEST_PROJECT_PATH,model);
+					
+					System.out.println("Récupération des données du model avec Spoon..");
                     analyze.getDataWithSpoon(model);
+                    
+					System.out.println("Ecriture du callGraph dans le fichier static-callGraphSpoon..");
                     analyze.log();
+                    
                     break;
 					
 				case "7":
-					System.err.println("Not implemented yet");
+					System.out.println("Inserez le nom de  la classe A");
+					String classNameA = sc.next();
+					System.out.println("Inserez le nom de la classe B");
+					String classNameB = sc.next();
+                    System.out.println("Calcul de la métrique..");
+                    analyze.getDataWithSpoon(model);
+                    System.out.println(analyze.getCouplingMetric(classNameA, classNameB));
 					break;
 				case "8":
+					System.err.println("Not implemented yet");
+					break;
+				case "9":
+					System.err.println("Not implemented yet");
+					break;
+				case "10":
 					System.err.println("Not implemented yet");
 					break;
 					

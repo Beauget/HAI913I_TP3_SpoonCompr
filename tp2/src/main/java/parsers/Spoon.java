@@ -1,6 +1,9 @@
 package parsers;
 
 import java.io.File;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import processors.ASTProcessor;
@@ -33,6 +36,7 @@ import spoon.reflect.reference.CtTypeReference;
 import spoon.reflect.visitor.Query;
 import spoon.reflect.visitor.filter.TypeFilter;
 import spoon.support.reflect.code.CtStatementListImpl;
+import utility.Utility;
 ;
 
 public class Spoon extends ASTProcessor {
@@ -45,7 +49,7 @@ public class Spoon extends ASTProcessor {
 	CtModel model;
 	int nbMethod = 0;
 	int nbClass = 0;
-	long nbAppels = 0;
+	double nbAppels = 0;
 	
 	public Spoon(String path, CtModel model) {
 		super(path);
@@ -69,7 +73,7 @@ public class Spoon extends ASTProcessor {
 	}
 	
 
-public long getDataWithSpoon(CtModel model) {
+public void getDataWithSpoon(CtModel model) {
 	
 	
 	
@@ -97,7 +101,6 @@ public long getDataWithSpoon(CtModel model) {
 						        	
 						         
 						invocationList.add(methodInvocation);
-						System.out.println(methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName() + "::" + method.getSignature());
 						result++;
 					}
 				}
@@ -107,8 +110,37 @@ public long getDataWithSpoon(CtModel model) {
 	}
 	
 	nbAppels = result;
+}
+
+
+public long getNbRelations(String classA, String classB) {
+	long result = 0;
+	if (classA.equals(classB)) {
+		return 0;
+	}
+	for (CtType<?> type : model.getAllTypes()) { 
+		if (classA.equals(type.getQualifiedName())) { 
+			for (CtMethod<?> method : type.getAllMethods()) { 
+				for (CtInvocation<?> methodInvocation : Query.getElements(method,
+						new TypeFilter<CtInvocation<?>>(CtInvocation.class))) { 
+					if (methodInvocation.getTarget().getType() != null) {
+						if (classB.equals(
+								methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName())) {
+							result++;
+						}
+					}
+				}
+			}
+		} 
+	}
 	return result;
-	
+}
+
+public double getCouplingMetric(String classNameA, String classNameB) {
+	long nbRelations = this.getNbRelations(classNameA, classNameB);
+	System.out.println("RELATIONS : " + classNameA + " --> " + classNameB + " = " + nbRelations);
+	double result = (nbRelations + 0.0) / (nbAppels + 0.0);
+	return round(result,2);
 }
 
 public String toString() {
@@ -162,7 +194,6 @@ public String toString() {
 						        	
 						invocName = methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName();
 						invocationList.add(methodInvocation);
-						System.out.println(invocName);
 					}
 					
 				}
@@ -178,6 +209,15 @@ public String toString() {
     System.out.println(builder.toString());
 	
     return builder.toString();
+}
+
+public static double round(double value, int places) {
+	if (places < 0)
+		throw new IllegalArgumentException();
+
+	BigDecimal toRound = new BigDecimal(Double.toString(value));
+	toRound = toRound.setScale(places, RoundingMode.HALF_UP);
+	return toRound.doubleValue();
 }
 
 
