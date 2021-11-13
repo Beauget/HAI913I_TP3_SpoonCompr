@@ -12,6 +12,7 @@ import graphs.CallGraph;
 import graphs.CoupleGraph;
 import graphs.DendrogramGraph;
 import graphs.StaticCallGraph;
+import models.Dendrogram;
 import parsers.Spoon;
 import parsers.SpoonClustering;
 import parsers.SpoonClusteringPartition;
@@ -29,16 +30,16 @@ public class CallGraphMain extends AbstractMain {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\n1. Static call graph.");
 		builder.append("\n2. ProcessorClustering.");
-		builder.append("\n3. DendrogramGraph : CrÃ©ation d'un dendrogram en png (n'envoie plus le bon)");
+		builder.append("\n3. DendrogramGraph : CrÃ©ation d'un dendrogram en png ");
 		builder.append("\n4. CoupleGraph : CrÃ©ation des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnÃ©e");
 		builder.append("\n5. AllCouplesGraph : CrÃ©ation des fichiers CouplesGraph.dot et graphCouples.png pour un src donnÃ©, veuillez donner une liste de classe raisonnable");
 		builder.append("\n---- Spoon part ----");
 		builder.append("\n6. Static call graph (avec Spoon).");
-		builder.append("\n7. Calculer la métrique de couplage entre deux classes A et B (avec Spoon)");
-		builder.append("\n8. Générez un graphe de couplage pondéré entre les classes de l'application. (avec Spoon)");
-		builder.append("\n9. Générer le regroupement en cluster des classes (avec Spoon)");
-		builder.append("\n10. Générer les groupes de classes couplés (avec une Pile) (avec Spoon)");
-		builder.append("\n11. Ajout de IllegalArgumentException aux méthodes (avec Spoon).");
+		builder.append("\n7. Calculer la mï¿½trique de couplage entre deux classes A et B (avec Spoon)");
+		builder.append("\n8. Gï¿½nï¿½rez un graphe de couplage pondï¿½rï¿½ entre les classes de l'application. (avec Spoon)");
+		builder.append("\n9. Gï¿½nï¿½rer le regroupement en cluster des classes (avec Spoon)");
+		builder.append("\n10. Gï¿½nï¿½rer les groupes de classes couplï¿½s (avec une Pile) (avec Spoon)");
+		builder.append("\n11. Ajout de IllegalArgumentException aux mï¿½thodes (avec Spoon).");
 		builder.append("\n12. Help menu.");
 		builder.append("\n"+QUIT+". To quit.");
 		
@@ -109,8 +110,12 @@ public class CallGraphMain extends AbstractMain {
 					
 				case "3":
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
-					DendrogramGraph dendrogramGraph = new DendrogramGraph(TEST_PROJECT_PATH,callGraph);
-					dendrogramGraph.createFiles();
+					//DendrogramGraph dendrogramGraph = new DendrogramGraph(TEST_PROJECT_PATH,callGraph);
+					Dendrogram dendrogram = new Dendrogram(TEST_PROJECT_PATH,callGraph);
+					dendrogram.clustering();
+					//dendrogram.createFiles();
+					System.out.println(dendrogram.toString());
+					//dendrogramGraph.createFiles();
 					
 					break;
 				case "4":
@@ -130,7 +135,7 @@ public class CallGraphMain extends AbstractMain {
 				
 				case "6":
 					
-					System.out.println("Récupération des données du model avec Spoon..");
+					System.out.println("Rï¿½cupï¿½ration des donnï¿½es du model avec Spoon..");
                     analyze.getDataWithSpoon(model,ourLauncher);
                     
 					System.out.println("Ecriture du callGraph dans le fichier static-callGraphSpoon..");
@@ -143,45 +148,45 @@ public class CallGraphMain extends AbstractMain {
 					String classNameA = sc.next();
 					System.out.println("Inserez le nom de la classe B");
 					String classNameB = sc.next();
-                    System.out.println("Calcul de la métrique..");
+                    System.out.println("Calcul de la mï¿½trique..");
                     analyze.getDataWithSpoon(model,ourLauncher);
                     System.out.println(analyze.getCouplingMetric(classNameA, classNameB));
 					break;
 				case "8":
-					System.out.println("Début de génération du graphe de couplage pondéré...");
+					System.out.println("Dï¿½but de gï¿½nï¿½ration du graphe de couplage pondï¿½rï¿½...");
 					 start = System.currentTimeMillis();
 					 analyze.getDataWithSpoon(model,ourLauncher);
 					 analyze.createCouplingGraph();
 					 end = System.currentTimeMillis();
-					 System.out.println("Temp d'exécution pour le graphe de couplage pondéré (en PNG) avec Spoon : " + ((end - start) / 1000) + " secondes");
+					 System.out.println("Temp d'exï¿½cution pour le graphe de couplage pondï¿½rï¿½ (en PNG) avec Spoon : " + ((end - start) / 1000) + " secondes");
 					break;
 				case "9":
-					System.out.println("Début de génération du clustering...");
+					System.out.println("Dï¿½but de gï¿½nï¿½ration du clustering...");
 					start = System.currentTimeMillis();
 					analyze.getDataWithSpoon(model,ourLauncher);
 					analyze.createCouplingGraph();
 					SpoonClustering clustering = new SpoonClustering(TEST_PROJECT_PATH,model,ourLauncher);
 					clustering.createHierarchicalClustering(clustering.InitialiseClusterSpoon(),clustering.createListOfClassesCouple(analyze));
 					end = System.currentTimeMillis();
-					System.out.println("Temp d'exécution pour la génération du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
+					System.out.println("Temp d'exï¿½cution pour la gï¿½nï¿½ration du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
 					break;
 				case "10":
-					System.out.println("Début de génération de l'indentation...");
+					System.out.println("Dï¿½but de gï¿½nï¿½ration de l'indentation...");
 					start = System.currentTimeMillis();
 					analyze.getDataWithSpoon(model,ourLauncher);
 					analyze.createCouplingGraph();
 					SpoonClusteringPartition partition = new SpoonClusteringPartition(TEST_PROJECT_PATH,model,ourLauncher);
 					partition.indentationClusterAlgorithm(partition.InitialiseClusterSpoon(),partition.createListOfClassesCouple(analyze));
 					end = System.currentTimeMillis();
-					System.out.println("Temp d'exécution pour l'indentation du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
+					System.out.println("Temp d'exï¿½cution pour l'indentation du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
 					break;
 				case "11":
 					
-					System.out.println("Ajout du test : \n" + "IllegalArgumentException " + "à toute les méthodes du code..");
+					System.out.println("Ajout du test : \n" + "IllegalArgumentException " + "ï¿½ toute les mï¿½thodes du code..");
 					start = System.currentTimeMillis();
 				//	analyze.addSensorsStatement();
 					end = System.currentTimeMillis();
-					System.out.println("Temp d'exécution pour l'ajout de Sensors simple dans le code : " + ((end - start) / 1000) + " secondes");
+					System.out.println("Temp d'exï¿½cution pour l'ajout de Sensors simple dans le code : " + ((end - start) / 1000) + " secondes");
 					
 				case QUIT:
 					System.out.println("Bye...");

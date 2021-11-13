@@ -42,7 +42,7 @@ public class DendrogramLeaf extends DendrogramComposit {
 	}
 	
 	public String toString(){
-		return (this.name);
+		return ('"'+this.name+'"');
 	}
 
 }

@@ -1,9 +1,18 @@
 package models;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import graphs.CallGraph;
+import guru.nidi.graphviz.engine.Format;
+import guru.nidi.graphviz.engine.Graphviz;
+import guru.nidi.graphviz.model.MutableGraph;
+import guru.nidi.graphviz.parse.Parser;
 
 public class Dendrogram {
 	ClassCouples classCouples;
@@ -35,7 +44,7 @@ public class Dendrogram {
 	public void clustering() {
 		int i = 0;
 		DendrogramComposit mostCoupledNodePair = null ;
-		while(i<2) {
+		while(nodes.size()>1) {
 			mostCoupledNodePair = getMostCoupledNodePair(nodes);
 			nodes.remove(mostCoupledNodePair.getChildLeft());
 			nodes.remove(mostCoupledNodePair.getChildRight());
@@ -58,10 +67,44 @@ public class Dendrogram {
 		StringBuilder builder = new StringBuilder();
 		
 		for(DendrogramComposit d : nodes) {
-			builder.append(nodes).append("\n");
+			builder.append(d).append("\n");
 		}
 		
 		return builder.toString();
+	}
+	
+	public String getGraphAsDot() {
+		StringBuilder builder = new StringBuilder("digraph \"Dendrogram\" {\n"+ "node [fontname=\"DejaVu-Sans\", shape=circle] \n");
+		ArrayList<String> classes = classCouples.getClasses();
+		//liste des noeuds
+		for(String s : classes) {
+			builder.append('"'+s+'"'+"\n");
+		}
+		builder.append(this.toString());
+		builder.append("\n}");
+		return builder.toString();
+	}
+	
+	public void saveGraph() {
+		try {
+			FileWriter fw = new FileWriter("DendrogramGraph.dot", false);
+			BufferedWriter bw = new BufferedWriter(fw);
+			PrintWriter out = new PrintWriter(bw);
+			out.println(this.getGraphAsDot());
+			out.close();
+			bw.close();
+			fw.close();
+		} catch (IOException e) {
+			System.err.println("Exception ecriture fichier");
+			e.printStackTrace();
+		}}
+	public void saveGraphAsPNG() throws IOException {
+		MutableGraph g = new Parser().read(this.getGraphAsDot());
+		Graphviz.fromGraph(g).render(Format.PNG).toFile(new File("dendrogram.png"));
+	}
+	public void createFiles() throws IOException {
+		this.saveGraph();
+		this.saveGraphAsPNG();
 	}
 	
 	

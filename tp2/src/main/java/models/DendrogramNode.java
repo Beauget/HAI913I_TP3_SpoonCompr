@@ -5,19 +5,22 @@ import java.util.ArrayList;
 import graphs.CallGraph;
 
 public class DendrogramNode extends DendrogramComposit {
-	
+	String name;
 	DendrogramComposit childLeft;
 	DendrogramComposit childRight;
+	static Integer cluster = 0;
 
 	public DendrogramNode(DendrogramComposit childLeft, DendrogramComposit childRight) {
 		this.childLeft = childLeft;
 		this.childRight =childRight;
+		this.name = new String("C"+cluster.toString());
+		cluster++;
 	}
 
 
 	@Override
 	public String getName() {
-		return null;
+		return name;
 	}
 
 	@Override
@@ -54,7 +57,19 @@ public class DendrogramNode extends DendrogramComposit {
 
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("{ "+ childLeft.getName()+" } "+" { "+ childRight.getName()+"}");
+		/*if(childLeft.isLeaf()&&childRight.isLeaf()){
+			builder.append("\n" +childLeft.toString()+" -> "+ childRight.toString());
+		}
+		
+		else if(!(childLeft.isLeaf()&&childRight.isLeaf())){
+			builder.append("\n" + this.getName() +" -- " +'"'+this.getChildLeft().getName()+'"' );
+			builder.append("\n" + this.getName() +" -- " +'"'+this.getChildRight().getName()+'"');
+			builder.append(this.getChildRight().toString());
+		}*/
+		builder.append("\n" +" {"+this.childLeft.toString()+"}" +" {"+this.childRight.toString()+"}" );
+		
+
+			
 		return builder.toString();
 	}
 	
