@@ -1,7 +1,6 @@
 package parsers;
 
 import java.io.File;
-import models.NotNullSensorsSpoon;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -38,10 +37,13 @@ import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtStatementList;
 import spoon.reflect.code.CtTargetedExpression;
 import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtExecutable;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtPackage;
+import spoon.reflect.declaration.CtParameter;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.CtTypeParameter;
+import spoon.reflect.declaration.CtTypedElement;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
 import spoon.reflect.visitor.Query;
@@ -64,11 +66,12 @@ public class Spoon {
 	
 	
 	CtModel model;
+	Launcher ourLauncher;
 	int nbMethod = 0;
 	int nbClass = 0;
 	double nbAppels = 0;
 	
-	public Spoon(String path, CtModel model) {
+	public Spoon(String path, CtModel model,Launcher ourLaucher) {
 		this.model = model;
 		setLoggerChain();
 	}
@@ -83,25 +86,43 @@ public class Spoon {
 	public Map<String, Map<String, Double>> getCouplingGraph() {
 		return this.CouplingGraph;
 	}
-
 	
+	//méthode d'ajout d'élément sensors
+	public void addSensorsStatement(CtMethod<?> method) {
+		final String value = String.format("if (%s == null) "
+				+ "throw new IllegalArgumentException(\"[Spoon inserted check] null passed as parameter\");",
+				method.getSimpleName());
+		
+		
+		CtCodeSnippetStatement expr = ourLauncher.getFactory().createCodeSnippetStatement(value);
+		// we insert the snippet at the beginning of the method body.
+		if (method.getBody() != null) {
+			method.getParent(CtExecutable.class).getBody().insertBegin(expr);
+		}
+		
+	}
+
 // GET UTILITY DATA FOR SPOON
-public void getDataWithSpoon(CtModel model) {
+public void getDataWithSpoon(CtModel model,Launcher ourLauncher) {
 	
-	
-	
-	long result = 0;
 
+	long result = 0;
+	
 	for (CtType<?> type : model.getAllTypes()) { 
 		if(type.isClass()) {
 			nbClass++;
 			typeList.add(type);
+
 		}
 		for (CtMethod<?> method : type.getAllMethods()) { 
 			if(!methodList.contains(method)) {
 				methodList.add(method);
 				nbMethod += 1;
 			}
+			
+		
+			
+
 			for (CtInvocation<?> methodInvocation : Query.getElements(method,
 					new TypeFilter<CtInvocation<?>>(CtInvocation.class))) { 
 				if (methodInvocation.getTarget().getType() != null) {
@@ -118,6 +139,7 @@ public void getDataWithSpoon(CtModel model) {
 					}
 				}
 			}
+			
 		}
 	
 	}

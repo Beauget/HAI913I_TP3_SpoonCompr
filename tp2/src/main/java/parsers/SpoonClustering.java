@@ -13,6 +13,7 @@ import guru.nidi.graphviz.model.MutableGraph;
 import guru.nidi.graphviz.parse.Parser;
 import models.ClassCoupleSpoon;
 import models.Cluster;
+import spoon.Launcher;
 import spoon.reflect.CtModel;
 import spoon.reflect.declaration.CtType;
 import parsers.Spoon;
@@ -21,8 +22,8 @@ public class SpoonClustering extends Spoon {
 	
 	ArrayList<Cluster> cluster;
 
-	public SpoonClustering(String path, CtModel model) {
-		super(path, model);
+	public SpoonClustering(String path, CtModel model,Launcher our) {
+		super(path, model, our);
 		this.cluster = new ArrayList<Cluster>();
 	}
 	

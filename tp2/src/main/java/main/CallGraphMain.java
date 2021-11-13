@@ -19,6 +19,7 @@ import processors.ProcessorClustering;
 import spoon.Launcher;
 import spoon.compiler.Environment;
 import spoon.reflect.CtModel;
+import spoon.reflect.declaration.CtParameter;
 
 public class CallGraphMain extends AbstractMain {
 
@@ -85,7 +86,7 @@ public class CallGraphMain extends AbstractMain {
         ourLauncher.getEnvironment().setNoClasspath(true);
         ourLauncher.run();
         CtModel model = ourLauncher.getModel();
-        Spoon analyze = new Spoon(TEST_PROJECT_PATH,model);
+        Spoon analyze = new Spoon(TEST_PROJECT_PATH,model,ourLauncher);
         
         
 		try {
@@ -129,7 +130,7 @@ public class CallGraphMain extends AbstractMain {
 				case "6":
 					
 					System.out.println("Récupération des données du model avec Spoon..");
-                    analyze.getDataWithSpoon(model);
+                    analyze.getDataWithSpoon(model,ourLauncher);
                     
 					System.out.println("Ecriture du callGraph dans le fichier static-callGraphSpoon..");
                     analyze.log();
@@ -142,13 +143,13 @@ public class CallGraphMain extends AbstractMain {
 					System.out.println("Inserez le nom de la classe B");
 					String classNameB = sc.next();
                     System.out.println("Calcul de la métrique..");
-                    analyze.getDataWithSpoon(model);
+                    analyze.getDataWithSpoon(model,ourLauncher);
                     System.out.println(analyze.getCouplingMetric(classNameA, classNameB));
 					break;
 				case "8":
 					System.out.println("Début de génération du graphe de couplage pondéré...");
 					 start = System.currentTimeMillis();
-					 analyze.getDataWithSpoon(model);
+					 analyze.getDataWithSpoon(model,ourLauncher);
 					 analyze.createCouplingGraph();
 					 end = System.currentTimeMillis();
 					 System.out.println("Temp d'exécution pour le graphe de couplage pondéré (en PNG) avec Spoon : " + ((end - start) / 1000) + " secondes");
@@ -156,9 +157,9 @@ public class CallGraphMain extends AbstractMain {
 				case "9":
 					System.out.println("Début de génération du clustering...");
 					start = System.currentTimeMillis();
-					analyze.getDataWithSpoon(model);
+					analyze.getDataWithSpoon(model,ourLauncher);
 					analyze.createCouplingGraph();
-					SpoonClustering clustering = new SpoonClustering(TEST_PROJECT_PATH,model);
+					SpoonClustering clustering = new SpoonClustering(TEST_PROJECT_PATH,model,ourLauncher);
 					clustering.createHierarchicalClustering(clustering.InitialiseClusterSpoon(),clustering.createListOfClassesCouple(analyze));
 					end = System.currentTimeMillis();
 					System.out.println("Temp d'exécution pour la génération du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
