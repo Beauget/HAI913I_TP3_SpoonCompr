@@ -155,10 +155,13 @@ public class CallGraphMain extends AbstractMain {
 					break;
 				case "9":
 					System.out.println("Début de génération du clustering...");
+					start = System.currentTimeMillis();
 					analyze.getDataWithSpoon(model);
 					analyze.createCouplingGraph();
 					SpoonClustering clustering = new SpoonClustering(TEST_PROJECT_PATH,model);
 					clustering.createHierarchicalClustering(clustering.InitialiseClusterSpoon(),clustering.createListOfClassesCouple(analyze));
+					end = System.currentTimeMillis();
+					System.out.println("Temp d'exécution pour la génération du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
 					break;
 				case "10":
 					System.err.println("Not implemented yet");

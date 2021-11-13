@@ -23,7 +23,6 @@ public class Cluster {
 	
 
 	public Cluster(ArrayList<String> classes, double metricCouplingValue) {
-		super();
 		this.className = classes;
 		this.totalCoupling = metricCouplingValue;
 	}
@@ -39,8 +38,9 @@ public class Cluster {
 		this.totalCoupling =  addOne.getCoupling();
 	}
 	
-	public Cluster(String string) {
+	public Cluster(String className) {
 		super();
+		this.className.add(className);
 	}
 
 	public static Cluster createClusterStatic(String className) {
@@ -56,6 +56,26 @@ public class Cluster {
 				this.className.add(classToAdd);
 			}
 		}
+	}
+	
+	
+	
+	public static double getScoreClusters(Cluster clusterA, Cluster clusterB,
+			ArrayList<ClassCoupleSpoon> couplesOfClasses) {
+		double couplingValue = 0;
+		for (String classOfClusterA : clusterA.getClassList()) {
+			for (String classOfClusterB : clusterB.getClassList()) {
+				if (!classOfClusterA.equals(classOfClusterB)) {
+					for (ClassCoupleSpoon couple : couplesOfClasses) {
+						if (couple.getClassNameA().equals(classOfClusterA)
+								&& couple.getClassNameB().equals(classOfClusterB)) {
+							couplingValue += couple.getCouplageMetricValue();
+						}
+					}
+				}
+			}
+		}
+		return couplingValue;
 	}
 
 	

@@ -41,7 +41,7 @@ public class SpoonClustering extends Spoon {
 	}
 	
 	
-	public ArrayList<ClassCoupleSpoon> createListOfClassesCouple( Spoon spoonCouplingGraph) {
+	public ArrayList<ClassCoupleSpoon> createListOfClassesCouple(Spoon spoonCouplingGraph) {
 
 		ArrayList<ClassCoupleSpoon> coupledClassesList = new ArrayList<ClassCoupleSpoon>();
 		ClassCoupleSpoon newClassCoupleSpoon;
@@ -59,36 +59,21 @@ public class SpoonClustering extends Spoon {
 		return coupledClassesList;
 	}
 	
-	private double getScoreClusters(Cluster clusterA, Cluster clusterB,
-			ArrayList<ClassCoupleSpoon> couplesOfClasses) {
-		double couplingValue = 0;
-		for (String classOfClusterA : clusterA.getClassList()) {
-			for (String classOfClusterB : clusterB.getClassList()) {
-				if (!classOfClusterA.equals(classOfClusterB)) {
-					for (ClassCoupleSpoon couple : couplesOfClasses) {
-						if (couple.getClassNameA().equals(classOfClusterA)
-								&& couple.getClassNameB().equals(classOfClusterB)) {
-							couplingValue += couple.getCouplageMetricValue();
-						}
-					}
-				}
-			}
-		}
-		return couplingValue;
-	}
 	
 	public void createHierarchicalClustering(ArrayList<Cluster> clusters,
 			ArrayList<ClassCoupleSpoon> couplesOfClasses) throws IOException {
-		Cluster clusterA, clusterB, partieGauche, partieDroite, tempCluster;
+		Cluster clusterA, clusterB, partieGauche, partieDroite;
 		double CouplingMax, tempCouplingMax;
 		int indexPartA, indexPartB;
-		ArrayList<String> tempClasses;
+		
 
-		
-		
+		//Algo du cours
+		Cluster tempCluster;
+		ArrayList<String> tempClasses;
 		System.out.println("\nCréation de la hiérarchie des clusters :");
 
 		while (clusters.size() > 1) {
+			System.out.println("JE BOUCLE TOUJOURS");
 			indexPartA = 0;
 			indexPartB = 0;
 			CouplingMax = 0;
@@ -100,7 +85,7 @@ public class SpoonClustering extends Spoon {
 					clusterB = clusters.get(j);
 					if (i != j) {
 						
-						tempCouplingMax = getScoreClusters(clusterA, clusterB, couplesOfClasses);
+						tempCouplingMax = Cluster.getScoreClusters(clusterA, clusterB, couplesOfClasses);
 						if (tempCouplingMax > CouplingMax) {
 							CouplingMax = tempCouplingMax;
 							indexPartA = i;
@@ -129,28 +114,61 @@ public class SpoonClustering extends Spoon {
 				// En cas de modifications
 				
 				
-				System.out.println("\nChangement : fusion entre clusters");
-				System.out.println("Première partie de la fussion : ");
+				System.out.println("\n FUSION ENTRE CLUSTERS ");
+				System.out.println("Fusion de : ");
 				partieGauche.getClassList().forEach(classe -> System.out.println("Classe :  " + classe.toString()));
-				System.out.println("Deuxième partie de la fusion");
+				System.out.println("Avec : ");
 				partieDroite.getClassList().forEach(classe -> System.out.println("Classe :  " + classe.toString()));
-				System.out.println(" Nouvelle valeurCouplage : " + CouplingMax + "\n");
+				System.out.println(" Nouvelle valeur du couplage : " + CouplingMax + "\n");
+			}
+			else {
+				//Plus de fusion possible
+				break;
 			}
 		}
+		displayClustering(this.cluster);
 		saveGraphAsPNG();
 	}
 	
 	
+	public void displayClustering(ArrayList<Cluster> clusters) {
+		System.out.println("Affichage de la hierarchie des clusters");
+		for (Cluster cluster : clusters) {
+			System.out.println("Cluster");
+			for (String className : cluster.className) {
+				System.out.println("Classe : " + className);
+			}
+			System.out.println("valeur de la métrique de couplage de ce cluster : " + cluster.totalCoupling +"\n");
+			System.out.println("\n");
+		}
+	}
+	
+	
+
+	public  ArrayList<ArrayList<String>> getClusterClass() {
+		ArrayList<ArrayList<String>> className = new ArrayList<ArrayList<String>>();
+		ArrayList<String> temp = new ArrayList<String>();
+		for(Cluster i : this.cluster) {
+			temp = i.getClassList();
+			className.add(temp);
+			System.out.println(i.getClassList().toString());
+		}
+		
+		return className;
+	}
 	
 	public String getGraphAsDot() {
 		StringBuilder builder = new StringBuilder("digraph G {\n");
 		Integer c = 1;
-		for(Cluster cluster :  cluster) {
+		ArrayList<ArrayList<String>> clusters = getClusterClass();
+		
+		
+		for(ArrayList<String> cluster :  clusters) {
 			String clusterName = "C"+c;
 			//les feuilles
 			if(cluster.size()==2) {
-				builder.append('"'+ cluster.className.get(0) +'"').append(" -> ").append('"'+clusterName+'"').append(" ");
-				builder.append('"'+cluster.className.get(1)+'"').append(" -> ").append('"'+clusterName+'"').append(" ");
+				builder.append('"'+ cluster.get(0) +'"').append(" -> ").append('"'+clusterName+'"').append(" ");
+				builder.append('"'+cluster.get(1)+'"').append(" -> ").append('"'+clusterName+'"').append(" ");
 			}
 			else//On verifie si le cluster et sous ensemble d'un autre
 				{
@@ -158,22 +176,22 @@ public class SpoonClustering extends Spoon {
 				Integer GrandPlusGrandSousEnsemble=0;
 				for (int i = 0; i < c-1; i++) {
 					//cluster actuel
-					Cluster array1 = new Cluster(cluster);
+					ArrayList<String> array1 = new ArrayList<String>(cluster);
 					//ancien cluster
-					Cluster array2 = new Cluster(cluster.className.get(i));
+					ArrayList<String> array2 = new ArrayList<String>(clusters.get(i));
 				
 					//si 2 est sous ensembles alors
-					if(array1.className.containsAll(array2.className) && array2.size() > GrandPlusGrandSousEnsemble) {
+					if(array1.containsAll(array2) && array2.size()> GrandPlusGrandSousEnsemble) {
 						IndexPlusGrandSousEnsemble=i;
 						}
 				}
 				if (IndexPlusGrandSousEnsemble>-1) {
-					Cluster array1 = new Cluster(cluster);
-					Cluster array2 = new Cluster(cluster.className.get(IndexPlusGrandSousEnsemble));
-					array1.className.removeAll(array2.className);
+					ArrayList<String> array1 = new ArrayList<String>(cluster);
+					ArrayList<String> array2 = new ArrayList<String>(clusters.get(IndexPlusGrandSousEnsemble));
+					array1.removeAll(array2);
 					
 					builder.append('"'+"C"+(IndexPlusGrandSousEnsemble+1)+'"').append(" -> ").append('"'+clusterName+'"').append(" ");
-					for(String s : array1.className) {
+					for(String s : array1) {
 						builder.append('"'+s+'"').append(" -> ").append('"'+clusterName+'"').append(" ");
 					}
 				}
