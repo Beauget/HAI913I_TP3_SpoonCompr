@@ -14,6 +14,7 @@ import graphs.DendrogramGraph;
 import graphs.StaticCallGraph;
 import parsers.Spoon;
 import parsers.SpoonClustering;
+import parsers.SpoonClusteringPartition;
 import processors.ASTProcessor;
 import processors.ProcessorClustering;
 import spoon.Launcher;
@@ -31,13 +32,13 @@ public class CallGraphMain extends AbstractMain {
 		builder.append("\n3. DendrogramGraph : CrÃ©ation d'un dendrogram en png (n'envoie plus le bon)");
 		builder.append("\n4. CoupleGraph : CrÃ©ation des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnÃ©e");
 		builder.append("\n5. AllCouplesGraph : CrÃ©ation des fichiers CouplesGraph.dot et graphCouples.png pour un src donnÃ©, veuillez donner une liste de classe raisonnable");
-		
+		builder.append("\n---- Spoon part ----");
 		builder.append("\n6. Static call graph (avec Spoon).");
 		builder.append("\n7. Calculer la métrique de couplage entre deux classes A et B (avec Spoon)");
 		builder.append("\n8. Générez un graphe de couplage pondéré entre les classes de l'application. (avec Spoon)");
-		builder.append("\n9. Générer le regroupement hierrarchique des classes (avec Spoon)");
-		builder.append("\n10. Générer les groupes de classes couplés (partitions)s (avec Spoon)");
-		builder.append("\n11. Dynamic call graph.");
+		builder.append("\n9. Générer le regroupement en cluster des classes (avec Spoon)");
+		builder.append("\n10. Générer les groupes de classes couplés (avec une Pile) (avec Spoon)");
+		builder.append("\n11. Ajout de IllegalArgumentException aux méthodes (avec Spoon).");
 		builder.append("\n12. Help menu.");
 		builder.append("\n"+QUIT+". To quit.");
 		
@@ -165,8 +166,22 @@ public class CallGraphMain extends AbstractMain {
 					System.out.println("Temp d'exécution pour la génération du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
 					break;
 				case "10":
-					System.err.println("Not implemented yet");
+					System.out.println("Début de génération de l'indentation...");
+					start = System.currentTimeMillis();
+					analyze.getDataWithSpoon(model,ourLauncher);
+					analyze.createCouplingGraph();
+					SpoonClusteringPartition partition = new SpoonClusteringPartition(TEST_PROJECT_PATH,model,ourLauncher);
+					partition.indentationClusterAlgorithm(partition.InitialiseClusterSpoon(),partition.createListOfClassesCouple(analyze));
+					end = System.currentTimeMillis();
+					System.out.println("Temp d'exécution pour l'indentation du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
 					break;
+				case "11":
+					
+					System.out.println("Ajout du test : \n" + "IllegalArgumentException " + "à toute les méthodes du code..");
+					start = System.currentTimeMillis();
+				//	analyze.addSensorsStatement();
+					end = System.currentTimeMillis();
+					System.out.println("Temp d'exécution pour l'ajout de Sensors simple dans le code : " + ((end - start) / 1000) + " secondes");
 					
 				case QUIT:
 					System.out.println("Bye...");

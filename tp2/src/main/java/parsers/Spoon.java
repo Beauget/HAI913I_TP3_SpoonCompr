@@ -89,18 +89,24 @@ public class Spoon {
 	
 	//méthode d'ajout d'élément sensors
 	public void addSensorsStatement(CtMethod<?> method) {
+		
+		
+	
+				
 		final String value = String.format("if (%s == null) "
 				+ "throw new IllegalArgumentException(\"[Spoon inserted check] null passed as parameter\");",
 				method.getSimpleName());
 		
-		
-		CtCodeSnippetStatement expr = ourLauncher.getFactory().createCodeSnippetStatement(value);
+		CtCodeSnippetStatement expr = ourLauncher.getFactory().Code().createCodeSnippetStatement("pkg.MyClass myClass = new pkg.MyClass();");
+	//	CtCodeSnippetStatement expr = ourLauncher.getFactory().createCodeSnippetStatement(value);
 		// we insert the snippet at the beginning of the method body.
 		if (method.getBody() != null) {
-			method.getParent(CtExecutable.class).getBody().insertBegin(expr);
+			method.getBody().insertBegin(expr);
 		}
-		
-	}
+			}
+	
+	
+	
 
 // GET UTILITY DATA FOR SPOON
 public void getDataWithSpoon(CtModel model,Launcher ourLauncher) {
@@ -120,7 +126,7 @@ public void getDataWithSpoon(CtModel model,Launcher ourLauncher) {
 				nbMethod += 1;
 			}
 			
-		
+			//addSensorsStatement(method);
 			
 
 			for (CtInvocation<?> methodInvocation : Query.getElements(method,
@@ -176,7 +182,7 @@ public long getNbRelations(String classA, String classB) {
 public double getCouplingMetric(String classNameA, String classNameB) {
 	long nbRelations = this.getNbRelations(classNameA, classNameB);
 	if(nbRelations != 0) {
-	System.out.println("RELATIONS : " + classNameA + " --> " + classNameB + " = " + nbRelations);
+	System.out.println("Nombre d'appels de A --> (vers) B : " + classNameA + " --> " + classNameB + " = " + nbRelations);
 	}
 	double result = (nbRelations + 0.0) / (nbAppels + 0.0);
 	return round(result,3);
