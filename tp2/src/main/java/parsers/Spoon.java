@@ -69,7 +69,7 @@ public class Spoon {
 	Launcher ourLauncher;
 	int nbMethod = 0;
 	int nbClass = 0;
-	double nbAppels = 0;
+	long nbAppels = 0;
 	
 	public Spoon(String path, CtModel model,Launcher ourLaucher) {
 		this.model = model;
@@ -86,24 +86,6 @@ public class Spoon {
 	public Map<String, Map<String, Double>> getCouplingGraph() {
 		return this.CouplingGraph;
 	}
-	
-	//méthode d'ajout d'élément sensors
-	public void addSensorsStatement(CtMethod<?> method) {
-		
-		
-	
-				
-		final String value = String.format("if (%s == null) "
-				+ "throw new IllegalArgumentException(\"[Spoon inserted check] null passed as parameter\");",
-				method.getSimpleName());
-		
-		CtCodeSnippetStatement expr = ourLauncher.getFactory().Code().createCodeSnippetStatement("pkg.MyClass myClass = new pkg.MyClass();");
-	//	CtCodeSnippetStatement expr = ourLauncher.getFactory().createCodeSnippetStatement(value);
-		// we insert the snippet at the beginning of the method body.
-		if (method.getBody() != null) {
-			method.getBody().insertBegin(expr);
-		}
-			}
 	
 	
 	
@@ -126,7 +108,6 @@ public void getDataWithSpoon(CtModel model,Launcher ourLauncher) {
 				nbMethod += 1;
 			}
 			
-			//addSensorsStatement(method);
 			
 
 			for (CtInvocation<?> methodInvocation : Query.getElements(method,
@@ -156,48 +137,47 @@ public void getDataWithSpoon(CtModel model,Launcher ourLauncher) {
 //END GET UTILITY DATA FOR SPOON
 
 
-public long getNbRelations(String classA, String classB) {
-	long result = 0;
-	if (classA.equals(classB)) {
-		return 0;
-	}
+public long getNbRelations(String classNameA, String classNameB) {
+	long cpt = 0;
 	for (CtType<?> type : model.getAllTypes()) { 
-		if (classB.equals(type.getQualifiedName())) { 
+		if (classNameB.equals(type.getQualifiedName())) { 
 			for (CtMethod<?> method : type.getAllMethods()) { 
-				for (CtInvocation<?> methodInvocation : Query.getElements(method,
-						new TypeFilter<CtInvocation<?>>(CtInvocation.class))) { 
+				for(CtInvocation<?> methodInvocation : Query.getElements(method,
+						new TypeFilter<CtInvocation<?>>(CtInvocation.class))) {
 					if (methodInvocation.getTarget().getType() != null) {
-						if (classA.equals(
-								methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName())) {
-							result++;
+					if (classNameA.equals(
+							methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName())) {
+						cpt++;
 						}
 					}
 				}
 			}
-		} 
+		}
 	}
-	return result;
+	return cpt;
 }
 
 public double getCouplingMetric(String classNameA, String classNameB) {
-	long nbRelations = this.getNbRelations(classNameA, classNameB);
+	double nbRelations = this.getNbRelations(classNameA, classNameB);
 	if(nbRelations != 0) {
-	System.out.println("Nombre d'appels de A --> (vers) B : " + classNameA + " --> " + classNameB + " = " + nbRelations);
+	System.out.println("Nombre d'appels de : " + classNameA + "  --> (vers) " + classNameB + " = " + nbRelations);
 	}
-	double result = (nbRelations + 0.0) / (nbAppels + 0.0);
-	return round(result,3);
+	double result = (nbRelations) / (nbAppels);
+	return result;
 }
 
 
 public void createCouplingGraph() throws IOException {
 	String classNameA, classNameB;
 	Double couplingValue;
+	Double metricVerif = 0.0;
 	for (CtType<?> typeClassA : model.getAllTypes()) { 
 		classNameA = typeClassA.getQualifiedName();
 		for (CtType<?> typeClassB : model.getAllTypes()) {
 			classNameB = typeClassB.getQualifiedName();
 			if(!classNameA.equals(classNameB)) {
 				couplingValue = getCouplingMetric(classNameA, classNameB);
+				metricVerif += couplingValue;
 				if (couplingValue > 0) {
 					if (!CouplingGraph.containsKey(classNameA)) {
 						CouplingGraph.put(classNameA, new HashMap<String, Double>());
@@ -209,9 +189,12 @@ public void createCouplingGraph() throws IOException {
 		}
 
 	}
+	System.out.println("Métrique total (sans appel java.io, java.lang, java.util) : " + metricVerif);
 	saveGraphAsPNGSpoon(CouplingGraph);
 }
 
+
+// CALL_GRAPH WITH SPOON 
 public String toString() {
 	StringBuilder builder = new StringBuilder();
 	ArrayList<String> listVu = new ArrayList<String>();
@@ -304,20 +287,78 @@ public void saveGraphAsPNGSpoon(Map<String, Map<String, Double>> couple) throws 
 
 
 //END SAVE AS PNG AND DOT GENERATION
-public static double round(double value, int places) {
-	if (places < 0)
-		throw new IllegalArgumentException();
-
-	BigDecimal toRound = new BigDecimal(Double.toString(value));
-	toRound = toRound.setScale(places, RoundingMode.HALF_UP);
-	return toRound.doubleValue();
-}
-
 public void log() {
-	loggerChain.setFilePath("C:\\Users\\beaug\\Desktop\\M2\\M2\\Evo-restru\\TP3\\HAI913I_TP3_SpoonCompr\\design_patterns\\static-callgraphSpoon.info");
+	loggerChain.setFilePath("C:\\Users\\beaug\\Desktop\\M2\\M2\\Evo-restru\\TP3\\HAI913I_TP3_SpoonCompr\\tp2\\static-callgraphSpoon.info");
 	loggerChain.log(new LogRequest(this.toString(), 
 			StandardLogRequestLevel.DEBUG));
 }
+
+
+//méthode d'ajout d'élément sensors
+	public void addSensorsStatement(CtMethod<?> method,Launcher ourLauncher) {
+		
+		CtCodeSnippetStatement snippet = ourLauncher.getFactory().Core().createCodeSnippetStatement();
+		
+		 String value = "";
+		 value = String.format("if (%s == null) "
+				+ "throw new IllegalArgumentException(\"[Spoon inserted check] null passed as parameter\");",
+				method.getSimpleName());
+		
+		 snippet.setValue(value);
+
+		// we insert the snippet at the beginning of the method body.
+		if (method.getBody() != null) {
+			method.getBody().insertBegin(snippet);
+			System.out.println("Méthode : " + method.getSimpleName() + "\n Corps de la méthode : " + method.getBody());
+		}
+}
+	
+
+	
+	// ADD UTILITY DATA FOR SPOON (BONUS)
+	public void addDataWithSpoon(CtModel model,Launcher ourLauncher) {
+		
+
+		long result = 0;
+		
+		for (CtType<?> type : model.getAllTypes()) { 
+			if(type.isClass()) {
+				nbClass++;
+				typeList.add(type);
+
+			}
+			for (CtMethod<?> method : type.getAllMethods()) { 
+				if(!methodList.contains(method)) {
+					methodList.add(method);
+					nbMethod += 1;
+				}
+				
+				addSensorsStatement(method,ourLauncher);
+				
+
+				for (CtInvocation<?> methodInvocation : Query.getElements(method,
+						new TypeFilter<CtInvocation<?>>(CtInvocation.class))) { 
+					if (methodInvocation.getTarget().getType() != null) {
+						
+						if ((!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().equals("void"))
+								&& (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.io."))
+								&&  (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.util."))
+								 && (!methodInvocation.getTarget().getType().getTypeDeclaration().getQualifiedName().contains("java.lang"))
+								) {
+							        	
+							         
+							invocationList.add(methodInvocation);
+							result++;
+						}
+					}
+				}
+				
+			}
+		
+		}
+		
+		nbAppels = result;
+	}
 
 
 }

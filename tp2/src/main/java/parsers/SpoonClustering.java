@@ -42,41 +42,20 @@ public class SpoonClustering extends Spoon {
 	}
 	
 	
-	public ArrayList<ClassCoupleSpoon> createListOfClassesCouple(Spoon spoonCouplingGraph) {
 
-		ArrayList<ClassCoupleSpoon> coupledClassesList = new ArrayList<ClassCoupleSpoon>();
-		ClassCoupleSpoon newClassCoupleSpoon;
-		Map<String, Double> tempMap;
-		for (String classA : spoonCouplingGraph.getCouplingGraph().keySet()) {
-			tempMap = spoonCouplingGraph.getCouplingGraph().get(classA);
-			for (String classB : tempMap.keySet()) {
-				newClassCoupleSpoon = new ClassCoupleSpoon(classA, classB, tempMap.get(classB));
-				coupledClassesList.add(newClassCoupleSpoon);
-			}
-		}
-		for(ClassCoupleSpoon i : coupledClassesList) {
-			i.toString();
-		}
-		return coupledClassesList;
-	}
-	
-	
-	public void createHierarchicalClustering(ArrayList<Cluster> clusters,
-			ArrayList<ClassCoupleSpoon> couplesOfClasses) throws IOException {
+	public void createClustering(ArrayList<Cluster> clusters,ArrayList<ClassCoupleSpoon> couplesOfClasses) throws IOException {
 		Cluster clusterA, clusterB, partieGauche, partieDroite;
 		double CouplingMax, tempCouplingMax;
-		int indexPartA, indexPartB;
-		
+		int partieGaucheI, partieDroiteI;
+		double metricVerif = 0.0;
 
 		//Algo du cours
 		Cluster tempCluster;
 		ArrayList<String> tempClasses;
 		System.out.println("\nCréation de la hiérarchie des clusters :");
-
 		while (clusters.size() > 1) {
-			System.out.println("JE BOUCLE TOUJOURS");
-			indexPartA = 0;
-			indexPartB = 0;
+			partieGaucheI = 0;
+			partieDroiteI = 0;
 			CouplingMax = 0;
 			for (int i = 0; i < clusters.size(); i++) {
 				
@@ -86,23 +65,24 @@ public class SpoonClustering extends Spoon {
 					clusterB = clusters.get(j);
 					if (i != j) {
 						
-						tempCouplingMax = Cluster.getScoreClusters(clusterA, clusterB, couplesOfClasses);
+						tempCouplingMax = Cluster.getMetricCluster(clusterA, clusterB, couplesOfClasses);
 						if (tempCouplingMax > CouplingMax) {
 							CouplingMax = tempCouplingMax;
-							indexPartA = i;
-							indexPartB = j;
+							partieGaucheI = i;
+							partieDroiteI = j;
 						}
 					}
 				}
 			}
 			if (CouplingMax > 0) {
-				partieGauche = clusters.get(indexPartA);
-				partieDroite = clusters.get(indexPartB);
+				partieGauche = clusters.get(partieGaucheI);
+				partieDroite = clusters.get(partieDroiteI);
 				
 				
 				tempClasses = new ArrayList<String>(partieGauche.getClassList());
 				tempCluster = new Cluster(tempClasses, CouplingMax);
 				tempCluster.add(partieDroite.getClassList());
+				metricVerif += CouplingMax;
 				
 				//Algo du cours : enlève, enlève, ajoute
 				
@@ -123,25 +103,44 @@ public class SpoonClustering extends Spoon {
 				System.out.println(" Nouvelle valeur du couplage : " + CouplingMax + "\n");
 			}
 			else {
-				//Plus de fusion possible
+				//Pas de fusion
 				break;
 			}
 		}
-		displayClustering(this.cluster);
-		saveGraphAsPNG();
+		showClusteringFinal(this.cluster);
 	}
 	
 	
-	public void displayClustering(ArrayList<Cluster> clusters) {
-		System.out.println("Affichage de la hierarchie des clusters");
+	
+	
+	public void showClusteringFinal(ArrayList<Cluster> clusters) {
+		System.out.println("Affichage des clusters (si la valeur du couplage est > 0");
 		for (Cluster cluster : clusters) {
-			System.out.println("Cluster");
+			if(cluster.totalCoupling != 0) {
+			System.out.println("Cluster : ");
 			for (String className : cluster.className) {
-				System.out.println("Classe : " + className);
+				System.out.println("Classe membre : " + className);
 			}
-			System.out.println("valeur de la métrique de couplage de ce cluster : " + cluster.totalCoupling +"\n");
+			
+			System.out.println("Valeur de la métrique de couplage total de ce cluster : " + cluster.totalCoupling +"\n");
 			System.out.println("\n");
+			}
 		}
+	}
+	
+	public ArrayList<ClassCoupleSpoon> createCouple(Spoon spoonCouplingGraph) {
+
+		ArrayList<ClassCoupleSpoon> coupledClassesList = new ArrayList<ClassCoupleSpoon>();
+		ClassCoupleSpoon newClassCoupleSpoon;
+		Map<String, Double> tempMap;
+		for (String classA : spoonCouplingGraph.getCouplingGraph().keySet()) {
+			tempMap = spoonCouplingGraph.getCouplingGraph().get(classA);
+			for (String classB : tempMap.keySet()) {
+				newClassCoupleSpoon = new ClassCoupleSpoon(classA, classB, tempMap.get(classB));
+				coupledClassesList.add(newClassCoupleSpoon);
+			}
+		}
+		return coupledClassesList;
 	}
 	
 	

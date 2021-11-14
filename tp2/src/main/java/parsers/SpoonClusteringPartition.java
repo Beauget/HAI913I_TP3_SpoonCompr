@@ -19,8 +19,7 @@ public class SpoonClusteringPartition extends SpoonClustering {
 	
 
 
-	public Stack<Cluster> createHierarchicalClusteringPartition(ArrayList<Cluster> clusters,
-		ArrayList<ClassCoupleSpoon> couplesOfClasses) throws IOException {
+	public Stack<Cluster> createPartition(ArrayList<Cluster> clusters,ArrayList<ClassCoupleSpoon> couplesOfClasses) throws IOException {
 		Cluster clusterA, clusterB, partieGauche, partieDroite;
 		Stack<Cluster> PileCluster = new Stack<Cluster>();
 		double CouplingMax, tempCouplingMax;
@@ -35,14 +34,12 @@ public class SpoonClusteringPartition extends SpoonClustering {
 			indexPartB = 0;
 			CouplingMax = 0;
 			for (int i = 0; i < clusters.size(); i++) {
-				
 				clusterA = clusters.get(i);
 				for (int j = 0; j < clusters.size(); j++) {
-					
 					clusterB = clusters.get(j);
 					if (i != j) {
 						
-						tempCouplingMax = Cluster.getScoreClusters(clusterA, clusterB, couplesOfClasses);
+						tempCouplingMax = Cluster.getMetricCluster(clusterA, clusterB, couplesOfClasses);
 						if (tempCouplingMax > CouplingMax) {
 							CouplingMax = tempCouplingMax;
 							indexPartA = i;
@@ -84,10 +81,9 @@ public class SpoonClusteringPartition extends SpoonClustering {
 	}
 	
 	
-	public ArrayList<Cluster> indentationClusterAlgorithm(ArrayList<Cluster> clusters,
-			ArrayList<ClassCoupleSpoon> couplesOfClasses) throws IOException {
+	public ArrayList<Cluster> indentationClusterAlgorithm(ArrayList<Cluster> clusters,ArrayList<ClassCoupleSpoon> couplesOfClasses) throws IOException {
 		
-		Stack<Cluster> PileCluster = createHierarchicalClusteringPartition(clusters,couplesOfClasses);
+		Stack<Cluster> PileCluster = createPartition(clusters,couplesOfClasses);
 		ArrayList<Cluster> resultList = new ArrayList<Cluster>();
 		Cluster pere,filsGauche,filsDroite;
 		double moyenne = 0;
@@ -99,9 +95,9 @@ public class SpoonClusteringPartition extends SpoonClustering {
 			
 			System.out.println("\n - Couplage du père : "+ pere.getCoupling());
 			moyenne = (filsGauche.getCoupling() + filsDroite.getCoupling() ) / 2;
-			System.out.println("\n - Moyenne des couplages des fils : "+moyenne);
+			System.out.println("\n - Moyenne des couplages des fils : "+ moyenne);
 			if(pere.getCoupling() > moyenne) {
-				System.out.println( "\n Donc --> On ajoute le père à la partition");
+				System.out.println( "\n Donc --> Le père est ajouté à la partition");
 				resultList.add(pere);
 			
 		}
@@ -110,8 +106,10 @@ public class SpoonClusteringPartition extends SpoonClustering {
 			}
 	}
 		
-
+		showClusteringFinal(resultList);
 		return resultList;
 	}
+	
+	
 
 }

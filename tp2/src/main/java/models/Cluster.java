@@ -8,11 +8,6 @@ public class Cluster {
 	public double totalCoupling;
 	
 	
-	public Cluster() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	public ArrayList<String> getClassList() {
 		return this.className;
 	}
@@ -38,11 +33,6 @@ public class Cluster {
 		this.totalCoupling =  addOne.getCoupling();
 	}
 	
-	public Cluster(String className) {
-		super();
-		this.className.add(className);
-	}
-
 	public static Cluster createClusterStatic(String className) {
 		ArrayList<String> classes = new ArrayList<String>();
 		classes.add(className);
@@ -57,28 +47,7 @@ public class Cluster {
 			}
 		}
 	}
-	
-	
-	
-	public static double getScoreClusters(Cluster clusterA, Cluster clusterB,
-			ArrayList<ClassCoupleSpoon> couplesOfClasses) {
-		double couplingValue = 0;
-		for (String classOfClusterA : clusterA.getClassList()) {
-			for (String classOfClusterB : clusterB.getClassList()) {
-				if (!classOfClusterA.equals(classOfClusterB)) {
-					for (ClassCoupleSpoon couple : couplesOfClasses) {
-						if (couple.getClassNameA().equals(classOfClusterA)
-								&& couple.getClassNameB().equals(classOfClusterB)) {
-							couplingValue += couple.getCouplageMetricValue();
-						}
-					}
-				}
-			}
-		}
-		return couplingValue;
-	}
 
-	
 	public String toString() {
 		String res = null;
 		
@@ -95,6 +64,25 @@ public class Cluster {
 			cpt +=1;
 		}
 		return cpt;
+	}
+	
+	
+	public static  double getMetricCluster(Cluster clusterA, Cluster clusterB,
+			ArrayList<ClassCoupleSpoon> couplesOfClasses) {
+		double couplingValue = 0;
+		for (String classOfClusterA : clusterA.getClassList()) {
+			for (String classOfClusterB : clusterB.getClassList()) {
+				if (!classOfClusterA.equals(classOfClusterB)) {
+					for (ClassCoupleSpoon couple : couplesOfClasses) {
+						if (couple.getClassNameA().equals(classOfClusterA)
+								&& couple.getClassNameB().equals(classOfClusterB)) {
+							couplingValue += couple.getCouplageMetricValue();
+						}
+					}
+				}
+			}
+		}
+		return couplingValue;
 	}
 	
 

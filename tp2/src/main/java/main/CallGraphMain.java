@@ -34,13 +34,12 @@ public class CallGraphMain extends AbstractMain {
 		builder.append("\n4. CoupleGraph : Création des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnée");
 		builder.append("\n5. AllCouplesGraph : Création des fichiers CouplesGraph.dot et graphCouples.png pour un src donné, veuillez donner une liste de classe raisonnable");
 		builder.append("\n---- Spoon part ----");
-		builder.append("\n6. Static call graph (avec Spoon).");
+		builder.append("\n6. Static call graph (avec Spoon) optionnel.");
 		builder.append("\n7. Calculer la m�trique de couplage entre deux classes A et B (avec Spoon)");
 		builder.append("\n8. G�n�rez un graphe de couplage pond�r� entre les classes de l'application. (avec Spoon)");
 		builder.append("\n9. G�n�rer le regroupement en cluster des classes (avec Spoon)");
 		builder.append("\n10. G�n�rer les groupes de classes coupl�s (avec une Pile) (avec Spoon)");
-		builder.append("\n11. Ajout de IllegalArgumentException aux m�thodes (avec Spoon).");
-		builder.append("\n12. Help menu.");
+		builder.append("\n11. Ajout de IllegalArgumentException aux m�thodes (avec Spoon) optionnel.");
 		builder.append("\n"+QUIT+". To quit.");
 		
 		System.out.println(builder);
@@ -140,6 +139,7 @@ public class CallGraphMain extends AbstractMain {
                     
 					System.out.println("Ecriture du callGraph dans le fichier static-callGraphSpoon..");
                     analyze.log();
+                    System.out.println("Call graph disponible dans le fichier static-callGraphSpoon.info");
                     
                     break;
 					
@@ -166,7 +166,7 @@ public class CallGraphMain extends AbstractMain {
 					analyze.getDataWithSpoon(model,ourLauncher);
 					analyze.createCouplingGraph();
 					SpoonClustering clustering = new SpoonClustering(TEST_PROJECT_PATH,model,ourLauncher);
-					clustering.createHierarchicalClustering(clustering.InitialiseClusterSpoon(),clustering.createListOfClassesCouple(analyze));
+					clustering.createClustering(clustering.InitialiseClusterSpoon(),clustering.createCouple(analyze));
 					end = System.currentTimeMillis();
 					System.out.println("Temp d'ex�cution pour la g�n�ration du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
 					break;
@@ -176,7 +176,7 @@ public class CallGraphMain extends AbstractMain {
 					analyze.getDataWithSpoon(model,ourLauncher);
 					analyze.createCouplingGraph();
 					SpoonClusteringPartition partition = new SpoonClusteringPartition(TEST_PROJECT_PATH,model,ourLauncher);
-					partition.indentationClusterAlgorithm(partition.InitialiseClusterSpoon(),partition.createListOfClassesCouple(analyze));
+					partition.indentationClusterAlgorithm(partition.InitialiseClusterSpoon(),partition.createCouple(analyze));
 					end = System.currentTimeMillis();
 					System.out.println("Temp d'ex�cution pour l'indentation du clustering  avec Spoon : " + ((end - start) / 1000) + " secondes");
 					break;
@@ -184,7 +184,7 @@ public class CallGraphMain extends AbstractMain {
 					
 					System.out.println("Ajout du test : \n" + "IllegalArgumentException " + "� toute les m�thodes du code..");
 					start = System.currentTimeMillis();
-				//	analyze.addSensorsStatement();
+					analyze.addDataWithSpoon(model, ourLauncher);
 					end = System.currentTimeMillis();
 					System.out.println("Temp d'ex�cution pour l'ajout de Sensors simple dans le code : " + ((end - start) / 1000) + " secondes");
 					
