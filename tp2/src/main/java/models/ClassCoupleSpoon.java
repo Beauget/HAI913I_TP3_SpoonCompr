@@ -28,6 +28,7 @@ public class ClassCoupleSpoon {
 	}
 
 	public boolean isSameCouple(String s1, String s2) {
+
 		boolean case1 = s1.equals(classA) && s2.equals(classB);
 		boolean case2 = s1.equals(classB) && s2.equals(classA);
 		

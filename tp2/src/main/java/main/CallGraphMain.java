@@ -198,7 +198,7 @@ public class CallGraphMain extends AbstractMain {
 					start = System.currentTimeMillis();
 					analyze.getDataWithSpoon(model,ourLauncher);
 					analyze.createCouplingGraph();
-					DendrogramSpoon dendogramSpoon = new DendrogramSpoon(TEST_PROJECT_PATH,model,ourLauncher);
+					DendrogramSpoon dendogramSpoon = new DendrogramSpoon(TEST_PROJECT_PATH,model,ourLauncher,analyze);
 					dendogramSpoon.clustering();
 					dendogramSpoon.createFiles();
 					break;

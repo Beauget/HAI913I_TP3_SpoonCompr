@@ -7,7 +7,7 @@ import models.ClassCoupleSpoon;
 public class DendrogramLeafSpoon extends DendrogramCompositSpoon {
 	String name;
 	public DendrogramLeafSpoon(String s) {
-		this.name = name;
+		this.name = s;
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class DendrogramLeafSpoon extends DendrogramCompositSpoon {
 						}
 			}
 		}
-		else {
+		else{
 			output += getValue(other.getChildLeft(),classCouples);
 			output += getValue(other.getChildRight(),classCouples);
 		}

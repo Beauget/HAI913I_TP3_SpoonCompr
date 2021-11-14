@@ -26,11 +26,11 @@ public class DendrogramSpoon {
 	List<DendrogramCompositSpoon> nodes;
 	SpoonClustering spoonClustering;
 	//Spoon spoon;
-	public DendrogramSpoon(String projectPath, CtModel model,Launcher our) {
+	public DendrogramSpoon(String projectPath, CtModel model,Launcher our, Spoon analyze) {
 		this.spoonClustering = new SpoonClustering(projectPath, model,our);
-		this.classCouples = spoonClustering.createCouple(spoonClustering);
+		this.classCouples = spoonClustering.createCouple(analyze);
 		this.nodes = initNodes();
-		System.out.println("longeur de l'arraylist de couples" + classCouples.size());
+		System.out.println("longeur de l'arraylist de couples " + nodes.size());
 	}
 	
 	private DendrogramCompositSpoon getMostCoupledNodePair(List<DendrogramCompositSpoon> nodes){
@@ -76,8 +76,9 @@ public class DendrogramSpoon {
 		classes.clear();
 		classes.addAll(set);
 		
+		
 		for(String s : classes) {
-			DendrogramCompositSpoon leaf = new DendrogramLeafSpoon(s);
+			DendrogramCompositSpoon leaf = new DendrogramLeafSpoon(s);	
 			output.add(leaf);
 		}
 		return output;
