@@ -7,7 +7,7 @@ import models.ClassCoupleSpoon;
 public class DendrogramLeafSpoon extends DendrogramCompositSpoon {
 	String name;
 	public DendrogramLeafSpoon(String s) {
-		// TODO Auto-generated constructor stub
+		this.name = name;
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class DendrogramLeafSpoon extends DendrogramCompositSpoon {
 		return output;
 	}
 	public String toString() {
-		return '"'+this.name+'"';
+		return ('"'+this.name+'"');
 	}
 
 }
