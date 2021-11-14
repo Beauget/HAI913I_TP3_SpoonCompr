@@ -38,11 +38,11 @@ public class CallGraphMain extends AbstractMain {
 		builder.append("\n---- Spoon part ----");
 		builder.append("\n6. Static call graph (avec Spoon) optionnel.");
 		builder.append("\n7. Calculer la métrique de couplage entre deux classes A et B (avec Spoon)");
-		builder.append("\n8. Générez un graphe de couplage pondéré entre les classes de l'application. (avec Spoon)");
+		builder.append("\n8. Générez un graphe de couplage pondéré entre les classes de l'application en PNG. (avec Spoon)");
 		builder.append("\n9. Générer le regroupement en cluster des classes (avec Spoon)");
 		builder.append("\n10. Générer les groupes de classes couplés (avec une Pile) (avec Spoon)");
 		builder.append("\n11. Ajout de IllegalArgumentException aux méthodes (avec Spoon) optionnel.");
-		builder.append("\n12.DendrogramSpoon");
+		builder.append("\n12. Dendrogram des clusters avec Spoon au format PNG");
 		builder.append("\n"+QUIT+". To quit.");
 		
 		System.out.println(builder);
