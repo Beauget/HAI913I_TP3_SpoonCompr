@@ -70,9 +70,11 @@ public class Spoon {
 	int nbMethod = 0;
 	int nbClass = 0;
 	long nbAppels = 0;
+	String path;
 	
 	public Spoon(String path, CtModel model,Launcher ourLaucher) {
 		this.model = model;
+		this.path = path;
 		setLoggerChain();
 	}
 	
@@ -281,14 +283,14 @@ public  String getCoupleGraphAsDotSpoon(Map<String, Map<String, Double>> couple)
 
 public void saveGraphAsPNGSpoon(Map<String, Map<String, Double>> couple) throws IOException{
 	MutableGraph g = new Parser().read(this.getCoupleGraphAsDotSpoon(couple));
-	Graphviz.fromGraph(g).height(1920).render(Format.PNG).toFile(new File("grapheCoupleSpoon.png"));
+	Graphviz.fromGraph(g).height(1920).render(Format.PNG).toFile(new File("grapheCouplageSpoon.png"));
 
 }
 
 
 //END SAVE AS PNG AND DOT GENERATION
 public void log() {
-	loggerChain.setFilePath("C:\\Users\\beaug\\Desktop\\M2\\M2\\Evo-restru\\TP3\\HAI913I_TP3_SpoonCompr\\tp2\\static-callgraphSpoon.info");
+	loggerChain.setFilePath(path + "static-callgraphSpoon.info");
 	loggerChain.log(new LogRequest(this.toString(), 
 			StandardLogRequestLevel.DEBUG));
 }
