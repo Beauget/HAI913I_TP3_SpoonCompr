@@ -34,7 +34,8 @@ public class Dendrogram {
 				if(nodeValue>mostNodeValue){
 					childLeft=nodes.get(i);
 					childRight= nodes.get(j);
-					nodeValue=mostNodeValue;
+					mostNodeValue=nodeValue;
+					//System.out.println(nodeValue);
 				}
 			}
 		}
@@ -68,18 +69,22 @@ public class Dendrogram {
 		
 		for(DendrogramComposit d : nodes) {
 			builder.append(d).append("\n");
+			System.out.println("Poids du noeud = " +d.getChildLeft().getPoids());
+			System.out.println("Poids du noeud = " +d.getChildRight().getPoids());
 		}
-		
+
 		return builder.toString();
 	}
 	
+
 	public String getGraphAsDot() {
-		StringBuilder builder = new StringBuilder("digraph \"Dendrogram\" {\n"+ "node [fontname=\"DejaVu-Sans\", shape=circle] \n");
-		ArrayList<String> classes = classCouples.getClasses();
+		StringBuilder builder = new StringBuilder("digraph \"Dendrogram\" {\n");
+	//+ "node [fontname=\"DejaVu-Sans\", shape=circle] \n");
+		//ArrayList<String> classes = classCouples.getClasses();
 		//liste des noeuds
-		for(String s : classes) {
-			builder.append('"'+s+'"'+"\n");
-		}
+		//for(String s : classes) {
+			//builder.append('"'+s+'"'+"\n");
+		//}
 		builder.append(this.toString());
 		builder.append("\n}");
 		return builder.toString();

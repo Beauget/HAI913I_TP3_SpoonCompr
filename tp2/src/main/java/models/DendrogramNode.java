@@ -9,11 +9,12 @@ public class DendrogramNode extends DendrogramComposit {
 	DendrogramComposit childLeft;
 	DendrogramComposit childRight;
 	static Integer cluster = 0;
+	double poids ;
 
 	public DendrogramNode(DendrogramComposit childLeft, DendrogramComposit childRight) {
 		this.childLeft = childLeft;
 		this.childRight =childRight;
-		this.name = new String("C"+cluster.toString());
+		this.name = new String('"'+"C"+cluster.toString()+'"');
 		cluster++;
 	}
 
@@ -39,37 +40,75 @@ public class DendrogramNode extends DendrogramComposit {
 	}
 
 	@Override
-	public double getValue(DendrogramComposit DendrogramComposit, ClassCouples classCouples) {
-		double output = 0;
-		if(DendrogramComposit.isLeaf()) {
-			DendrogramComposit.getValue(this, classCouples);
+	public double getValue(DendrogramComposit other, ClassCouples classCouples) {
+
+		if(other.isLeaf()==true) {
+			return other.getValue(this, classCouples);
 		}
 		
-		else {
-			output += this.getChildLeft().getValue(DendrogramComposit.getChildRight(), classCouples);
-			output += this.getChildLeft().getValue(DendrogramComposit.getChildLeft(), classCouples);
-			output += this.getChildRight().getValue(DendrogramComposit.getChildRight(), classCouples);
-			output += this.getChildRight().getValue(DendrogramComposit.getChildLeft(), classCouples);
-		}
+
+		double output = this.getChildLeft().getValue(other.getChildRight(), classCouples);
+		output += this.getChildLeft().getValue(other.getChildLeft(), classCouples);
+		output += this.getChildRight().getValue(other.getChildRight(), classCouples);
+		output += this.getChildRight().getValue(other.getChildLeft(), classCouples);
+		poids = output;
+
+		
+		
+
 		return output;
 		
 	}
+	
+	public double getPoids(){return poids;}
+	
+
 
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		/*if(childLeft.isLeaf()&&childRight.isLeaf()){
-			builder.append("\n" +childLeft.toString()+" -> "+ childRight.toString());
+		
+		if(getChildLeft()!= null && getChildRight()!=null) {
+			if(this.getChildLeft().isLeaf()&& this.getChildRight().isLeaf()){
+				builder.append("\n" + this.getName()+" -> "+ childLeft.toString());
+				builder.append("\n" + this.getName()+" -> "+ childRight.toString()+"\n");
+			}
+			else if( this.getChildLeft().isLeaf()==false && this.getChildRight().isLeaf()==false){
+				builder.append("\n" + this.getName() +" -> " +this.getChildLeft().getName());
+				builder.append("\n" + this.getName() +" -> " +this.getChildRight().getName());
+				builder.append(this.getChildRight().toString());
+				builder.append(this.getChildLeft().toString());
+			}
+			//builder.append("\n" +" {"+this.childLeft.toString()+"}" +" {"+this.childRight.toString()+"}" );
+			else if((this.getChildLeft().isLeaf()==false) && this.getChildRight().isLeaf()==true){
+				builder.append("\n" + this.getName() +" -> " +this.getChildLeft().getName()+" this.getChildLeft().getName()"  );
+				builder.append("\n" + this.getName() +" -> " +this.getChildRight().toString());
+				builder.append(this.getChildLeft().toString());
+			}
+			else if(this.getChildLeft().isLeaf()==true && this.getChildRight().isLeaf()==false){
+				builder.append("\n" + this.getName() +" -> " + this.getChildLeft().toString());
+				builder.append("\n" + this.getName() +" -> " +this.getChildRight().getName());
+				builder.append(this.getChildRight().toString());
+			}
+		}
+		/*
+		
+		else if(getChildLeft()!= null) {
+			if(!getChildLeft().isLeaf()) {
+				builder.append("\n" + this.getName() +" -- " + this.getChildLeft().getName());
+				builder.append(this.getChildLeft().toString());
+			}
+			else
+				builder.append("\n" + this.getName() +" -- " + this.getChildLeft().toString());
 		}
 		
-		else if(!(childLeft.isLeaf()&&childRight.isLeaf())){
-			builder.append("\n" + this.getName() +" -- " +'"'+this.getChildLeft().getName()+'"' );
-			builder.append("\n" + this.getName() +" -- " +'"'+this.getChildRight().getName()+'"');
-			builder.append(this.getChildRight().toString());
-		}*/
-		builder.append("\n" +" {"+this.childLeft.toString()+"}" +" {"+this.childRight.toString()+"}" );
-		
-
-			
+		else if(getChildRight()!= null) {
+			if(!getChildRight().isLeaf()) {
+				builder.append("\n" + this.getName() +" -- " + this.getChildRight().getName());
+				builder.append(this.getChildRight().toString());
+			}
+			else
+				builder.append("\n" + this.getName() +" -- " + this.getChildRight().toString());
+		}	*/	
 		return builder.toString();
 	}
 	

@@ -112,11 +112,11 @@ public class CallGraphMain extends AbstractMain {
 					//DendrogramGraph dendrogramGraph = new DendrogramGraph(TEST_PROJECT_PATH,callGraph);
 					Dendrogram dendrogram = new Dendrogram(TEST_PROJECT_PATH,callGraph);
 					dendrogram.clustering();
-					//dendrogram.createFiles();
-					System.out.println(dendrogram.toString());
+					dendrogram.createFiles();
+					//System.out.println(dendrogram.toString());
 					//dendrogramGraph.createFiles();
-					
 					break;
+
 				case "4":
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
 					CoupleGraph coupleGraph = new CoupleGraph(TEST_PROJECT_PATH,callGraph);

@@ -4,14 +4,14 @@ import graphs.CallGraph;
 
 public class DendrogramLeaf extends DendrogramComposit {
 	String name;
+
 	
 	public DendrogramLeaf(String name) {
 		this.name = name;
 	}
+	
+	public double getPoids() {return 0;}
 
-	public double getValue() {
-		return -1;
-	}
 
 	public DendrogramComposit getChildLeft() {
 		return null;
@@ -29,14 +29,15 @@ public class DendrogramLeaf extends DendrogramComposit {
 		return true;
 	}
 
-	public double getValue(DendrogramComposit DendrogramComposit,ClassCouples classCouples) {
+	public double getValue(DendrogramComposit other,ClassCouples classCouples) {
 		double output = 0;
-		if(DendrogramComposit.isLeaf()) {
-			output = classCouples.getValueInCoupleFromClassNames(this.name , DendrogramComposit.getName());
+		if(other.isLeaf()==true) {
+			output += classCouples.getValueInCoupleFromClassNames(this.name , other.getName());
+
 			}
 		else {
-			output = getValue(DendrogramComposit.getChildLeft(),classCouples);
-			output += getValue(DendrogramComposit.getChildRight(),classCouples);
+			output += getValue(other.getChildLeft(),classCouples);
+			output += getValue(other.getChildRight(),classCouples);
 		}
 		return output;
 	}
