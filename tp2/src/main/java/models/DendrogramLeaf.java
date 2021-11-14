@@ -9,9 +9,6 @@ public class DendrogramLeaf extends DendrogramComposit {
 	public DendrogramLeaf(String name) {
 		this.name = name;
 	}
-	
-	public double getPoids() {return 0;}
-
 
 	public DendrogramComposit getChildLeft() {
 		return null;

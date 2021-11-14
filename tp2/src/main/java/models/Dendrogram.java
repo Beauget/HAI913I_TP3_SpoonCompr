@@ -69,8 +69,6 @@ public class Dendrogram {
 		
 		for(DendrogramComposit d : nodes) {
 			builder.append(d).append("\n");
-			System.out.println("Poids du noeud = " +d.getChildLeft().getPoids());
-			System.out.println("Poids du noeud = " +d.getChildRight().getPoids());
 		}
 
 		return builder.toString();
@@ -92,7 +90,7 @@ public class Dendrogram {
 	
 	public void saveGraph() {
 		try {
-			FileWriter fw = new FileWriter("DendrogramGraph.dot", false);
+			FileWriter fw = new FileWriter("DendrogramGraphAST.dot", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter out = new PrintWriter(bw);
 			out.println(this.getGraphAsDot());
@@ -105,7 +103,7 @@ public class Dendrogram {
 		}}
 	public void saveGraphAsPNG() throws IOException {
 		MutableGraph g = new Parser().read(this.getGraphAsDot());
-		Graphviz.fromGraph(g).render(Format.PNG).toFile(new File("dendrogram.png"));
+		Graphviz.fromGraph(g).render(Format.PNG).toFile(new File("dendrogramAST.png"));
 	}
 	public void createFiles() throws IOException {
 		this.saveGraph();

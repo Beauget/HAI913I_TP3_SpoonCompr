@@ -9,7 +9,6 @@ public class DendrogramNode extends DendrogramComposit {
 	DendrogramComposit childLeft;
 	DendrogramComposit childRight;
 	static Integer cluster = 0;
-	double poids ;
 
 	public DendrogramNode(DendrogramComposit childLeft, DendrogramComposit childRight) {
 		this.childLeft = childLeft;
@@ -51,17 +50,10 @@ public class DendrogramNode extends DendrogramComposit {
 		output += this.getChildLeft().getValue(other.getChildLeft(), classCouples);
 		output += this.getChildRight().getValue(other.getChildRight(), classCouples);
 		output += this.getChildRight().getValue(other.getChildLeft(), classCouples);
-		poids = output;
-
-		
-		
 
 		return output;
 		
 	}
-	
-	public double getPoids(){return poids;}
-	
 
 
 	public String toString() {

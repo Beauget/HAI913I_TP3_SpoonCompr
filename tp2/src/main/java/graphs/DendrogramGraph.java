@@ -14,6 +14,7 @@ import guru.nidi.graphviz.parse.Parser;
 import models.ClassCouple;
 import processors.ProcessorClustering;
 
+/*A supprimer*/
 public class DendrogramGraph {
 	ProcessorClustering processorClustering;
 	String projectPath;
