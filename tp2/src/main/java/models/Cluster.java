@@ -54,7 +54,7 @@ public class Cluster {
 		for(String i : this.className) {
 			res += "Classe : " + i; 
 		}
-		res += "valeur de la métrique de couplage de ce cluster : " + this.totalCoupling + "\n";
+		res += "valeur de la mÃ©trique de couplage de ce cluster : " + this.totalCoupling + "\n";
 		return res;
  	}
 

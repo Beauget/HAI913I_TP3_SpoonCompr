@@ -1,16 +1,17 @@
-package models;
+package dendrogramSpoon;
 
 import java.util.ArrayList;
 
-import graphs.CallGraph;
+import models.ClassCoupleSpoon;
 
-public class DendrogramNode extends DendrogramComposit {
+public class DendrogramNodeSpoon extends DendrogramCompositSpoon {
+
 	String name;
-	DendrogramComposit childLeft;
-	DendrogramComposit childRight;
+	DendrogramCompositSpoon childLeft;
+	DendrogramCompositSpoon childRight;
 	static Integer cluster = 0;
 
-	public DendrogramNode(DendrogramComposit childLeft, DendrogramComposit childRight) {
+	public DendrogramNodeSpoon(DendrogramCompositSpoon childLeft, DendrogramCompositSpoon childRight) {
 		this.childLeft = childLeft;
 		this.childRight =childRight;
 		this.name = new String('"'+"C"+cluster.toString()+'"');
@@ -24,12 +25,12 @@ public class DendrogramNode extends DendrogramComposit {
 	}
 
 	@Override
-	public DendrogramComposit getChildLeft() {
+	public DendrogramCompositSpoon getChildLeft() {
 		return childLeft;
 	}
 
 	@Override
-	public DendrogramComposit getChildRight() {
+	public DendrogramCompositSpoon getChildRight() {
 		return childRight;
 	}
 
@@ -39,13 +40,12 @@ public class DendrogramNode extends DendrogramComposit {
 	}
 
 	@Override
-	public double getValue(DendrogramComposit other, ClassCouples classCouples) {
+	public double getValue(DendrogramCompositSpoon other, ArrayList<ClassCoupleSpoon> classCouples) {
 
 		if(other.isLeaf()==true) {
 			return other.getValue(this, classCouples);
 		}
 		
-
 		double output = this.getChildLeft().getValue(other.getChildRight(), classCouples);
 		output += this.getChildLeft().getValue(other.getChildLeft(), classCouples);
 		output += this.getChildRight().getValue(other.getChildRight(), classCouples);
@@ -70,9 +70,9 @@ public class DendrogramNode extends DendrogramComposit {
 				builder.append(this.getChildRight().toString());
 				builder.append(this.getChildLeft().toString());
 			}
-			//builder.append("\n" +" {"+this.childLeft.toString()+"}" +" {"+this.childRight.toString()+"}" );
+
 			else if((this.getChildLeft().isLeaf()==false) && this.getChildRight().isLeaf()==true){
-				builder.append("\n" + this.getName() +" -> " +this.getChildLeft().getName()+" this.getChildLeft().getName()"  );
+				builder.append("\n" + this.getName() +" -> " +this.getChildLeft().getName());
 				builder.append("\n" + this.getName() +" -> " +this.getChildRight().toString());
 				builder.append(this.getChildLeft().toString());
 			}
@@ -82,27 +82,6 @@ public class DendrogramNode extends DendrogramComposit {
 				builder.append(this.getChildRight().toString());
 			}
 		}
-		/*
-		
-		else if(getChildLeft()!= null) {
-			if(!getChildLeft().isLeaf()) {
-				builder.append("\n" + this.getName() +" -- " + this.getChildLeft().getName());
-				builder.append(this.getChildLeft().toString());
-			}
-			else
-				builder.append("\n" + this.getName() +" -- " + this.getChildLeft().toString());
-		}
-		
-		else if(getChildRight()!= null) {
-			if(!getChildRight().isLeaf()) {
-				builder.append("\n" + this.getName() +" -- " + this.getChildRight().getName());
-				builder.append(this.getChildRight().toString());
-			}
-			else
-				builder.append("\n" + this.getName() +" -- " + this.getChildRight().toString());
-		}	*/	
 		return builder.toString();
 	}
-	
 }
-

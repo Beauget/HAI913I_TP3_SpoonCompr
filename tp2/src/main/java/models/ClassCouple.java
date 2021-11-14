@@ -2,7 +2,7 @@ package models;
 
 import java.util.ArrayList;
 
-public class ClassCouple {
+public class ClassCouple{
 	ClassAndContent class1;
 	ClassAndContent class2;
 	double value;
@@ -107,7 +107,7 @@ public class ClassCouple {
 		return numberOfCallsBetweenCouple;
 	}
 
-	public static double getTotalNumberOfCallsBetweenClasses() {
+	public double getTotalNumberOfCallsBetweenClasses() {
 		return totalNumberOfCallsBetweenClasses;
 	}
 

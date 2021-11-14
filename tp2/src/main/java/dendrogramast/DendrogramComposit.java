@@ -1,6 +1,7 @@
-package models;
+package dendrogramast;
 
 import graphs.CallGraph;
+import models.ClassCouples;
 
 public abstract class DendrogramComposit {
 	public abstract double getValue(DendrogramComposit DendrogramComposit,ClassCouples classCouples);

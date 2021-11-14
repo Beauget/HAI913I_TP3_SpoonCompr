@@ -191,8 +191,8 @@ public void createCouplingGraph() throws IOException {
 		}
 
 	}
-	System.out.println("Métrique total (sans appel java.io, java.lang, java.util) : " + metricVerif);
-	saveGraphAsPNGSpoon(CouplingGraph);
+	System.out.println("MÃ©trique total (sans appel java.io, java.lang, java.util) : " + metricVerif);
+	//saveGraphAsPNGSpoon(CouplingGraph);
 }
 
 
@@ -296,7 +296,7 @@ public void log() {
 }
 
 
-//méthode d'ajout d'élément sensors
+//mï¿½thode d'ajout d'ï¿½lï¿½ment sensors
 	public void addSensorsStatement(CtMethod<?> method,Launcher ourLauncher) {
 		
 		CtCodeSnippetStatement snippet = ourLauncher.getFactory().Core().createCodeSnippetStatement();
@@ -311,7 +311,7 @@ public void log() {
 		// we insert the snippet at the beginning of the method body.
 		if (method.getBody() != null) {
 			method.getBody().insertBegin(snippet);
-			System.out.println("Méthode : " + method.getSimpleName() + "\n Corps de la méthode : " + method.getBody());
+			System.out.println("Mï¿½thode : " + method.getSimpleName() + "\n Corps de la mï¿½thode : " + method.getBody());
 		}
 }
 	

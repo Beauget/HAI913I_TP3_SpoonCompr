@@ -1,6 +1,7 @@
-package models;
+package dendrogramast;
 
 import graphs.CallGraph;
+import models.ClassCouples;
 
 public class DendrogramLeaf extends DendrogramComposit {
 	String name;

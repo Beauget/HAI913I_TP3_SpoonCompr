@@ -1,4 +1,4 @@
-package models;
+package dendrogramSpoon;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,26 +6,35 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import graphs.CallGraph;
 import guru.nidi.graphviz.engine.Format;
 import guru.nidi.graphviz.engine.Graphviz;
 import guru.nidi.graphviz.model.MutableGraph;
 import guru.nidi.graphviz.parse.Parser;
+import models.ClassCoupleSpoon;
+import parsers.Spoon;
+import parsers.SpoonClustering;
+import spoon.Launcher;
+import spoon.reflect.CtModel;
 
-public class Dendrogram {
-	ClassCouples classCouples;
-	List<DendrogramComposit> nodes;
-	
-	public Dendrogram(String projectPath, CallGraph callGraph) {
-		this.classCouples = new ClassCouples(projectPath, callGraph);
+public class DendrogramSpoon {
+	ArrayList<ClassCoupleSpoon> classCouples;
+	List<DendrogramCompositSpoon> nodes;
+	SpoonClustering spoonClustering;
+	//Spoon spoon;
+	public DendrogramSpoon(String projectPath, CtModel model,Launcher our) {
+		this.spoonClustering = new SpoonClustering(projectPath, model,our);
+		this.classCouples = spoonClustering.createCouple(spoonClustering);
 		this.nodes = initNodes();
 	}
 	
-	private DendrogramComposit getMostCoupledNodePair(List<DendrogramComposit> nodes){
-		DendrogramComposit childLeft = null ;
-		DendrogramComposit childRight = null;
+	private DendrogramCompositSpoon getMostCoupledNodePair(List<DendrogramCompositSpoon> nodes){
+		DendrogramCompositSpoon childLeft = null ;
+		DendrogramCompositSpoon childRight = null;
 		double mostNodeValue = -1;
 		
 		for (int i = 0; i <nodes.size(); i++) {
@@ -39,12 +48,12 @@ public class Dendrogram {
 				}
 			}
 		}
-		return new DendrogramNode(childLeft,childRight);
+		return new DendrogramNodeSpoon(childLeft,childRight);
 	}
 	
 	public void clustering() {
 		int i = 0;
-		DendrogramComposit mostCoupledNodePair = null ;
+		DendrogramCompositSpoon mostCoupledNodePair = null ;
 		while(nodes.size()>1) {
 			mostCoupledNodePair = getMostCoupledNodePair(nodes);
 			nodes.remove(mostCoupledNodePair.getChildLeft());
@@ -54,11 +63,20 @@ public class Dendrogram {
 		}
 	}
 	
-	private List<DendrogramComposit> initNodes() {
-		List<DendrogramComposit> output = new ArrayList<DendrogramComposit>();
-		ArrayList<String> classes = classCouples.getClasses();
+	private List<DendrogramCompositSpoon> initNodes() {
+		List<DendrogramCompositSpoon> output = new ArrayList<DendrogramCompositSpoon>();
+		ArrayList<String> classes = new ArrayList<String>();
+		for(ClassCoupleSpoon couple : classCouples) {
+			classes.add(couple.getClassNameA());
+			classes.add(couple.getClassNameB());
+		}
+		//Supression des doublons
+		Set<String> set = new HashSet<>(classes);
+		classes.clear();
+		classes.addAll(set);
+		
 		for(String s : classes) {
-			DendrogramComposit leaf = new DendrogramLeaf(s);
+			DendrogramCompositSpoon leaf = new DendrogramLeafSpoon(s);
 			output.add(leaf);
 		}
 		return output;
@@ -67,7 +85,7 @@ public class Dendrogram {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		
-		for(DendrogramComposit d : nodes) {
+		for(DendrogramCompositSpoon d : nodes) {
 			builder.append(d).append("\n");
 		}
 
@@ -76,13 +94,7 @@ public class Dendrogram {
 	
 
 	public String getGraphAsDot() {
-		StringBuilder builder = new StringBuilder("digraph \"Dendrogram\" {\n");
-	//+ "node [fontname=\"DejaVu-Sans\", shape=circle] \n");
-		//ArrayList<String> classes = classCouples.getClasses();
-		//liste des noeuds
-		//for(String s : classes) {
-			//builder.append('"'+s+'"'+"\n");
-		//}
+		StringBuilder builder = new StringBuilder("digraph \"DendrogramSpoon\" {\n");
 		builder.append(this.toString());
 		builder.append("\n}");
 		return builder.toString();
@@ -90,7 +102,7 @@ public class Dendrogram {
 	
 	public void saveGraph() {
 		try {
-			FileWriter fw = new FileWriter("DendrogramGraphAST.dot", false);
+			FileWriter fw = new FileWriter("DendrogramGraphSpoon.dot", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter out = new PrintWriter(bw);
 			out.println(this.getGraphAsDot());
@@ -103,12 +115,11 @@ public class Dendrogram {
 		}}
 	public void saveGraphAsPNG() throws IOException {
 		MutableGraph g = new Parser().read(this.getGraphAsDot());
-		Graphviz.fromGraph(g).render(Format.PNG).toFile(new File("dendrogramAST.png"));
+		Graphviz.fromGraph(g).render(Format.PNG).toFile(new File("dendrogramSpoon.png"));
 	}
 	public void createFiles() throws IOException {
 		this.saveGraph();
 		this.saveGraphAsPNG();
 	}
-	
 	
 }

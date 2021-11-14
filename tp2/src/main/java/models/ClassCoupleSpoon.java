@@ -6,7 +6,7 @@ public class ClassCoupleSpoon {
 	String classB;
 	
 	double couplingValue;
-	
+
 	public ClassCoupleSpoon(String classA, String classB, double value) {
 		this.classA = classA;
 		this.classB = classB;
@@ -27,6 +27,12 @@ public class ClassCoupleSpoon {
 		return this.couplingValue;
 	}
 
+	public boolean isSameCouple(String s1, String s2) {
+		boolean case1 = s1.equals(classA) && s2.equals(classB);
+		boolean case2 = s1.equals(classB) && s2.equals(classA);
+		
+		return (case1||case2);
+	}
 	
 	public String toString() {
 		return  "Couple : " + this.classA + " - " + this.classB + " = " + this.couplingValue + "\n";
