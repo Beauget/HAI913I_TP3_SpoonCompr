@@ -62,7 +62,7 @@ public class DendrogramAST {
 			DendrogramComposit f1 = pere.getChildLeft();
 			DendrogramComposit f2 = pere.getChildRight();
 			
-			if(f1!=null && f2!=null) {
+			if(!pere.isLeaf()) {
 				if(pere.getValue(classCouples)>(f1.getValue(classCouples)+f2.getValue(classCouples))/pere.getSize()) {
 					if(!partition.contains(pere))
 						partition.add(pere);
