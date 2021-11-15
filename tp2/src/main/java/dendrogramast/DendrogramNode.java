@@ -52,7 +52,7 @@ public class DendrogramNode extends DendrogramComposit {
 		output += this.getChildRight().getValue(other.getChildRight(), classCouples);
 		output += this.getChildRight().getValue(other.getChildLeft(), classCouples);
 
-		return output;
+		return output/4;
 		
 	}
 

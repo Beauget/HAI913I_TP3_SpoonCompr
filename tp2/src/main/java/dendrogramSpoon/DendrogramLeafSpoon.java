@@ -36,13 +36,14 @@ public class DendrogramLeafSpoon extends DendrogramCompositSpoon {
 		if(other.isLeaf()==true) {
 			for(ClassCoupleSpoon couple : classCouples) {
 				if(couple.isSameCouple(this.getName(),other.getName())){
-						output += couple.getCouplageMetricValue();
+						output = couple.getCouplageMetricValue();
 						}
 			}
 		}
 		else{
 			output += getValue(other.getChildLeft(),classCouples);
 			output += getValue(other.getChildRight(),classCouples);
+			output/=2;
 		}
 		return output;
 	}

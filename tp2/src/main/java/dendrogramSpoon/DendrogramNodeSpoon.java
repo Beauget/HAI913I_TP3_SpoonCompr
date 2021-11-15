@@ -51,7 +51,7 @@ public class DendrogramNodeSpoon extends DendrogramCompositSpoon {
 		output += this.getChildRight().getValue(other.getChildRight(), classCouples);
 		output += this.getChildRight().getValue(other.getChildLeft(), classCouples);
 
-		return output;
+		return output/4;
 		
 	}
 
