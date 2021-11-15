@@ -64,7 +64,8 @@ public class DendrogramAST {
 			
 			if(f1!=null && f2!=null) {
 				if(pere.getValue(classCouples)>(f1.getValue(classCouples)+f2.getValue(classCouples))/pere.getSize()) {
-					partition.add(pere);
+					if(!partition.contains(pere))
+						partition.add(pere);
 				}
 				else {
 					pile.empile(f1);
