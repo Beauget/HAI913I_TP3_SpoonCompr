@@ -14,10 +14,12 @@ import guru.nidi.graphviz.engine.Graphviz;
 import guru.nidi.graphviz.model.MutableGraph;
 import guru.nidi.graphviz.parse.Parser;
 import models.ClassCouples;
+import models.Pile;
 
 public class DendrogramAST {
 	ClassCouples classCouples;
 	List<DendrogramComposit> nodes;
+	Pile pile = new Pile();
 	
 	public DendrogramAST(String projectPath, CallGraph callGraph) {
 		this.classCouples = new ClassCouples(projectPath, callGraph);
@@ -36,7 +38,6 @@ public class DendrogramAST {
 					childLeft=nodes.get(i);
 					childRight= nodes.get(j);
 					mostNodeValue=nodeValue;
-					//System.out.println(nodeValue);
 				}
 			}
 		}
@@ -44,15 +45,35 @@ public class DendrogramAST {
 	}
 	
 	public void clustering() {
-		int i = 0;
 		DendrogramComposit mostCoupledNodePair = null ;
 		while(nodes.size()>1) {
 			mostCoupledNodePair = getMostCoupledNodePair(nodes);
 			nodes.remove(mostCoupledNodePair.getChildLeft());
 			nodes.remove(mostCoupledNodePair.getChildRight());
 			nodes.add(mostCoupledNodePair);
-			i++;
+			pile.empile(mostCoupledNodePair);
 		}
+	}
+	
+	public ArrayList<DendrogramComposit> selection_Cluster() {
+		ArrayList<DendrogramComposit> partition= new ArrayList<DendrogramComposit>();
+		while(!pile.isEmpty()) {
+			DendrogramComposit pere = pile.depile();
+			DendrogramComposit f1 = pere.getChildLeft();
+			DendrogramComposit f2 = pere.getChildRight();
+			
+			if(f1!=null && f2!=null) {
+				if(pere.getValue(classCouples)>(f1.getValue(classCouples)+f2.getValue(classCouples))/pere.getSize()) {
+					partition.add(pere);
+				}
+				else {
+					pile.empile(f1);
+					pile.empile(f2);
+				}
+			}
+
+		}
+		return partition;
 	}
 	
 	private List<DendrogramComposit> initNodes() {

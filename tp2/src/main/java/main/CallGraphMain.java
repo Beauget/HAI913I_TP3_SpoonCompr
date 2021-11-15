@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import dendrogramSpoon.DendrogramSpoon;
 import dendrogramast.DendrogramAST;
+import dendrogramast.DendrogramComposit;
 import graphs.AllCouplesGraph;
 import graphs.CallGraph;
 import graphs.CoupleGraph;
@@ -32,7 +33,7 @@ public class CallGraphMain extends AbstractMain {
 		builder.append("\n---- AST part ----");
 		builder.append("\n1. Static call graph.");
 		builder.append("\n2. ProcessorClustering.");
-		builder.append("\n3. DendrogramGraph : Création d'un dendrogram en png ");
+		builder.append("\n3. DendrogramGraph : Création d'un dendrogram en png et affichage des partitions");
 		builder.append("\n4. CoupleGraph : Création des fichiers CoupleGraph.dot et graphCouple.png pour un couple donnée");
 		builder.append("\n5. AllCouplesGraph : Création des fichiers CouplesGraph.dot et graphCouples.png pour un src donné, veuillez donner une liste de classe raisonnable");
 		builder.append("\n---- Spoon part ----");
@@ -112,12 +113,14 @@ public class CallGraphMain extends AbstractMain {
 					
 				case "3":
 					callGraph = StaticCallGraph.createCallGraph(TEST_PROJECT_PATH);					
-					//DendrogramGraph dendrogramGraph = new DendrogramGraph(TEST_PROJECT_PATH,callGraph);
 					DendrogramAST dendrogram = new DendrogramAST(TEST_PROJECT_PATH,callGraph);
 					dendrogram.clustering();
 					dendrogram.createFiles();
-					//System.out.println(dendrogram.toString());
-					//dendrogramGraph.createFiles();
+					System.out.println("Partition : (voir dendrogramAST.png pour voir à quoi correspond les C)");
+					for(DendrogramComposit d : dendrogram.selection_Cluster()) {
+						System.out.print(d.getName()+", ");
+					}
+					System.out.println();
 					break;
 
 				case "4":

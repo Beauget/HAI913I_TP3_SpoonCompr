@@ -1,0 +1,3 @@
+digraph G {
+"structural.flyweight.Circle" -> "structural.flyweight.Test" [ label = "0.007434944237918215"] "structural.flyweight.Test" -> "structural.flyweight.Circle" [ label = "0.0"] 
+}

@@ -52,7 +52,7 @@ public class DendrogramNode extends DendrogramComposit {
 		output += this.getChildRight().getValue(other.getChildRight(), classCouples);
 		output += this.getChildRight().getValue(other.getChildLeft(), classCouples);
 
-		return output/4;
+		return output;
 		
 	}
 
@@ -103,6 +103,34 @@ public class DendrogramNode extends DendrogramComposit {
 				builder.append("\n" + this.getName() +" -- " + this.getChildRight().toString());
 		}	*/	
 		return builder.toString();
+	}
+
+
+	@Override
+	public double getValue(ClassCouples classCouples) {
+		double output = 0;
+		if(this.getChildLeft().isLeaf()==true && this.getChildRight().isLeaf()==true)
+			return classCouples.getValueInCoupleFromClassNames(this.getChildLeft().getName(), this.getChildRight().getName());
+
+		else if(this.getChildRight().isLeaf()==true) {
+			output+= this.getChildRight().getValue(this.childLeft,classCouples);
+			output+= this.getChildLeft().getValue(classCouples);
+		}
+		else if(this.getChildLeft().isLeaf()==true) {
+			output+= this.getChildLeft().getValue(this.childRight,classCouples);
+			output+= this.getChildRight().getValue(classCouples);
+		}
+		return output;
+			
+	}
+
+
+	@Override
+	public double getSize() {
+		double output = 0;
+		output+=this.getChildLeft().getSize();
+		output+=this.getChildRight().getSize();
+		return output;
 	}
 	
 }

@@ -43,7 +43,6 @@ public class DendrogramLeafSpoon extends DendrogramCompositSpoon {
 		else{
 			output += getValue(other.getChildLeft(),classCouples);
 			output += getValue(other.getChildRight(),classCouples);
-			output/=2;
 		}
 		return output;
 	}

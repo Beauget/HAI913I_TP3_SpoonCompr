@@ -36,13 +36,22 @@ public class DendrogramLeaf extends DendrogramComposit {
 		else {
 			output += getValue(other.getChildLeft(),classCouples);
 			output += getValue(other.getChildRight(),classCouples);
-			output/=2;
 		}
 		return output;
 	}
 	
 	public String toString(){
 		return ('"'+this.name+'"');
+	}
+
+	@Override
+	public double getValue(ClassCouples classCouples) {
+		return 0;
+	}
+
+	@Override
+	public double getSize() {
+		return 1;
 	}
 
 }
