@@ -13,17 +13,26 @@ import guru.nidi.graphviz.engine.Format;
 import guru.nidi.graphviz.engine.Graphviz;
 import guru.nidi.graphviz.model.MutableGraph;
 import guru.nidi.graphviz.parse.Parser;
+import loggers.ConsoleLogger;
+import loggers.FileLogger;
+import loggers.LogRequest;
+import loggers.StandardLogRequestLevel;
+import models.ClassCouple;
 import models.ClassCouples;
 import models.Pile;
+import processors.ASTProcessor;
 
-public class DendrogramAST {
+public class DendrogramAST extends ASTProcessor  {
 	ClassCouples classCouples;
 	List<DendrogramComposit> nodes;
 	Pile pile = new Pile();
+	private FileLogger loggerChain;
 	
 	public DendrogramAST(String projectPath, CallGraph callGraph) {
+		super(projectPath);
 		this.classCouples = new ClassCouples(projectPath, callGraph);
 		this.nodes = initNodes();
+		setLoggerChain();
 	}
 	
 	private DendrogramComposit getMostCoupledNodePair(List<DendrogramComposit> nodes){
@@ -100,12 +109,6 @@ public class DendrogramAST {
 
 	public String getGraphAsDot() {
 		StringBuilder builder = new StringBuilder("digraph \"Dendrogram\" {\n");
-	//+ "node [fontname=\"DejaVu-Sans\", shape=circle] \n");
-		//ArrayList<String> classes = classCouples.getClasses();
-		//liste des noeuds
-		//for(String s : classes) {
-			//builder.append('"'+s+'"'+"\n");
-		//}
 		builder.append(this.toString());
 		builder.append("\n}");
 		return builder.toString();
@@ -131,6 +134,28 @@ public class DendrogramAST {
 	public void createFiles() throws IOException {
 		this.saveGraph();
 		this.saveGraphAsPNG();
+	}
+
+	public String toStringCouple() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Number of classes = "+ classCouples.getClasses().size()+"\n");
+		builder.append("Couples => \n");
+		for(ClassCouple couple : classCouples.getCouples()) {
+			if(couple.getValue()>0) {
+				builder.append(couple.toString());
+			}
+		}
+		return builder.toString();
+	}
+	/* METHODS */
+	protected void setLoggerChain() {
+		loggerChain = new FileLogger(StandardLogRequestLevel.DEBUG);
+		loggerChain.setNextLogger(new ConsoleLogger(StandardLogRequestLevel.INFO));
+	}
+	public void log() {
+		loggerChain.setFilePath(parser.getProjectPath()+"processor_clustering.info");
+		loggerChain.log(new LogRequest(this.toStringCouple(), 
+				StandardLogRequestLevel.DEBUG));
 	}
 	
 	

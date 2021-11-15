@@ -52,7 +52,7 @@ public class SpoonClustering extends Spoon {
 		//Algo du cours
 		Cluster tempCluster;
 		ArrayList<String> tempClasses;
-		System.out.println("\nCréation de la hiérarchie des clusters :");
+		System.out.println("\nCrï¿½ation de la hiï¿½rarchie des clusters :");
 		while (clusters.size() > 1) {
 			partieGaucheI = 0;
 			partieDroiteI = 0;
@@ -84,7 +84,7 @@ public class SpoonClustering extends Spoon {
 				tempCluster.add(partieDroite.getClassList());
 				metricVerif += CouplingMax;
 				
-				//Algo du cours : enlève, enlève, ajoute
+				//Algo du cours : enlï¿½ve, enlï¿½ve, ajoute
 				
 				clusters.remove(partieGauche);
 				clusters.remove(partieDroite);
@@ -122,7 +122,7 @@ public class SpoonClustering extends Spoon {
 				System.out.println("Classe membre : " + className);
 			}
 			
-			System.out.println("Valeur de la métrique de couplage total de ce cluster : " + cluster.totalCoupling +"\n");
+			System.out.println("Valeur de la mÃ©trique de couplage total de ce cluster : " + cluster.totalCoupling +"\n");
 			System.out.println("\n");
 			}
 		}

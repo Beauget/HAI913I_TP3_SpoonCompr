@@ -26,10 +26,10 @@ public class ClassCouples extends ASTProcessor {
 		this.couples = this.getCouples();
 		if(this.couples.size()>0)
 			totalNumberOfCallsBetweenClasses = couples.get(0).getTotalNumberOfCallsBetweenClasses();
-		System.out.println("ProcessorClustering Conctructor: Au total il y a "+ totalNumberOfCallsBetweenClasses + " invocations de classes \n");
+		System.out.println("Au total il y a "+ totalNumberOfCallsBetweenClasses + " invocations de classes \n");
 		setLoggerChain();
 	}
-	private static ArrayList<ClassCouple> getCouples() {
+	public static ArrayList<ClassCouple> getCouples() {
 		ArrayList<ClassCouple> couplesList= new ArrayList<ClassCouple>();
 		for(int i=0 ; i<classes.size(); i++) {
 			for(int j = i+1; j<classes.size(); j++) {

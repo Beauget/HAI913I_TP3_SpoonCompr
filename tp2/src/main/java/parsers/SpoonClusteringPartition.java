@@ -57,7 +57,7 @@ public class SpoonClusteringPartition extends SpoonClustering {
 				tempCluster = new Cluster(tempClasses, CouplingMax);
 				tempCluster.add(partieDroite.getClassList());
 				
-				//Algo du cours : enlève, enlève, ajoute
+				//Algo du cours : enlï¿½ve, enlï¿½ve, ajoute
 				
 				clusters.remove(partieGauche);
 				clusters.remove(partieDroite);
@@ -93,16 +93,16 @@ public class SpoonClusteringPartition extends SpoonClustering {
 			filsGauche = PileCluster.pop();
 			filsDroite = PileCluster.pop();
 			
-			System.out.println("\n - Couplage du père : "+ pere.getCoupling());
+			System.out.println("\n - Couplage du pÃ¨re : "+ pere.getCoupling());
 			moyenne = (filsGauche.getCoupling() + filsDroite.getCoupling() ) / 2;
 			System.out.println("\n - Moyenne des couplages des fils : "+ moyenne);
 			if(pere.getCoupling() > moyenne) {
-				System.out.println( "\n Donc --> Le père est ajouté à la partition");
+				System.out.println( "\n Donc --> Le pÃ¨re est ajoutÃ© Ã  la partition");
 				resultList.add(pere);
 			
 		}
 			else {
-				System.out.println("\n La valeur du couplage du père est inférieur à la moyenne des valeurs du couplage des fils, on continue");
+				System.out.println("\n La valeur du couplage du pÃ¨re est infÃ¨rieur Ã  la moyenne des valeurs du couplage des fils, on continue");
 			}
 	}
 		
